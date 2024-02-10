@@ -8,6 +8,7 @@ const userGoogleLoginSchema = new mongoose.Schema({
   googleId: {
     type: String,
     required: [true, 'Provide google id'],
+    unqie: true,
   },
   token: {
     type: String,

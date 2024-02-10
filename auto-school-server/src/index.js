@@ -1,11 +1,20 @@
 require('dotenv').config();
 require('./config/db.js');
 const express = require('express');
+const userRouter = require('./routes/userRoutes.js');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, this is your Express backend!');
+app.use(express.json({ limit: '10kb' }));
+
+app.use('/api/users', userRouter);
+
+app.all('*', (req, res) => {
+  res.status(404).json({
+    status: 'failure',
+    message: `Can't find ${req.originalUrl} on this server`,
+  });
 });
 
 app.listen(port, () => {

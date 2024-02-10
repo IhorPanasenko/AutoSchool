@@ -4,6 +4,7 @@ const userLoginSchema = new mongoose.Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userAccounts',
+    unique: true,
   },
   email: {
     type: String,
