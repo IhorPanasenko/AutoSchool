@@ -3,13 +3,28 @@
     x:Class="Auto.School.Mobile.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Auto.School.Mobile"
-    Shell.FlyoutBehavior="Disabled"
-    Title="Auto.School.Mobile">
+    xmlns:pages="clr-namespace:Auto.School.Mobile.Pages"
+    xmlns:models="clr-namespace:Auto.School.Mobile.Models"
+    Shell.TabBarIsVisible="False">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
+    <ShellContent ContentTemplate="{DataTemplate pages:LoginPage}"
+                      Title="Home"
+                      FlyoutItemIsVisible="False"
+                      Route="LoginPage"
+                      Shell.FlyoutBehavior="Disabled"
+                      />
+
+    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate pages:HomePage}"/>
+        <ShellContent Title="Contact" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate pages:ContactPage}"/>
+        <ShellContent Title="About" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate pages:AboutPage}"/>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout>
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" BackgroundColor="Green"/>
+        </StackLayout>
+    </Shell.FlyoutFooter>
 </Shell>
+    
