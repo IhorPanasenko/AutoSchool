@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userLoginSchema = new mongoose.Schema({
-  userid: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userAccounts',
     unique: true,
@@ -34,6 +34,7 @@ const userLoginSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordRecoveryToken: String,
   passwordResetExpires: Date,
+  refreshToken: String,
 });
 
 const UserLoginModel = mongoose.model('userLogins', userLoginSchema);
