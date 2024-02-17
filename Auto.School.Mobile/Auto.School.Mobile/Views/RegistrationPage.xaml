@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.RegistrationPage"
+             Title="RegistrationPage"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutItemIsVisible="False">
+    <VerticalStackLayout>
+        <Border  Margin="0,20,0,0"
+        Stroke="Yellow"
+        StrokeThickness="4"
+        StrokeShape="RoundRectangle 40,0,0,40"
+        Background="LightBlue"
+        Padding="16,8"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+            >
+            <Grid RowSpacing="10" Margin="20,20,20,20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" >
+                    <Label Text="Registration" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Padding="0" Grid.Row="1">
+                    <Entry FontSize="18" TextColor="Black" PlaceholderColor="Blue" Placeholder="Name" Text="{Binding FirstName}" />
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Entry FontSize="18" TextColor="Black" PlaceholderColor="Blue" Placeholder="Surname" Text="{Binding LastName}" />
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <Entry FontSize="18" TextColor="Black" PlaceholderColor="Blue" Placeholder="Phone" Text="{Binding PhoneNumber}" />
+                </StackLayout>
+                <StackLayout Grid.Row="4" Orientation="Horizontal">
+                    <Label FontSize="18" Text="Birthday date" TextColor="Blue" Margin="4,0,20,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                    <DatePicker FontSize="18" TextColor="Blue" Date="{Binding BirthdayDate}" HorizontalOptions="End"/>
+                </StackLayout>
+                <StackLayout Grid.Row="5">
+                    <Picker FontSize="18" Title="Select City" TitleColor="Blue" TextColor="Black" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" ItemsSource="{Binding Cities}">
+                        <Picker.ItemDisplayBinding>
+                            <Binding Path="Name" />
+                        </Picker.ItemDisplayBinding>
+                    </Picker>
+                </StackLayout>
+                <StackLayout Grid.Row="6" Orientation="Horizontal">
+                    <Grid ColumnSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Frame>
+                                <Image Source="{Binding PhotoUrl}" />
+                            </Frame>
+                        </StackLayout>
+                        <Button FontSize="18" Grid.Column="1" Text="Select Photo" Background="Blue" HorizontalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+
+                <Grid ColumnSpacing="10" Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontSize="18" Text="Register" BackgroundColor="DarkBlue"/>
+                    <Button FontSize="18" Grid.Column="1" Text="Back to login" BackgroundColor="Blue" LineBreakMode="CharacterWrap" WidthRequest="100"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

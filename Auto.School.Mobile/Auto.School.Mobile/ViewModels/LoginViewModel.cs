@@ -1,12 +1,8 @@
-﻿using Auto.School.Mobile.Pages;
+﻿using Auto.School.Mobile.Views;
 using Auto.School.Mobile.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
-using Microsoft.Maui.Controls;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Auto.School.Mobile.Models;
 using CommunityToolkit.Mvvm.Input;
 using Auto.School.Mobile.UserControl;
 
@@ -42,6 +38,13 @@ namespace Auto.School.Mobile.ViewModels
 
                 await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
             }
+        }
+
+        [RelayCommand]
+        public async Task GoToRegistration()
+        {
+            //await Shell.Current.GoToAsync($"//{nameof(RegistrationPage)}"); 
+            await Shell.Current.Navigation.PushAsync(new RegistrationPage());
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Auto.School.Mobile.Pages;
-using Auto.School.Mobile.ViewModels;
+﻿using Auto.School.Mobile.ViewModels;
+using Auto.School.Mobile.Views;
 
 namespace Auto.School.Mobile
 {
@@ -10,6 +10,7 @@ namespace Auto.School.Mobile
             InitializeComponent();
             BindingContext = new AppShellViewModel();
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
         }
     }
 }
