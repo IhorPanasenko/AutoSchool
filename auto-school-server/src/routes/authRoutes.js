@@ -1,38 +1,18 @@
 const express = require('express');
-const joi = require('joi');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
+const { validateSchema } = require('../middlewares/validateSchema.js');
+const { signupSchema } = require('../helpers/validationSchemas.js');
 
 const router = express.Router();
 
-// TODO: Validate req.body
-
-const signupSchema = joi.object({
-  name: joi.string().required(),
-  surname: joi.string().required(),
-  phone: joi.string().regex(/\d{3}-\d{3}-\d{4}/),
-  dateOfBirth: joi.date(),
-  email: joi.string().email().required(),
-  password: joi.string().required(),
-});
-
-const validateSchema = (schema) => {
-  return (req, res, next) => {
-    const result = schema.validate(req.body);
-
-    if (result.error) {
-      return res.status(400).json({
-        error: result.error.details[0].message,
-      });
-    }
-
-    req.body = result.value;
-    next();
-  };
-};
-
 router.post('/signup', validateSchema(signupSchema), async (req, res) => {
   try {
+    const newUserLogin = await userLogin.create({
+      email: req.body.email,
+      passwordHash: req.body.password,
+    });
+
     const newUserAccount = await userAccount.create({
       name: req.body.name,
       surname: req.body.surname,
@@ -41,11 +21,8 @@ router.post('/signup', validateSchema(signupSchema), async (req, res) => {
       dateOfBirth: req.body.dateOfBirth,
     });
 
-    const newUserLogin = await userLogin.create({
-      userId: newUserAccount._id,
-      email: req.body.email,
-      passwordHash: req.body.password,
-    });
+    newUserLogin.userId = newUserAccount._id;
+    newUserLogin.save();
 
     res.status(201).json({
       status: 'success',
