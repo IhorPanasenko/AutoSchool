@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Auto.School.Mobile.Pages.LoginPage"
+             x:Class="Auto.School.Mobile.Views.LoginPage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
              Title="LoginPage"
              Shell.NavBarIsVisible="False">
-    <Grid BackgroundColor="SkyBlue">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="220"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
+    <ScrollView Orientation="Vertical">
+        <Grid BackgroundColor="SkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="220"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
         <StackLayout>
             <Frame HeightRequest="60" WidthRequest="60" CornerRadius="50" Padding="0" Margin="0,100,0,0" HorizontalOptions="Center">
@@ -56,12 +57,18 @@
                     <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="DarkBlue" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
 
-                <Button Text="{x:Static resx:AppResources.SignIn}" Background="DarkBlue" TextColor="YellowGreen" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginCommand}"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
-                    <Label Text="{x:Static resx:AppResources.NewUser}" TextColor="DarkGoldenrod" FontSize="Small" Margin="5,0,5,0"/>
-                    <Label Text="{x:Static resx:AppResources.SignUp}" TextColor="DarkBlue" FontSize="Small" Margin="5,0"/>
+                    <Button Text="{x:Static resx:AppResources.SignIn}" Background="DarkBlue" TextColor="YellowGreen" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginCommand}"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
+                        <Label Text="{x:Static resx:AppResources.NewUser}" TextColor="DarkGoldenrod" FontSize="Small" Margin="5,0,5,0"/>
+                        
+                        <Label Text="{x:Static resx:AppResources.SignUp}" TextColor="DarkBlue" FontSize="Small" Margin="5,0"/>
+                        
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToRegistrationCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>

@@ -1,4 +1,4 @@
-﻿using Auto.School.Mobile.Pages;
+﻿using Auto.School.Mobile.Views;
 using Auto.School.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
 

@@ -1,4 +1,4 @@
-﻿using Auto.School.Mobile.Pages;
+﻿using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Auto.School.Mobile.ViewModels
