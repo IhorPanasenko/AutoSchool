@@ -1,4 +1,5 @@
 const express = require('express');
+const joi = require('joi');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
 
@@ -6,7 +7,31 @@ const router = express.Router();
 
 // TODO: Validate req.body
 
-router.post('/signup', async (req, res) => {
+const signupSchema = joi.object({
+  name: joi.string().required(),
+  surname: joi.string().required(),
+  phone: joi.string().regex(/\d{3}-\d{3}-\d{4}/),
+  dateOfBirth: joi.date(),
+  email: joi.string().email().required(),
+  password: joi.string().required(),
+});
+
+const validateSchema = (schema) => {
+  return (req, res, next) => {
+    const result = schema.validate(req.body);
+
+    if (result.error) {
+      return res.status(400).json({
+        error: result.error.details[0].message,
+      });
+    }
+
+    req.body = result.value;
+    next();
+  };
+};
+
+router.post('/signup', validateSchema(signupSchema), async (req, res) => {
   try {
     const newUserAccount = await userAccount.create({
       name: req.body.name,
