@@ -40,16 +40,20 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      res.status(400).json({ message: 'Provide email and password' });
+      return res.status(400).json({ message: 'Provide email and password' });
     }
 
     const user = await userLogin.findOne({ email });
 
     //TODO: verify password
+    if (!user || !(await user.verifyPassword(password, user.passwordHash))) {
+      return res.status(401).json({ message: 'Incorrect email or password' });
+    }
 
     //TODO: sign jwt tokens
 
     //TODO: save refresh token in db
+    res.status(200).json({ message: 'success' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
