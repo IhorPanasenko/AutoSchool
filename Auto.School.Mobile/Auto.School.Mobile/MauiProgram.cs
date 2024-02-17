@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Auto.School.Mobile.Pages;
+using Auto.School.Mobile.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Auto.School.Mobile
 {
@@ -14,6 +16,14 @@ namespace Auto.School.Mobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<ContactPage>();
+            builder.Services.AddSingleton<AboutPage>();
+
+
+            builder.Services.AddSingleton<LoginViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
