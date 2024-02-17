@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userLoginSchema = new mongoose.Schema({
   userId: {
@@ -35,6 +36,14 @@ const userLoginSchema = new mongoose.Schema({
   passwordRecoveryToken: String,
   passwordResetExpires: Date,
   refreshToken: String,
+});
+
+userLoginSchema.pre('save', async function (next) {
+  if (!this.isModified('passwordHash')) return next();
+
+  this.passwordHash = await bcrypt.hash(this.passwordHash, 12);
+
+  next();
 });
 
 const UserLoginModel = mongoose.model('userLogins', userLoginSchema);
