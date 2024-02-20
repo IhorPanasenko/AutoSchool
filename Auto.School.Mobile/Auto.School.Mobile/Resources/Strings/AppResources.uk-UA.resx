@@ -121,7 +121,7 @@
     <value>Забули пароль?</value>
   </data>
   <data name="LoginGreetingText" xml:space="preserve">
-    <value>Увійдіть. щоб продовжити</value>
+    <value>Увійдіть, щоб продовжити</value>
   </data>
   <data name="NewUser" xml:space="preserve">
     <value>Новий корисутвач?</value>
@@ -134,6 +134,9 @@
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Увійти</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Вийти</value>
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
