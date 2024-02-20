@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add prfile photo</value>
+  </data>
+  <data name="BackToLogin" xml:space="preserve">
+    <value>Back to login</value>
+  </data>
+  <data name="BirthdayDate" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Forgot Password?</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
   </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Sign in to continue</value>
@@ -129,8 +144,20 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Rememeber me?</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>Select your city</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
