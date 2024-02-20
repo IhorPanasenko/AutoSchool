@@ -132,6 +132,9 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Забули пароль?</value>
   </data>
+  <data name="GoToSchedule" xml:space="preserve">
+    <value>Відкрити розклад</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Прізвище</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Персональні дані</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Номер телефону</value>
@@ -168,8 +174,23 @@
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="UploadPhoto" xml:space="preserve">
+    <value>Завантажити фото</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Ім'я користувача</value>
+  </data>
+  <data name="UserProfile.Address" xml:space="preserve">
+    <value>Адреса проживання</value>
+  </data>
+  <data name="UserProfile.DrivingCategory" xml:space="preserve">
+    <value>Категорія водіння яка вивчається</value>
+  </data>
+  <data name="UserProfile.InstructiorInfo" xml:space="preserve">
+    <value>Інформація про інструктора</value>
+  </data>
+  <data name="UserProfile.LessonsStatistic" xml:space="preserve">
+    <value>Статистика занять</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Раді вітати</value>

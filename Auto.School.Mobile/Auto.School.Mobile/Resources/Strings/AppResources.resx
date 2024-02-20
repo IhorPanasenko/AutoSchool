@@ -127,13 +127,16 @@
     <value>Date of birth</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>First name</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot Password?</value>
+    <value>Forgot password?</value>
+  </data>
+  <data name="GoToSchedule" xml:space="preserve">
+    <value>Go to schedule</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Last name</value>
   </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Sign in to continue</value>
@@ -143,6 +146,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Personal info</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Phone number</value>
@@ -168,8 +174,23 @@
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="UploadPhoto" xml:space="preserve">
+    <value>Upload photo</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="UserProfile.Address" xml:space="preserve">
+    <value>Living address</value>
+  </data>
+  <data name="UserProfile.DrivingCategory" xml:space="preserve">
+    <value>Driving category learning for:</value>
+  </data>
+  <data name="UserProfile.InstructiorInfo" xml:space="preserve">
+    <value>Instructor info</value>
+  </data>
+  <data name="UserProfile.LessonsStatistic" xml:space="preserve">
+    <value>Lessons statistic</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
