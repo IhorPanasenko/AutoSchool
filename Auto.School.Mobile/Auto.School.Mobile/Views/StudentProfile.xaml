@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.StudentProfile"
+             Title="StudentProfile">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#F4F4D2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- User Photo Section -->
+            <StackLayout Grid.Row="0" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Image Source="{Binding UserProfilePhoto}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                <Button Text="Upload/Update Photo" />
+            </StackLayout>
+
+            <!-- User Data Section -->
+            <StackLayout Grid.Row="1" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="User Data" FontAttributes="Bold" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name:" FontAttributes="Bold" />
+                    <Label Text="{Binding UserName}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Surname:" FontAttributes="Bold" />
+                    <Label Text="{Binding UserSurname}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Date of Birth:" FontAttributes="Bold" />
+                    <Label Text="{Binding UserDateOfBirth, StringFormat='{0:d}'}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Living Address:" FontAttributes="Bold" />
+                    <Label Text="{Binding UserLivingAddress}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Driving Category Learning For:" FontAttributes="Bold" />
+                    <Label Text="{Binding DrivingCategory}" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Lessons Statistics Section -->
+            <StackLayout Grid.Row="2" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="Lessons Statistics" FontAttributes="Bold" />
+                <Label Text="Number of Hours/Lessons: " />
+                <!-- Bind to user's lessons statistics -->
+            </StackLayout>
+
+            <!-- Instructor Info Section -->
+            <StackLayout Grid.Row="3" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="Instructor Info" FontAttributes="Bold" />
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="{Binding InstructorPhoto}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="{Binding InstructorName}" />
+                        <Label Text="{Binding InstructorSurname}" />
+                        <Button Text="Go to Schedule" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

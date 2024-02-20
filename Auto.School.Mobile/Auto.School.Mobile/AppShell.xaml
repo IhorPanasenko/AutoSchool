@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Auto.School.Mobile.Views"
     xmlns:models="clr-namespace:Auto.School.Mobile.Models"
+    xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
     Shell.TabBarIsVisible="False">
 
 
@@ -13,6 +14,7 @@
                       FlyoutItemIsVisible="False"
                       Route="LoginPage"
                       Shell.FlyoutBehavior="Disabled"
+                      xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
                       />
 
     <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
@@ -20,11 +22,12 @@
         <ShellContent Title="Contact" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate views:ContactPage}"/>
         <ShellContent Title="About" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate views:AboutPage}"/>
         <ShellContent Title="Registration" ContentTemplate="{DataTemplate views:RegistrationPage}"/>
+        <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:StudentProfile}"/>
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
         <StackLayout>
-            <Button Text="Sign Out" Command="{Binding SignOutCommand}" BackgroundColor="Green"/>
+            <Button Text="{x:Static resx:AppResources.SignOut}" Command="{Binding SignOutCommand}" BackgroundColor="Green"/>
         </StackLayout>
     </Shell.FlyoutFooter>
 </Shell>
