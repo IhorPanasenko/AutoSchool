@@ -11,6 +11,7 @@ namespace Auto.School.Mobile
             BindingContext = new AppShellViewModel();
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
+            Routing.RegisterRoute(nameof(StudentProfile), typeof(StudentProfile));
         }
     }
 }
