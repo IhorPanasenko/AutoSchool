@@ -18,11 +18,9 @@ exports.signup = async (req, res) => {
     });
 
     newUserLogin.userId = newUserAccount._id;
-    newUserLogin.save();
 
     // TODO: Email validation
 
-    // TODO: Sign JWT tokens
     const accessToken = jwt.sign(
       { userId: newUserAccount.userId, role: newUserAccount.role },
       process.env.JWT_ACCESS_TOKEN_SECRET,
@@ -44,7 +42,8 @@ exports.signup = async (req, res) => {
       httpOnly: true,
     });
 
-    //TODO: save refresh token in db
+    newUserLogin.refreshToken = refreshToken;
+    newUserLogin.save();
 
     res.status(201).json({
       status: 'success',
