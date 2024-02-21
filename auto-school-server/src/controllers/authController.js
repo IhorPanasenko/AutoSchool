@@ -48,7 +48,7 @@ exports.signup = async (req, res) => {
 
     const refreshToken = signSaveTokens(
       res,
-      newUserAccount.userId,
+      newUserAccount._id,
       newUserAccount.role
     );
 
@@ -75,17 +75,36 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: 'Provide email and password' });
     }
 
-    const user = await userLogin.findOne({ email });
+    const userLoginData = await userLogin.findOne({ email });
 
-    if (!user || !(await user.verifyPassword(password, user.passwordHash))) {
+    if (
+      !userLoginData ||
+      !(await userLoginData.verifyPassword(
+        password,
+        userLoginData.passwordHash
+      ))
+    ) {
       return res.status(401).json({ message: 'Incorrect email or password' });
     }
 
-    //TODO: sign jwt tokens
+    const userAccountData = await userAccount.findById(userLoginData.userId);
 
-    //TODO: save refresh token in db
+    const refreshToken = signSaveTokens(
+      res,
+      userAccountData._id,
+      userAccountData.role
+    );
 
-    res.status(200).json({ message: 'success' });
+    userLoginData.refreshToken = refreshToken;
+    userLoginData.save();
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        email: userLoginData.email,
+        userData: userAccountData,
+      },
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
