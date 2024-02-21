@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
 
@@ -19,6 +20,32 @@ exports.signup = async (req, res) => {
     newUserLogin.userId = newUserAccount._id;
     newUserLogin.save();
 
+    // TODO: Email validation
+
+    // TODO: Sign JWT tokens
+    const accessToken = jwt.sign(
+      { userId: newUserAccount.userId, role: newUserAccount.role },
+      process.env.JWT_ACCESS_TOKEN_SECRET,
+      { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES }
+    );
+    const refreshToken = jwt.sign(
+      { userId: newUserAccount.userId },
+      process.env.JWT_REFRESH_TOKEN_SECRET,
+      { expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRES }
+    );
+
+    res.cookie('access_token', accessToken, {
+      maxAge: process.env.JWT_ACCESS_TOKEN_COOKIE_EXPIRES * 1000,
+      httpOnly: true,
+    });
+
+    res.cookie('refresh_token', refreshToken, {
+      maxAge: process.env.JWT_REFRESH_TOKEN_COOKIE_EXPIRES * 60 * 1000,
+      httpOnly: true,
+    });
+
+    //TODO: save refresh token in db
+
     res.status(201).json({
       status: 'success',
       data: {
@@ -26,10 +53,6 @@ exports.signup = async (req, res) => {
         userData: newUserAccount,
       },
     });
-
-    // TODO: Email validation
-
-    // TODO: Sign JWT tokens
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -45,7 +68,6 @@ exports.login = async (req, res) => {
 
     const user = await userLogin.findOne({ email });
 
-    //TODO: verify password
     if (!user || !(await user.verifyPassword(password, user.passwordHash))) {
       return res.status(401).json({ message: 'Incorrect email or password' });
     }
