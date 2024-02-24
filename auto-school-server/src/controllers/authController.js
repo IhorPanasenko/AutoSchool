@@ -117,5 +117,59 @@ exports.login = async (req, res) => {
 };
 
 exports.getAccessToken = async (req, res) => {
-  // TODO
+  const refreshToken = req.cookies.refresh_token;
+
+  if (!refreshToken) {
+    return res
+      .status(401)
+      .json({ error: 'You need refresh token to gain a new access token' });
+  }
+
+  jwt.verify(
+    refreshToken,
+    process.env.JWT_REFRESH_TOKEN_SECRET,
+    async (err, data) => {
+      if (err) {
+        return res.status(403).json({
+          error:
+            'Refresh token is no longer valid. Login to have get new tokens',
+        });
+      }
+
+      const userLoginData = await userLogin
+        .find({ userId: data.userId })
+        .select('refreshToken');
+
+      if (userLoginData[0].refreshToken !== refreshToken) {
+        return res
+          .status(403)
+          .json({ error: "Refresh tokens don\t match or it doesn't exist" });
+      }
+
+      const user = await userAccount.findById(data.userId);
+
+      if (!user) {
+        return res.status(400).json({ error: "User doesn't exist" });
+      }
+
+      const accessToken = jwt.sign(
+        { userId: user._id, role: user.role },
+        process.env.JWT_ACCESS_TOKEN_SECRET,
+        { expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES }
+      );
+
+      const accessTokenCookieExpireDate = new Date(
+        Date.now() + process.env.JWT_ACCESS_TOKEN_COOKIE_EXPIRES * 1000
+      );
+
+      res.cookie('access_token', accessToken, {
+        expire: accessTokenCookieExpireDate,
+        httpOnly: true,
+      });
+
+      res.status(200).json({
+        tokenExpire: accessTokenCookieExpireDate,
+      });
+    }
+  );
 };
