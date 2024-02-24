@@ -14,8 +14,12 @@ const signSaveTokens = (res, userId, role) => {
     { expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRES }
   );
 
+  const accessTokenCookieExpireDate = new Date(
+    Date.now() + process.env.JWT_ACCESS_TOKEN_COOKIE_EXPIRES * 1000
+  );
+
   res.cookie('access_token', accessToken, {
-    maxAge: process.env.JWT_ACCESS_TOKEN_COOKIE_EXPIRES * 1000,
+    expire: accessTokenCookieExpireDate,
     httpOnly: true,
   });
 
@@ -24,7 +28,7 @@ const signSaveTokens = (res, userId, role) => {
     httpOnly: true,
   });
 
-  return refreshToken;
+  return { refreshToken, expire: accessTokenCookieExpireDate };
 };
 
 exports.signup = async (req, res) => {
@@ -46,7 +50,7 @@ exports.signup = async (req, res) => {
 
     // TODO: Email validation
 
-    const refreshToken = signSaveTokens(
+    const { refreshToken, expire } = signSaveTokens(
       res,
       newUserAccount._id,
       newUserAccount.role
@@ -60,6 +64,7 @@ exports.signup = async (req, res) => {
       data: {
         email: newUserLogin.email,
         userData: newUserAccount,
+        tokenExpire: expire,
       },
     });
   } catch (err) {
@@ -89,7 +94,7 @@ exports.login = async (req, res) => {
 
     const userAccountData = await userAccount.findById(userLoginData.userId);
 
-    const refreshToken = signSaveTokens(
+    const { refreshToken, expire } = signSaveTokens(
       res,
       userAccountData._id,
       userAccountData.role
@@ -103,9 +108,14 @@ exports.login = async (req, res) => {
       data: {
         email: userLoginData.email,
         userData: userAccountData,
+        tokenExpire: expire,
       },
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+};
+
+exports.getAccessToken = async (req, res) => {
+  // TODO
 };

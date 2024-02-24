@@ -11,4 +11,8 @@ router.post('/signup', validateSchema(signupSchema), authController.signup);
 
 router.post('/login', authController.login);
 
+router.post('/token', authController.getAccessToken);
+
+// TODO: /logout
+
 module.exports = router;
