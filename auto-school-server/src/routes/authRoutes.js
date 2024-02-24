@@ -13,6 +13,6 @@ router.post('/login', authController.login);
 
 router.post('/token', authController.getAccessToken);
 
-// TODO: /logout
+router.delete('/logout', authController.logout);
 
 module.exports = router;

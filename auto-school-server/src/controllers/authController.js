@@ -173,3 +173,23 @@ exports.getAccessToken = async (req, res) => {
     }
   );
 };
+
+exports.logout = async (req, res) => {
+  res.cookie('access_token', '', {
+    maxAge: 0,
+  });
+
+  res.cookie('refresh_token', '', {
+    maxAge: 0,
+  });
+
+  // TODO: change req.body.userId tp req.user.userId after adding auth middleware
+  const userLoginData = await userLogin
+    .findOne({ userId: req.body.userId })
+    .select('refreshToken');
+
+  userLoginData.refreshToken = null;
+  userLoginData.save();
+
+  res.sendStatus(204);
+};
