@@ -4,6 +4,7 @@ const citySchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'City name is required'],
+    unique: true,
   },
 });
 
