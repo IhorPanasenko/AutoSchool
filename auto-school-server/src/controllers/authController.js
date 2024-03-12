@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
+const StudentModel = require('../models/student.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -42,11 +43,16 @@ exports.signup = async (req, res) => {
       name: req.body.name,
       surname: req.body.surname,
       phone: req.body.phone,
-      role: req.body.role,
       dateOfBirth: req.body.dateOfBirth,
     });
 
-    // TODO: create Student
+    await StudentModel.create({
+      name: req.body.name,
+      surname: req.body.surname,
+      userId: newUserAccount._id,
+      cityId: req.body.cityId,
+      vehicleCategory: req.body.vehicleCategory,
+    });
 
     newUserLogin.userId = newUserAccount._id;
 

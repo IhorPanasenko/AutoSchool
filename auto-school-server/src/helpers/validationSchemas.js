@@ -7,6 +7,8 @@ const signupSchema = joi.object({
   dateOfBirth: joi.date(),
   email: joi.string().email().required(),
   password: joi.string().required(),
+  cityId: joi.string(),
+  vehicleCategory: joi.string().valid('A', 'B', 'C', 'D'),
 });
 
 module.exports = {

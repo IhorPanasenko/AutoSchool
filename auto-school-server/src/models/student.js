@@ -13,6 +13,7 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userAccounts',
     unique: true,
+    required: true,
   },
   instructorId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -32,6 +33,7 @@ const studentSchema = new mongoose.Schema({
     enum: ['A', 'B', 'C', 'D'],
     default: 'B',
   },
+  // add later default photo
   photoURL: String,
 });
 
