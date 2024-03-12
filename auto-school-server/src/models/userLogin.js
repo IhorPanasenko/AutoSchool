@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userLoginSchema = new mongoose.Schema({
   userId: {
@@ -36,6 +37,29 @@ const userLoginSchema = new mongoose.Schema({
   passwordResetExpires: Date,
   refreshToken: String,
 });
+
+userLoginSchema.pre('save', async function (next) {
+  if (!this.isModified('passwordHash')) return next();
+
+  this.passwordHash = await bcrypt.hash(this.passwordHash, 12);
+
+  next();
+});
+
+userLoginSchema.methods.verifyPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userLoginSchema.methods.passwordChangedAfter = function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = this.passwordChangedAt.getTime() / 1000; // time in seconds
+    return changedTimestamp > JWTTimestamp;
+  }
+  return false;
+}
 
 const UserLoginModel = mongoose.model('userLogins', userLoginSchema);
 
