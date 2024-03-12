@@ -9,4 +9,6 @@ router.get('/', cityController.getAllCities);
 
 router.post('/', cityController.addCity);
 
+router.put('/:cityId', cityController.updateCity);
+
 module.exports = router;

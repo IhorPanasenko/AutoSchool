@@ -28,3 +28,17 @@ exports.addCity = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.updateCity = async (req, res) => {
+  try {
+    await CityModel.findByIdAndUpdate(req.params.cityId, {
+      name: req.body.name,
+    });
+
+    res.status(200).json({
+      status: 'success',
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
