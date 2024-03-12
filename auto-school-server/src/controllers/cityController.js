@@ -13,3 +13,18 @@ exports.getAllCities = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.addCity = async (req, res) => {
+  try {
+    const newCity = await CityModel.create({
+      name: req.body.name,
+    });
+
+    res.status(201).json({
+      status: 'success',
+      data: newCity,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

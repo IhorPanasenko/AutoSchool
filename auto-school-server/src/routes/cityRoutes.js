@@ -7,4 +7,6 @@ router.get('/', cityController.getAllCities);
 
 // for admin
 
+router.post('/', cityController.addCity);
+
 module.exports = router;
