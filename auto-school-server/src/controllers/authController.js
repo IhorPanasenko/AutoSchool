@@ -46,6 +46,8 @@ exports.signup = async (req, res) => {
       dateOfBirth: req.body.dateOfBirth,
     });
 
+    // TODO: create Student
+
     newUserLogin.userId = newUserAccount._id;
 
     // TODO: Email validation

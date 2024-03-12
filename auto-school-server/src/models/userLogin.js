@@ -53,6 +53,14 @@ userLoginSchema.methods.verifyPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
+userLoginSchema.methods.passwordChangedAfter = function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = this.passwordChangedAt.getTime() / 1000; // time in seconds
+    return changedTimestamp > JWTTimestamp;
+  }
+  return false;
+}
+
 const UserLoginModel = mongoose.model('userLogins', userLoginSchema);
 
 module.exports = UserLoginModel;
