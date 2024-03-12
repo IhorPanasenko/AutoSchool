@@ -29,7 +29,7 @@ const signSaveTokens = (res, userId, role) => {
     httpOnly: true,
   });
 
-  return { refreshToken, expire: accessTokenCookieExpireDate };
+  return { accessToken, refreshToken, expire: accessTokenCookieExpireDate };
 };
 
 exports.signup = async (req, res) => {
@@ -73,6 +73,8 @@ exports.signup = async (req, res) => {
         email: newUserLogin.email,
         userData: newUserAccount,
         tokenExpire: expire,
+        accessToken,
+        refreshToken,
       },
     });
   } catch (err) {
@@ -102,7 +104,7 @@ exports.login = async (req, res) => {
 
     const userAccountData = await userAccount.findById(userLoginData.userId);
 
-    const { refreshToken, expire } = signSaveTokens(
+    const { accessToken, refreshToken, expire } = signSaveTokens(
       res,
       userAccountData._id,
       userAccountData.role
@@ -117,6 +119,8 @@ exports.login = async (req, res) => {
         email: userLoginData.email,
         userData: userAccountData,
         tokenExpire: expire,
+        accessToken,
+        refreshToken,
       },
     });
   } catch (err) {
@@ -177,6 +181,7 @@ exports.getAccessToken = async (req, res) => {
 
       res.status(200).json({
         tokenExpire: accessTokenCookieExpireDate,
+        accessToken,
       });
     }
   );
