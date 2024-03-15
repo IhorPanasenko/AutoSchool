@@ -1,0 +1,60 @@
+@import "../../styles/index.scss";
+
+.wrapper {
+  text-decoration: "none";
+  color: "inherit";
+  padding-top: 220px;
+  @include flex(center, center);
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 30px;
+}
+.wrapper_instructor {
+  width: 30%;
+  //   flex: 1 0 calc(33.333% - 10px); /* Процентное распределение, 10px - отступы между элементами */
+  margin: 5px;
+
+  border-radius: 15px;
+  position: relative;
+  border: 3px solid #eaeaff;
+}
+.wrapper_instructor:hover {
+  background-color: #eaeaff;
+}
+.car_img {
+  height: 450px;
+}
+.instructor_img {
+  height: 150px;
+  background-color: $yellow;
+  border-radius: 73px;
+  position: absolute;
+  top: 220px;
+  right: 30px;
+}
+.car_text {
+  padding: 10px 40px;
+}
+.car_model {
+  @include fontSize("Roboto", 500, $dark-blue, 28px, 29px);
+}
+.name_instructor {
+  @include fontSize("Roboto", 500, $dark-blue, 23px, 29px);
+}
+.car_type {
+  @include fontSize("Roboto", 500, $dark-blue, 23px, 29px);
+}
+.price_rating_section {
+  @include flex(space-between, center);
+}
+.price_section {
+  @include flex(center, center);
+  gap: 10px;
+}
+.price_number {
+  @include fontSize("Open Sans", 600, $dark-blue, 27px, 29px);
+}
+.price_text,
+.rating {
+  @include fontSize("Open Sans", 600, $dark-blue, 20px, 29px);
+}

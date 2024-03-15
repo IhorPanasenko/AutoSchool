@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Medium.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Light.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Bold.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Black.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../src/fonts/Roboto-Thin.woff2") format("woff2"),
+    url("../../src/fonts/Roboto-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../../src/fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("../../src/fonts/OpenSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yellowtail";
+  src: url("../../src/fonts/Yellowtail-Regular.woff2") format("woff2"),
+    url("../../src/fonts/Yellowtail-Regular.woff") format("woff");
+
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
