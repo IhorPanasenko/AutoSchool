@@ -13,7 +13,7 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userAccounts',
     unique: true,
-    required: true,
+    required: [true, 'User id is required'],
   },
   instructorId: {
     type: mongoose.Schema.Types.ObjectId,
