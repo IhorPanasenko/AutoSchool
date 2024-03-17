@@ -58,7 +58,7 @@ exports.signup = async (req, res) => {
 
     // TODO: Email validation
 
-    const { refreshToken, expire } = signSaveTokens(
+    const { accessToken, refreshToken, expire } = signSaveTokens(
       res,
       newUserAccount._id,
       newUserAccount.role
