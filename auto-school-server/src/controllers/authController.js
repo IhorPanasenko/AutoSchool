@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
@@ -33,30 +34,20 @@ const signSaveTokens = (res, userId, role) => {
 };
 
 exports.signup = async (req, res) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
   try {
-    const newUserLogin = await userLogin.create({
-      email: req.body.email,
-      passwordHash: req.body.password,
-    });
-
-    const newUserAccount = await userAccount.create({
-      name: req.body.name,
-      surname: req.body.surname,
-      phone: req.body.phone,
-      dateOfBirth: req.body.dateOfBirth,
-    });
-
-    await StudentModel.create({
-      name: req.body.name,
-      surname: req.body.surname,
-      userId: newUserAccount._id,
-      cityId: req.body.cityId,
-      vehicleCategory: req.body.vehicleCategory,
-    });
-
-    newUserLogin.userId = newUserAccount._id;
-
-    // TODO: Email validation
+    const newUserAccount = await userAccount.create(
+      [
+        {
+          name: req.body.name,
+          surname: req.body.surname,
+          phone: req.body.phone,
+          dateOfBirth: req.body.dateOfBirth,
+        },
+      ],
+      { session }
+    );
 
     const { accessToken, refreshToken, expire } = signSaveTokens(
       res,
@@ -64,8 +55,34 @@ exports.signup = async (req, res) => {
       newUserAccount.role
     );
 
-    newUserLogin.refreshToken = refreshToken;
-    newUserLogin.save();
+    const newUserLogin = await userLogin.create(
+      [
+        {
+          userId: newUserAccount[0]._id,
+          email: req.body.email,
+          passwordHash: req.body.password,
+          refreshToken,
+        },
+      ],
+      { session }
+    );
+
+    await StudentModel.create(
+      [
+        {
+          name: req.body.name,
+          surname: req.body.surname,
+          userId: newUserAccount[0]._id,
+          cityId: req.body.cityId,
+          vehicleCategory: req.body.vehicleCategory,
+        },
+      ],
+      { session }
+    );
+
+    // TODO: Email validation
+
+    await session.commitTransaction();
 
     res.status(201).json({
       status: 'success',
@@ -78,7 +95,12 @@ exports.signup = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    await session.abortTransaction();
+    res
+      .status(500)
+      .json({ error: 'Transaction failed with error: ' + err.message });
+  } finally {
+    session.endSession();
   }
 };
 
