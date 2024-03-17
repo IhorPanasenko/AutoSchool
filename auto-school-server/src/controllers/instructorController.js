@@ -57,7 +57,7 @@ exports.createInstructor = async (req, res) => {
           model: req.body.model,
           year: req.body.year,
           transmission: req.body.transmission,
-          photoURL: req.body.photoURL,
+          //photoURL: req.body.photoURL,
         },
       ],
       { session }
@@ -74,7 +74,7 @@ exports.createInstructor = async (req, res) => {
           vehicleCategory: req.body.vehicleCategory,
           workExperience: req.body.workExperience,
           maxNumOfStudents: req.body.maxNumOfStudents,
-          photoURL: req.body.photoURL,
+          //photoURL: req.body.photoURL,
         },
       ],
       { session }

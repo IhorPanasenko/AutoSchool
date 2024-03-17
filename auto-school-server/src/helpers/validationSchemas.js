@@ -11,6 +11,15 @@ const signupSchema = joi.object({
   vehicleCategory: joi.string().valid('A', 'B', 'C', 'D'),
 });
 
+const createInstructorSchema = signupSchema.append({
+  model: joi.string().required(),
+  year: joi.number().required().min(1980).max(new Date().getFullYear()),
+  transmission: joi.string().valid('manual', 'automatic'),
+  workExperience: joi.number().required(),
+  maxNumOfStudents: joi.number().required(),
+});
+
 module.exports = {
   signupSchema,
+  createInstructorSchema,
 };
