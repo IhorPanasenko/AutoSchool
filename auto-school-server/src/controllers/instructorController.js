@@ -6,10 +6,15 @@ const UserLoginModel = require('../models/userLogin.js');
 
 exports.getAllInstructors = async (req, res) => {
   try {
+    const instructors = await InstructorModel.find()
+      .populate('car')
+      .populate('city')
+      .exec();
+
     res.status(200).json({
       status: 'success',
-      // results: cities.length,
-      // data: cities,
+      results: instructors.length,
+      data: instructors,
     });
   } catch (error) {
     res.status(500).json({ error: err.message });
@@ -62,8 +67,8 @@ exports.createInstructor = async (req, res) => {
       [
         {
           userId: newUserAccount[0]._id,
-          carId: newCar[0]._id,
-          cityId: req.body.cityId,
+          car: newCar[0]._id,
+          city: req.body.cityId,
           name: req.body.name,
           surname: req.body.surname,
           vehicleCategory: req.body.vehicleCategory,

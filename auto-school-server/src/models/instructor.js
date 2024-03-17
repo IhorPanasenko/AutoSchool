@@ -7,12 +7,12 @@ const instructorSchema = new mongoose.Schema({
     unique: true,
     required: [true, 'User id is required'],
   },
-  carId: {
+  car: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'cars',
     required: [true, 'Car id is required'],
   },
-  cityId: {
+  city: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'cities',
     required: [true, 'City id is required'],
