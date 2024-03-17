@@ -6,6 +6,7 @@ const userLoginSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userAccounts',
     unique: true,
+    required: [true, 'User id is required'],
   },
   email: {
     type: String,
@@ -53,13 +54,13 @@ userLoginSchema.methods.verifyPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userLoginSchema.methods.passwordChangedAfter = function(JWTTimestamp) {
+userLoginSchema.methods.passwordChangedAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimestamp = this.passwordChangedAt.getTime() / 1000; // time in seconds
     return changedTimestamp > JWTTimestamp;
   }
   return false;
-}
+};
 
 const UserLoginModel = mongoose.model('userLogins', userLoginSchema);
 

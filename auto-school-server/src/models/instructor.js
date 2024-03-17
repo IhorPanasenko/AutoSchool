@@ -32,6 +32,7 @@ const instructorSchema = new mongoose.Schema({
   },
   workExperience: {
     type: Number,
+    required: [true, 'Work experience is required'],
   },
   averageRating: {
     type: Number,
