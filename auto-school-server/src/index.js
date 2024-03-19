@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('./config/db.js');
 const express = require('express');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/userRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
