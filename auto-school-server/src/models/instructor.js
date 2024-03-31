@@ -50,7 +50,11 @@ const instructorSchema = new mongoose.Schema({
     default: 10,
   },
   // add later default photo
-  photoURL: String,
+  photoURL: {
+    type: String,
+    default:
+      'https://i.ytimg.com/vi/2p16064inqc/hq720_2.jpg?sqp=-oaymwEiCNAFENAFSFryq4qpAxQIARUAAAAAJQAAyEI9AICiQ9ABAQ==&rs=AOn4CLD5CWwK4SPzBv3XvjsGzu6tiA9oEA',
+  },
 });
 
 const InstructorModel = mongoose.model('instructors', instructorSchema);

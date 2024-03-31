@@ -6,6 +6,7 @@ const { createInstructorSchema } = require('../helpers/validationSchemas.js');
 const router = express.Router();
 
 router.get('/', instructorController.getAllInstructors);
+router.get('/:instructorId', instructorController.getOneInstructor);
 router.post(
   '/',
   validateSchema(createInstructorSchema),

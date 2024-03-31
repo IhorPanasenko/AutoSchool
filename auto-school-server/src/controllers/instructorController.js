@@ -21,6 +21,24 @@ exports.getAllInstructors = async (req, res) => {
   }
 };
 
+exports.getOneInstructor = async (req, res) => {
+  try {
+    const instructor = await InstructorModel.findById(req.params.instructorId)
+      .populate('car')
+      .populate('city')
+      .exec();
+
+    // TODO: Get instructor reviews
+
+    res.status(200).json({
+      status: 'success',
+      data: instructor,
+    });
+  } catch (error) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 exports.createInstructor = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
