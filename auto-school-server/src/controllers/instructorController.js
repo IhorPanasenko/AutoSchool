@@ -6,7 +6,13 @@ const UserLoginModel = require('../models/userLogin.js');
 
 exports.getAllInstructors = async (req, res) => {
   try {
-    const instructors = await InstructorModel.find()
+    const filterQueryObject = { ...req.query };
+    const excludedKeys = ['sort', 'page', 'limit'];
+    excludedKeys.forEach((el) => delete filterQueryObject[el]);
+
+    const instructorsQuery = InstructorModel.find(filterQueryObject);
+
+    const instructors = await instructorsQuery
       .populate('car')
       .populate('city')
       .exec();
