@@ -10,7 +10,12 @@ exports.getAllInstructors = async (req, res) => {
     const excludedKeys = ['sort', 'page', 'limit'];
     excludedKeys.forEach((el) => delete filterQueryObject[el]);
 
-    const instructorsQuery = InstructorModel.find(filterQueryObject);
+    let instructorsQuery = InstructorModel.find(filterQueryObject);
+
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      instructorsQuery = instructorsQuery.sort(sortBy);
+    }
 
     const instructors = await instructorsQuery
       .populate('car')
