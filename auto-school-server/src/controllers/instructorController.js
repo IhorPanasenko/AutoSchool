@@ -17,6 +17,11 @@ exports.getAllInstructors = async (req, res) => {
       instructorsQuery = instructorsQuery.sort(sortBy);
     }
 
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 10;
+    const skip = (page - 1) * limit;
+    instructorsQuery = instructorsQuery.skip(skip).limit(limit);
+
     const instructors = await instructorsQuery
       .populate('car')
       .populate('city')
