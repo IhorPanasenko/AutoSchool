@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
+
+router.patch('/:instructorId', instructorController.updateInstructor);
+
 router.post(
   '/',
   validateSchema(createInstructorSchema),

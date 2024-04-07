@@ -133,3 +133,27 @@ exports.createInstructor = async (req, res) => {
     session.endSession();
   }
 };
+
+exports.updateInstructor = async (req, res) => {
+  try {
+    const updatedInstructor = await InstructorModel.findByIdAndUpdate(
+      req.params.instructorId,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedInstructor) {
+      throw new Error('There is no instructor with such id');
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: updatedInstructor,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
