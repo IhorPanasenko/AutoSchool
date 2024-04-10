@@ -61,7 +61,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add prfile photo.
+        ///   Looks up a localized string similar to Add profile photo.
         /// </summary>
         internal static string AddPhoto {
             get {
@@ -183,6 +183,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your first name.
+        /// </summary>
+        internal static string Registration_EnterFirstName {
+            get {
+                return ResourceManager.GetString("Registration.EnterFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your last name.
+        /// </summary>
+        internal static string Registration_EnterLastName {
+            get {
+                return ResourceManager.GetString("Registration.EnterLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string Registration_PhoneLabel {
+            get {
+                return ResourceManager.GetString("Registration.PhoneLabel", resourceCulture);
             }
         }
         

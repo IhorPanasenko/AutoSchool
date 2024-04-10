@@ -159,6 +159,15 @@
   <data name="Registration" xml:space="preserve">
     <value>Реєстрація</value>
   </data>
+  <data name="Registration.EnterFirstName" xml:space="preserve">
+    <value>Уведіть своє ім'я</value>
+  </data>
+  <data name="Registration.EnterLastName" xml:space="preserve">
+    <value>Уведіть своє прізвище</value>
+  </data>
+  <data name="Registration.PhoneLabel" xml:space="preserve">
+    <value>Номер телефону</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запам'ятати мене?</value>
   </data>

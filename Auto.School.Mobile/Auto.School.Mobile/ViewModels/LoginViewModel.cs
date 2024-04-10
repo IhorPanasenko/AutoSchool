@@ -11,10 +11,10 @@ namespace Auto.School.Mobile.ViewModels
     public partial class LoginViewModel : BaseViewModel, INotifyPropertyChanged
     {
         [ObservableProperty]
-        private string _userName = string.Empty;
+        private string userName = string.Empty;
 
         [ObservableProperty]
-        private string _password = string.Empty;
+        private string password = string.Empty;
 
         private readonly ILoginRepository _loginRepository = new LoginService();
 
@@ -43,8 +43,8 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToRegistration()
         {
-            //await Shell.Current.GoToAsync($"//{nameof(RegistrationPage)}"); 
-            await Shell.Current.Navigation.PushAsync(new RegistrationPage());
+            //await Shell.Current.GoToAsync($"//{nameof(RegistrationPage)}");
+            await Shell.Current.Navigation.PushAsync(new RegistrationPage(new RegistrationViewModel()));
         }
     }
 }
