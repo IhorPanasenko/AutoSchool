@@ -3,6 +3,7 @@ require('./config/db.js');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const AppError = require('./helpers/appError.js');
 const userRouter = require('./routes/userRoutes.js');
 const authRouter = require('./routes/authRoutes.js');
 const cityRouter = require('./routes/cityRoutes.js');
@@ -21,10 +22,7 @@ app.use('/api/cities/', cityRouter);
 app.use('/api/instructors', instructorRouter);
 
 app.all('*', (req, res, next) => {
-  const err = new Error(`Can't find ${req.originalUrl} on this server`);
-  err.status = 'fail';
-  err.statusCode = 404;
-  next(err);
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
 app.use((err, req, res, next) => {
