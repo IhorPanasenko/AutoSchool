@@ -3,6 +3,7 @@ const CarModel = require('../models/car.js');
 const InstructorModel = require('../models/instructor.js');
 const UserAccountModel = require('../models/userAccount.js');
 const UserLoginModel = require('../models/userLogin.js');
+const StudentModel = require('../models/student.js');
 
 exports.getAllInstructors = async (req, res) => {
   try {
@@ -153,6 +154,34 @@ exports.updateInstructor = async (req, res) => {
       status: 'success',
       data: updatedInstructor,
     });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.deleteInstructor = async (req, res) => {
+  const instructorId = req.params.instructorId;
+  try {
+    const hasActiveStudents = await StudentModel.exists({
+      instructorId,
+      active: 'true',
+    });
+
+    if (hasActiveStudents) {
+      return res.status(403).json({
+        error: 'Instructor has active students and cannot be deleted.',
+      });
+    }
+
+    // TODO: Check if instructor has upcoming booked lessons
+
+    const instructor = await InstructorModel.findByIdAndDelete(instructorId);
+
+    if (!instructor) {
+      res.status(400).json({ error: 'No document was found with such id' });
+    }
+
+    res.status(204).send();
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

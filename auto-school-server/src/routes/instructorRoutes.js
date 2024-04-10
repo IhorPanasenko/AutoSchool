@@ -16,4 +16,6 @@ router.post(
   instructorController.createInstructor
 );
 
+router.delete('/:instructorId', instructorController.deleteInstructor);
+
 module.exports = router;
