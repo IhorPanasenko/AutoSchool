@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const CarModel = require('./car');
+const UserAccountModel = require('./userAccount');
 
 const instructorSchema = new mongoose.Schema({
   userId: {
@@ -55,6 +57,16 @@ const instructorSchema = new mongoose.Schema({
     default:
       'https://i.ytimg.com/vi/2p16064inqc/hq720_2.jpg?sqp=-oaymwEiCNAFENAFSFryq4qpAxQIARUAAAAAJQAAyEI9AICiQ9ABAQ==&rs=AOn4CLD5CWwK4SPzBv3XvjsGzu6tiA9oEA',
   },
+});
+
+instructorSchema.post('findOneAndDelete', async function (doc) {
+  try {
+    console.log('Deleting car and user account');
+    await CarModel.findByIdAndDelete(doc.car);
+    await UserAccountModel.findByIdAndDelete(doc.userId);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 const InstructorModel = mongoose.model('instructors', instructorSchema);
