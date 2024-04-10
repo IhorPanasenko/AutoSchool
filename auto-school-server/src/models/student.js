@@ -35,6 +35,10 @@ const studentSchema = new mongoose.Schema({
   },
   // add later default photo
   photoURL: String,
+  active: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const StudentModel = mongoose.model('students', studentSchema);
