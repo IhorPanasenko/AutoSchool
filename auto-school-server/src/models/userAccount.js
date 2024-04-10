@@ -29,15 +29,13 @@ const userAccountSchema = new mongoose.Schema({
   dateOfBirth: Date,
 });
 
-userAccountSchema.pre('deleteOne', async function (next) {
-  console.log('The document will be deleted');
+userAccountSchema.post('findOneAndDelete', async function (doc) {
+  console.log('Deleting user login and google login data');
   try {
-    await userLogin.deleteOne({ userId: this._id });
-    await userGoogleLogin.deleteOne({ userId: this._id });
-    next();
+    await userLogin.findOneAndDelete({ userId: doc._id });
+    await userGoogleLogin.findOneAndDelete({ userId: doc._id });
   } catch (err) {
     console.log(err);
-    next(err);
   }
 });
 
