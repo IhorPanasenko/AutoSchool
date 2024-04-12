@@ -4,6 +4,7 @@ const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
+const AppError = require('../helpers/appError.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -109,7 +110,7 @@ exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ message: 'Provide email and password' });
+    return next(new AppError('Provide email and password', 400));
   }
 
   const userLoginData = await userLogin.findOne({ email });
@@ -118,7 +119,7 @@ exports.login = catchAsync(async (req, res, next) => {
     !userLoginData ||
     !(await userLoginData.verifyPassword(password, userLoginData.passwordHash))
   ) {
-    return res.status(401).json({ message: 'Incorrect email or password' });
+    return next(new AppError('Incorrect email or password', 401));
   }
 
   const userAccountData = await userAccount.findById(userLoginData.userId);
@@ -148,9 +149,9 @@ exports.getAccessToken = catchAsync(async (req, res, next) => {
   const refreshToken = req.cookies.refresh_token;
 
   if (!refreshToken) {
-    return res
-      .status(401)
-      .json({ error: 'You need refresh token to gain a new access token' });
+    return next(
+      new AppError('You need refresh token to gain a new access token', 401)
+    );
   }
 
   jwt.verify(
@@ -158,10 +159,12 @@ exports.getAccessToken = catchAsync(async (req, res, next) => {
     process.env.JWT_REFRESH_TOKEN_SECRET,
     async (err, data) => {
       if (err) {
-        return res.status(403).json({
-          error:
+        return next(
+          new AppError(
             'Refresh token is no longer valid. Login to have get new tokens',
-        });
+            403
+          )
+        );
       }
 
       const userLoginData = await userLogin
@@ -169,15 +172,15 @@ exports.getAccessToken = catchAsync(async (req, res, next) => {
         .select('refreshToken');
 
       if (userLoginData[0].refreshToken !== refreshToken) {
-        return res
-          .status(403)
-          .json({ error: "Refresh tokens don\t match or it doesn't exist" });
+        return next(
+          new AppError("Refresh tokens don\t match or it doesn't exist", 403)
+        );
       }
 
       const user = await userAccount.findById(data.userId);
 
       if (!user) {
-        return res.status(400).json({ error: "User doesn't exist" });
+        return next(new AppError("User doesn't exist", 400));
       }
 
       const accessToken = jwt.sign(
