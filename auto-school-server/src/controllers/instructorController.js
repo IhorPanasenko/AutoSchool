@@ -4,57 +4,50 @@ const InstructorModel = require('../models/instructor.js');
 const UserAccountModel = require('../models/userAccount.js');
 const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
+const catchAsync = require('../helpers/catchAsync.js');
 
-exports.getAllInstructors = async (req, res) => {
-  try {
-    const filterQueryObject = { ...req.query };
-    const excludedKeys = ['sort', 'page', 'limit'];
-    excludedKeys.forEach((el) => delete filterQueryObject[el]);
+exports.getAllInstructors = catchAsync(async (req, res, next) => {
+  const filterQueryObject = { ...req.query };
+  const excludedKeys = ['sort', 'page', 'limit'];
+  excludedKeys.forEach((el) => delete filterQueryObject[el]);
 
-    let instructorsQuery = InstructorModel.find(filterQueryObject);
+  let instructorsQuery = InstructorModel.find(filterQueryObject);
 
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(',').join(' ');
-      instructorsQuery = instructorsQuery.sort(sortBy);
-    }
-
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 10;
-    const skip = (page - 1) * limit;
-    instructorsQuery = instructorsQuery.skip(skip).limit(limit);
-
-    const instructors = await instructorsQuery
-      .populate('car')
-      .populate('city')
-      .exec();
-
-    res.status(200).json({
-      status: 'success',
-      results: instructors.length,
-      data: instructors,
-    });
-  } catch (error) {
-    res.status(500).json({ error: err.message });
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(',').join(' ');
+    instructorsQuery = instructorsQuery.sort(sortBy);
   }
-};
 
-exports.getOneInstructor = async (req, res) => {
-  try {
-    const instructor = await InstructorModel.findById(req.params.instructorId)
-      .populate('car')
-      .populate('city')
-      .exec();
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 10;
+  const skip = (page - 1) * limit;
+  instructorsQuery = instructorsQuery.skip(skip).limit(limit);
 
-    // TODO: Get instructor reviews
+  const instructors = await instructorsQuery
+    .populate('car')
+    .populate('city')
+    .exec();
 
-    res.status(200).json({
-      status: 'success',
-      data: instructor,
-    });
-  } catch (error) {
-    res.status(500).json({ error: err.message });
-  }
-};
+  res.status(200).json({
+    status: 'success',
+    results: instructors.length,
+    data: instructors,
+  });
+});
+
+exports.getOneInstructor = catchAsync(async (req, res, next) => {
+  const instructor = await InstructorModel.findById(req.params.instructorId)
+    .populate('car')
+    .populate('city')
+    .exec();
+
+  // TODO: Get instructor reviews
+
+  res.status(200).json({
+    status: 'success',
+    data: instructor,
+  });
+});
 
 exports.createInstructor = async (req, res) => {
   const session = await mongoose.startSession();
@@ -135,54 +128,49 @@ exports.createInstructor = async (req, res) => {
   }
 };
 
-exports.updateInstructor = async (req, res) => {
-  try {
-    const updatedInstructor = await InstructorModel.findByIdAndUpdate(
-      req.params.instructorId,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-
-    if (!updatedInstructor) {
-      throw new Error('There is no instructor with such id');
+exports.updateInstructor = catchAsync(async (req, res, next) => {
+  const updatedInstructor = await InstructorModel.findByIdAndUpdate(
+    req.params.instructorId,
+    req.body,
+    {
+      new: true,
+      runValidators: true,
     }
+  );
 
-    res.status(200).json({
-      status: 'success',
-      data: updatedInstructor,
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  if (!updatedInstructor) {
+    throw new Error('There is no instructor with such id');
   }
-};
 
-exports.deleteInstructor = async (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    data: updatedInstructor,
+  });
+});
+
+exports.deleteInstructor = catchAsync(async (req, res, next) => {
   const instructorId = req.params.instructorId;
-  try {
-    const hasActiveStudents = await StudentModel.exists({
-      instructorId,
-      active: 'true',
+
+  const hasActiveStudents = await StudentModel.exists({
+    instructorId,
+    active: 'true',
+  });
+
+  if (hasActiveStudents) {
+    return res.status(403).json({
+      error: 'Instructor has active students and cannot be deleted.',
     });
-
-    if (hasActiveStudents) {
-      return res.status(403).json({
-        error: 'Instructor has active students and cannot be deleted.',
-      });
-    }
-
-    // TODO: Check if instructor has upcoming booked lessons
-
-    const instructor = await InstructorModel.findByIdAndDelete(instructorId);
-
-    if (!instructor) {
-      res.status(400).json({ error: 'No document was found with such id' });
-    }
-
-    res.status(204).send();
-  } catch (err) {
-    res.status(500).json({ error: err.message });
   }
-};
+
+  // TODO: Check if instructor has upcoming booked lessons
+
+  const instructor = await InstructorModel.findByIdAndDelete(instructorId);
+
+  if (!instructor) {
+    return res
+      .status(400)
+      .json({ error: 'No document was found with such id' });
+  }
+
+  res.status(204).send();
+});
