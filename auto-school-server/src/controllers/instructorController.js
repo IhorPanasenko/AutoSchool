@@ -5,6 +5,7 @@ const UserAccountModel = require('../models/userAccount.js');
 const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
+const AppError = require('../helpers/appError.js');
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
@@ -40,6 +41,10 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
     .populate('car')
     .populate('city')
     .exec();
+
+  if (!instructor) {
+    return next(new AppError('No instructor was found with such id', 404));
+  }
 
   // TODO: Get instructor reviews
 
@@ -139,7 +144,7 @@ exports.updateInstructor = catchAsync(async (req, res, next) => {
   );
 
   if (!updatedInstructor) {
-    throw new Error('There is no instructor with such id');
+    return next(new AppError('No instructor was found with such id', 404));
   }
 
   res.status(200).json({
@@ -167,9 +172,7 @@ exports.deleteInstructor = catchAsync(async (req, res, next) => {
   const instructor = await InstructorModel.findByIdAndDelete(instructorId);
 
   if (!instructor) {
-    return res
-      .status(400)
-      .json({ error: 'No document was found with such id' });
+    return next(new AppError('No instructor was found with such id', 404));
   }
 
   res.status(204).send();
