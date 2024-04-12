@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const userLogin = require('../models/userLogin');
 const userAccount = require('../models/userAccount.js');
 const StudentModel = require('../models/student.js');
+const catchAsync = require('../helpers/catchAsync.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -104,53 +105,46 @@ exports.signup = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Provide email and password' });
-    }
-
-    const userLoginData = await userLogin.findOne({ email });
-
-    if (
-      !userLoginData ||
-      !(await userLoginData.verifyPassword(
-        password,
-        userLoginData.passwordHash
-      ))
-    ) {
-      return res.status(401).json({ message: 'Incorrect email or password' });
-    }
-
-    const userAccountData = await userAccount.findById(userLoginData.userId);
-
-    const { accessToken, refreshToken, expire } = signSaveTokens(
-      res,
-      userAccountData._id,
-      userAccountData.role
-    );
-
-    userLoginData.refreshToken = refreshToken;
-    userLoginData.save();
-
-    res.status(200).json({
-      status: 'success',
-      data: {
-        email: userLoginData.email,
-        userData: userAccountData,
-        tokenExpire: expire,
-        accessToken,
-        refreshToken,
-      },
-    });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Provide email and password' });
   }
-};
 
-exports.getAccessToken = async (req, res) => {
+  const userLoginData = await userLogin.findOne({ email });
+
+  if (
+    !userLoginData ||
+    !(await userLoginData.verifyPassword(password, userLoginData.passwordHash))
+  ) {
+    return res.status(401).json({ message: 'Incorrect email or password' });
+  }
+
+  const userAccountData = await userAccount.findById(userLoginData.userId);
+
+  const { accessToken, refreshToken, expire } = signSaveTokens(
+    res,
+    userAccountData._id,
+    userAccountData.role
+  );
+
+  userLoginData.refreshToken = refreshToken;
+  userLoginData.save();
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      email: userLoginData.email,
+      userData: userAccountData,
+      tokenExpire: expire,
+      accessToken,
+      refreshToken,
+    },
+  });
+});
+
+exports.getAccessToken = catchAsync(async (req, res, next) => {
   const refreshToken = req.cookies.refresh_token;
 
   if (!refreshToken) {
@@ -207,9 +201,9 @@ exports.getAccessToken = async (req, res) => {
       });
     }
   );
-};
+});
 
-exports.logout = async (req, res) => {
+exports.logout = catchAsync(async (req, res, next) => {
   res.cookie('access_token', '', {
     maxAge: 0,
   });
@@ -227,4 +221,4 @@ exports.logout = async (req, res) => {
   userLoginData.save();
 
   res.sendStatus(204);
-};
+});
