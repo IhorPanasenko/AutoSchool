@@ -27,10 +27,9 @@ exports.updateCity = catchAsync(async (req, res, next) => {
     name: req.body.name,
   });
 
-  if (!city)
-    return res
-      .status(404)
-      .json({ error: 'No document was found with this ID' });
+  if (!city) {
+    return next(new AppError('No city was found with such id', 404));
+  }
 
   res.status(200).json({
     status: 'success',
@@ -40,10 +39,9 @@ exports.updateCity = catchAsync(async (req, res, next) => {
 exports.deleteCity = catchAsync(async (req, res, next) => {
   const city = await CityModel.findByIdAndDelete(req.params.cityId);
 
-  if (!city)
-    return res
-      .status(404)
-      .json({ error: 'No document was found with this ID' });
+  if (!city) {
+    return next(new AppError('No city was found with such id', 404));
+  }
 
   res.status(204).json({
     status: 'success',
