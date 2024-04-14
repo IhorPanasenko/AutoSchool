@@ -46,7 +46,7 @@
                             <Frame BackgroundColor="White" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                 <Image Source="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-round/700/09_lock-256.png" Aspect="AspectFill" Margin="0"/>
                             </Frame>
-                            <Entry Text="{Binding Password}" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                            <Entry Text="{Binding Password}" IsPassword="True" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                         </StackLayout>
                     </Frame>
 

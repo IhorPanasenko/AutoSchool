@@ -1,5 +1,6 @@
 ﻿using Auto.School.Mobile.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
@@ -16,10 +17,10 @@ namespace Auto.School.Mobile.ViewModels
         private string phoneNumber = string.Empty;
 
         [ObservableProperty]
-        private DateTime birthdayDate;
+        private DateTime birthdayDate = DateTime.UtcNow.AddYears(-18);
 
         [ObservableProperty]
-        public City? selectedCity;
+        public City? _selectedCity;
         public List<City> Cities { get; set; }
 
         public RegistrationViewModel()
@@ -31,7 +32,13 @@ namespace Auto.School.Mobile.ViewModels
                 new City() {Id = "4", Name="Lviv"},
             ];
 
-            selectedCity = Cities.FirstOrDefault();
+            _selectedCity = Cities.FirstOrDefault();
+        }
+
+        [RelayCommand]
+        public async Task GoToLogin()
+        {
+
         }
     }
 }

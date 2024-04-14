@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.6" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.6" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -66,7 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Auto.School.Mobile.ApiIntegration\Auto.School.Mobile.ApiIntegration.csproj" />
 	  <ProjectReference Include="..\Auto.School.Mobile.Core\Auto.School.Mobile.Core.csproj" />
+	  <ProjectReference Include="..\Auto.School.Mobile.Service\Auto.School.Mobile.Service.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
