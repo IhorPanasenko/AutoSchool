@@ -126,9 +126,6 @@ exports.createInstructor = async (req, res, next) => {
   } catch (error) {
     await session.abortTransaction();
     next(error);
-    // res
-    //   .status(500)
-    //   .json({ error: 'Transaction failed with error: ' + error.message });
   } finally {
     session.endSession();
   }

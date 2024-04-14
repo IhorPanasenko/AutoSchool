@@ -35,7 +35,7 @@ const signSaveTokens = (res, userId, role) => {
   return { accessToken, refreshToken, expire: accessTokenCookieExpireDate };
 };
 
-exports.signup = async (req, res) => {
+exports.signup = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
@@ -98,9 +98,7 @@ exports.signup = async (req, res) => {
     });
   } catch (err) {
     await session.abortTransaction();
-    res
-      .status(500)
-      .json({ error: 'Transaction failed with error: ' + err.message });
+    next(err);
   } finally {
     session.endSession();
   }
