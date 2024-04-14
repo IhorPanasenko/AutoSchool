@@ -7,22 +7,19 @@ namespace Auto.School.Mobile.ViewModels
     public partial class RegistrationViewModel : BaseViewModel, INotifyPropertyChanged
     {
         [ObservableProperty]
-        private string _firstName = string.Empty;
+        private string firstName = string.Empty;
 
         [ObservableProperty] 
-        private string _lastName = string.Empty;
+        private string lastName = string.Empty;
 
         [ObservableProperty]
-        private string _phoneNumber = string.Empty;
+        private string phoneNumber = string.Empty;
 
         [ObservableProperty]
-        private DateTime _birthdayDate;
+        private DateTime birthdayDate;
 
         [ObservableProperty]
-        private string _photoUrl = string.Empty;
-
-        [ObservableProperty]
-        public City? _selectedCity;
+        public City? selectedCity;
         public List<City> Cities { get; set; }
 
         public RegistrationViewModel()
@@ -34,9 +31,7 @@ namespace Auto.School.Mobile.ViewModels
                 new City() {Id = "4", Name="Lviv"},
             ];
 
-           
-            _selectedCity = Cities.FirstOrDefault();
-            
+            selectedCity = Cities.FirstOrDefault();
         }
     }
 }

@@ -61,11 +61,65 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to Add profile photo.
+        /// </summary>
+        internal static string AddPhoto {
+            get {
+                return ResourceManager.GetString("AddPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to login.
+        /// </summary>
+        internal static string BackToLogin {
+            get {
+                return ResourceManager.GetString("BackToLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth.
+        /// </summary>
+        internal static string BirthdayDate {
+            get {
+                return ResourceManager.GetString("BirthdayDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        internal static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
         internal static string ForgotPassword {
             get {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to schedule.
+        /// </summary>
+        internal static string GoToSchedule {
+            get {
+                return ResourceManager.GetString("GoToSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        internal static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -97,11 +151,83 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal info.
+        /// </summary>
+        internal static string PersonalInfo {
+            get {
+                return ResourceManager.GetString("PersonalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your first name.
+        /// </summary>
+        internal static string Registration_EnterFirstName {
+            get {
+                return ResourceManager.GetString("Registration.EnterFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your last name.
+        /// </summary>
+        internal static string Registration_EnterLastName {
+            get {
+                return ResourceManager.GetString("Registration.EnterLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string Registration_PhoneLabel {
+            get {
+                return ResourceManager.GetString("Registration.PhoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rememeber me?.
         /// </summary>
         internal static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select your city.
+        /// </summary>
+        internal static string SelectCity {
+            get {
+                return ResourceManager.GetString("SelectCity", resourceCulture);
             }
         }
         
@@ -133,11 +259,56 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload photo.
+        /// </summary>
+        internal static string UploadPhoto {
+            get {
+                return ResourceManager.GetString("UploadPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Living address.
+        /// </summary>
+        internal static string UserProfile_Address {
+            get {
+                return ResourceManager.GetString("UserProfile.Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Driving category learning for:.
+        /// </summary>
+        internal static string UserProfile_DrivingCategory {
+            get {
+                return ResourceManager.GetString("UserProfile.DrivingCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructor info.
+        /// </summary>
+        internal static string UserProfile_InstructiorInfo {
+            get {
+                return ResourceManager.GetString("UserProfile.InstructiorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lessons statistic.
+        /// </summary>
+        internal static string UserProfile_LessonsStatistic {
+            get {
+                return ResourceManager.GetString("UserProfile.LessonsStatistic", resourceCulture);
             }
         }
         

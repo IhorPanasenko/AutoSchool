@@ -19,11 +19,13 @@ namespace Auto.School.Mobile
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<RegistrationPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
 
 
             builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<RegistrationViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
