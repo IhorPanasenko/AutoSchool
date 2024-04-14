@@ -15,6 +15,7 @@ module.exports = (err, req, res, next) => {
     }
     if (err.name === 'ValidationError') {
       // handle validation error from mongoose schema
+      error = handleValidationMongooseError(error);
     }
     if (err.name === 'ValidationJoiSchemaError') {
       error = handleValidationJoiSchemaError(error);
@@ -24,6 +25,11 @@ module.exports = (err, req, res, next) => {
   } else {
     developmentError(err, res);
   }
+};
+
+const handleValidationMongooseError = (err) => {
+  const errorMessages = Object.values(err.errors).map((err) => err.message);
+  return new AppError(`Invalid input data. ${errorMessages.join('. ')}`, 400);
 };
 
 const handleValidationJoiSchemaError = (err) => {
