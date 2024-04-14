@@ -55,6 +55,7 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
 });
 
 exports.createInstructor = async (req, res, next) => {
+  console.log(req.files);
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
