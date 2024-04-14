@@ -10,6 +10,9 @@ module.exports = (err, req, res, next) => {
     if (err.name === 'CastError') {
       error = handleCastErrorMongoDB(error);
     }
+    if (err.code === 11000) {
+      error = handleDuplicateFieldMongoDB(error);
+    }
 
     productionError(error, res);
   } else {
@@ -19,6 +22,14 @@ module.exports = (err, req, res, next) => {
 
 const handleCastErrorMongoDB = (err) => {
   return new AppError(`Incorrect ${err.path}: ${err.value}`, 400);
+};
+
+const handleDuplicateFieldMongoDB = (err) => {
+  const field = Object.keys(err.keyValue)[0];
+  return new AppError(
+    `Duplicate field for ${field}: ${err.keyValue[field]}`,
+    400
+  );
 };
 
 const developmentError = (err, res) => {

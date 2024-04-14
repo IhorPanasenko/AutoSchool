@@ -54,7 +54,7 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createInstructor = async (req, res) => {
+exports.createInstructor = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
@@ -125,9 +125,10 @@ exports.createInstructor = async (req, res) => {
     });
   } catch (error) {
     await session.abortTransaction();
-    res
-      .status(500)
-      .json({ error: 'Transaction failed with error: ' + error.message });
+    next(error);
+    // res
+    //   .status(500)
+    //   .json({ error: 'Transaction failed with error: ' + error.message });
   } finally {
     session.endSession();
   }
