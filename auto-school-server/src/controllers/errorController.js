@@ -13,11 +13,21 @@ module.exports = (err, req, res, next) => {
     if (err.code === 11000) {
       error = handleDuplicateFieldMongoDB(error);
     }
+    if (err.name === 'ValidationError') {
+      // handle validation error from mongoose schema
+    }
+    if (err.name === 'ValidationJoiSchemaError') {
+      error = handleValidationJoiSchemaError(error);
+    }
 
     productionError(error, res);
   } else {
     developmentError(err, res);
   }
+};
+
+const handleValidationJoiSchemaError = (err) => {
+  return new AppError(`Invalid input data. ${err.details[0].message}`, 400);
 };
 
 const handleCastErrorMongoDB = (err) => {
