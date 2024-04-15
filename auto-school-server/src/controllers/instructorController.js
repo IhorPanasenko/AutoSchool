@@ -97,11 +97,16 @@ exports.createInstructor = async (req, res, next) => {
 
     // TODO: Send email with master password ?
     // Upload photos to s3 bucket
+    const carPhotoName = 'car-' + randomImageName();
+    const instructorPhotoName = 'instructor-' + randomImageName();
+
     const putCommandsArray = Object.values(req.files).map(
       (file) =>
         new PutObjectCommand({
           Bucket: process.env.BUCKET_NAME,
-          Key: randomImageName(),
+          Key: file[0].fieldname.startsWith('car')
+            ? carPhotoName
+            : instructorPhotoName,
           Body: file[0].buffer,
           ContentType: file[0].mimetype,
         })
@@ -115,7 +120,7 @@ exports.createInstructor = async (req, res, next) => {
           model: req.body.model,
           year: req.body.year,
           transmission: req.body.transmission,
-          //photoURL: req.body.photoURL,
+          photoURL: carPhotoName,
         },
       ],
       { session }
@@ -132,7 +137,7 @@ exports.createInstructor = async (req, res, next) => {
           vehicleCategory: req.body.vehicleCategory,
           workExperience: req.body.workExperience,
           maxNumOfStudents: req.body.maxNumOfStudents,
-          //photoURL: req.body.photoURL,
+          photoURL: instructorPhotoName,
         },
       ],
       { session }
