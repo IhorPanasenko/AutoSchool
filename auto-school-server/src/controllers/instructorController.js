@@ -1,4 +1,3 @@
-const crypto = require('crypto');
 const mongoose = require('mongoose');
 const CarModel = require('../models/car.js');
 const InstructorModel = require('../models/instructor.js');
@@ -7,18 +6,9 @@ const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
-
-const randomImageName = (bytes = 32) =>
-  crypto.randomBytes(bytes).toString('hex');
-
-const s3 = new S3Client({
-  credentials: {
-    accessKeyId: process.env.BUCKET_ACCESS_KEY,
-    secretAccessKey: process.env.BUCKET_SECRET_ACCESS_KEY,
-  },
-  region: process.env.BUCKET_LOCATION,
-});
+const { PutObjectCommand } = require('@aws-sdk/client-s3');
+const s3 = require('../config/s3Bucket.js');
+const randomImageName = require('../helpers/randomImageName.js');
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
