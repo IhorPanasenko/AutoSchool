@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const CarModel = require('../models/car.js');
 const InstructorModel = require('../models/instructor.js');
@@ -7,6 +8,9 @@ const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+
+const randomImageName = (bytes = 32) =>
+  crypto.randomBytes(bytes).toString('hex');
 
 const s3 = new S3Client({
   credentials: {
@@ -95,7 +99,7 @@ exports.createInstructor = async (req, res, next) => {
     // TODO: Upload photos to s3 bucket
     const s3Command = new PutObjectCommand({
       Bucket: process.env.BUCKET_NAME,
-      Key: req.files.instructorPhoto[0].originalname,
+      Key: randomImageName(),
       Body: req.files.instructorPhoto[0].buffer,
       ContentType: req.files.instructorPhoto[0].mimetype,
     });
