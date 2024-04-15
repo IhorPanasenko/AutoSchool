@@ -6,6 +6,15 @@ const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: process.env.BUCKET_ACCESS_KEY,
+    secretAccessKey: process.env.BUCKET_SECRET_ACCESS_KEY,
+  },
+  region: process.env.BUCKET_LOCATION,
+});
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
@@ -55,7 +64,6 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
 });
 
 exports.createInstructor = async (req, res, next) => {
-  console.log(req.files);
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
@@ -84,6 +92,15 @@ exports.createInstructor = async (req, res, next) => {
     );
 
     // TODO: Send email with master password ?
+    // TODO: Upload photos to s3 bucket
+    const s3Command = new PutObjectCommand({
+      Bucket: process.env.BUCKET_NAME,
+      Key: req.files.instructorPhoto[0].originalname,
+      Body: req.files.instructorPhoto[0].buffer,
+      ContentType: req.files.instructorPhoto[0].mimetype,
+    });
+
+    await s3.send(s3Command);
 
     const newCar = await CarModel.create(
       [
