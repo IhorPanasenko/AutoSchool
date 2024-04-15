@@ -96,15 +96,18 @@ exports.createInstructor = async (req, res, next) => {
     );
 
     // TODO: Send email with master password ?
-    // TODO: Upload photos to s3 bucket
-    const s3Command = new PutObjectCommand({
-      Bucket: process.env.BUCKET_NAME,
-      Key: randomImageName(),
-      Body: req.files.instructorPhoto[0].buffer,
-      ContentType: req.files.instructorPhoto[0].mimetype,
-    });
+    // Upload photos to s3 bucket
+    const putCommandsArray = Object.values(req.files).map(
+      (file) =>
+        new PutObjectCommand({
+          Bucket: process.env.BUCKET_NAME,
+          Key: randomImageName(),
+          Body: file[0].buffer,
+          ContentType: file[0].mimetype,
+        })
+    );
 
-    await s3.send(s3Command);
+    await Promise.all(putCommandsArray.map((command) => s3.send(command)));
 
     const newCar = await CarModel.create(
       [
