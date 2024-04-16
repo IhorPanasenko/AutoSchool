@@ -11,6 +11,19 @@ const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const s3 = require('../config/s3Bucket.js');
 const randomImageName = require('../helpers/randomImageName.js');
 
+const getPhotoUrl = async (s3CLient, photoName) => {
+  const getPhotoObject = new GetObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: photoName,
+  });
+
+  const photoUrl = await getSignedUrl(s3CLient, getPhotoObject, {
+    expiresIn: 3600,
+  });
+
+  return photoUrl;
+};
+
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
   const excludedKeys = ['sort', 'page', 'limit'];
@@ -34,25 +47,8 @@ exports.getAllInstructors = catchAsync(async (req, res, next) => {
     .exec();
 
   for (const instructor of instructors) {
-    const getInstructorPhoto = new GetObjectCommand({
-      Bucket: process.env.BUCKET_NAME,
-      Key: instructor.photoURL,
-    });
-
-    const getCarPhoto = new GetObjectCommand({
-      Bucket: process.env.BUCKET_NAME,
-      Key: instructor.car.photoURL,
-    });
-
-    const instructorPhotoUrl = await getSignedUrl(s3, getInstructorPhoto, {
-      expiresIn: 3600,
-    });
-    const carPhotoUrl = await getSignedUrl(s3, getCarPhoto, {
-      expiresIn: 3600,
-    });
-
-    instructor.photoURL = instructorPhotoUrl;
-    instructor.car.photoURL = carPhotoUrl;
+    instructor.photoURL = await getPhotoUrl(s3, instructor.photoURL);
+    instructor.car.photoURL = await getPhotoUrl(s3, instructor.car.photoURL);
   }
 
   res.status(200).json({
@@ -74,23 +70,8 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
 
   // Get photo urls from s3 bucket
 
-  const getInstructorPhoto = new GetObjectCommand({
-    Bucket: process.env.BUCKET_NAME,
-    Key: instructor.photoURL,
-  });
-
-  const getCarPhoto = new GetObjectCommand({
-    Bucket: process.env.BUCKET_NAME,
-    Key: instructor.car.photoURL,
-  });
-
-  const instructorPhotoUrl = await getSignedUrl(s3, getInstructorPhoto, {
-    expiresIn: 3600,
-  });
-  const carPhotoUrl = await getSignedUrl(s3, getCarPhoto, { expiresIn: 3600 });
-
-  instructor.photoURL = instructorPhotoUrl;
-  instructor.car.photoURL = carPhotoUrl;
+  instructor.photoURL = await getPhotoUrl(s3, instructor.photoURL);
+  instructor.car.photoURL = await getPhotoUrl(s3, instructor.car.photoURL);
 
   // TODO: Get instructor reviews
 
