@@ -24,6 +24,17 @@ const getPhotoUrl = async (s3CLient, photoName) => {
   return photoUrl;
 };
 
+const uploadPhotoToS3 = async (s3Client, file, fileName) => {
+  const command = new PutObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: fileName,
+    Body: file.buffer,
+    ContentType: file.mimetype,
+  });
+
+  await s3Client.send(command);
+};
+
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
   const excludedKeys = ['sort', 'page', 'limit'];
@@ -114,19 +125,12 @@ exports.createInstructor = async (req, res, next) => {
     const carPhotoName = 'car-' + randomImageName();
     const instructorPhotoName = 'instructor-' + randomImageName();
 
-    const putCommandsArray = Object.values(req.files).map(
-      (file) =>
-        new PutObjectCommand({
-          Bucket: process.env.BUCKET_NAME,
-          Key: file[0].fieldname.startsWith('car')
-            ? carPhotoName
-            : instructorPhotoName,
-          Body: file[0].buffer,
-          ContentType: file[0].mimetype,
-        })
+    await uploadPhotoToS3(
+      s3,
+      req.files.instructorPhoto[0],
+      instructorPhotoName
     );
-
-    await Promise.all(putCommandsArray.map((command) => s3.send(command)));
+    await uploadPhotoToS3(s3, req.files.carPhoto[0], carPhotoName);
 
     const newCar = await CarModel.create(
       [
