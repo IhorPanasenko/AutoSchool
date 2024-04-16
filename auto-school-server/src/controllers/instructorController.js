@@ -6,34 +6,9 @@ const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
-const { PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
-const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const s3 = require('../config/s3Bucket.js');
+const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomImageName = require('../helpers/randomImageName.js');
-
-const getPhotoUrl = async (s3CLient, photoName) => {
-  const getPhotoObject = new GetObjectCommand({
-    Bucket: process.env.BUCKET_NAME,
-    Key: photoName,
-  });
-
-  const photoUrl = await getSignedUrl(s3CLient, getPhotoObject, {
-    expiresIn: 3600,
-  });
-
-  return photoUrl;
-};
-
-const uploadPhotoToS3 = async (s3Client, file, fileName) => {
-  const command = new PutObjectCommand({
-    Bucket: process.env.BUCKET_NAME,
-    Key: fileName,
-    Body: file.buffer,
-    ContentType: file.mimetype,
-  });
-
-  await s3Client.send(command);
-};
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   const filterQueryObject = { ...req.query };
