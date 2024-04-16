@@ -33,6 +33,28 @@ exports.getAllInstructors = catchAsync(async (req, res, next) => {
     .populate('city')
     .exec();
 
+  for (const instructor of instructors) {
+    const getInstructorPhoto = new GetObjectCommand({
+      Bucket: process.env.BUCKET_NAME,
+      Key: instructor.photoURL,
+    });
+
+    const getCarPhoto = new GetObjectCommand({
+      Bucket: process.env.BUCKET_NAME,
+      Key: instructor.car.photoURL,
+    });
+
+    const instructorPhotoUrl = await getSignedUrl(s3, getInstructorPhoto, {
+      expiresIn: 3600,
+    });
+    const carPhotoUrl = await getSignedUrl(s3, getCarPhoto, {
+      expiresIn: 3600,
+    });
+
+    instructor.photoURL = instructorPhotoUrl;
+    instructor.car.photoURL = carPhotoUrl;
+  }
+
   res.status(200).json({
     status: 'success',
     results: instructors.length,
