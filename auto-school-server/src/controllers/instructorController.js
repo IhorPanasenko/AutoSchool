@@ -6,7 +6,8 @@ const UserLoginModel = require('../models/userLogin.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
-const { PutObjectCommand } = require('@aws-sdk/client-s3');
+const { PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
+const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const s3 = require('../config/s3Bucket.js');
 const randomImageName = require('../helpers/randomImageName.js');
 
@@ -48,6 +49,26 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
   if (!instructor) {
     return next(new AppError('No instructor was found with such id', 404));
   }
+
+  // Get photo urls from s3 bucket
+
+  const getInstructorPhoto = new GetObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: instructor.photoURL,
+  });
+
+  const getCarPhoto = new GetObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: instructor.car.photoURL,
+  });
+
+  const instructorPhotoUrl = await getSignedUrl(s3, getInstructorPhoto, {
+    expiresIn: 3600,
+  });
+  const carPhotoUrl = await getSignedUrl(s3, getCarPhoto, { expiresIn: 3600 });
+
+  instructor.photoURL = instructorPhotoUrl;
+  instructor.car.photoURL = carPhotoUrl;
 
   // TODO: Get instructor reviews
 
