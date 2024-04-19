@@ -10,4 +10,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Auto.School.Mobile.ApiIntegration\Auto.School.Mobile.ApiIntegration.csproj" />
+    <ProjectReference Include="..\Auto.School.Mobile.Core\Auto.School.Mobile.Core.csproj" />
+  </ItemGroup>
+
 </Project>

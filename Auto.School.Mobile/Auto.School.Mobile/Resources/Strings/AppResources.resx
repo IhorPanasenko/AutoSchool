@@ -159,11 +159,20 @@
   <data name="Registration" xml:space="preserve">
     <value>Registration</value>
   </data>
+  <data name="Registration.DrivingCaregoryLabel" xml:space="preserve">
+    <value>Driving category to learn</value>
+  </data>
+  <data name="Registration.EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="Registration.EnterFirstName" xml:space="preserve">
     <value>Enter your first name</value>
   </data>
   <data name="Registration.EnterLastName" xml:space="preserve">
     <value>Enter your last name</value>
+  </data>
+  <data name="Registration.PasswordLabel" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="Registration.PhoneLabel" xml:space="preserve">
     <value>Phone number</value>
