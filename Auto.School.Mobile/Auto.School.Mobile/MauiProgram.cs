@@ -3,7 +3,6 @@ using Auto.School.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Service.Services;
-using Auto.School.Mobile.ApiIntegration.AuthenticationRequests;
 
 namespace Auto.School.Mobile
 {
@@ -32,7 +31,8 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<RegistrationViewModel>();
 
-            builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddTransient<ICityService, CityService>();   
 
 #if DEBUG
     		builder.Logging.AddDebug();

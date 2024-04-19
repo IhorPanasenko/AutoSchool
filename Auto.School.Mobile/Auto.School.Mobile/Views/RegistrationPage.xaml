@@ -18,6 +18,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Text="{x:Static resx:AppResources.Registration}" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="50,0"/>
@@ -35,28 +38,55 @@
                 <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="{x:Static resx:AppResources.Registration_EnterLastName}" Text="{Binding LastName}" />
             </StackLayout>
             <StackLayout Grid.Row="5" Padding="20,0">
-                <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_PhoneLabel}" TextColor="Black" Margin="0,5,0,5"/>
-                <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="+38 0XX XXX XXXX" Text="{Binding PhoneNumber}"/>
+                <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_EmailLabel}" TextColor="Black" Margin="0,5,0,5"/>
+                <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="mail@gmail.com" Text="{Binding Email}"/>
+                <StackLayout BackgroundColor="White" IsVisible="{Binding IsEmailError}">
+                    <Label Text="{Binding EmailErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Grid.Row="6" Orientation="Horizontal" Padding="20,0">
+            <StackLayout Grid.Row="6" Padding="20,0">
+                <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_PhoneLabel}" TextColor="Black" Margin="0,5,0,5"/>
+                <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="XXX-XXX-XXXX" Text="{Binding PhoneNumber}"/>
+                <StackLayout BackgroundColor="White" IsVisible="{Binding IsPhoneNumberError}">
+                    <Label Text="{Binding PhoneNumberErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="7" Orientation="Horizontal" Padding="20,0">
                 <Label FontSize="18" Text="{x:Static resx:AppResources.BirthdayDate}" TextColor="Black" Margin="0,0,20,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
                 <DatePicker FontSize="18" TextColor="DarkGray" Date="{Binding BirthdayDate}" HorizontalOptions="End"/>
+                <StackLayout BackgroundColor="White" IsVisible="{Binding IsBirthDateError}">
+                    <Label Text="{Binding BirthDateErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Grid.Row="7" Padding="20,0">
-                <Picker FontSize="18" Title="{x:Static resx:AppResources.SelectCity}" TitleColor="Black" TextColor="Black" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" ItemsSource="{Binding Cities}">
+            <StackLayout Grid.Row="8" Padding="20,0">
+                <Picker FontSize="18" Title="{x:Static resx:AppResources.SelectCity}" TitleColor="Black" TextColor="Black" SelectedItem="{Binding SelectedCity}" ItemsSource="{Binding Cities}">
                     <Picker.ItemDisplayBinding>
                         <Binding Path="Name" />
                     </Picker.ItemDisplayBinding>
                 </Picker>
             </StackLayout>
+            <StackLayout Grid.Row="9" Padding="20,0">
+                <Picker FontSize="18" Title="{x:Static resx:AppResources.Registration_DrivingCaregoryLabel}" TitleColor="Black" TextColor="Black" SelectedItem="{Binding SelectedDrivingCategory}" ItemsSource="{Binding DrivingCategories}">
+                    <Picker.ItemDisplayBinding>
+                        <Binding />
+                    </Picker.ItemDisplayBinding>
+                </Picker>
+            </StackLayout>
+            <StackLayout Grid.Row="10" Padding="20,0">
+                <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_PasswordLabel}" TextColor="Black" Margin="0,5,0,5"/>
+                <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Password" Text="{Binding Password}"/>
+                <StackLayout BackgroundColor="White" IsVisible="{Binding IsPasswordError}">
+                    <Label Text="{Binding PasswordErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+            </StackLayout>
 
-            <Grid ColumnSpacing="20" Grid.Row="8" Padding="20,0">
+            <Grid ColumnSpacing="20" Grid.Row="11" Padding="20,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button FontSize="18" Text="{x:Static resx:AppResources.Register}" BackgroundColor="#3D6DFF"/>
-                <Button FontSize="18" Grid.Column="1" Text="{x:Static resx:AppResources.BackToLogin}" BackgroundColor="#3D6DFF" LineBreakMode="CharacterWrap"/>
+                <Button FontSize="18" Command="{Binding RegisterCommand}" Text="{x:Static resx:AppResources.Register}" BackgroundColor="#3D6DFF"/>
+                <Button FontSize="18" Command="{Binding GoToLoginCommand}" Grid.Column="1" Text="{x:Static resx:AppResources.BackToLogin}" BackgroundColor="#3D6DFF" LineBreakMode="CharacterWrap"/>
             </Grid>
         </Grid>
     </ScrollView>

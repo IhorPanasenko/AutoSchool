@@ -159,11 +159,20 @@
   <data name="Registration" xml:space="preserve">
     <value>Реєстрація</value>
   </data>
+  <data name="Registration.DrivingCaregoryLabel" xml:space="preserve">
+    <value>Категорія водіння на яку навчаєтесь</value>
+  </data>
+  <data name="Registration.EmailLabel" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
   <data name="Registration.EnterFirstName" xml:space="preserve">
     <value>Уведіть своє ім'я</value>
   </data>
   <data name="Registration.EnterLastName" xml:space="preserve">
     <value>Уведіть своє прізвище</value>
+  </data>
+  <data name="Registration.PasswordLabel" xml:space="preserve">
+    <value>Пароль</value>
   </data>
   <data name="Registration.PhoneLabel" xml:space="preserve">
     <value>Номер телефону</value>

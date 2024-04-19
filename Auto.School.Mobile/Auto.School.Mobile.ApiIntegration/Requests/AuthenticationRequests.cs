@@ -1,6 +1,7 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.Core.Models;
+using Auto.School.Mobile.Core.Responses.Authentication;
 using Auto.School.Mobile.Core.Responses.Login;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests
@@ -9,9 +10,21 @@ namespace Auto.School.Mobile.ApiIntegration.Requests
     {
         public static async Task<LoginResponse> Login(LoginModel loginModel)
         {
-            var result = await PostRequest.ExecuteAsync<LoginModel, LoginResponse>(RoutesConstants.LoginRoute, loginModel);
+            var result = await PostRequest.ExecuteAsync<LoginModel, LoginResponse>(RoutesConstants.Login, loginModel);
 
-            if (result.Status is null && result.LoginResponseData is null)
+            if (result.Status is null || result.LoginResponseData is null)
+            {
+                result.Status = "failed";
+            }
+
+            return result;
+        }
+
+        public static async Task<RegistrationResponse> Register(RegistrationModel registrationModel)
+        {
+            var result = await PostRequest.ExecuteAsync<RegistrationModel, RegistrationResponse>(RoutesConstants.Register, registrationModel);
+
+            if (result.Status is null)
             {
                 result.Status = "failed";
             }

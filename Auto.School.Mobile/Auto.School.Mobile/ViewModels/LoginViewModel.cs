@@ -20,7 +20,7 @@ namespace Auto.School.Mobile.ViewModels
             _authenticationService = authenticationService;
         }
 
-        
+
         private string userName = string.Empty;
 
         public string UserName
@@ -34,8 +34,11 @@ namespace Auto.School.Mobile.ViewModels
             {
                 if (!EmailValidator.Validate(value))
                 {
-                    IsError = true;
-                    ErrorMessage = AppErrorMessagesConstants.InvalidEmail;
+                    IsEmailError = true;
+                }
+                else
+                {
+                    IsEmailError = false;
                 }
 
                 userName = value;
@@ -46,15 +49,25 @@ namespace Auto.School.Mobile.ViewModels
         private string password = string.Empty;
 
         [ObservableProperty]
+        private bool isEmailError = false;
+
+        [ObservableProperty]
+        private string emailErrorMessage = AppErrorMessagesConstants.InvalidEmail;
+
+        [ObservableProperty]
         private bool isError = false;
 
         [ObservableProperty]
-        private string errorMessage = string.Empty;
+        private string errorMessage = "Default Error Message"; // string.Empty;
 
         [RelayCommand]
         public async Task Login()
         {
-            ValidateInput();
+            if (!ValidateInput())
+            {
+                return;
+            }
+
             var loginModel = new LoginModel { Email = UserName, Password = Password };
             var response = await _authenticationService.LoginAsync(loginModel);
 
@@ -94,7 +107,14 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToRegistration()
         {
-            await Shell.Current.Navigation.PushAsync(new RegistrationPage(new RegistrationViewModel()));
+            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}"); //new RegistrationPage(new RegistrationViewModel()));
+        }
+
+        [RelayCommand]
+        public void CloseErrorAlert()
+        {
+            IsError = false;
+            ErrorMessage = string.Empty;
         }
 
         private bool ValidateInput()
