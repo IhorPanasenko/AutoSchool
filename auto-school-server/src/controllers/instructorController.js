@@ -172,6 +172,18 @@ exports.updateInstructor = catchAsync(async (req, res, next) => {
     return next(new AppError('No instructor was found with such id', 404));
   }
 
+  if (req.file) {
+    const photoName =
+      updatedInstructor.photoURL === 'default-user.jpg'
+        ? 'instructor-' + randomImageName()
+        : updatedInstructor.photoURL;
+
+    await uploadPhotoToS3(s3, req.file, photoName);
+
+    updatedInstructor.photoURL = photoName;
+    await updatedInstructor.save();
+  }
+
   res.status(200).json({
     status: 'success',
     data: updatedInstructor,
