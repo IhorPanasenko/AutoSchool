@@ -1,6 +1,8 @@
-﻿using Auto.School.Mobile.Pages;
+﻿using Auto.School.Mobile.Views;
 using Auto.School.Mobile.ViewModels;
 using Microsoft.Extensions.Logging;
+using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Service.Services;
 
 namespace Auto.School.Mobile
 {
@@ -9,6 +11,7 @@ namespace Auto.School.Mobile
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+            
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -17,13 +20,19 @@ namespace Auto.School.Mobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<RegistrationPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
 
 
             builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<RegistrationViewModel>();
+
+            builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddTransient<ICityService, CityService>();   
 
 #if DEBUG
     		builder.Logging.AddDebug();

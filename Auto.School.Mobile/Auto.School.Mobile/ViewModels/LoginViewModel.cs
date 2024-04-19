@@ -1,47 +1,139 @@
-﻿using Auto.School.Mobile.Pages;
-using Auto.School.Mobile.Services;
+﻿using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
-using Microsoft.Maui.Controls;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Auto.School.Mobile.Models;
 using CommunityToolkit.Mvvm.Input;
 using Auto.School.Mobile.UserControl;
+using Auto.School.Mobile.Core.Models;
+using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Validators;
+using Auto.School.Mobile.Core.Constants;
 
 namespace Auto.School.Mobile.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        [ObservableProperty]
-        private string _userName = string.Empty;
+        private readonly IAuthenticationService _authenticationService;
+
+        public LoginViewModel(IAuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+        }
+
+
+        private string userName = string.Empty;
+
+        public string UserName
+        {
+            get
+            {
+                return userName;
+            }
+
+            set
+            {
+                if (!EmailValidator.Validate(value))
+                {
+                    IsEmailError = true;
+                }
+                else
+                {
+                    IsEmailError = false;
+                }
+
+                userName = value;
+            }
+        }
 
         [ObservableProperty]
-        private string _password = string.Empty;
+        private string password = string.Empty;
 
-        private readonly ILoginRepository _loginRepository = new LoginService();
+        [ObservableProperty]
+        private bool isEmailError = false;
+
+        [ObservableProperty]
+        private string emailErrorMessage = AppErrorMessagesConstants.InvalidEmail;
+
+        [ObservableProperty]
+        private bool isError = false;
+
+        [ObservableProperty]
+        private string errorMessage = "Default Error Message"; // string.Empty;
 
         [RelayCommand]
         public async Task Login()
         {
-            if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
+            if (!ValidateInput())
             {
-                var userInfo = await _loginRepository.Login(UserName, Password);
+                return;
+            }
 
-                if (Preferences.ContainsKey(nameof(App.UserInfo)))
+            var loginModel = new LoginModel { Email = UserName, Password = Password };
+            var response = await _authenticationService.LoginAsync(loginModel);
+
+            if (response == null)
+            {
+                IsError = true;
+                ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                return;
+            }
+
+            if (string.Compare(response.Status, "Failed", true) == 0)
+            {
+                IsError = true;
+                ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                return;
+            }
+
+            if (string.Compare(response.Status, "Success", true) == 0)
+            {
+                if (Preferences.ContainsKey("UserInfo"))
                 {
-                    Preferences.Remove(nameof(App.UserInfo));
+                    Preferences.Remove("UserInfo");
                 }
 
-                string userDetails= JsonConvert.SerializeObject(userInfo);
-                Preferences.Set(nameof(App.UserInfo), userDetails);
-                App.UserInfo=userInfo;
+                Preferences.Set("UserInfo", JsonConvert.SerializeObject(response.LoginResponseData));
+                App.UserInfo = response.LoginResponseData!.UserData;
 
-                AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
-
+                Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
                 await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                return;
             }
+
+            IsError = true;
+            ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+        }
+
+        [RelayCommand]
+        public async Task GoToRegistration()
+        {
+            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}"); //new RegistrationPage(new RegistrationViewModel()));
+        }
+
+        [RelayCommand]
+        public void CloseErrorAlert()
+        {
+            IsError = false;
+            ErrorMessage = string.Empty;
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrEmpty(UserName))
+            {
+                IsError = true;
+                ErrorMessage = "UserName is required";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                IsError = true;
+                ErrorMessage = "Password is required";
+                return false;
+            }
+
+            return true;
         }
     }
 }

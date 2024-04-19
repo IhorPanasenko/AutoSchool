@@ -1,4 +1,4 @@
-namespace Auto.School.Mobile.Pages;
+namespace Auto.School.Mobile.Views;
 
 public partial class AboutPage : ContentPage
 {

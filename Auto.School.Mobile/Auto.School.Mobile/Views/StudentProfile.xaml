@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.StudentProfile"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             Title="StudentProfile">
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="#F4F4D2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- User Photo Section -->
+            <StackLayout Grid.Row="0" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Image Source="{Binding UserProfilePhoto}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                <Button Text="{x:Static resx:AppResources.AddPhoto}" />
+            </StackLayout>
+
+            <!-- User Data Section -->
+            <StackLayout Grid.Row="1" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="{x:Static resx:AppResources.PersonalInfo}" FontAttributes="Bold" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resx:AppResources.FirstName}" FontAttributes="Bold" />
+                    <Label Text="{Binding UserName}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resx:AppResources.LastName}" FontAttributes="Bold" />
+                    <Label Text="{Binding UserSurname}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resx:AppResources.BirthdayDate}" FontAttributes="Bold" />
+                    <Label Text="{Binding UserDateOfBirth, StringFormat='{0:d}'}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resx:AppResources.UserProfile_Address}" FontAttributes="Bold" />
+                    <Label Text="{Binding UserLivingAddress}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{x:Static resx:AppResources.UserProfile_DrivingCategory}" FontAttributes="Bold" />
+                    <Label Text="{Binding DrivingCategory}" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Lessons Statistics Section -->
+            <StackLayout Grid.Row="2" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="{x:Static resx:AppResources.UserProfile_LessonsStatistic}" FontAttributes="Bold" />
+                <Label Text="Number of Hours/Lessons: " />
+                <!-- Bind to user's lessons statistics -->
+            </StackLayout>
+
+            <!-- Instructor Info Section -->
+            <StackLayout Grid.Row="3" Margin="20" Padding="10" BackgroundColor="#FFCC00">
+                <Label Text="{x:Static resx:AppResources.UserProfile_InstructiorInfo}" FontAttributes="Bold" />
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="{Binding InstructorPhoto}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="{Binding InstructorName}" />
+                        <Label Text="{Binding InstructorSurname}" />
+                        <Button Text="{x:Static resx:AppResources.GoToSchedule}" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
