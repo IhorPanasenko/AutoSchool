@@ -10,7 +10,11 @@ const router = express.Router();
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
 
-router.patch('/:instructorId', instructorController.updateInstructor);
+router.patch(
+  '/:instructorId',
+  upload.single('photo'),
+  instructorController.updateInstructor
+);
 
 router.post(
   '/',

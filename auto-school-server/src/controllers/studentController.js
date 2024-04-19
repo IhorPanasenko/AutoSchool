@@ -9,20 +9,27 @@ exports.updatePhoto = catchAsync(async (req, res, next) => {
   if (!req.file) {
     return next(new AppError('Please, upload photo file', 404));
   }
-  const photoName = 'student-' + randomImageName();
+
+  const student = await StudentModel.findOne({ userId: req.user._id }).select(
+    'photoURL'
+  );
+
+  const photoName =
+    student.photoURL === 'default-user.jpg'
+      ? 'student-' + randomImageName()
+      : student.photoURL;
 
   await uploadPhotoToS3(s3, req.file, photoName);
 
-  const updatedStudent = await StudentModel.findOneAndUpdate(
-    { userId: req.user._id },
-    { photoURL: photoName },
-    { new: true }
-  );
+  if (student.photoURL != photoName) {
+    student.photoURL = photoName;
+    await student.save();
+  }
 
   res.status(200).json({
     status: 'success',
     data: {
-      user: updatedStudent,
+      student,
     },
   });
 });
