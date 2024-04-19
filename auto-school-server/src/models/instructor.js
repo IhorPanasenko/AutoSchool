@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const CarModel = require('./car');
 const UserAccountModel = require('./userAccount');
+const s3 = require('../config/s3Bucket.js');
+const { deletePhotoFromS3 } = require('../helpers/s3Handlers');
 
 const instructorSchema = new mongoose.Schema({
   userId: {
@@ -64,6 +66,9 @@ instructorSchema.post('findOneAndDelete', async function (doc) {
     console.log('Deleting car and user account');
     await CarModel.findByIdAndDelete(doc.car);
     await UserAccountModel.findByIdAndDelete(doc.userId);
+
+    console.log("Deleting instructor's photo from S3");
+    await deletePhotoFromS3(s3, doc.photoURL);
   } catch (err) {
     console.log(err);
   }

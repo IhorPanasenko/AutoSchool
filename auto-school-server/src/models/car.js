@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const s3 = require('../config/s3Bucket.js');
+const { deletePhotoFromS3 } = require('../helpers/s3Handlers');
 
 const carSchema = new mongoose.Schema({
   model: {
@@ -53,6 +55,15 @@ carSchema.virtual('averageRating').get(function () {
 
 carSchema.virtual('totalRatings').get(function () {
   return this.ratings.length;
+});
+
+carSchema.post('findOneAndDelete', async function (doc) {
+  try {
+    console.log("Deleting car's photo from S3");
+    await deletePhotoFromS3(s3, doc.photoURL);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 const CarModel = mongoose.model('cars', carSchema);
