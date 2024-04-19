@@ -26,8 +26,7 @@ const carSchema = new mongoose.Schema({
   },
   photoURL: {
     type: String,
-    default:
-      'https://pictures.porsche.com/rtt/iris?COSY-EU-100-1711coMvsi60AAt5FwcmBEgA4qP8iBUDxPE3Cb9pNXABuN9dMGF4tl3U0%25z8rMHIspbWvanYb%255y%25oq%25vSTmjMXD4qAZeoNBPUSfUx4RmWBisGK7Zlp0KtYYF%25mVSW8uAVbsqYSIZ5yPewSQLCvNzxLE%25GXoq1S9yr6FObMFswRAyYib32yl3URN%25GcCW1TG87hXuci60y%25',
+    default: 'default-car.jpg',
   },
   ratings: [
     {

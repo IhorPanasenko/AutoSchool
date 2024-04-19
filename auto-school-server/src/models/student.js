@@ -34,7 +34,10 @@ const studentSchema = new mongoose.Schema({
     default: 'B',
   },
   // add later default photo
-  photoURL: String,
+  photoURL: {
+    type: String,
+    default: 'default-user.jpg',
+  },
   active: {
     type: Boolean,
     default: false,

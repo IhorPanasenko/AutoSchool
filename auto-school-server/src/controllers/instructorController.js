@@ -97,15 +97,19 @@ exports.createInstructor = async (req, res, next) => {
 
     // TODO: Send email with master password ?
     // Upload photos to s3 bucket
-    const carPhotoName = 'car-' + randomImageName();
     const instructorPhotoName = 'instructor-' + randomImageName();
+    if (req.files.instructorPhoto) {
+      await uploadPhotoToS3(
+        s3,
+        req.files.instructorPhoto[0],
+        instructorPhotoName
+      );
+    }
 
-    await uploadPhotoToS3(
-      s3,
-      req.files.instructorPhoto[0],
-      instructorPhotoName
-    );
-    await uploadPhotoToS3(s3, req.files.carPhoto[0], carPhotoName);
+    const carPhotoName = 'car-' + randomImageName();
+    if (req.files.carPhoto) {
+      await uploadPhotoToS3(s3, req.files.carPhoto[0], carPhotoName);
+    }
 
     const newCar = await CarModel.create(
       [
@@ -113,7 +117,7 @@ exports.createInstructor = async (req, res, next) => {
           model: req.body.model,
           year: req.body.year,
           transmission: req.body.transmission,
-          photoURL: carPhotoName,
+          photoURL: req.files.carPhoto && carPhotoName,
         },
       ],
       { session }
@@ -130,7 +134,7 @@ exports.createInstructor = async (req, res, next) => {
           vehicleCategory: req.body.vehicleCategory,
           workExperience: req.body.workExperience,
           maxNumOfStudents: req.body.maxNumOfStudents,
-          photoURL: instructorPhotoName,
+          photoURL: req.files.instructorPhoto && instructorPhotoName,
         },
       ],
       { session }
