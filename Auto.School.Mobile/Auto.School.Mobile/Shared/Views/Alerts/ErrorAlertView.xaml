@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Auto.School.Mobile.Shared.Alerts.ErrorAlertView">
-    <ContentView IsVisible="{Binding IsError}">
-        <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True" HeightRequest="50" >
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
-                <ImageButton
+             x:Class="Auto.School.Mobile.Shared.Alerts.ErrorAlertView"
+             x:Name="this"
+             IsVisible="{Binding IsError}">
+    <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True" HeightRequest="50" >
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
+            <ImageButton
                 Source="cross.png"
-                HeightRequest="50" WidthRequest="50" HorizontalOptions="CenterAndExpand"
-                Command="{Binding CloseErrorAlertCommand}"
+                HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"
+                Clicked="CloseButton_Clicked"
                 />
-                <Image Source="cross.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CloseErrorAlertCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
-        </Frame>
-    </ContentView>
+            <!--<Image Source="cross.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1"  Command="{Binding CloseButton_Clicked}" />
+                </Image.GestureRecognizers>
+            </Image>-->
+
+        </StackLayout>
+    </Frame>
 </ContentView>
