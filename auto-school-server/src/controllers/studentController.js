@@ -6,20 +6,23 @@ const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomImageName = require('../helpers/randomImageName.js');
 const UserAccountModel = require('../models/userAccount.js');
+const APIFeatures = require('../helpers/APIFeatures.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
-  const filterQueryObject = { ...req.query };
-  const excludedKeys = ['sort', 'page', 'limit'];
-  excludedKeys.forEach((el) => delete filterQueryObject[el]);
+  // const filterQueryObject = { ...req.query };
+  // const excludedKeys = ['sort', 'page', 'limit'];
+  // excludedKeys.forEach((el) => delete filterQueryObject[el]);
 
-  let studentsQuery = StudentModel.find(filterQueryObject);
+  let studentsQuery = new APIFeatures(StudentModel.find(), req.query)
+    .filter()
+    .paginate();
 
-  const page = req.query.page * 1 || 1;
-  const limit = req.query.limit * 1 || 10;
-  const skip = (page - 1) * limit;
-  studentsQuery = studentsQuery.skip(skip).limit(limit);
+  // const page = req.query.page * 1 || 1;
+  // const limit = req.query.limit * 1 || 10;
+  // const skip = (page - 1) * limit;
+  // studentsQuery = studentsQuery.skip(skip).limit(limit);
 
-  const students = await studentsQuery;
+  const students = await studentsQuery.query;
 
   for (const student of students) {
     student.photoURL = await getPhotoUrl(s3, student.photoURL);
