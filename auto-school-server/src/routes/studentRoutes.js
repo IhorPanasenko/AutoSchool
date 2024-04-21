@@ -5,6 +5,8 @@ const upload = require('../config/multerConfig.js');
 
 const router = express.Router();
 
+// for authorized user
+
 router.patch(
   '/updateMyPhoto',
   authenticateJWT,
@@ -12,6 +14,9 @@ router.patch(
   studentController.updatePhoto
 );
 
+// for admin
+
 router.get('/', studentController.getAllStudents);
+router.get('/:studentId', studentController.getStudent);
 
 module.exports = router;

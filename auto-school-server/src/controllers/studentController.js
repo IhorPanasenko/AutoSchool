@@ -19,6 +19,20 @@ exports.getAllStudents = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getStudent = catchAsync(async (req, res, next) => {
+  const student = await StudentModel.findById(req.params.studentId)
+    .populate('userId')
+    .populate('cityId')
+    .exec();
+
+  student.photoURL = await getPhotoUrl(s3, student.photoURL);
+
+  res.status(200).json({
+    status: 'success',
+    data: student,
+  });
+});
+
 exports.updatePhoto = catchAsync(async (req, res, next) => {
   if (!req.file) {
     return next(new AppError('Please, upload photo file', 404));
