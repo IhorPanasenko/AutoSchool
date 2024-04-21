@@ -172,6 +172,13 @@ exports.updateInstructor = catchAsync(async (req, res, next) => {
     return next(new AppError('No instructor was found with such id', 404));
   }
 
+  if (req.body.name || req.body.surname) {
+    await UserAccountModel.findByIdAndUpdate(updatedInstructor.userId, {
+      name: req.body.name,
+      surname: req.body.surname,
+    });
+  }
+
   if (req.file) {
     const photoName =
       updatedInstructor.photoURL === 'default-user.jpg'
