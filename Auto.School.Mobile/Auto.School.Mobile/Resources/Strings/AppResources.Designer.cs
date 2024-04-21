@@ -187,6 +187,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Driving category to learn.
+        /// </summary>
+        internal static string Registration_DrivingCaregoryLabel {
+            get {
+                return ResourceManager.GetString("Registration.DrivingCaregoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Registration_EmailLabel {
+            get {
+                return ResourceManager.GetString("Registration.EmailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your first name.
         /// </summary>
         internal static string Registration_EnterFirstName {
@@ -201,6 +219,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string Registration_EnterLastName {
             get {
                 return ResourceManager.GetString("Registration.EnterLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Registration_PasswordLabel {
+            get {
+                return ResourceManager.GetString("Registration.PasswordLabel", resourceCulture);
             }
         }
         

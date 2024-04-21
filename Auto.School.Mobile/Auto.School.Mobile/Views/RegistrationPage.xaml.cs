@@ -1,13 +1,12 @@
 using Auto.School.Mobile.ViewModels;
-
 namespace Auto.School.Mobile.Views;
 
 public partial class RegistrationPage : ContentPage
 {
     public RegistrationPage(RegistrationViewModel registrationViewModel)
 	{
-		InitializeComponent();
-		BindingContext = registrationViewModel;
+        BindingContext = registrationViewModel;
+        InitializeComponent();
     }
 
     protected override void OnAppearing()

@@ -18,9 +18,9 @@
                       />
 
     <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Home" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate views:HomePage}"/>
-        <ShellContent Title="Contact" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate views:ContactPage}"/>
-        <ShellContent Title="About" Icon="{x:Static models:IconRoutes.People}" ContentTemplate="{DataTemplate views:AboutPage}"/>
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent Title="Contact" ContentTemplate="{DataTemplate views:ContactPage}"/>
+        <ShellContent Title="About" ContentTemplate="{DataTemplate views:AboutPage}"/>
         <ShellContent Title="Registration" ContentTemplate="{DataTemplate views:RegistrationPage}"/>
         <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:StudentProfile}"/>
     </FlyoutItem>

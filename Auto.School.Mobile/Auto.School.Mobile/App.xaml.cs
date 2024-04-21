@@ -1,16 +1,14 @@
-﻿using Auto.School.Mobile.Models;
+﻿using Auto.School.Mobile.Core.Models;
 
 namespace Auto.School.Mobile
 {
     public partial class App : Application
     {
-        public static UserInfo UserInfo;
-        private const int width = 500;
-        private const int height = 800;
+        public static UserDataModel? UserInfo { get; set; }
+
         public App()
         {
             InitializeComponent();
-
             MainPage = new AppShell();
         }
 
