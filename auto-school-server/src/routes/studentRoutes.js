@@ -21,6 +21,8 @@ router.patch(
   studentController.updatePhoto
 );
 
+router.patch('/updateMe', authenticateJWT, studentController.updateMe);
+
 // for admin
 
 router.get('/', studentController.getAllStudents);

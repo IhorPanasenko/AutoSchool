@@ -1,9 +1,11 @@
+const mongoose = require('mongoose');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
 const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomImageName = require('../helpers/randomImageName.js');
+const UserAccountModel = require('../models/userAccount.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
   const students = await StudentModel.find();
@@ -28,8 +30,6 @@ exports.getStudent = catchAsync(async (req, res, next) => {
     .populate('cityId')
     .exec();
 
-  console.log(student);
-
   student.photoURL = await getPhotoUrl(s3, student.photoURL);
 
   res.status(200).json({
@@ -41,6 +41,59 @@ exports.getStudent = catchAsync(async (req, res, next) => {
 exports.getMe = (req, res, next) => {
   req.params.userId = req.user._id;
   next();
+};
+
+exports.updateMe = async (req, res, next) => {
+  if (req.body.password) {
+    return next(
+      new AppError(
+        'This route is not for password updates. Please use /updateMyPassword',
+        400
+      )
+    );
+  }
+
+  // filter req.body
+  const allowedFields = [
+    'name',
+    'surname',
+    'cityId',
+    'vehicleCategory',
+    'phone',
+    'dateOfBirth',
+  ];
+  Object.keys(req.body).forEach(
+    (key) => !allowedFields.includes(key) && delete req.body[key]
+  );
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    const updatedStudent = await StudentModel.findOneAndUpdate(
+      { userId: req.user._id },
+      req.body,
+      { new: true, runValidators: true, session }
+    );
+
+    const updatedUser = await UserAccountModel.findByIdAndUpdate(
+      updatedStudent.userId,
+      req.body,
+      { new: true, runValidators: true, session }
+    );
+
+    await session.commitTransaction();
+
+    res.status(200).json({
+      status: 'success',
+      data: { updatedStudent, updatedUser },
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    next(err);
+  } finally {
+    session.endSession();
+  }
 };
 
 exports.updatePhoto = catchAsync(async (req, res, next) => {
