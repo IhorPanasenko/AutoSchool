@@ -12,4 +12,6 @@ router.patch(
   studentController.updatePhoto
 );
 
+router.get('/', studentController.getAllStudents);
+
 module.exports = router;
