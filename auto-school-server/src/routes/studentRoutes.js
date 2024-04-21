@@ -7,6 +7,13 @@ const router = express.Router();
 
 // for authorized user
 
+router.get(
+  '/me',
+  authenticateJWT,
+  studentController.getMe,
+  studentController.getStudent
+);
+
 router.patch(
   '/updateMyPhoto',
   authenticateJWT,

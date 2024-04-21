@@ -20,10 +20,15 @@ exports.getAllStudents = catchAsync(async (req, res, next) => {
 });
 
 exports.getStudent = catchAsync(async (req, res, next) => {
-  const student = await StudentModel.findById(req.params.studentId)
+  const student = await StudentModel.findOne(
+    (req.params.studentId && { _id: req.params.studentId }) ||
+      (req.params.userId && { userId: req.params.userId })
+  )
     .populate('userId')
     .populate('cityId')
     .exec();
+
+  console.log(student);
 
   student.photoURL = await getPhotoUrl(s3, student.photoURL);
 
@@ -32,6 +37,11 @@ exports.getStudent = catchAsync(async (req, res, next) => {
     data: student,
   });
 });
+
+exports.getMe = (req, res, next) => {
+  req.params.userId = req.user._id;
+  next();
+};
 
 exports.updatePhoto = catchAsync(async (req, res, next) => {
   if (!req.file) {
