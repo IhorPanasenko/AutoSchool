@@ -8,7 +8,18 @@ const randomImageName = require('../helpers/randomImageName.js');
 const UserAccountModel = require('../models/userAccount.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
-  const students = await StudentModel.find();
+  const filterQueryObject = { ...req.query };
+  const excludedKeys = ['sort', 'page', 'limit'];
+  excludedKeys.forEach((el) => delete filterQueryObject[el]);
+
+  let studentsQuery = StudentModel.find(filterQueryObject);
+
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 10;
+  const skip = (page - 1) * limit;
+  studentsQuery = studentsQuery.skip(skip).limit(limit);
+
+  const students = await studentsQuery;
 
   for (const student of students) {
     student.photoURL = await getPhotoUrl(s3, student.photoURL);
