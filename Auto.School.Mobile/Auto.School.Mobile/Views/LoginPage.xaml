@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.LoginPage"
+             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
              Shell.NavBarIsVisible="False"
             >
@@ -34,23 +35,8 @@
                 <Label Grid.Row="1" TextColor="Black" Text="{x:Static resx:AppResources.Welcome}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
                 <Label Grid.Row="2" TextColor="Black" Text="{x:Static resx:AppResources.LoginGreetingText}" HorizontalOptions="Center" FontSize="Subtitle"/>
                 <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <ContentView IsVisible="{Binding IsError}">
-                        <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True" HeightRequest="50" >
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
-                                <ImageButton
-                                    Source="cross.png"
-                                    HeightRequest="50" WidthRequest="50" HorizontalOptions="CenterAndExpand"
-                                    Command="{Binding CloseErrorAlertCommand}"
-                                    />
-                                <Image Source="cross.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CloseErrorAlertCommand}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Frame>
-                    </ContentView>
+                    <Button Text="Button" Command="{Binding CloseErrorAlertCommand}"/>
+                    <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}"/>
                     <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                         <StackLayout Orientation="Horizontal" Background="White">
                             <Frame BackgroundColor="White" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
