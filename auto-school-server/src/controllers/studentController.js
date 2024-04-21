@@ -9,18 +9,9 @@ const UserAccountModel = require('../models/userAccount.js');
 const APIFeatures = require('../helpers/APIFeatures.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
-  // const filterQueryObject = { ...req.query };
-  // const excludedKeys = ['sort', 'page', 'limit'];
-  // excludedKeys.forEach((el) => delete filterQueryObject[el]);
-
   let studentsQuery = new APIFeatures(StudentModel.find(), req.query)
     .filter()
     .paginate();
-
-  // const page = req.query.page * 1 || 1;
-  // const limit = req.query.limit * 1 || 10;
-  // const skip = (page - 1) * limit;
-  // studentsQuery = studentsQuery.skip(skip).limit(limit);
 
   const students = await studentsQuery.query;
 

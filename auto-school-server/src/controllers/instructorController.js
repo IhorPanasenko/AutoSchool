@@ -9,25 +9,15 @@ const AppError = require('../helpers/appError.js');
 const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomImageName = require('../helpers/randomImageName.js');
+const APIFeatures = require('../helpers/APIFeatures.js');
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
-  const filterQueryObject = { ...req.query };
-  const excludedKeys = ['sort', 'page', 'limit'];
-  excludedKeys.forEach((el) => delete filterQueryObject[el]);
+  let instructorsQuery = new APIFeatures(InstructorModel.find(), req.query)
+    .filter()
+    .sort()
+    .paginate();
 
-  let instructorsQuery = InstructorModel.find(filterQueryObject);
-
-  if (req.query.sort) {
-    const sortBy = req.query.sort.split(',').join(' ');
-    instructorsQuery = instructorsQuery.sort(sortBy);
-  }
-
-  const page = req.query.page * 1 || 1;
-  const limit = req.query.limit * 1 || 10;
-  const skip = (page - 1) * limit;
-  instructorsQuery = instructorsQuery.skip(skip).limit(limit);
-
-  const instructors = await instructorsQuery
+  const instructors = await instructorsQuery.query
     .populate('car')
     .populate('city')
     .exec();
