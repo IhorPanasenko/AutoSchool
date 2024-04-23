@@ -10,7 +10,6 @@ const authRouter = require('./routes/authRoutes.js');
 const cityRouter = require('./routes/cityRoutes.js');
 const instructorRouter = require('./routes/instructorRoutes.js');
 const studentRoutes = require('./routes/studentRoutes.js');
-const sendEmail = require('./helpers/sendEmail.js');
 
 const app = express();
 const port = process.env.PORT || 3000;

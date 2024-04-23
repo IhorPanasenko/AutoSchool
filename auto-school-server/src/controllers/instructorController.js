@@ -10,6 +10,7 @@ const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomImageName = require('../helpers/randomImageName.js');
 const APIFeatures = require('../helpers/APIFeatures.js');
+const sendEmail = require('../helpers/sendEmail.js');
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
   let instructorsQuery = new APIFeatures(InstructorModel.find(), req.query)
@@ -85,7 +86,17 @@ exports.createInstructor = async (req, res, next) => {
       { session }
     );
 
-    // TODO: Send email with master password ?
+    await sendEmail(
+      {
+        toEmail: newUserLogin[0].email,
+        subject: 'Master password for autoshool platform',
+        text: `Hello ${newUserAccount[0].surname} ${newUserAccount[0].name}\n\n
+      Welcome as a new instructor at our auto school!\n\nThis is your master password: ${req.body.password}. 
+      Please, use it for the first time to log in into system and then change it.`,
+      },
+      next
+    );
+
     // Upload photos to s3 bucket
     const instructorPhotoName = 'instructor-' + randomImageName();
     if (req.files.instructorPhoto) {

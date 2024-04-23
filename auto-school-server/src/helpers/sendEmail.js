@@ -1,19 +1,24 @@
 const sgMail = require('@sendgrid/mail');
+const catchAsync = require('./catchAsync');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const msg = {
-  to: 'ohotnikova.sasha2002@gmail.com', // Change to your recipient
-  from: 'autoschooldev@gmail.com',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+const sendEmail = async (messageOptions, next) => {
+  console.log(messageOptions);
+  const msg = {
+    to: messageOptions.toEmail,
+    from: 'autoschooldev@gmail.com',
+    subject: messageOptions.subject,
+    text: messageOptions.text,
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+
+  console.log('Sending email...');
+  try {
+    await sgMail.send(msg);
+  } catch (error) {
+    next(error);
+  }
 };
 
-sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent');
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+module.exports = sendEmail;
