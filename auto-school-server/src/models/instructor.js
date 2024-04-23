@@ -67,7 +67,8 @@ instructorSchema.post('findOneAndDelete', async function (doc) {
     await UserAccountModel.findByIdAndDelete(doc.userId);
 
     console.log("Deleting instructor's photo from S3");
-    await deletePhotoFromS3(s3, doc.photoURL);
+    doc.photoURL !== 'default-user.jpg' &&
+      (await deletePhotoFromS3(s3, doc.photoURL));
   } catch (err) {
     console.log(err);
   }

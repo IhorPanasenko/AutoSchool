@@ -59,7 +59,8 @@ carSchema.virtual('totalRatings').get(function () {
 carSchema.post('findOneAndDelete', async function (doc) {
   try {
     console.log("Deleting car's photo from S3");
-    await deletePhotoFromS3(s3, doc.photoURL);
+    doc.photoURL !== 'default-car.jpg' &&
+      (await deletePhotoFromS3(s3, doc.photoURL));
   } catch (err) {
     console.log(err);
   }
