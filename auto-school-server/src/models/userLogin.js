@@ -22,7 +22,7 @@ const userLoginSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid email address!`,
     },
   },
-  emailValidationStatus: {
+  emailVerificationStatus: {
     type: String,
     enum: ['pending', 'validated', 'failed'],
     default: 'pending',

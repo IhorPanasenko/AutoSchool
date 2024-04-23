@@ -1,24 +1,40 @@
 const sgMail = require('@sendgrid/mail');
-const catchAsync = require('./catchAsync');
+const pug = require('pug');
+const htmlToText = require('html-to-text');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmail = async (messageOptions, next) => {
-  console.log(messageOptions);
-  const msg = {
-    to: messageOptions.toEmail,
-    from: 'autoschooldev@gmail.com',
-    subject: messageOptions.subject,
-    text: messageOptions.text,
-    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  };
+module.exports = class Email {
+  constructor(name, email, url = '#') {
+    this.to = email;
+    this.name = name;
+    this.from = 'autoschooldev@gmail.com';
+    this.url = url;
+  }
 
-  console.log('Sending email...');
-  try {
+  async send(html, subject) {
+    const msg = {
+      to: this.to,
+      from: this.from,
+      subject,
+      text: htmlToText.convert(html),
+      html,
+    };
+
+    console.log('Sending email...');
     await sgMail.send(msg);
-  } catch (error) {
-    next(error);
+  }
+
+  async sendInstructorPassword(password) {
+    const html = pug.renderFile(
+      `${__dirname}/../views/emails/instructorPassword.pug`,
+      {
+        name: this.name,
+        password,
+        url: this.url,
+      }
+    );
+
+    await this.send(html, 'Master password for autoshool platform');
   }
 };
-
-module.exports = sendEmail;
