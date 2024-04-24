@@ -37,4 +37,16 @@ module.exports = class Email {
 
     await this.send(html, 'Master password for autoshool platform');
   }
+
+  async verifyEmail() {
+    const html = pug.renderFile(
+      `${__dirname}/../views/emails/verifyEmail.pug`,
+      {
+        name: this.name,
+        url: this.url,
+      }
+    );
+
+    await this.send(html, 'Verify Your Email Address');
+  }
 };

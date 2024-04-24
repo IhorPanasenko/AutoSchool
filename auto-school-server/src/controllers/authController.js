@@ -52,8 +52,19 @@ const sendVerificationEmailToken = async (req, userLogin, name) => {
   const url = `${req.protocol}://${req.get('host')}/api/auth/verify/user/${
     userLogin.userId
   }?token=${token}`;
-  console.log(url);
-  // new Email(name, userLogin.email, url);
+
+  try {
+    await new Email(name, userLogin.email, url).verifyEmail();
+  } catch (err) {
+    userLogin.confirmationToken = undefined;
+    userLogin.confirmationTokenExpires = undefined;
+    await userLogin.save();
+
+    throw new AppError(
+      'There was an error sending the verification email. Try again later!',
+      500
+    );
+  }
 };
 
 exports.signup = async (req, res, next) => {
