@@ -4,7 +4,7 @@ const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
 const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
-const randomImageName = require('../helpers/randomImageName.js');
+const randomString = require('../helpers/randomString.js');
 const UserAccountModel = require('../models/userAccount.js');
 const APIFeatures = require('../helpers/APIFeatures.js');
 
@@ -112,7 +112,7 @@ exports.updatePhoto = catchAsync(async (req, res, next) => {
 
   const photoName =
     student.photoURL === 'default-user.jpg'
-      ? 'student-' + randomImageName()
+      ? 'student-' + randomString()
       : student.photoURL;
 
   await uploadPhotoToS3(s3, req.file, photoName);
