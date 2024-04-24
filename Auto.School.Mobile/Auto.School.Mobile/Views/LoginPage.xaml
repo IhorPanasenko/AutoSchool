@@ -35,8 +35,7 @@
                 <Label Grid.Row="1" TextColor="Black" Text="{x:Static resx:AppResources.Welcome}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
                 <Label Grid.Row="2" TextColor="Black" Text="{x:Static resx:AppResources.LoginGreetingText}" HorizontalOptions="Center" FontSize="Subtitle"/>
                 <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Button Text="Button" Command="{Binding CloseErrorAlertCommand}"/>
-                    <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}"/>
+                    <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}" CloseAction="{Binding CloseAction}"/>
                     <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                         <StackLayout Orientation="Horizontal" Background="White">
                             <Frame BackgroundColor="White" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
