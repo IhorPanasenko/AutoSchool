@@ -38,17 +38,14 @@ const signSaveTokens = (res, userId, role) => {
 };
 
 const sendVerificationEmailToken = async (req, userLogin, name) => {
-  // Create token
   const token = randomString();
   const tokenLifespanMinutes = 10;
   const tokenExpires = new Date(Date.now() + tokenLifespanMinutes * 60 * 1000);
 
-  // Save token to database
   userLogin.confirmationToken = token;
   userLogin.confirmationTokenExpires = tokenExpires;
   await userLogin.save();
 
-  // Send email with url with token
   const url = `${req.protocol}://${req.get('host')}/api/auth/verify/users/${
     userLogin.userId
   }?token=${token}`;
@@ -294,14 +291,10 @@ const updateVerification = async (userLoginData, status) => {
 };
 
 exports.resendVerificationEmail = catchAsync(async (req, res, next) => {
-  // Logic to resend verification email
-  // Call your sendVerificationEmailToken function here
   const userLoginData = await userLogin.findOne({ userId: req.user._id });
   await sendVerificationEmailToken(req, userLoginData, req.user.name);
 
-  res
-    .status(200)
-    .json({
-      message: 'Verification email was resend. Please, check your email',
-    });
+  res.status(200).json({
+    message: 'Verification email was resend. Please, check your email',
+  });
 });
