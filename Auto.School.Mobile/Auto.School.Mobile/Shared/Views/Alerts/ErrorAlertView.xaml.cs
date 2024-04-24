@@ -35,22 +35,21 @@ public partial class ErrorAlertView : ContentView
 		set => SetValue(ErrorMessageProperty, value);
 	}
 
-    //public static readonly BindableProperty CloseActionProperty =
-    //        BindableProperty.Create(
-    //            nameof(CloseAction),
-    //            typeof(Action),
-    //            typeof(ErrorAlertView),
-    //            null);
+    public static readonly BindableProperty CloseActionProperty =
+            BindableProperty.Create(
+                nameof(CloseAction),
+                typeof(Action),
+                typeof(ErrorAlertView),
+                null);
 
-    //public Action CloseAction
-    //{
-    //    get => (Action)GetValue(CloseActionProperty);
-    //    set => SetValue(CloseActionProperty, value);
-    //}
+    public Action CloseAction
+    {
+        get => (Action)GetValue(CloseActionProperty);
+        set => SetValue(CloseActionProperty, value);
+    }
 
     private void CloseButton_Clicked(object sender, EventArgs e)
     {
-        IsError = false;
-        ErrorMessage = string.Empty;
+        CloseAction?.Invoke();
     }
 }
