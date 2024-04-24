@@ -286,9 +286,22 @@ exports.verifyEmail = catchAsync(async (req, res, next) => {
     .json({ message: 'Your email address was verified successfully' });
 });
 
-async function updateVerification(userLoginData, status) {
+const updateVerification = async (userLoginData, status) => {
   userLoginData.emailVerificationStatus = status;
   userLoginData.confirmationToken = undefined;
   userLoginData.confirmationTokenExpires = undefined;
   await userLoginData.save();
-}
+};
+
+exports.resendVerificationEmail = catchAsync(async (req, res, next) => {
+  // Logic to resend verification email
+  // Call your sendVerificationEmailToken function here
+  const userLoginData = await userLogin.findOne({ userId: req.user._id });
+  await sendVerificationEmailToken(req, userLoginData, req.user.name);
+
+  res
+    .status(200)
+    .json({
+      message: 'Verification email was resend. Please, check your email',
+    });
+});
