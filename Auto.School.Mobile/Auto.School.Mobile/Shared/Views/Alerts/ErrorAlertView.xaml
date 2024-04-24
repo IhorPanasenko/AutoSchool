@@ -12,12 +12,6 @@
                 HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"
                 Clicked="CloseButton_Clicked"
                 />
-            <!--<Image Source="cross.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1"  Command="{Binding CloseButton_Clicked}" />
-                </Image.GestureRecognizers>
-            </Image>-->
-
         </StackLayout>
     </Frame>
 </ContentView>
