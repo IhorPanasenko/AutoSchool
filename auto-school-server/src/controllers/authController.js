@@ -5,6 +5,8 @@ const userAccount = require('../models/userAccount.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
+const randomString = require('../helpers/randomString.js');
+const Email = require('../helpers/sendEmail.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -33,6 +35,25 @@ const signSaveTokens = (res, userId, role) => {
   });
 
   return { accessToken, refreshToken, expire: accessTokenCookieExpireDate };
+};
+
+const sendVerificationEmailToken = async (req, userLogin, name) => {
+  // Create token
+  const token = randomString();
+  const tokenLifespanMinutes = 10;
+  const tokenExpires = new Date(Date.now() + tokenLifespanMinutes * 60 * 1000);
+
+  // Save token to database
+  userLogin.confirmationToken = token;
+  userLogin.confirmationTokenExpires = tokenExpires;
+  await userLogin.save();
+
+  // Send email with url with token
+  const url = `${req.protocol}://${req.get('host')}/api/auth/verify/user/${
+    userLogin.userId
+  }?token=${token}`;
+  console.log(url);
+  // new Email(name, userLogin.email, url);
 };
 
 exports.signup = async (req, res, next) => {
@@ -82,7 +103,12 @@ exports.signup = async (req, res, next) => {
       { session }
     );
 
-    // TODO: Email validation
+    // TODO: Email verification
+    await sendVerificationEmailToken(
+      req,
+      newUserLogin[0],
+      newUserAccount[0].name
+    );
 
     await session.commitTransaction();
 
