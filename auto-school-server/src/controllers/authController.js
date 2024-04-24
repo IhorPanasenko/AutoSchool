@@ -49,7 +49,7 @@ const sendVerificationEmailToken = async (req, userLogin, name) => {
   await userLogin.save();
 
   // Send email with url with token
-  const url = `${req.protocol}://${req.get('host')}/api/auth/verify/user/${
+  const url = `${req.protocol}://${req.get('host')}/api/auth/verify/users/${
     userLogin.userId
   }?token=${token}`;
 
@@ -114,7 +114,6 @@ exports.signup = async (req, res, next) => {
       { session }
     );
 
-    // TODO: Email verification
     await sendVerificationEmailToken(
       req,
       newUserLogin[0],
@@ -260,3 +259,36 @@ exports.logout = catchAsync(async (req, res, next) => {
 
   res.sendStatus(204);
 });
+
+exports.verifyEmail = catchAsync(async (req, res, next) => {
+  const userLoginData = await userLogin.findOne({ userId: req.params.userId });
+
+  if (!userLoginData)
+    return next(new AppError('There is no user with that id', 400));
+
+  if (!req.query.token)
+    return next(new AppError('Please, provide confirmation token', 400));
+
+  if (new Date(userLoginData.confirmationTokenExpires) < new Date()) {
+    await updateVerification(userLoginData, 'failed');
+    return next(new AppError('The token has expired', 400));
+  }
+
+  if (userLoginData.confirmationToken !== req.query.token) {
+    await updateVerification(userLoginData, 'failed');
+    return next(new AppError('The token is invalid', 400));
+  }
+
+  await updateVerification(userLoginData, 'verified');
+
+  res
+    .status(200)
+    .json({ message: 'Your email address was verified successfully' });
+});
+
+async function updateVerification(userLoginData, status) {
+  userLoginData.emailVerificationStatus = status;
+  userLoginData.confirmationToken = undefined;
+  userLoginData.confirmationTokenExpires = undefined;
+  await userLoginData.save();
+}

@@ -24,7 +24,7 @@ const userLoginSchema = new mongoose.Schema({
   },
   emailVerificationStatus: {
     type: String,
-    enum: ['pending', 'validated', 'failed'],
+    enum: ['pending', 'verified', 'failed'],
     default: 'pending',
   },
   confirmationToken: String,

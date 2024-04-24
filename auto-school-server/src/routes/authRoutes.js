@@ -14,6 +14,8 @@ router.post('/login', authController.login);
 
 router.post('/token', authController.getAccessToken);
 
+router.get('/verify/users/:userId', authController.verifyEmail);
+
 router.delete('/logout', authenticateJWT, authController.logout);
 
 module.exports = router;
