@@ -79,7 +79,7 @@
 	  <MauiXaml Update="Views\AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\AllInstructors.xaml">
+	  <MauiXaml Update="Views\AllInstructorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ContactPage.xaml">
@@ -111,6 +111,9 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AllInstructorsPage.xaml.cs">
+	    <DependentUpon>AllInstructorsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
