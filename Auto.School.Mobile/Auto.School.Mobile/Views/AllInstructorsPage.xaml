@@ -1,9 +1,37 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.AllInstructorsPage"
-             Title="AllInstructors">
-    <VerticalStackLayout>
-        <Label Text="{x:Static resx:AppResources.AllInstructors}" FontSize="Caption" FontAttributes="Bold"/>
-    </VerticalStackLayout>
+             Title="AllInstructors"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             Shell.NavBarIsVisible="True"
+             xmlns:viewModels="clr-namespace:Auto.School.Mobile.ViewModels"
+             xmlns:views="clr-namespace:Auto.School.Mobile.Views">
+    <!-- Layout -->
+    <StackLayout>
+        <Label Text="All our instructors" FontSize="Caption" FontAttributes="Bold"/>
+
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+
+        <CollectionView ItemsSource="{Binding Instructors}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+
+                        <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Surname}"/>
+                        <Label Text="{Binding VehicleCategory}"/>
+                        <Label Text="{Binding WorkExperience, StringFormat='Experience: {0} years'}"/>
+                        <Label Text="{Binding AverageRaiting, StringFormat='Average Rating: {0:F1}'}"/>
+                        <Label Text="{Binding Car.Model}"/>
+                        <Label Text="{Binding Car.Transmission}"/>
+                        <Label Text="{Binding Car.Year, StringFormat='Year: {0}'}"/>
+
+                        <Button Text="See Details" Command="{Binding Source={x:Reference AllInstructorsViewModel}, Path=SeeDetailsCommand}" CommandParameter="{Binding .}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>
+
+    
