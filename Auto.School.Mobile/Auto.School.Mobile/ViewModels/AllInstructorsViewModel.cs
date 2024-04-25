@@ -23,10 +23,12 @@ namespace Auto.School.Mobile.ViewModels
             {
                 ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
                 IsError = true;
+                IsLoading = false;
                 return;
             }
 
             Instructors = response.Instructors;
+            IsLoading = false;
         }
 
         [ObservableProperty]
@@ -34,6 +36,9 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private bool isError = false;
+
+        [ObservableProperty]
+        private bool isLoading = true;
 
         [ObservableProperty]
         List<InstructorModel> instructors;
