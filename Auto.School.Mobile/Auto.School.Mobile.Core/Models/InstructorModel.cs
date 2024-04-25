@@ -40,7 +40,6 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("photoUrl")]
         public string? PhotoUrl {  get; set; }
 
-
-
+        //TODO Add Raiting array
     }
 }
