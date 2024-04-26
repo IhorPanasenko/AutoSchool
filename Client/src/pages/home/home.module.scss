@@ -1,0 +1,60 @@
+@import "../../styles/index.scss";
+
+// .homeContainer {
+//   margin-top: 50px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 30px;
+// }
+
+// .homeTitle {
+//   width: 1024px;
+//   font-size: 20px;
+// }
+// .navbar {
+//   position: fixed;
+//   z-index: 1000;
+// }
+.wrapper {
+  margin-top: 130px;
+  @include flex(space-around, center);
+}
+.back_container {
+  width: 50%; /* Ширина контейнера */
+  height: 570px; /* Высота контейнера */
+  overflow: hidden;
+}
+.car_back {
+  // width: 100%;
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  width: 100%; /* 100% ширина изображения */
+  height: 100%; /* 100% высота изображения */
+  object-fit: cover;
+  // z-index: 0;
+}
+.main_text {
+  // padding-left: 50px;
+  @include fontSize("Open Sans", 600, $dark-blue, 50px, 59px);
+  margin-bottom: 35px;
+}
+.regular_text {
+  @include fontSize("Roboto", 500, rgb(252, 210, 4), 29px, 29px);
+  margin-bottom: 25px;
+}
+.btn_register {
+  @include fontSize("Roboto", 700, $white, 25px, 29px);
+  // margin-left: 20px;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #003580;
+}
+.btn_register:hover {
+  @include fontSize("Roboto", 700, $dark-blue, 25px, 29px);
+
+  background-color: $yellow;
+}
