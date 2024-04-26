@@ -21,5 +21,10 @@ namespace Auto.School.Mobile.Core.Models
 
         //TODO: Add Ratings
 
+        public override string ToString()
+        {
+            return $"{Model}, {Year}";
+        }
+
     }
 }
