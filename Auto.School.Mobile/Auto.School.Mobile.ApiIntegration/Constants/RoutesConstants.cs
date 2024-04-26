@@ -7,5 +7,6 @@
         public const string GetAllUsers = "users";
         public const string GetAllCities = "cities";
         public const string Register = "auth/signup";
+        public const string GetAllInstructors = "instructors";
     }
 }

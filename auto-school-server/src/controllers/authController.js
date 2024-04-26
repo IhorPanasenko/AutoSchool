@@ -5,6 +5,8 @@ const userAccount = require('../models/userAccount.js');
 const StudentModel = require('../models/student.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
+const randomString = require('../helpers/randomString.js');
+const Email = require('../helpers/sendEmail.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -33,6 +35,31 @@ const signSaveTokens = (res, userId, role) => {
   });
 
   return { accessToken, refreshToken, expire: accessTokenCookieExpireDate };
+};
+
+const sendVerificationEmailToken = async (req, userLogin, name) => {
+  const token = randomString();
+  const tokenLifespanMinutes = 10;
+  const tokenExpires = new Date(Date.now() + tokenLifespanMinutes * 60 * 1000);
+
+  userLogin.confirmationToken = token;
+  userLogin.confirmationTokenExpires = tokenExpires;
+  await userLogin.save();
+
+  const url = `${process.env.SERVER_BASE_URL}/auth/verify/users/${userLogin.userId}?token=${token}`;
+
+  try {
+    await new Email(name, userLogin.email, url).verifyEmail();
+  } catch (err) {
+    userLogin.confirmationToken = undefined;
+    userLogin.confirmationTokenExpires = undefined;
+    await userLogin.save();
+
+    throw new AppError(
+      'There was an error sending the verification email. Try again later!',
+      500
+    );
+  }
 };
 
 exports.signup = async (req, res, next) => {
@@ -82,7 +109,11 @@ exports.signup = async (req, res, next) => {
       { session }
     );
 
-    // TODO: Email validation
+    await sendVerificationEmailToken(
+      req,
+      newUserLogin[0],
+      newUserAccount[0].name
+    );
 
     await session.commitTransaction();
 
@@ -222,4 +253,46 @@ exports.logout = catchAsync(async (req, res, next) => {
   userLoginData.save();
 
   res.sendStatus(204);
+});
+
+exports.verifyEmail = catchAsync(async (req, res, next) => {
+  const userLoginData = await userLogin.findOne({ userId: req.params.userId });
+
+  if (!userLoginData)
+    return next(new AppError('There is no user with that id', 400));
+
+  if (!req.query.token)
+    return next(new AppError('Please, provide confirmation token', 400));
+
+  if (new Date(userLoginData.confirmationTokenExpires) < new Date()) {
+    await updateVerification(userLoginData, 'failed');
+    return next(new AppError('The token has expired', 400));
+  }
+
+  if (userLoginData.confirmationToken !== req.query.token) {
+    await updateVerification(userLoginData, 'failed');
+    return next(new AppError('The token is invalid', 400));
+  }
+
+  await updateVerification(userLoginData, 'verified');
+
+  res
+    .status(200)
+    .json({ message: 'Your email address was verified successfully' });
+});
+
+const updateVerification = async (userLoginData, status) => {
+  userLoginData.emailVerificationStatus = status;
+  userLoginData.confirmationToken = undefined;
+  userLoginData.confirmationTokenExpires = undefined;
+  await userLoginData.save();
+};
+
+exports.resendVerificationEmail = catchAsync(async (req, res, next) => {
+  const userLoginData = await userLogin.findOne({ userId: req.user._id });
+  await sendVerificationEmailToken(req, userLoginData, req.user.name);
+
+  res.status(200).json({
+    message: 'Verification email was resend. Please, check your email',
+  });
 });

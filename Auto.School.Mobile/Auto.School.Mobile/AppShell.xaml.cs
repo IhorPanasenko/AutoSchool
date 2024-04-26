@@ -12,6 +12,7 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
             Routing.RegisterRoute(nameof(StudentProfile), typeof(StudentProfile));
+            Routing.RegisterRoute(nameof(AllInstructorsPage), typeof(AllInstructorsPage));
         }
     }
 }

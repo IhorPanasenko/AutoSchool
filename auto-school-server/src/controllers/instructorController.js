@@ -8,26 +8,17 @@ const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
 const s3 = require('../config/s3Bucket.js');
 const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
-const randomImageName = require('../helpers/randomImageName.js');
+const randomString = require('../helpers/randomString.js');
+const APIFeatures = require('../helpers/APIFeatures.js');
+const Email = require('../helpers/sendEmail.js');
 
 exports.getAllInstructors = catchAsync(async (req, res, next) => {
-  const filterQueryObject = { ...req.query };
-  const excludedKeys = ['sort', 'page', 'limit'];
-  excludedKeys.forEach((el) => delete filterQueryObject[el]);
+  let instructorsQuery = new APIFeatures(InstructorModel.find(), req.query)
+    .filter()
+    .sort()
+    .paginate();
 
-  let instructorsQuery = InstructorModel.find(filterQueryObject);
-
-  if (req.query.sort) {
-    const sortBy = req.query.sort.split(',').join(' ');
-    instructorsQuery = instructorsQuery.sort(sortBy);
-  }
-
-  const page = req.query.page * 1 || 1;
-  const limit = req.query.limit * 1 || 10;
-  const skip = (page - 1) * limit;
-  instructorsQuery = instructorsQuery.skip(skip).limit(limit);
-
-  const instructors = await instructorsQuery
+  const instructors = await instructorsQuery.query
     .populate('car')
     .populate('city')
     .exec();
@@ -95,9 +86,13 @@ exports.createInstructor = async (req, res, next) => {
       { session }
     );
 
-    // TODO: Send email with master password ?
+    await new Email(
+      newUserAccount[0].name,
+      newUserLogin[0].email
+    ).sendInstructorPassword(req.body.password);
+
     // Upload photos to s3 bucket
-    const instructorPhotoName = 'instructor-' + randomImageName();
+    const instructorPhotoName = 'instructor-' + randomString();
     if (req.files.instructorPhoto) {
       await uploadPhotoToS3(
         s3,
@@ -106,7 +101,7 @@ exports.createInstructor = async (req, res, next) => {
       );
     }
 
-    const carPhotoName = 'car-' + randomImageName();
+    const carPhotoName = 'car-' + randomString();
     if (req.files.carPhoto) {
       await uploadPhotoToS3(s3, req.files.carPhoto[0], carPhotoName);
     }
@@ -172,10 +167,17 @@ exports.updateInstructor = catchAsync(async (req, res, next) => {
     return next(new AppError('No instructor was found with such id', 404));
   }
 
+  if (req.body.name || req.body.surname) {
+    await UserAccountModel.findByIdAndUpdate(updatedInstructor.userId, {
+      name: req.body.name,
+      surname: req.body.surname,
+    });
+  }
+
   if (req.file) {
     const photoName =
       updatedInstructor.photoURL === 'default-user.jpg'
-        ? 'instructor-' + randomImageName()
+        ? 'instructor-' + randomString()
         : updatedInstructor.photoURL;
 
     await uploadPhotoToS3(s3, req.file, photoName);

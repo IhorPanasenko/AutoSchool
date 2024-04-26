@@ -1,5 +1,4 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests;
-using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.City.GetAllCities;
 using Auto.School.Mobile.Service.Interfaces;
 

@@ -8,6 +8,14 @@ const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 
 const router = express.Router();
 
+router.get('/verify/users/:userId', authController.verifyEmail);
+
+router.patch(
+  '/verify/resend',
+  authenticateJWT,
+  authController.resendVerificationEmail
+);
+
 router.post('/signup', validateSchema(signupSchema), authController.signup);
 
 router.post('/login', authController.login);

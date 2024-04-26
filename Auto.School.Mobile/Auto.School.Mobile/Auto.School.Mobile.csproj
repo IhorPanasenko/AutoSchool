@@ -73,7 +73,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Shared\Views\Alerts\ErrorAlertView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AllInstructorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ContactPage.xaml">
@@ -85,7 +91,7 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Shared\UserControl\FlyoutHeaderControl.xaml">
+	  <MauiXaml Update="Shared\Views\UserControl\FlyoutHeaderControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\RegistrationPage.xaml">
@@ -105,6 +111,9 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AllInstructorsPage.xaml.cs">
+	    <DependentUpon>AllInstructorsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

@@ -17,6 +17,7 @@ namespace Auto.School.Mobile.ViewModels
 
         public LoginViewModel(IAuthenticationService authenticationService)
         {
+            CloseAction = CloseActionMethod;
             _authenticationService = authenticationService;
         }
 
@@ -58,7 +59,10 @@ namespace Auto.School.Mobile.ViewModels
         private bool isError = false;
 
         [ObservableProperty]
-        private string errorMessage = "Default Error Message"; // string.Empty;
+        private string errorMessage = string.Empty;
+
+        [ObservableProperty]
+        private bool isPasswordVisible = false;
 
         [RelayCommand]
         public async Task Login()
@@ -78,7 +82,7 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
-            if (string.Compare(response.Status, "Failed", true) == 0)
+            if (string.Compare(response.Status, "Fail", true) == 0)
             {
                 IsError = true;
                 ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
@@ -107,15 +111,16 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToRegistration()
         {
-            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}"); //new RegistrationPage(new RegistrationViewModel()));
+            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}");
         }
 
-        [RelayCommand]
-        public void CloseErrorAlert()
+        public void CloseActionMethod()
         {
             IsError = false;
             ErrorMessage = string.Empty;
         }
+
+        public Action CloseAction { get; set; }
 
         private bool ValidateInput()
         {

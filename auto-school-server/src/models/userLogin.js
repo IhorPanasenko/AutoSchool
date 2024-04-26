@@ -17,14 +17,14 @@ const userLoginSchema = new mongoose.Schema({
     validate: {
       validator: function (v) {
         // Regular expression for email validation
-        return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})$/.test(v);
+        return /^([\w-\.]+(\+\w+)?@([\w-]+\.)+[\w-]{2,4})$/.test(v);
       },
       message: (props) => `${props.value} is not a valid email address!`,
     },
   },
-  emailValidationStatus: {
+  emailVerificationStatus: {
     type: String,
-    enum: ['pending', 'validated', 'failed'],
+    enum: ['pending', 'verified', 'failed'],
     default: 'pending',
   },
   confirmationToken: String,
