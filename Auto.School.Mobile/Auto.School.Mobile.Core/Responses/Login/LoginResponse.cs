@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Auto.School.Mobile.Core.Responses.Base;
+using Newtonsoft.Json;
 
 namespace Auto.School.Mobile.Core.Responses.Login
 {
