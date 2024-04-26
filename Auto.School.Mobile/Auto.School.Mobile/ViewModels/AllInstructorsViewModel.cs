@@ -41,6 +41,6 @@ namespace Auto.School.Mobile.ViewModels
         private bool isLoading = true;
 
         [ObservableProperty]
-        List<InstructorModel> instructors;
+        List<InstructorModel> instructors = [];
     }
 }
