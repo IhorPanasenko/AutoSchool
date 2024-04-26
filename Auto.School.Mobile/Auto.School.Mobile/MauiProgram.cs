@@ -27,15 +27,18 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<RegistrationPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
-            builder.Services.AddSingleton<ErrorAlertView>();
+            builder.Services.AddSingleton<AllInstructorsPage>();
 
+            builder.Services.AddSingleton<ErrorAlertView>();
 
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<RegistrationViewModel>();
-            builder.Services.AddSingleton<ErrorAlertView>();
+            builder.Services.AddSingleton<HomeViewModel>();
+            builder.Services.AddSingleton<AllInstructorsViewModel>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();   
+            builder.Services.AddTransient<IInstructorService, InstructorService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

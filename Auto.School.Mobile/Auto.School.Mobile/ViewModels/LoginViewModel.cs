@@ -61,6 +61,9 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private string errorMessage = string.Empty;
 
+        [ObservableProperty]
+        private bool isPasswordVisible = false;
+
         [RelayCommand]
         public async Task Login()
         {
@@ -79,7 +82,7 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
-            if (string.Compare(response.Status, "Failed", true) == 0)
+            if (string.Compare(response.Status, "Fail", true) == 0)
             {
                 IsError = true;
                 ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;

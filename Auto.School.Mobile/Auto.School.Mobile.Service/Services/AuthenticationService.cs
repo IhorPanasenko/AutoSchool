@@ -11,26 +11,12 @@ namespace Auto.School.Mobile.Service.Services
         public async Task<LoginResponse> LoginAsync(LoginModel loginModel)
         {
             var response = await AuthenticationRequests.Login(loginModel);
-
-            if (response.LoginResponseData is null)
-            {
-                response.Status = "Failed";
-                response.Message = "Login response was succeded. But no info about user was provided.\nContact developer team";
-            }
-
             return response;
         }
 
         public async Task<RegistrationResponse> RegisterAsync(RegistrationModel registrationModel)
         {
             var response = await AuthenticationRequests.Register(registrationModel);
-
-            //if (response.LoginResponseData is null)
-            //{
-            //    response.Status = "Failed";
-            //    response.Message = "Login response was succeded. But no info about user was provided.\nContact developer team";
-            //}
-
             return response;
         }
     }

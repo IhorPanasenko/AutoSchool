@@ -4,12 +4,12 @@
              x:Class="Auto.School.Mobile.Shared.Alerts.ErrorAlertView"
              x:Name="this"
              IsVisible="{Binding IsError}">
-    <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True" HeightRequest="50" >
+    <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True">
         <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
+            <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
             <ImageButton
                 Source="cross.png"
-                HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"
+                HeightRequest="20" WidthRequest="20" HorizontalOptions="End"
                 Clicked="CloseButton_Clicked"
                 />
         </StackLayout>
