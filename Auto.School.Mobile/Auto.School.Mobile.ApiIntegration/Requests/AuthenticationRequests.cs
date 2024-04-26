@@ -12,9 +12,12 @@ namespace Auto.School.Mobile.ApiIntegration.Requests
         {
             var result = await PostRequest.ExecuteAsync<LoginModel, LoginResponse>(RoutesConstants.Login, loginModel);
 
-            if (result.Status is null || result.LoginResponseData is null)
+            if (result is null)
             {
-                result.Status = "failed";
+                result = new LoginResponse() { 
+                Message = "",
+                Status = "Fail",
+                };
             }
 
             return result;
