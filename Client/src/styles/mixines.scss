@@ -1,0 +1,45 @@
+@mixin fontSize($fontfamily, $fontweight, $color, $fontsize, $lineheight) {
+  font-family: $fontfamily;
+  font-style: normal;
+  font-weight: $fontweight;
+  font-size: $fontsize;
+  line-height: $lineheight;
+  color: $color;
+  text-decoration: none;
+}
+
+@mixin flex($justify: flex-start, $align: flex-start, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin fill($color) {
+  svg {
+    fill: $color;
+  }
+  g {
+    fill: $color;
+  }
+  path {
+    fill: $color;
+  }
+}
+
+@mixin stroke($color) {
+  svg {
+    stroke: $color;
+  }
+  g {
+    stroke: $color;
+  }
+  path {
+    stroke: $color;
+  }
+}
