@@ -61,8 +61,46 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private string errorMessage = string.Empty;
 
-        [ObservableProperty]
-        private bool isPasswordVisible = false;
+        private bool isPassword = true;
+
+        public bool IsPassword
+        {
+            get
+            {
+                return isPassword;
+            }
+
+            set
+            {
+                isPassword = value;
+                PasswordVisibleImageSource = isPassword ? "closed_eye.png" : "open_eye.png";
+                OnPropertyChanged(nameof(IsPassword));
+            }
+        }
+
+        private string passwordVisibleImageSource = "closed_eye.png";
+
+        public string PasswordVisibleImageSource
+        {
+            get
+            {
+               return passwordVisibleImageSource;
+            }
+
+            set {
+                if (passwordVisibleImageSource != value)
+                {
+                    passwordVisibleImageSource = value;
+                    OnPropertyChanged(nameof(PasswordVisibleImageSource));
+                }
+            }
+        }
+
+        [RelayCommand]
+        public void ShowPassword()
+        {
+            IsPassword = !IsPassword;
+        }
 
         [RelayCommand]
         public async Task Login()

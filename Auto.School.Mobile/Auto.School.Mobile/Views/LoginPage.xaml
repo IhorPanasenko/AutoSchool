@@ -52,15 +52,19 @@
                             <Frame BackgroundColor="#F5F5F5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                                 <Image Source="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-round/700/09_lock-256.png" Aspect="AspectFill" Margin="0"/>
                             </Frame>
-                            <Entry Text="{Binding Password}" IsPassword="{Binding IsPasswordVisible, Mode=TwoWay}" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                            <Entry Text="{Binding Password}" IsPassword="{Binding IsPassword, Mode=TwoWay}" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                            <Frame WidthRequest="40" BackgroundColor="#F5F5F5" HeightRequest="30" Padding="0" Margin="0, 0, 10, 0">
+                                <ImageButton Source="{Binding PasswordVisibleImageSource}" Aspect="AspectFit" Margin="2" Command="{Binding ShowPasswordCommand}"/>
+                            </Frame>
+                           
                         </StackLayout>
                     </Frame>
 
                     <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
-                        <StackLayout Orientation="Horizontal">
+                        <!--<StackLayout Orientation="Horizontal">
                             <CheckBox IsChecked="False"/>
                             <Label Text="{x:Static resx:AppResources.RememberMe}" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
+                        </StackLayout>-->
                         <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="#3D6DFF" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 

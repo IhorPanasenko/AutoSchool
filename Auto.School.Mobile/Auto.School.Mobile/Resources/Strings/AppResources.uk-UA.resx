@@ -177,6 +177,9 @@
   <data name="Registration.PhoneLabel" xml:space="preserve">
     <value>Номер телефону</value>
   </data>
+  <data name="Registration.RepeatPassword" xml:space="preserve">
+    <value>Повторіть пароль</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запам'ятати мене?</value>
   </data>
