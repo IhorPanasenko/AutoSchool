@@ -5,7 +5,7 @@
              x:Name="this"
              IsVisible="{Binding IsError}">
     <Frame Padding="10" Margin="20" BackgroundColor="Red" CornerRadius="30" HasShadow="True">
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" MinimumHeightRequest="50">
             <Label Text="{Binding ErrorMessage}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
             <ImageButton
                 Source="cross.png"
