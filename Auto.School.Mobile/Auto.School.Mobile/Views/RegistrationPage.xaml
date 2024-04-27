@@ -21,11 +21,12 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Text="{x:Static resx:AppResources.Registration}" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="50,0"/>
             <StackLayout Grid.Row="1">
-                <Frame CornerRadius="0" Padding="0" Margin="50,0,50,0" HorizontalOptions="Center" BorderColor="Snow">
+                <Frame CornerRadius="0" Padding="0" Margin="50,0,50,0" HorizontalOptions="Center" BorderColor="#F5F5F5">
                     <Image Source="register_backgr.png" />
                 </Frame>
             </StackLayout>
@@ -40,21 +41,21 @@
             <StackLayout Grid.Row="5" Padding="20,0">
                 <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_EmailLabel}" TextColor="Black" Margin="0,5,0,5"/>
                 <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="mail@gmail.com" Text="{Binding Email}"/>
-                <StackLayout BackgroundColor="White" IsVisible="{Binding IsEmailError}">
+                <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsEmailError}">
                     <Label Text="{Binding EmailErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="6" Padding="20,0">
                 <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_PhoneLabel}" TextColor="Black" Margin="0,5,0,5"/>
                 <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="XXX-XXX-XXXX" Text="{Binding PhoneNumber}"/>
-                <StackLayout BackgroundColor="White" IsVisible="{Binding IsPhoneNumberError}">
+                <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsPhoneNumberError}">
                     <Label Text="{Binding PhoneNumberErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="7" Orientation="Horizontal" Padding="20,0">
                 <Label FontSize="18" Text="{x:Static resx:AppResources.BirthdayDate}" TextColor="Black" Margin="0,0,20,0" VerticalOptions="Center" VerticalTextAlignment="Center"/>
                 <DatePicker FontSize="18" TextColor="DarkGray" Date="{Binding BirthdayDate}" HorizontalOptions="End"/>
-                <StackLayout BackgroundColor="White" IsVisible="{Binding IsBirthDateError}">
+                <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsBirthDateError}">
                     <Label Text="{Binding BirthDateErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
                 </StackLayout>
             </StackLayout>
@@ -74,13 +75,30 @@
             </StackLayout>
             <StackLayout Grid.Row="10" Padding="20,0">
                 <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_PasswordLabel}" TextColor="Black" Margin="0,5,0,5"/>
-                <Entry FontSize="18" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Password" Text="{Binding Password}"/>
-                <StackLayout BackgroundColor="White" IsVisible="{Binding IsPasswordError}">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Entry HorizontalOptions="FillAndExpand" FontSize="18" IsPassword="{Binding IsPassword}" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="{x:Static resx:AppResources.Registration_PasswordLabel}" Text="{Binding Password}"/>
+                    <Frame HorizontalOptions="End" WidthRequest="40" BackgroundColor="#F5F5F5" HeightRequest="30" Padding="0" Margin="0, 0, 10, 0">
+                        <ImageButton Source="{Binding PasswordVisibleImageSource}" Aspect="AspectFit" Margin="2" Command="{Binding ShowPasswordCommand}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsPasswordError}">
                     <Label Text="{Binding PasswordErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
                 </StackLayout>
             </StackLayout>
+            <StackLayout Grid.Row="11" Padding="20,0">
+                <Label FontSize="18" Text="{x:Static resx:AppResources.Registration_RepeatPassword}" TextColor="Black" Margin="0,5,0,5"/>
+                <StackLayout Orientation="Horizontal">
+                    <Entry HorizontalOptions="FillAndExpand" FontSize="18" IsPassword="{Binding IsRepeatPassword}" TextColor="Black" PlaceholderColor="DarkGray" Placeholder="{x:Static resx:AppResources.Registration_RepeatPassword}" Text="{Binding RepeatPassword}"/>
+                    <Frame HorizontalOptions="End" WidthRequest="40" BackgroundColor="#F5F5F5" HeightRequest="30" Padding="0" Margin="0, 0, 10, 0">
+                        <ImageButton Source="{Binding RepeatPasswordVisibleImageSource}" Aspect="AspectFit" Margin="2" Command="{Binding ShowRepeatPasswordCommand}"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsRepeatPasswordError}">
+                    <Label Text="{Binding RepeatPasswordErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+            </StackLayout>
 
-            <Grid ColumnSpacing="20" Grid.Row="11" Padding="20,0">
+            <Grid ColumnSpacing="20" Grid.Row="12" Padding="20,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
