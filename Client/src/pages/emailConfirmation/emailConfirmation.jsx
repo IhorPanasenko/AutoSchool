@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
@@ -9,30 +9,28 @@ const EMAIL_CONFIRMATION_URL = "http://localhost:3000/api/auth/verify/users/";
 
 function EmailConfirmation() {
   const { userId } = useParams();
-  const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const { t } = useTranslation();
   const token = new URLSearchParams(location.search).get("token");
   const [confirmationStatus, setConfirmationStatus] = useState("Processing");
+  const [confirmationStarted, setConfirmationStareted] = useState(false);
 
-  useEffect(() => {
-    const confirmEmail = async () => {
-      try {
-        var res = await axios.get(
-          `${EMAIL_CONFIRMATION_URL}${userId}?token=${token}`
-        );
-
+  const handleVerifyEmail = async () => {
+    setConfirmationStareted(true);
+    try {
+      setTimeout(async () => {
+        await axios.get(`${EMAIL_CONFIRMATION_URL}${userId}?token=${token}`);
         setConfirmationStatus("Confirmed");
-        setTimeout(() => {
-          history.push("/login");
-        }, 2000);
-      } catch (error) {
-        console.error("Error confirming email:", error);
-        setConfirmationStatus("Error");
-      }
-    };
+      }, 3000);
 
-    console.log(`${EMAIL_CONFIRMATION_URL}${userId}?token=${token}`);
-    confirmEmail();
-  }, []);
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 3000);
+    } catch (error) {
+      console.error("Error confirming email:", error);
+      setConfirmationStatus("Error");
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -41,7 +39,16 @@ function EmailConfirmation() {
         <div className={styles.box}>
           <p>{t("emailConfirmation.confirming")}</p>
           <div className={styles.loader_wrapper}>
-            <ClipLoader size={35} color={"#123abc"} loading={true} />
+            {confirmationStarted ? (
+              <ClipLoader size={35} color={"#123abc"} loading={true} />
+            ) : (
+              <button
+                className={styles.verifyButton}
+                onClick={handleVerifyEmail}
+              >
+                {t("emailConfirmation.verifyEmailButton")}
+              </button>
+            )}
           </div>
         </div>
       )}
