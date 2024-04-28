@@ -10,6 +10,12 @@
     "linklessons": "Lessons",
     "linkreviews": "Reviews"
   },
+  "emailConfirmation": {
+    "title": "Email confirmation",
+    "redirecting": "Email confirmed. Redirecting to login page...",
+    "confirming": "Confirming your email. This may take a few minutes",
+    "error": "Error confirming email. Please try again later."
+  },
   "header": {
     "headerTitle": "Need Warehouse Space? Look No Further!",
     "headerDesc": " Your one-stop solution for all your warehouse rental needs. Whether you're a small business in need of extra storage space or a growing enterprise requiring a distribution center, we have the perfect warehouse to meet your requirements.",
