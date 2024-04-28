@@ -1,7 +1,10 @@
-﻿using Auto.School.Mobile.Core.Constants;
+﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
@@ -9,9 +12,11 @@ namespace Auto.School.Mobile.ViewModels
     public partial class AllInstructorsViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IInstructorService _instructorService;
-        public AllInstructorsViewModel(IInstructorService instructorService)
+        private readonly ISharedService _sharedService;
+        public AllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService)
         {
             _instructorService = instructorService;
+            _sharedService = sharedService;
             LoadInstructors();
         }
 
@@ -42,5 +47,24 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         List<InstructorModel> instructors = [];
+
+        [RelayCommand]
+        public async Task NavigateToInstructorDetails(InstructorModel instructor)
+        {
+            try
+            {
+                if (instructor == null)
+                {
+                    return;
+                }
+
+                _sharedService.Add<InstructorModel>("instructor", instructor);
+                await AppShell.Current.GoToAsync(nameof(InstructorDetailsPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
     }
 }
