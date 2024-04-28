@@ -64,7 +64,7 @@
                                         <Label Text="{Binding Car.Transmission, StringFormat='{0}'}"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-                                        <Button Text="See Details" Command="{Binding Source={x:Reference AllInstructorsViewModel}, Path=SeeDetailsCommand}" CommandParameter="{Binding .}"/>
+                                        <Button Text="See Details" Command="{Binding Source={x:Reference AllInstructorsViewModel}, Path=NavigateToInstructorDetailsCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </Grid>
                             </Border>
