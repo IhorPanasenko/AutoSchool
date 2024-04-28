@@ -19,13 +19,15 @@ function EmailConfirmation() {
     setConfirmationStareted(true);
     try {
       setTimeout(async () => {
-        await axios.get(`${EMAIL_CONFIRMATION_URL}${userId}?token=${token}`);
-        setConfirmationStatus("Confirmed");
-      }, 3000);
+        await axios.get(`${EMAIL_CONFIRMATION_URL}${userId}?token=${token}`).then(()=>{
 
-      setTimeout(() => {
-        window.location.href = "/login";
+        })
+        setConfirmationStatus("Confirmed");
+        setTimeout(() => {
+            window.location.href = "/login";
+          }, 3000);
       }, 3000);
+      
     } catch (error) {
       console.error("Error confirming email:", error);
       setConfirmationStatus("Error");
