@@ -46,7 +46,7 @@ const sendVerificationEmailToken = async (req, userLogin, name) => {
   userLogin.confirmationTokenExpires = tokenExpires;
   await userLogin.save();
 
-  const url = `${process.env.WEB_BASE_URL_LOCAL}/confirmEmail/${userLogin.userId}?token=${token}`;
+  const url = `${process.env.WEB_BASE_URL_LOCAL}confirmEmail/${userLogin.userId}?token=${token}`;
 
   try {
     await new Email(name, userLogin.email, url).verifyEmail();
