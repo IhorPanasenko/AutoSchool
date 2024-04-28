@@ -11,6 +11,7 @@
     "linkreviews": "Reviews"
   },
   "emailConfirmation": {
+    "verifyEmailButton": "Verify email",
     "title": "Email confirmation",
     "redirecting": "Email confirmed. Redirecting to login page...",
     "confirming": "Confirming your email. This may take a few minutes",
