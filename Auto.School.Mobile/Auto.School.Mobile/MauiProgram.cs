@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Service.Services;
 using Auto.School.Mobile.Shared.Alerts;
+using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Services;
 
 namespace Auto.School.Mobile
 {
@@ -21,13 +23,13 @@ namespace Auto.School.Mobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<RegistrationPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
             builder.Services.AddSingleton<AllInstructorsPage>();
+            builder.Services.AddSingleton<InstructorDetailsPage>();
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
@@ -35,13 +37,14 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<RegistrationViewModel>();
             builder.Services.AddSingleton<HomeViewModel>();
             builder.Services.AddSingleton<AllInstructorsViewModel>();
+            builder.Services.AddSingleton<InstructorDetailsViewModel>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();   
             builder.Services.AddTransient<IInstructorService, InstructorService>();
-
+            builder.Services.AddSingleton<ISharedService, SharedService>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
