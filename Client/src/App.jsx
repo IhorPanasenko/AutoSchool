@@ -6,6 +6,7 @@ import Instructors from "./pages/instructors/Instructors"
 import Login from "./pages/login/Login"
 import Profile from "./pages/profile/Profile"
 import Register from "./pages/register/Register"
+import EmailConfirmation from "./pages/emailConfirmation/emailConfirmation"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/registration" element={<Register />} />
       <Route path="/instructors" element={<Instructors />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/confirmEmail/:userId" element={<EmailConfirmation />} />
 
       {/* <Route path="/warehouses" element={<List />} />
         <Route path="/warehouses/:id" element={<Warehouse />} />
