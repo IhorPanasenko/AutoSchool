@@ -7,6 +7,8 @@ const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomString = require('../helpers/randomString.js');
 const UserAccountModel = require('../models/userAccount.js');
 const APIFeatures = require('../helpers/APIFeatures.js');
+const UserLoginModel = require('../models/userLogin.js');
+const InstructorModel = require('../models/instructor.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
   let studentsQuery = new APIFeatures(StudentModel.find(), req.query)
@@ -127,5 +129,34 @@ exports.updatePhoto = catchAsync(async (req, res, next) => {
     data: {
       student,
     },
+  });
+});
+
+exports.requestAssignInstructor = catchAsync(async (req, res, next) => {
+  // Check if student verified email
+  const studentLoginData = await UserLoginModel.findOne({
+    userId: req.user._id,
+  }).select('emailVerificationStatus');
+
+  if (studentLoginData.emailVerificationStatus !== 'verified')
+    return next(new AppError('You have to verify email address first', 403));
+
+  // Check if instructor is available
+  const instructor = await InstructorModel.findById(req.params.instructorId);
+
+  if (!instructor /* || instructor.availeble === false */)
+    return next(
+      new AppError('There is no available instructor with that id', 400)
+    );
+
+  await StudentModel.findOneAndUpdate(
+    { userId: req.user._id },
+    { instructorId: req.params.instructorId, requestStatus: 'pending' }
+  );
+
+  res.status(200).json({
+    status: 'success',
+    message:
+      'Your request is being processed. Please, wait for the administrator to approve it',
   });
 });

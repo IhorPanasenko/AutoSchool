@@ -26,6 +26,12 @@ router.patch(
 
 router.patch('/updateMe', restrictTo('student'), studentController.updateMe);
 
+router.patch(
+  '/assign-instructor/:instructorId',
+  restrictTo('student'),
+  studentController.requestAssignInstructor
+);
+
 // for admin
 
 router.use(restrictTo('admin'));
