@@ -28,6 +28,7 @@ const studentSchema = new mongoose.Schema({
     enum: ['unsubmitted', 'pending', 'validated', 'failed'],
     default: 'unsubmitted',
   },
+  requestApprovedDate: Date,
   vehicleCategory: {
     type: String,
     enum: ['A', 'B', 'C', 'D'],
