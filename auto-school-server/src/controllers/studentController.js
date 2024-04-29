@@ -160,3 +160,8 @@ exports.requestAssignInstructor = catchAsync(async (req, res, next) => {
       'Your request is being processed. Please, wait for the administrator to approve it',
   });
 });
+
+exports.getStudentsWithInstructorRequest = (req, res, next) => {
+  req.query.requestStatus = 'pending';
+  next();
+};

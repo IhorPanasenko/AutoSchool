@@ -37,6 +37,11 @@ router.patch(
 router.use(restrictTo('admin'));
 
 router.get('/', studentController.getAllStudents);
+router.get(
+  '/requests',
+  studentController.getStudentsWithInstructorRequest,
+  studentController.getAllStudents
+);
 router.get('/:studentId', studentController.getStudent);
 
 module.exports = router;
