@@ -1,25 +1,35 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const userAccountModel = require('../models/userAccount.js');
+const UserLoginModel = require('../models/userLogin.js');
 
 const router = express.Router();
 
 // for admin
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
   try {
     const newUser = await userAccountModel.create(req.body);
 
-    // TODO: userLogin.create(email, password);
+    await UserLoginModel.create({
+      email: req.body.email,
+      passwordHash: req.body.password,
+      userId: newUser._id,
+    });
+
+    await session.commitTransaction();
 
     res.status(201).json({
       status: 'success',
       data: newUser,
     });
   } catch (err) {
-    res.status(500).json({
-      status: 'failure',
-      message: err.message,
-    });
+    await session.abortTransaction();
+    next(err);
+  } finally {
+    session.endSession();
   }
 });
 
