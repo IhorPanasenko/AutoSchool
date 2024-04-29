@@ -165,3 +165,19 @@ exports.getStudentsWithInstructorRequest = (req, res, next) => {
   req.query.requestStatus = 'pending';
   next();
 };
+
+exports.updateStudent = catchAsync(async (req, res, next) => {
+  const updatedStudent = await StudentModel.findByIdAndUpdate(
+    req.params.studentId,
+    req.body,
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedStudent)
+    return next(new AppError('There is no student with that id', 400));
+
+  res.status(200).json({
+    status: 'success',
+    data: updatedStudent,
+  });
+});
