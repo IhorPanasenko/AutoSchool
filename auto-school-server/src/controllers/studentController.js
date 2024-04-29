@@ -144,7 +144,7 @@ exports.requestAssignInstructor = catchAsync(async (req, res, next) => {
   // Check if instructor is available
   const instructor = await InstructorModel.findById(req.params.instructorId);
 
-  if (!instructor /* || instructor.availeble === false */)
+  if (!instructor || !instructor.available)
     return next(
       new AppError('There is no available instructor with that id', 400)
     );
