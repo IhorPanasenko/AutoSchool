@@ -49,5 +49,10 @@ router.patch(
   studentController.acceptRequest,
   studentController.updateStudent
 );
+router.patch(
+  '/:studentId/reject-request',
+  studentController.rejectRequest,
+  studentController.updateStudent
+);
 
 module.exports = router;

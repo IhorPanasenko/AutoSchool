@@ -188,3 +188,9 @@ exports.acceptRequest = (req, res, next) => {
   req.body.requestApprovedDate = Date.now();
   next();
 };
+
+exports.rejectRequest = (req, res, next) => {
+  req.body.requestStatus = 'failed';
+  req.body.instructorId = null;
+  next();
+};
