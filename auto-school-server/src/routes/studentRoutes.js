@@ -27,7 +27,7 @@ router.patch(
 router.patch('/updateMe', restrictTo('student'), studentController.updateMe);
 
 router.patch(
-  '/assign-instructor/:instructorId',
+  '/request-instructor/:instructorId',
   restrictTo('student'),
   studentController.requestAssignInstructor
 );
@@ -43,5 +43,11 @@ router.get(
   studentController.getAllStudents
 );
 router.get('/:studentId', studentController.getStudent);
+
+router.patch(
+  '/:studentId/accept-request',
+  studentController.acceptRequest,
+  studentController.updateStudent
+);
 
 module.exports = router;

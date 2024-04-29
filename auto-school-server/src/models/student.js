@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const InstructorModel = require('./instructor');
 
 const studentSchema = new mongoose.Schema({
   name: {
@@ -43,6 +44,23 @@ const studentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+});
+
+studentSchema.pre('findOneAndUpdate', async function () {
+  this._original = await this.model.findOne(this.getQuery());
+});
+
+studentSchema.post('findOneAndUpdate', async function (updatedStudent) {
+  const originalStudent = this._original;
+
+  if (
+    originalStudent.requestStatus !== updatedStudent.requestStatus &&
+    updatedStudent.requestStatus === 'validated'
+  ) {
+    await InstructorModel.findByIdAndUpdate(updatedStudent.instructorId, {
+      $inc: { currentNumOfStudents: 1 },
+    });
+  }
 });
 
 const StudentModel = mongoose.model('students', studentSchema);

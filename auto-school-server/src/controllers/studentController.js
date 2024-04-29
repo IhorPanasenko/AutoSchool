@@ -181,3 +181,10 @@ exports.updateStudent = catchAsync(async (req, res, next) => {
     data: updatedStudent,
   });
 });
+
+exports.acceptRequest = (req, res, next) => {
+  req.body.requestStatus = 'validated';
+  req.body.active = true;
+  req.body.requestApprovedDate = Date.now();
+  next();
+};
