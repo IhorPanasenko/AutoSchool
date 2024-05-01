@@ -48,6 +48,14 @@ userLoginSchema.pre('save', async function (next) {
   next();
 });
 
+userLoginSchema.pre('save', function (next) {
+  if (!this.isModified('passwordHash') || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now() - 1000;
+
+  next();
+});
+
 userLoginSchema.methods.verifyPassword = async function (
   candidatePassword,
   userPassword
@@ -70,7 +78,10 @@ userLoginSchema.methods.createPasswordResetToken = function () {
 
 userLoginSchema.methods.passwordChangedAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
-    const changedTimestamp = this.passwordChangedAt.getTime() / 1000; // time in seconds
+    const changedTimestamp = Math.floor(
+      this.passwordChangedAt.getTime() / 1000
+    ); // time in seconds
+
     return changedTimestamp > JWTTimestamp;
   }
   return false;
