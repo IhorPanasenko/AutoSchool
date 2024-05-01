@@ -58,8 +58,8 @@ namespace Auto.School.Mobile.ViewModels
                     return;
                 }
 
-                _sharedService.Add<InstructorModel>("instructor", instructor);
-                await AppShell.Current.GoToAsync(nameof(InstructorDetailsPage));
+                _sharedService.Add("instructor", instructor);
+                await Shell.Current.GoToAsync(nameof(InstructorDetailsPage));
             }
             catch (Exception ex)
             {
