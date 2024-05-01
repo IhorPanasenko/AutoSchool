@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const userLogin = require('../models/userLogin');
@@ -128,6 +129,9 @@ exports.signup = async (req, res, next) => {
       },
     });
   } catch (err) {
+    res.clearCookie('access_token');
+    res.clearCookie('refresh_token');
+
     await session.abortTransaction();
     next(err);
   } finally {
@@ -298,18 +302,14 @@ exports.resendVerificationEmail = catchAsync(async (req, res, next) => {
 });
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
-  // check if user with provided email exists
   const userLoginData = await userLogin.findOne({ email: req.body.email });
   if (!userLoginData)
     return next(new AppError('No user was found with that email', 400));
 
-  // create token
-  // save hashed token in db
   const resetToken = userLoginData.createPasswordResetToken();
   await userLoginData.save();
 
-  // send email with link with plain token
-  const resetURL = `${process.env.WEB_BASE_URL_LOCAL}auth/resetPassword/${resetToken}`;
+  const resetURL = `${process.env.SERVER_BASE_URL}auth/resetPassword/${resetToken}`;
   try {
     await new Email('User', userLoginData.email, resetURL).resetPassword();
 
@@ -327,4 +327,53 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       500
     );
   }
+});
+
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(req.params.token)
+    .digest('hex');
+
+  const userLoginData = await userLogin.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  if (!userLoginData)
+    return next(new AppError('Token is invalid or has expired', 400));
+
+  const userAccountData = await userAccount
+    .findById(userLoginData.userId)
+    .select('role');
+
+  const { accessToken, refreshToken, expire } = signSaveTokens(
+    res,
+    userLoginData.userId,
+    userAccountData.role
+  );
+
+  userLoginData.passwordHash = req.body.password;
+  userLoginData.passwordResetToken = undefined;
+  userLoginData.passwordResetExpires = undefined;
+  userLoginData.refreshToken = refreshToken;
+
+  try {
+    await userLoginData.save();
+  } catch (err) {
+    res.clearCookie('access_token');
+    res.clearCookie('refresh_token');
+
+    throw err;
+  }
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Password reset successfully',
+    data: {
+      tokenExpire: expire,
+      accessToken,
+      refreshToken,
+    },
+  });
 });

@@ -21,6 +21,7 @@ router.post('/signup', validateSchema(signupSchema), authController.signup);
 router.post('/login', authController.login);
 
 router.post('/forgotPassword', authController.forgotPassword);
+router.patch('/resetPassword/:token', authController.resetPassword);
 
 router.post('/token', authController.getAccessToken);
 
