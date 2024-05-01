@@ -2,6 +2,7 @@
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
@@ -21,10 +22,19 @@ namespace Auto.School.Mobile.ViewModels
         private void LoadInstructor()
         {
             Instructor = _sharedService.GetValue<InstructorModel>("instructor")!;
+            IsLoading = false;
         }
 
         [ObservableProperty]
         private InstructorModel instructor;
 
+        [ObservableProperty]
+        private bool isLoading = true;
+
+        [RelayCommand]
+        public async Task SignUpToInstructor()
+        {
+
+        }
     }
 }
