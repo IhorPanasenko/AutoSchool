@@ -49,4 +49,13 @@ module.exports = class Email {
 
     await this.send(html, 'Verify Your Email Address');
   }
+
+  async resetPassword() {
+    const html = pug.renderFile(
+      `${__dirname}/../views/emails/passwordReset.pug`,
+      { url: this.url }
+    );
+
+    await this.send(html, 'Reset your password (valid for 10 min)');
+  }
 };

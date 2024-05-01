@@ -309,4 +309,22 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await userLoginData.save();
 
   // send email with link with plain token
+  const resetURL = `${process.env.WEB_BASE_URL_LOCAL}auth/resetPassword/${resetToken}`;
+  try {
+    await new Email('User', userLoginData.email, resetURL).resetPassword();
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Token sent to your email',
+    });
+  } catch (err) {
+    userLoginData.passwordResetToken = undefined;
+    userLoginData.passwordResetExpires = undefined;
+    await userLoginData.save();
+
+    throw new AppError(
+      'There was an error sending the verification email. Try again later!',
+      500
+    );
+  }
 });
