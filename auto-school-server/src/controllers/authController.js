@@ -296,3 +296,17 @@ exports.resendVerificationEmail = catchAsync(async (req, res, next) => {
     message: 'Verification email was resend. Please, check your email',
   });
 });
+
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  // check if user with provided email exists
+  const userLoginData = await userLogin.findOne({ email: req.body.email });
+  if (!userLoginData)
+    return next(new AppError('No user was found with that email', 400));
+
+  // create token
+  // save hashed token in db
+  const resetToken = userLoginData.createPasswordResetToken();
+  await userLoginData.save();
+
+  // send email with link with plain token
+});

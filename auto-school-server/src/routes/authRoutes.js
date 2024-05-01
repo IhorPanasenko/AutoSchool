@@ -20,6 +20,8 @@ router.post('/signup', validateSchema(signupSchema), authController.signup);
 
 router.post('/login', authController.login);
 
+router.post('/forgotPassword', authController.forgotPassword);
+
 router.post('/token', authController.getAccessToken);
 
 router.delete('/logout', authenticateJWT, authController.logout);
