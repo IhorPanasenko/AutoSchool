@@ -70,6 +70,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open details.
+        /// </summary>
+        internal static string AllInstructors_DetailsButton {
+            get {
+                return ResourceManager.GetString("AllInstructors.DetailsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Instructors.
+        /// </summary>
+        internal static string AllInstructors_Title {
+            get {
+                return ResourceManager.GetString("AllInstructors.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to login.
         /// </summary>
         internal static string BackToLogin {
@@ -111,6 +129,60 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string GoToSchedule {
             get {
                 return ResourceManager.GetString("GoToSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about car.
+        /// </summary>
+        internal static string InstructorDetails_CarCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.CarCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Car for learning.
+        /// </summary>
+        internal static string InstructorDetails_CarSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorDetails.CarSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about instructor.
+        /// </summary>
+        internal static string InstructorDetails_InstructorCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.InstructorCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main information about instructor.
+        /// </summary>
+        internal static string InstructorDetails_InstructorSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorDetails.InstructorSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up to instructor.
+        /// </summary>
+        internal static string InstructorDetails_SignUpToInstructorButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.SignUpToInstructorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructor Details.
+        /// </summary>
+        internal static string InstructorDetails_Title {
+            get {
+                return ResourceManager.GetString("InstructorDetails.Title", resourceCulture);
             }
         }
         
