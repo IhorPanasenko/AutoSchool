@@ -377,3 +377,43 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  const userLoginData = await userLogin.findOne({ userId: req.user._id });
+
+  if (
+    !(await userLoginData.verifyPassword(
+      req.body.currentPassword,
+      userLoginData.passwordHash
+    ))
+  )
+    return next(new AppError('The password is wrong', 401));
+
+  const { accessToken, refreshToken, expire } = signSaveTokens(
+    res,
+    req.user._id,
+    req.user.role
+  );
+
+  userLoginData.passwordHash = req.body.newPassword;
+  userLoginData.refreshToken = refreshToken;
+
+  try {
+    await userLoginData.save();
+  } catch (err) {
+    res.clearCookie('access_token');
+    res.clearCookie('refresh_token');
+
+    throw err;
+  }
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Password updated successfully',
+    data: {
+      tokenExpire: expire,
+      accessToken,
+      refreshToken,
+    },
+  });
+});
