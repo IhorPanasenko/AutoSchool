@@ -9,7 +9,6 @@ const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const router = express.Router();
 
 router.get('/verify/users/:userId', authController.verifyEmail);
-
 router.patch(
   '/verify/resend',
   authenticateJWT,
@@ -17,8 +16,16 @@ router.patch(
 );
 
 router.post('/signup', validateSchema(signupSchema), authController.signup);
-
 router.post('/login', authController.login);
+
+router.post('/forgotPassword', authController.forgotPassword);
+router.patch('/resetPassword/:token', authController.resetPassword);
+
+router.patch(
+  '/updateMyPassword',
+  authenticateJWT,
+  authController.updatePassword
+);
 
 router.post('/token', authController.getAccessToken);
 

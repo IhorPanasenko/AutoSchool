@@ -7,6 +7,8 @@ const { getPhotoUrl, uploadPhotoToS3 } = require('../helpers/s3Handlers.js');
 const randomString = require('../helpers/randomString.js');
 const UserAccountModel = require('../models/userAccount.js');
 const APIFeatures = require('../helpers/APIFeatures.js');
+const UserLoginModel = require('../models/userLogin.js');
+const InstructorModel = require('../models/instructor.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
   let studentsQuery = new APIFeatures(StudentModel.find(), req.query)
@@ -129,3 +131,66 @@ exports.updatePhoto = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.requestAssignInstructor = catchAsync(async (req, res, next) => {
+  // Check if student verified email
+  const studentLoginData = await UserLoginModel.findOne({
+    userId: req.user._id,
+  }).select('emailVerificationStatus');
+
+  if (studentLoginData.emailVerificationStatus !== 'verified')
+    return next(new AppError('You have to verify email address first', 403));
+
+  // Check if instructor is available
+  const instructor = await InstructorModel.findById(req.params.instructorId);
+
+  if (!instructor || !instructor.available)
+    return next(
+      new AppError('There is no available instructor with that id', 400)
+    );
+
+  await StudentModel.findOneAndUpdate(
+    { userId: req.user._id },
+    { instructorId: req.params.instructorId, requestStatus: 'pending' }
+  );
+
+  res.status(200).json({
+    status: 'success',
+    message:
+      'Your request is being processed. Please, wait for the administrator to approve it',
+  });
+});
+
+exports.getStudentsWithInstructorRequest = (req, res, next) => {
+  req.query.requestStatus = 'pending';
+  next();
+};
+
+exports.updateStudent = catchAsync(async (req, res, next) => {
+  const updatedStudent = await StudentModel.findByIdAndUpdate(
+    req.params.studentId,
+    req.body,
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedStudent)
+    return next(new AppError('There is no student with that id', 400));
+
+  res.status(200).json({
+    status: 'success',
+    data: updatedStudent,
+  });
+});
+
+exports.acceptRequest = (req, res, next) => {
+  req.body.requestStatus = 'validated';
+  req.body.active = true;
+  req.body.requestApprovedDate = Date.now();
+  next();
+};
+
+exports.rejectRequest = (req, res, next) => {
+  req.body.requestStatus = 'failed';
+  req.body.instructorId = null;
+  next();
+};

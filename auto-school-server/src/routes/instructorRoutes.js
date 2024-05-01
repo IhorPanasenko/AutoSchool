@@ -4,11 +4,18 @@ const instructorController = require('../controllers/instructorController.js');
 const { createInstructorSchema } = require('../helpers/validationSchemas.js');
 const AppError = require('../helpers/appError.js');
 const upload = require('../config/multerConfig.js');
+const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
+const { restrictTo } = require('../middlewares/restrictTo.js');
 
 const router = express.Router();
 
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
+
+// for administrator
+
+router.use(authenticateJWT);
+router.use(restrictTo('admin'));
 
 router.patch(
   '/:instructorId',
