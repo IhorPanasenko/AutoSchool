@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const validateHourFormat = function (value) {
+  return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(value); // 8:00, 10:30
+};
+
+const validateFromToHours = function (value) {
+  const fromHourTime = new Date(`1970-01-01T${this.fromHour}`);
+  const toHourTime = new Date(`1970-01-01T${value}`);
+
+  return fromHourTime < toHourTime;
+};
+
 const lessonShema = new mongoose.Schema({
   instructorId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -47,14 +58,6 @@ const lessonShema = new mongoose.Schema({
     default: true,
   },
 });
-
-const validateHourFormat = function (value) {
-  return /^([0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(value); // 8:00, 10:30
-};
-
-const validateFromToHours = function (value) {
-  return this.fromHour < value;
-};
 
 const LessonModel = mongoose.model('lessons', lessonShema);
 
