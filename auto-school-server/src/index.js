@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('./config/db.js');
+// require('./helpers/createSchedule.js');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
