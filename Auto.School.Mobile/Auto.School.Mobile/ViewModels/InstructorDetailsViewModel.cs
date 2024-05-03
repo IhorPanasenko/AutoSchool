@@ -11,12 +11,14 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
+        private readonly IStudentService _studentService;
 
-        public InstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public InstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService, IStudentService studentService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
             LoadInstructor();
+            _studentService = studentService;
         }
 
         private void LoadInstructor()
@@ -33,6 +35,18 @@ namespace Auto.School.Mobile.ViewModels
 
         [RelayCommand]
         public async Task SignUpToInstructor()
+        {
+            await _studentService.ConnectWithInstructor(Instructor.Id);
+        }
+
+        [RelayCommand]
+        public async Task ShowCarReviews()
+        {
+
+        }
+
+        [RelayCommand]
+        public async Task ShowInstructorReviews()
         {
 
         }
