@@ -120,6 +120,12 @@
   <data name="AddPhoto" xml:space="preserve">
     <value>Додати фото профілю</value>
   </data>
+  <data name="AllInstructors.DetailsButton" xml:space="preserve">
+    <value>Переглянути інформацію</value>
+  </data>
+  <data name="AllInstructors.Title" xml:space="preserve">
+    <value>Наші інструктори</value>
+  </data>
   <data name="BackToLogin" xml:space="preserve">
     <value>Повернутися до входу</value>
   </data>
@@ -134,6 +140,24 @@
   </data>
   <data name="GoToSchedule" xml:space="preserve">
     <value>Відкрити розклад</value>
+  </data>
+  <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
+    <value>Відгуки про машину</value>
+  </data>
+  <data name="InstructorDetails.CarSectionTitle" xml:space="preserve">
+    <value>Машина для навчання</value>
+  </data>
+  <data name="InstructorDetails.InstructorCommentsButton" xml:space="preserve">
+    <value>Відгуки про інструктора</value>
+  </data>
+  <data name="InstructorDetails.InstructorSectionTitle" xml:space="preserve">
+    <value>Основна інформація про інструктора</value>
+  </data>
+  <data name="InstructorDetails.SignUpToInstructorButton" xml:space="preserve">
+    <value>Записатися до інструктора</value>
+  </data>
+  <data name="InstructorDetails.Title" xml:space="preserve">
+    <value>Інформація про інструктора</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Прізвище</value>
@@ -172,7 +196,7 @@
     <value>Уведіть своє прізвище</value>
   </data>
   <data name="Registration.PasswordLabel" xml:space="preserve">
-    <value>Пароль</value>
+    <value />
   </data>
   <data name="Registration.PhoneLabel" xml:space="preserve">
     <value>Номер телефону</value>

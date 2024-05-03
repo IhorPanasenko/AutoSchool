@@ -1,19 +1,22 @@
-﻿using Auto.School.Mobile.ApiIntegration.Constants;
+﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
+using Auto.School.Mobile.ApiIntegration.Constants;
+using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
 using Newtonsoft.Json;
 
-namespace Auto.School.Mobile.ApiIntegration.Base
+namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
 {
-    public class GetRequest
+    public class GetRequest(IHttpClientService httpClientService) : IGetRequest
     {
-        public static async Task<TResponse> ExecuteAsync<TResponse>(
+        private readonly IHttpClientService _httpClientService = httpClientService;
+
+        public async Task<TResponse> ExecuteAsync<TResponse>(
             string url)
         {
-            using var httpClient = new HttpClient();
             var path = RoutesConstants.BaseUrl + url;
 
             try
             {
-                var response = await httpClient.GetAsync(path);
+                var response = await _httpClientService.Client.GetAsync(path);
 
                 if (response.IsSuccessStatusCode)
                 {

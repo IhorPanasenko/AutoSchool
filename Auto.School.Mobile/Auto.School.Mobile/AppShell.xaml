@@ -4,16 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Auto.School.Mobile.Views"
-    xmlns:models="clr-namespace:Auto.School.Mobile.Models"
     xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-    Shell.TabBarIsVisible="False">
+    Shell.TabBarIsVisible="False"
+    Shell.TitleColor="#f4e558"
+    Shell.BackgroundColor="#3D6DFF">
 
 
     <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"
-                      Title="Home"
-                      FlyoutItemIsVisible="False"
-                      Route="LoginPage"
-                      Shell.FlyoutBehavior="Disabled"
+                      FlyoutItemIsVisible="True"
+                      Route="AllInstructorsPage"
+                      
                       xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
                       />
 
@@ -24,6 +24,7 @@
         <ShellContent Title="Registration" ContentTemplate="{DataTemplate views:RegistrationPage}"/>
         <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:StudentProfile}"/>
         <ShellContent Title="Instructors" ContentTemplate="{DataTemplate views:AllInstructorsPage}"/>
+        <ShellContent Title="InstrucotrDetails" ContentTemplate="{DataTemplate views:InstructorDetailsPage}"/>
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

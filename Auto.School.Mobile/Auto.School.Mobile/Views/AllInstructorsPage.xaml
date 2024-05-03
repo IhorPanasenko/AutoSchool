@@ -1,7 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Auto.School.Mobile.Views.AllInstructorsPage"
-             Title="AllInstructors"
+             x:Class="Auto.School.Mobile.Views.AllInstructorsPage"            
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
              Shell.NavBarIsVisible="True"
              xmlns:viewModels="clr-namespace:Auto.School.Mobile.ViewModels"
@@ -30,8 +29,9 @@
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout>
+            <Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
-            <CollectionView ItemsSource="{Binding Instructors}">
+            <CollectionView ItemsSource="{Binding Instructors}" x:Name="AllInstructorsCollection">
                 <CollectionView.ItemTemplate >
                     <DataTemplate>
                         <StackLayout >
@@ -61,10 +61,12 @@
                                         <Label Text="{Binding AverageRaiting, StringFormat='Average Rating: {0:F1}'}" />
                                         <Label Text="{Binding VehicleCategory, StringFormat='Driving category: {0}'}" />
                                         <Label Text="{Binding Car, StringFormat='Car: {0}'}" />
-                                        <Label Text="{Binding Car.Transmission, StringFormat='{0}'}"/>
+                                        <Label Text="{Binding Car.Transmission, StringFormat='transmission: {0}'}"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-                                        <Button Text="See Details" Command="{Binding Source={x:Reference AllInstructorsViewModel}, Path=SeeDetailsCommand}" CommandParameter="{Binding .}"/>
+                                        <Button 
+                                            Text="{x:Static resx:AppResources.AllInstructors_DetailsButton}" 
+                                            Command="{Binding Path=BindingContext.NavigateToInstructorDetailsCommand, Source={x:Reference AllInstructorsCollection}}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </Grid>
                             </Border>
