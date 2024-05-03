@@ -10,7 +10,7 @@
     Shell.BackgroundColor="#3D6DFF">
 
 
-    <ShellContent ContentTemplate="{DataTemplate views:AllInstructorsPage}"
+    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"
                       FlyoutItemIsVisible="True"
                       Route="AllInstructorsPage"
                       
