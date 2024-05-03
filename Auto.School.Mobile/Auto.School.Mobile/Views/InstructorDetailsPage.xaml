@@ -71,20 +71,20 @@
                             FontSize="Medium"
                             Text="{x:Static resx:AppResources.InstructorDetails_InstructorCommentsButton}"
                             TextColor="#f4e558"
-                            Command="{Binding Path=BindingContext.NavigateToInstructorDetailsCommand, Source={x:Reference AllInstructorsCollection}}" CommandParameter="{Binding .}"/>
+                            Command="{Binding ShowInstructorReviewsCommand}"/>
                         <Button 
                              Margin="20,5"
                             FontSize="Medium"
                             TextColor="#f4e558"
                             Text="{x:Static resx:AppResources.InstructorDetails_CarCommentsButton}" 
-                            Command="{Binding Path=BindingContext.NavigateToInstructorDetailsCommand, Source={x:Reference AllInstructorsCollection}}" CommandParameter="{Binding .}"/>
+                            Command="{Binding ShowCarReviewsCommand}"/>
                         <Button 
                              Margin="20,5"
                             FontSize="Medium"
                             BackgroundColor="#7eb693"
                             TextColor="#f4e558"
                             Text="{x:Static resx:AppResources.InstructorDetails_SignUpToInstructorButton}" 
-                            Command="{Binding Path=BindingContext.NavigateToInstructorDetailsCommand, Source={x:Reference AllInstructorsCollection}}" CommandParameter="{Binding .}"/>
+                            Command="{Binding  SignUpToInstructorCommand}"/>
                     <!--</Grid>-->
                 </StackLayout>
             </Border>
