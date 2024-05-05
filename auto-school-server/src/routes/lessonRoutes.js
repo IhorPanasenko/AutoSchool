@@ -19,8 +19,12 @@ router.patch(
   lessonController.signupForLesson
 );
 
-// Admin/Instructor cancels still available lesson
-// PATCH lessons/:lessonId/cancel
+router.patch(
+  '/:lessonId/cancel',
+  authenticateJWT,
+  restrictTo('admin', 'instructor'),
+  lessonController.cancelLesson
+);
 
 // Student cancels his lesson
 // PATCH lessons/:lessonId/cancelMyLesson

@@ -62,3 +62,19 @@ exports.signupForLesson = catchAsync(async (req, res, next) => {
     data: updatedLesson,
   });
 });
+
+exports.cancelLesson = catchAsync(async (req, res, next) => {
+  const lesson = await LessonModel.findById(req.params.lessonId);
+
+  if (lesson.student.studentId)
+    return next(new AppError('You can not cancel already booked lesson', 400));
+
+  lesson.isAvailable = false;
+  await lesson.save();
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Lesson was successfully canceled',
+    data: lesson,
+  });
+});
