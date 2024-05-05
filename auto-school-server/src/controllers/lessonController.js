@@ -14,6 +14,20 @@ exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getMyLessons = catchAsync(async (req, res, next) => {
+  const student = await StudentModel.findOne({ userId: req.user._id }).select(
+    '_id'
+  );
+
+  const lessons = await LessonModel.find({ 'student.studentId': student._id });
+
+  res.status(200).json({
+    status: 'success',
+    results: lessons.length,
+    data: lessons,
+  });
+});
+
 exports.signupForLesson = catchAsync(async (req, res, next) => {
   const student = await StudentModel.findOne({ userId: req.user._id }).select(
     'instructorId requestStatus name surname'

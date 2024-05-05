@@ -5,10 +5,13 @@ const lessonController = require('../controllers/lessonController.js');
 
 const router = express.Router();
 
-router.get('/');
+router.get(
+  '/my',
+  authenticateJWT,
+  restrictTo('student'),
+  lessonController.getMyLessons
+);
 
-// Student signs up (books) for a lesson
-// PATCH lessons/:lessonId/signup
 router.patch(
   '/:lessonId/signup',
   authenticateJWT,
