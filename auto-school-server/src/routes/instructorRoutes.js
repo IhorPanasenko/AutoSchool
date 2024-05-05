@@ -2,15 +2,17 @@ const express = require('express');
 const { validateSchema } = require('../middlewares/validateSchema.js');
 const instructorController = require('../controllers/instructorController.js');
 const { createInstructorSchema } = require('../helpers/validationSchemas.js');
-const AppError = require('../helpers/appError.js');
 const upload = require('../config/multerConfig.js');
 const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const { restrictTo } = require('../middlewares/restrictTo.js');
+const lessonController = require('../controllers/lessonController.js');
 
 const router = express.Router();
 
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
+
+router.get('/:instructorId/lessons', lessonController.getInstructorSchedule);
 
 // for administrator
 
