@@ -11,6 +11,7 @@ const authRouter = require('./routes/authRoutes.js');
 const cityRouter = require('./routes/cityRoutes.js');
 const instructorRouter = require('./routes/instructorRoutes.js');
 const studentRoutes = require('./routes/studentRoutes.js');
+const lessonRoutes = require('./routes/lessonRoutes.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/cities/', cityRouter);
 app.use('/api/instructors', instructorRouter);
 app.use('/api/students', studentRoutes);
+app.use('/api/lessons', lessonRoutes);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
