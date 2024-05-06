@@ -26,7 +26,11 @@ router.patch(
   lessonController.cancelLesson
 );
 
-// Student cancels his lesson
-// PATCH lessons/:lessonId/cancelMyLesson
+router.patch(
+  '/:lessonId/cancel-my-lesson',
+  authenticateJWT,
+  restrictTo('student'),
+  lessonController.cancelMyLesson
+);
 
 module.exports = router;

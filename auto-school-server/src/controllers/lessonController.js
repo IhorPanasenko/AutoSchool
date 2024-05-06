@@ -78,3 +78,31 @@ exports.cancelLesson = catchAsync(async (req, res, next) => {
     data: lesson,
   });
 });
+
+exports.cancelMyLesson = catchAsync(async (req, res, next) => {
+  const lesson = await LessonModel.findById(req.params.lessonId);
+
+  const student = await StudentModel.findOne({ userId: req.user._id });
+
+  if (!lesson.student.studentId.equals(student._id))
+    return next(new AppError("You can not cancel other student's lesson", 403));
+
+  const day = 24 * 60 * 60 * 1000;
+
+  if (new Date() > lesson.date - day)
+    return next(
+      new AppError(
+        'You can not cancel a lesson later than 24 hours before before its scheduled time.'
+      )
+    );
+
+  lesson.student = undefined;
+  lesson.isAvailable = true;
+  await lesson.save();
+
+  res.status(200).json({
+    status: 'success',
+    message: 'You cancelled the lesson successfully.',
+    data: lesson,
+  });
+});
