@@ -3,6 +3,7 @@ const catchAsync = require('../helpers/catchAsync.js');
 const LessonModel = require('../models/lesson.js');
 const StudentModel = require('../models/student.js');
 const { googleCalendar } = require('../config/googleOauth2Client.js');
+const createGoogleDateTime = require('../helpers/createGoogleDateTime.js');
 
 exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   const lessons = await LessonModel.find({
@@ -135,9 +136,3 @@ exports.addLessonToGoogleCalendar = catchAsync(async (req, res, next) => {
     message: 'Event added to Google Calendar',
   });
 });
-
-const createGoogleDateTime = (date, time) => {
-  const dateTimeString = `${date.toISOString().substring(0, 10)}T${time}:00`;
-  const googleDateTime = new Date(dateTimeString).toISOString();
-  return googleDateTime;
-};
