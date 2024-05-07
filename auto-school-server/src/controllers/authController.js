@@ -11,6 +11,7 @@ const Email = require('../helpers/sendEmail.js');
 const {
   oauth2Client,
   generateGoogleAuthUrl,
+  peopleApi,
 } = require('../config/googleOauth2Client.js');
 
 const signSaveTokens = (res, userId, role) => {
@@ -424,7 +425,8 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
 exports.loginWithGoogle = catchAsync(async (req, res, next) => {
   const url = generateGoogleAuthUrl(
-    'https://www.googleapis.com/auth/calendar.events'
+    'https://www.googleapis.com/auth/calendar.events',
+    'https://www.googleapis.com/auth/userinfo.email'
   );
   res.redirect(url);
 });
@@ -434,10 +436,25 @@ exports.getGoogleToken = catchAsync(async (req, res, next) => {
   const { tokens } = await oauth2Client.getToken(code);
   oauth2Client.setCredentials(tokens);
 
-  // store refresh token in db ?
+  const email = await getEmailFromGoogleToken(tokens);
+
+  const user = await userLogin.findOneAndUpdate(
+    { email },
+    { googleRefreshToken: tokens.refresh_token }
+  );
+
+  if (!user) return next(new AppError('No user found with this email', 400));
+
   res.status(200).json({
     status: 'success',
     message: 'Successfully logged in with Google!',
     data: tokens,
   });
 });
+
+const getEmailFromGoogleToken = async (tokens) => {
+  const idToken = tokens.id_token;
+  const decodedToken = jwt.decode(idToken);
+  console.log(decodedToken);
+  return decodedToken.email;
+};

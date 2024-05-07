@@ -121,7 +121,7 @@ exports.addLessonToGoogleCalendar = catchAsync(async (req, res, next) => {
     },
   };
 
-  // Ideally check refresh token in db and use it:
+  // TODO: Ideally check refresh token in db and use it:
   // oauth2Client.setCredentials(newCredentials);
   // update googleCalendar object, for example:
   // const googleCalendar = google.calendar({ version: 'v3', auth: oauth2Client });

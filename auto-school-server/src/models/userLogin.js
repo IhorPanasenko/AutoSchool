@@ -38,6 +38,7 @@ const userLoginSchema = new mongoose.Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   refreshToken: String,
+  googleRefreshToken: String,
 });
 
 userLoginSchema.pre('save', async function (next) {
