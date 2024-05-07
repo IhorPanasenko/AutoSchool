@@ -106,3 +106,8 @@ exports.cancelMyLesson = catchAsync(async (req, res, next) => {
     data: lesson,
   });
 });
+
+exports.addLessonToGoogleCalendar = catchAsync(async (req, res, next) => {
+  //const lesson = await LessonModel.findById(req.params.lessonId);
+  // use google tokens to create an event in google calendar
+});

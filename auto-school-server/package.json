@@ -21,6 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.19.2",
+    "googleapis": "^136.0.0",
     "html-to-text": "^9.0.5",
     "joi": "^17.12.1",
     "jsonwebtoken": "^9.0.2",

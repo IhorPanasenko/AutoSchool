@@ -12,6 +12,12 @@ router.get(
   lessonController.getMyLessons
 );
 
+router.get(
+  '/:lessonId/to-calendar',
+  // authenticateJWT,
+  lessonController.addLessonToGoogleCalendar
+);
+
 router.patch(
   '/:lessonId/signup',
   authenticateJWT,

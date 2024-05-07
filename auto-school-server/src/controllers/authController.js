@@ -8,6 +8,10 @@ const catchAsync = require('../helpers/catchAsync.js');
 const AppError = require('../helpers/appError.js');
 const randomString = require('../helpers/randomString.js');
 const Email = require('../helpers/sendEmail.js');
+const {
+  oauth2Client,
+  generateGoogleAuthUrl,
+} = require('../config/googleOauth2Client.js');
 
 const signSaveTokens = (res, userId, role) => {
   const accessToken = jwt.sign(
@@ -415,5 +419,25 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
       accessToken,
       refreshToken,
     },
+  });
+});
+
+exports.loginWithGoogle = catchAsync(async (req, res, next) => {
+  const url = generateGoogleAuthUrl(
+    'https://www.googleapis.com/auth/calendar.events'
+  );
+  res.redirect(url);
+});
+
+exports.getGoogleToken = catchAsync(async (req, res, next) => {
+  const code = req.query.code;
+  const { tokens } = await oauth2Client.getToken(code);
+  oauth2Client.setCredentials(tokens);
+
+  // store refresh token in db ?
+  res.status(200).json({
+    status: 'success',
+    message: 'Successfully logged in with Google!',
+    data: tokens,
   });
 });
