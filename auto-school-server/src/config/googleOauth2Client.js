@@ -13,4 +13,6 @@ const generateGoogleAuthUrl = (scope) => {
   });
 };
 
-module.exports = { oauth2Client, generateGoogleAuthUrl };
+const googleCalendar = google.calendar({ version: 'v3', auth: oauth2Client });
+
+module.exports = { oauth2Client, generateGoogleAuthUrl, googleCalendar };

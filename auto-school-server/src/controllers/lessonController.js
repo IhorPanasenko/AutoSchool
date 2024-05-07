@@ -2,6 +2,7 @@ const AppError = require('../helpers/appError.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const LessonModel = require('../models/lesson.js');
 const StudentModel = require('../models/student.js');
+const { googleCalendar } = require('../config/googleOauth2Client.js');
 
 exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   const lessons = await LessonModel.find({
@@ -108,6 +109,35 @@ exports.cancelMyLesson = catchAsync(async (req, res, next) => {
 });
 
 exports.addLessonToGoogleCalendar = catchAsync(async (req, res, next) => {
-  //const lesson = await LessonModel.findById(req.params.lessonId);
-  // use google tokens to create an event in google calendar
+  const lesson = await LessonModel.findById(req.params.lessonId);
+  const event = {
+    summary: 'Lesson in AutoSchool',
+    start: {
+      dateTime: createGoogleDateTime(lesson.date, lesson.fromHour),
+    },
+    end: {
+      dateTime: createGoogleDateTime(lesson.date, lesson.toHour),
+    },
+  };
+
+  // Ideally check refresh token in db and use it:
+  // oauth2Client.setCredentials(newCredentials);
+  // update googleCalendar object, for example:
+  // const googleCalendar = google.calendar({ version: 'v3', auth: oauth2Client });
+
+  await googleCalendar.events.insert({
+    calendarId: 'primary',
+    resource: event,
+  });
+
+  res.status(200).json({
+    status: 'success',
+    message: 'Event added to Google Calendar',
+  });
 });
+
+const createGoogleDateTime = (date, time) => {
+  const dateTimeString = `${date.toISOString().substring(0, 10)}T${time}:00`;
+  const googleDateTime = new Date(dateTimeString).toISOString();
+  return googleDateTime;
+};
