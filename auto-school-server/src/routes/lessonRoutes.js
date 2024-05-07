@@ -14,7 +14,7 @@ router.get(
 
 router.get(
   '/:lessonId/to-calendar',
-  // authenticateJWT,
+  authenticateJWT,
   lessonController.addLessonToGoogleCalendar
 );
 

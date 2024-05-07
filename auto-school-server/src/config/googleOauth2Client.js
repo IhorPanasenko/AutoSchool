@@ -13,7 +13,10 @@ const generateGoogleAuthUrl = (...scope) => {
   });
 };
 
-const googleCalendar = google.calendar({ version: 'v3', auth: oauth2Client });
+const googleCalendar = (oauth2Client) => {
+  return google.calendar({ version: 'v3', auth: oauth2Client });
+};
+
 const peopleApi = google.people({ version: 'v1', auth: oauth2Client });
 
 module.exports = {

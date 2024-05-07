@@ -2,8 +2,12 @@ const AppError = require('../helpers/appError.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const LessonModel = require('../models/lesson.js');
 const StudentModel = require('../models/student.js');
-const { googleCalendar } = require('../config/googleOauth2Client.js');
+const {
+  googleCalendar,
+  oauth2Client,
+} = require('../config/googleOauth2Client.js');
 const createGoogleDateTime = require('../helpers/createGoogleDateTime.js');
+const UserLoginModel = require('../models/userLogin.js');
 
 exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   const lessons = await LessonModel.find({
@@ -121,12 +125,20 @@ exports.addLessonToGoogleCalendar = catchAsync(async (req, res, next) => {
     },
   };
 
-  // TODO: Ideally check refresh token in db and use it:
-  // oauth2Client.setCredentials(newCredentials);
-  // update googleCalendar object, for example:
-  // const googleCalendar = google.calendar({ version: 'v3', auth: oauth2Client });
+  const user = await UserLoginModel.findOne({ userId: req.user._id });
+  const refreshToken = user.googleRefreshToken;
 
-  await googleCalendar.events.insert({
+  if (!refreshToken)
+    return next(
+      new AppError(
+        'You have to login with google to add lesson to calendar',
+        400
+      )
+    );
+
+  oauth2Client.setCredentials({ refresh_token: refreshToken });
+
+  await googleCalendar(oauth2Client).events.insert({
     calendarId: 'primary',
     resource: event,
   });
