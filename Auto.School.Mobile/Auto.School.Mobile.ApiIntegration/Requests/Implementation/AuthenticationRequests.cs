@@ -3,6 +3,7 @@ using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Authentication;
+using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Login;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
@@ -10,6 +11,12 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
     public class AuthenticationRequests(IPostRequest postRequest) : IAuthenticationRequest
     {
         private readonly IPostRequest _postRequest = postRequest;
+
+        public async Task<BaseResponse> ForgotPassword(string email)
+        {
+            var result = await _postRequest.ExecuteAsync<object, BaseResponse>(RoutesConstants.ForgotPassword, new { email = email });
+            return result;
+        }
 
         public async Task<LoginResponse> Login(LoginModel loginModel)
         {

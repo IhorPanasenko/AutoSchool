@@ -124,6 +124,42 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        internal static string ForgotPassword_Button {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string ForgotPassword_Email {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Your Password.
+        /// </summary>
+        internal static string ForgotPassword_Head {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Head", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your email address.
+        /// </summary>
+        internal static string ForgotPassword_Label {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to schedule.
         /// </summary>
         internal static string GoToSchedule {
