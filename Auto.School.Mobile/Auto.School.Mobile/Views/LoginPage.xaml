@@ -65,15 +65,16 @@
                             <CheckBox IsChecked="False"/>
                             <Label Text="{x:Static resx:AppResources.RememberMe}" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                         </StackLayout>-->
-                        <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="#3D6DFF" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="#3D6DFF" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <Button Text="{x:Static resx:AppResources.SignIn}" Background="#3D6DFF" TextColor="Snow" FontAttributes="None" CornerRadius="10" WidthRequest="200" Margin="0,10,0,0" Command="{Binding LoginCommand}"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" Padding="0">
                         <Label Text="{x:Static resx:AppResources.NewUser}" TextColor="Black" FontSize="Small" Margin="5,0,5,0"/>
-
                         <Label Text="{x:Static resx:AppResources.SignUp}" TextColor="#3D6DFF" FontSize="Small" Margin="5,0"/>
-
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToRegistrationCommand}" />
                         </StackLayout.GestureRecognizers>

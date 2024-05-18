@@ -152,6 +152,12 @@ namespace Auto.School.Mobile.ViewModels
             await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}");
         }
 
+        [RelayCommand]
+        public async Task ForgotPassword()
+        {
+            await Shell.Current.GoToAsync($"{nameof(ForgotPasswordPage)}");
+        }
+
         public void CloseActionMethod()
         {
             IsError = false;
