@@ -138,6 +138,18 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Forgot password?</value>
   </data>
+  <data name="ForgotPassword.Button" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ForgotPassword.Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotPassword.Head" xml:space="preserve">
+    <value>Reset Your Password</value>
+  </data>
+  <data name="ForgotPassword.Label" xml:space="preserve">
+    <value>Enter your email address</value>
+  </data>
   <data name="GoToSchedule" xml:space="preserve">
     <value>Go to schedule</value>
   </data>

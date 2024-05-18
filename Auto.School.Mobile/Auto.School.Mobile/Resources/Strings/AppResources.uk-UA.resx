@@ -138,6 +138,18 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Забули пароль?</value>
   </data>
+  <data name="ForgotPassword.Button" xml:space="preserve">
+    <value>Скинути пароль</value>
+  </data>
+  <data name="ForgotPassword.Email" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
+  <data name="ForgotPassword.Head" xml:space="preserve">
+    <value>Скиньте свій пароль</value>
+  </data>
+  <data name="ForgotPassword.Label" xml:space="preserve">
+    <value>Введіть адресу електронної пошти</value>
+  </data>
   <data name="GoToSchedule" xml:space="preserve">
     <value>Відкрити розклад</value>
   </data>
@@ -196,7 +208,7 @@
     <value>Уведіть своє прізвище</value>
   </data>
   <data name="Registration.PasswordLabel" xml:space="preserve">
-    <value />
+    <value>Пароль</value>
   </data>
   <data name="Registration.PhoneLabel" xml:space="preserve">
     <value>Номер телефону</value>
