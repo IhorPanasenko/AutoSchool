@@ -252,6 +252,9 @@
   <data name="StudentProfile.InstructorInfoTitle" xml:space="preserve">
     <value>Мій інструктор</value>
   </data>
+  <data name="StudentProfile.InstructorRequestStatusTitle" xml:space="preserve">
+    <value>Статус запиту до інструктора</value>
+  </data>
   <data name="StudentProfile.LastName" xml:space="preserve">
     <value>Прізвище</value>
   </data>
@@ -278,6 +281,9 @@
   </data>
   <data name="StudentProfile.UpdatePhoto" xml:space="preserve">
     <value>Завантажити фото</value>
+  </data>
+  <data name="StudentProfile.ViewInstructors" xml:space="preserve">
+    <value>Перелянути інструкторів</value>
   </data>
   <data name="UploadPhoto" xml:space="preserve">
     <value>Завантажити фото</value>

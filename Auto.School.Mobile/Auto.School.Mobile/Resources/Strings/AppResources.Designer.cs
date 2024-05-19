@@ -466,6 +466,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request to instructor status.
+        /// </summary>
+        internal static string StudentProfile_InstructorRequestStatusTitle {
+            get {
+                return ResourceManager.GetString("StudentProfile.InstructorRequestStatusTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         internal static string StudentProfile_LastName {
@@ -543,6 +552,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string StudentProfile_UpdatePhoto {
             get {
                 return ResourceManager.GetString("StudentProfile.UpdatePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View instructors.
+        /// </summary>
+        internal static string StudentProfile_ViewInstructors {
+            get {
+                return ResourceManager.GetString("StudentProfile.ViewInstructors", resourceCulture);
             }
         }
         
