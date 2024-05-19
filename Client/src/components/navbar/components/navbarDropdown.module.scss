@@ -1,0 +1,29 @@
+@import "../../../styles/index.scss";
+
+.menu__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.menu__icon.show {
+  transition-duration: 0.9s;
+  transform: rotate(180deg);
+}
+.dropdown_content.hide {
+  display: none;
+}
+.dropdown_content {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+.dropdown_content li {
+  text-decoration: none;
+}
+.menu__dropdown_item {
+  @include fontSize("Roboto", 400, $dark-blue, 19px, 29px);
+}

@@ -1,0 +1,86 @@
+{
+  "navbar": {
+    "btnreg": "Register",
+    "btnlog": "Login",
+    "btnlogout": "Logout",
+    "name": "Driving school",
+    "linkmain": "Main",
+    "linkcontacts": "Contacts",
+    "linkinstructors": "Instructors",
+    "linklessons": "Lessons",
+    "linkreviews": "Reviews"
+  },
+  "emailConfirmation": {
+    "verifyEmailButton": "Verify email",
+    "title": "Email confirmation",
+    "redirecting": "Email confirmed. Redirecting to login page...",
+    "confirming": "Confirming your email. This may take a few minutes",
+    "error": "Error confirming email. Please try again later."
+  },
+  "header": {
+    "headerTitle": "Need Warehouse Space? Look No Further!",
+    "headerDesc": " Your one-stop solution for all your warehouse rental needs. Whether you're a small business in need of extra storage space or a growing enterprise requiring a distribution center, we have the perfect warehouse to meet your requirements.",
+    "headerSearchInput": "City warehouse",
+    "headerBtn": "Search"
+  },
+  "featured": {
+    "featuredTitlesKyi": "Kyiv",
+    "featuredTitlesKh": "Kharkiv",
+    "featuredTitlesLv": "Lviv",
+    "featuredTitlesOd": "Odesa",
+    "properties": "properties"
+  },
+  "mail": {
+    "mailTitle": "Save time, save money!",
+    "mailDesc": "Sign up and we'll send the best deals to you",
+    "placeholder": "Your Email",
+    "btn": "Subscribe"
+  },
+  "list": {
+    "lsTitle": "Search",
+    "lsItem": "Destination",
+    "lsItemOp": "Options",
+    "date": "Check-in Date",
+    "lsOptionTextMin": "Min price",
+    "lsOptionTextMax": "Max price",
+    "perNight": "per month",
+    "btn": "Search"
+  },
+  "searchItem": {
+    "month": "month",
+    "year": "year",
+    "siCheckButton": "See availability"
+  },
+  "warehouse": {
+    "electricity": "electricity",
+    "plumbing": "plumbing",
+    "protection": "protection",
+    "days": "days",
+    "btn": "Reserve or Book Now!"
+  },
+  "reserve": {
+    "span": "Check warehouse:",
+    "btn": "Check warehouse Now!",
+    "p": "Warehouse has already booked by another user",
+    "pp": "Please select another dates"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password?",
+    "invalidEmail": "Please enter a valid email address.",
+    "successMessage": "We have sent an email with the reset link. Please check you inbox",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "emailLabel": "Enter your email",
+    "submitButton": "Reset Password"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "passwordMismatch": "Passwords do not match.",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "newPasswordLabel": "Enter New Password",
+    "repeatPasswordLabel": "Repeat Password",
+    "submitButton": "Submit"
+  },
+  "login":{
+    "forgotPassword": "Forgot password?"
+  } 
+}

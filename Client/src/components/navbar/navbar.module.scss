@@ -1,0 +1,98 @@
+// @import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import "../../styles/index.scss";
+
+.navbar {
+  height: 80px;
+  background-color: #f1edc9;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navContainer {
+  width: 100%;
+  // max-width: 1024px;
+  // color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo_container {
+  text-align: center;
+}
+.name {
+  margin-top: 10px;
+  @include fontSize("Roboto", 400, $dark-blue, 16px, 29px);
+}
+
+.logo {
+  @include fontSize("Yellowtail", 600, $dark-blue, 36px, 49px);
+  padding: 10px 20px;
+  border: 2px solid $dark-blue;
+  border-radius: 30px;
+}
+
+.menu {
+  @include flex(center, center);
+  gap: 30%;
+}
+.menu_text {
+  border: none;
+  @include fontSize("Roboto", 500, $dark-blue, 18px, 25px);
+}
+.menu_text:hover {
+  border-bottom: 3px solid $dark-blue;
+  // color: $yellow;
+}
+.active {
+  border-bottom: 3px solid $dark-blue;
+}
+
+.navButton {
+  @include fontSize("Roboto", 700, $white, 19px, 29px);
+  margin-left: 20px;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #003580;
+}
+
+.navButton:hover {
+  @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
+
+  background-color: $yellow;
+}
+
+.language {
+  color: $dark-blue;
+  @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
+}
+.btn_container {
+  @include flex(center, center);
+  gap: 15%;
+}
+.navItems {
+  @include flex(center, center);
+  // gap: 5%;
+}
+.btn_page_container {
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: $yellow;
+}
+.btn_profile_container {
+  @include flex(center, center);
+  gap: 10px;
+}
+// .profile_ico {
+//   color: #003580;
+// }

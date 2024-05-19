@@ -1,0 +1,120 @@
+@import "../../styles/index.scss";
+
+.login_container {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.login_wrapper {
+  padding-right: 10%;
+  padding-left: 10%;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  border-radius: 15px;
+  // border: 1px solid rgba(0, 0, 0, 0.07);
+
+  background: #fff;
+
+  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+  border: 3px solid #eaeaff;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__icon {
+  margin: auto;
+  margin-top: 30px;
+  width: 75%;
+  height: 230px;
+  margin-bottom: 30px;
+
+  // font-size: 20px;
+}
+
+.contGoogle {
+  // display: inline-block;
+  margin-bottom: 18px;
+  // border: 1px solid rgba(0, 0, 0, 0.07);
+  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+  border: 3px solid #eaeaff;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 15px;
+  @include flex(center, center);
+  gap: 20px;
+  @include fontSize("Roboto", 400, gray, 15px, 18px);
+}
+
+.input_base {
+  // display: inline-block;
+  margin-bottom: 18px;
+  // border: 1px solid rgba(0, 0, 0, 0.07);
+  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
+  border: 3px solid #eaeaff;
+
+  padding: 10px 15px;
+  border-radius: 15px;
+  @include fontSize("Roboto", 400, $dark-blue, 15px, 18px);
+}
+
+.input_base::placeholder {
+  @include fontSize("Roboto", 400, gray, 15px, 18px);
+}
+
+.contGoogle:hover {
+  background: #eaeaff;
+}
+
+.input_base:focus {
+  outline: none;
+  border: 3px solid $dark-blue;
+}
+.inputs_container {
+  @include flex(space-between, center);
+}
+.input_witherr_container {
+}
+.date_label {
+  display: block;
+  @include fontSize("Roboto", 400, $dark-blue, 15px, 19px);
+}
+.date_container {
+  width: 41%;
+}
+.date_container input {
+  width: 83%;
+}
+
+.link_btn_logIn {
+  padding-right: 17%;
+  padding-left: 17%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.btn_logIn {
+  // width: 80%;
+  background-color: $dark-blue;
+  @include fontSize("Roboto", 400, $white, 19px, 22px);
+  padding-right: 35px;
+  padding-left: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+.txtAcoouunt {
+  @include flex(center, center);
+  gap: 20px;
+  margin-bottom: 18px;
+}
+.txtAcoouunt_noLink {
+  @include fontSize("Roboto", 400, $gray, 18px, 21px);
+}
+.link_registration {
+  @include fontSize("Roboto", 400, #3d6dff, 18px, 21px);
+}

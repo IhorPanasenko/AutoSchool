@@ -61,11 +61,173 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot Password?.
+        ///   Looks up a localized string similar to Add profile photo.
+        /// </summary>
+        internal static string AddPhoto {
+            get {
+                return ResourceManager.GetString("AddPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open details.
+        /// </summary>
+        internal static string AllInstructors_DetailsButton {
+            get {
+                return ResourceManager.GetString("AllInstructors.DetailsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Our Instructors.
+        /// </summary>
+        internal static string AllInstructors_Title {
+            get {
+                return ResourceManager.GetString("AllInstructors.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to login.
+        /// </summary>
+        internal static string BackToLogin {
+            get {
+                return ResourceManager.GetString("BackToLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth.
+        /// </summary>
+        internal static string BirthdayDate {
+            get {
+                return ResourceManager.GetString("BirthdayDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        internal static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
         internal static string ForgotPassword {
             get {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        internal static string ForgotPassword_Button {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string ForgotPassword_Email {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Your Password.
+        /// </summary>
+        internal static string ForgotPassword_Head {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Head", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your email address.
+        /// </summary>
+        internal static string ForgotPassword_Label {
+            get {
+                return ResourceManager.GetString("ForgotPassword.Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to schedule.
+        /// </summary>
+        internal static string GoToSchedule {
+            get {
+                return ResourceManager.GetString("GoToSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about car.
+        /// </summary>
+        internal static string InstructorDetails_CarCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.CarCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Car for learning.
+        /// </summary>
+        internal static string InstructorDetails_CarSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorDetails.CarSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about instructor.
+        /// </summary>
+        internal static string InstructorDetails_InstructorCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.InstructorCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main information about instructor.
+        /// </summary>
+        internal static string InstructorDetails_InstructorSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorDetails.InstructorSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up to instructor.
+        /// </summary>
+        internal static string InstructorDetails_SignUpToInstructorButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.SignUpToInstructorButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructor Details.
+        /// </summary>
+        internal static string InstructorDetails_Title {
+            get {
+                return ResourceManager.GetString("InstructorDetails.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        internal static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -97,11 +259,119 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal info.
+        /// </summary>
+        internal static string PersonalInfo {
+            get {
+                return ResourceManager.GetString("PersonalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Driving category to learn.
+        /// </summary>
+        internal static string Registration_DrivingCaregoryLabel {
+            get {
+                return ResourceManager.GetString("Registration.DrivingCaregoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Registration_EmailLabel {
+            get {
+                return ResourceManager.GetString("Registration.EmailLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your first name.
+        /// </summary>
+        internal static string Registration_EnterFirstName {
+            get {
+                return ResourceManager.GetString("Registration.EnterFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your last name.
+        /// </summary>
+        internal static string Registration_EnterLastName {
+            get {
+                return ResourceManager.GetString("Registration.EnterLastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string Registration_PasswordLabel {
+            get {
+                return ResourceManager.GetString("Registration.PasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        internal static string Registration_PhoneLabel {
+            get {
+                return ResourceManager.GetString("Registration.PhoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat password.
+        /// </summary>
+        internal static string Registration_RepeatPassword {
+            get {
+                return ResourceManager.GetString("Registration.RepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rememeber me?.
         /// </summary>
         internal static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select your city.
+        /// </summary>
+        internal static string SelectCity {
+            get {
+                return ResourceManager.GetString("SelectCity", resourceCulture);
             }
         }
         
@@ -133,11 +403,56 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload photo.
+        /// </summary>
+        internal static string UploadPhoto {
+            get {
+                return ResourceManager.GetString("UploadPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Living address.
+        /// </summary>
+        internal static string UserProfile_Address {
+            get {
+                return ResourceManager.GetString("UserProfile.Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Driving category learning for:.
+        /// </summary>
+        internal static string UserProfile_DrivingCategory {
+            get {
+                return ResourceManager.GetString("UserProfile.DrivingCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructor info.
+        /// </summary>
+        internal static string UserProfile_InstructiorInfo {
+            get {
+                return ResourceManager.GetString("UserProfile.InstructiorInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lessons statistic.
+        /// </summary>
+        internal static string UserProfile_LessonsStatistic {
+            get {
+                return ResourceManager.GetString("UserProfile.LessonsStatistic", resourceCulture);
             }
         }
         

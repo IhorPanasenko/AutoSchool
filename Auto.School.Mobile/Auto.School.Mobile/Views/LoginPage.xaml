@@ -2,67 +2,79 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.LoginPage"
+             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             Title="LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+            >
+
     <ScrollView Orientation="Vertical">
-        <Grid BackgroundColor="SkyBlue">
+        <Grid BackgroundColor="#F5F5F5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="220"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-        <StackLayout>
-            <Frame HeightRequest="60" WidthRequest="60" CornerRadius="50" Padding="0" Margin="0,100,0,0" HorizontalOptions="Center">
-                <Image Source="https://www.findool.com/images/avatars/avatar.png" Aspect="AspectFill" Margin="0"/>
-            </Frame>
-        </StackLayout>
-        
-        <Grid RowSpacing="5" Grid.Row="1" Margin="20,20,20,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="1" TextColor="DarkGoldenrod" Text="{x:Static resx:AppResources.Welcome}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
-            <Label Grid.Row="2" TextColor="DarkGoldenrod" Text="{x:Static resx:AppResources.LoginGreetingText}" HorizontalOptions="Center" FontSize="Subtitle"/>
-            <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                <Frame BackgroundColor="Transparent" BorderColor="Aquamarine" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
-                    <StackLayout Orientation="Horizontal" Background="DarkGoldenrod">
-                        <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                            <Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>
-                        </Frame>
-                        <Entry  Text="{Binding UserName}" Placeholder="{x:Static resx:AppResources.Username}" PlaceholderColor="Yellow" TextColor="Yellow" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
-                    </StackLayout>
+            <StackLayout Grid.Row="0">
+                <Frame CornerRadius="0" Padding="0" Margin="0,20,0,0" HorizontalOptions="Center" BorderColor="Snow">
+                    <Image Source="login_backgr.png" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"/>
                 </Frame>
-                <Frame BackgroundColor="Transparent" BorderColor="Aquamarine" Padding="0" Margin="0,15,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
-                    <StackLayout Orientation="Horizontal" BackgroundColor="DarkGoldenrod"> 
-                        <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                            <Image Source="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-round/700/09_lock-256.png" Aspect="AspectFill" Margin="0"/>
-                        </Frame>
-                        <Entry Text="{Binding Password}" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Yellow" TextColor="Yellow" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
-                    </StackLayout>
-                </Frame>
+            </StackLayout>
 
-                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
-                    <StackLayout Orientation="Horizontal">
-                        <CheckBox IsChecked="False"/>
-                        <Label Text="{x:Static resx:AppResources.RememberMe}" TextColor="DarkGoldenrod" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Grid RowSpacing="5" Grid.Row="1" Margin="20,20,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" TextColor="Black" Text="{x:Static resx:AppResources.Welcome}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" Padding="0" Margin="0"/>
+                <Label Grid.Row="2" TextColor="Black" Text="{x:Static resx:AppResources.LoginGreetingText}" HorizontalOptions="Center" FontSize="Subtitle"/>
+                <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}" CloseAction="{Binding CloseAction}"/>
+                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                        <StackLayout Orientation="Horizontal" Background="#F5F5F5">
+                            <Frame BackgroundColor="#F5F5F5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                <Image Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" Aspect="AspectFill" Margin="0"/>
+                            </Frame>
+                            <Entry  Text="{Binding UserName}" Placeholder="{x:Static resx:AppResources.Username}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout BackgroundColor="#F5F5F5" IsVisible="{Binding IsEmailError}">
+                        <Label Text="{Binding EmailErrorMessage}" TextColor="Red" Margin="0,5,0,10" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
                     </StackLayout>
-                    <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="DarkBlue" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
-                </StackLayout>
+                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,15,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#F5F5F5">
+                            <Frame BackgroundColor="#F5F5F5" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                <Image Source="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-round/700/09_lock-256.png" Aspect="AspectFill" Margin="0"/>
+                            </Frame>
+                            <Entry Text="{Binding Password}" IsPassword="{Binding IsPassword, Mode=TwoWay}" Placeholder="{x:Static resx:AppResources.Password}" PlaceholderColor="Gray" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                            <Frame WidthRequest="40" BackgroundColor="#F5F5F5" HeightRequest="30" Padding="0" Margin="0, 0, 10, 0">
+                                <ImageButton Source="{Binding PasswordVisibleImageSource}" Aspect="AspectFit" Margin="2" Command="{Binding ShowPasswordCommand}"/>
+                            </Frame>
+                           
+                        </StackLayout>
+                    </Frame>
 
-                    <Button Text="{x:Static resx:AppResources.SignIn}" Background="DarkBlue" TextColor="YellowGreen" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginCommand}"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
-                        <Label Text="{x:Static resx:AppResources.NewUser}" TextColor="DarkGoldenrod" FontSize="Small" Margin="5,0,5,0"/>
-                        
-                        <Label Text="{x:Static resx:AppResources.SignUp}" TextColor="DarkBlue" FontSize="Small" Margin="5,0"/>
-                        
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Padding="0">
+                        <!--<StackLayout Orientation="Horizontal">
+                            <CheckBox IsChecked="False"/>
+                            <Label Text="{x:Static resx:AppResources.RememberMe}" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        </StackLayout>-->
+                        <Label Text="{x:Static resx:AppResources.ForgotPassword}" TextColor="#3D6DFF" FontSize="Small" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <Button Text="{x:Static resx:AppResources.SignIn}" Background="#3D6DFF" TextColor="Snow" FontAttributes="None" CornerRadius="10" WidthRequest="200" Margin="0,10,0,0" Command="{Binding LoginCommand}"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" Padding="0">
+                        <Label Text="{x:Static resx:AppResources.NewUser}" TextColor="Black" FontSize="Small" Margin="5,0,5,0"/>
+                        <Label Text="{x:Static resx:AppResources.SignUp}" TextColor="#3D6DFF" FontSize="Small" Margin="5,0"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToRegistrationCommand}" />
                         </StackLayout.GestureRecognizers>

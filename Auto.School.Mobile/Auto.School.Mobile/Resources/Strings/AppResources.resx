@@ -117,8 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add profile photo</value>
+  </data>
+  <data name="AllInstructors.DetailsButton" xml:space="preserve">
+    <value>Open details</value>
+  </data>
+  <data name="AllInstructors.Title" xml:space="preserve">
+    <value>Our Instructors</value>
+  </data>
+  <data name="BackToLogin" xml:space="preserve">
+    <value>Back to login</value>
+  </data>
+  <data name="BirthdayDate" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot Password?</value>
+    <value>Forgot password?</value>
+  </data>
+  <data name="ForgotPassword.Button" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ForgotPassword.Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotPassword.Head" xml:space="preserve">
+    <value>Reset Your Password</value>
+  </data>
+  <data name="ForgotPassword.Label" xml:space="preserve">
+    <value>Enter your email address</value>
+  </data>
+  <data name="GoToSchedule" xml:space="preserve">
+    <value>Go to schedule</value>
+  </data>
+  <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
+    <value>Reviews about car</value>
+  </data>
+  <data name="InstructorDetails.CarSectionTitle" xml:space="preserve">
+    <value>Car for learning</value>
+  </data>
+  <data name="InstructorDetails.InstructorCommentsButton" xml:space="preserve">
+    <value>Reviews about instructor</value>
+  </data>
+  <data name="InstructorDetails.InstructorSectionTitle" xml:space="preserve">
+    <value>Main information about instructor</value>
+  </data>
+  <data name="InstructorDetails.SignUpToInstructorButton" xml:space="preserve">
+    <value>Sign up to instructor</value>
+  </data>
+  <data name="InstructorDetails.Title" xml:space="preserve">
+    <value>Instructor Details</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last name</value>
   </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Sign in to continue</value>
@@ -129,8 +183,44 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PersonalInfo" xml:space="preserve">
+    <value>Personal info</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Registration.DrivingCaregoryLabel" xml:space="preserve">
+    <value>Driving category to learn</value>
+  </data>
+  <data name="Registration.EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Registration.EnterFirstName" xml:space="preserve">
+    <value>Enter your first name</value>
+  </data>
+  <data name="Registration.EnterLastName" xml:space="preserve">
+    <value>Enter your last name</value>
+  </data>
+  <data name="Registration.PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Registration.PhoneLabel" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Registration.RepeatPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Rememeber me?</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>Select your city</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
@@ -141,8 +231,23 @@
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="UploadPhoto" xml:space="preserve">
+    <value>Upload photo</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="UserProfile.Address" xml:space="preserve">
+    <value>Living address</value>
+  </data>
+  <data name="UserProfile.DrivingCategory" xml:space="preserve">
+    <value>Driving category learning for:</value>
+  </data>
+  <data name="UserProfile.InstructiorInfo" xml:space="preserve">
+    <value>Instructor info</value>
+  </data>
+  <data name="UserProfile.LessonsStatistic" xml:space="preserve">
+    <value>Lessons statistic</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
