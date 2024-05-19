@@ -24,7 +24,6 @@
         <ShellContent Title="Registration" ContentTemplate="{DataTemplate views:RegistrationPage}"/>
         <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:StudentProfile}"/>
         <ShellContent Title="Instructors" ContentTemplate="{DataTemplate views:AllInstructorsPage}"/>
-        <ShellContent Title="InstrucotrDetails" ContentTemplate="{DataTemplate views:InstructorDetailsPage}"/>
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
