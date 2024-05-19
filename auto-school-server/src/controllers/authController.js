@@ -253,9 +253,8 @@ exports.logout = catchAsync(async (req, res, next) => {
     maxAge: 0,
   });
 
-  // TODO: change req.body.userId tp req.user.userId after adding auth middleware
   const userLoginData = await userLogin
-    .findOne({ userId: req.body.userId })
+    .findOne({ userId: req.user._id })
     .select('refreshToken');
 
   userLoginData.refreshToken = null;
