@@ -53,6 +53,8 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<AllInstructorsViewModel>();
             builder.Services.AddSingleton<InstructorDetailsViewModel>();
             builder.Services.AddSingleton<ForgotPasswordViewModel>();
+            builder.Services.AddSingleton<AppShellViewModel>();
+            builder.Services.AddSingleton<StudentProfileViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
@@ -62,6 +64,8 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<AllInstructorsPage>();
             builder.Services.AddSingleton<InstructorDetailsPage>();
             builder.Services.AddSingleton<ForgotPasswordPage>();
+            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<StudentProfile>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
