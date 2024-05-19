@@ -7,5 +7,6 @@
         public const string TooYoungError = "You must be elder than 18 to get access to driving license classes";
         public const string InvalidPhoneNumber = "PLease, enter a phone number in format: XXX-XXX-XXXX";
         public const string NotEqualPasswords = "Entered passwords are not equal";
+        public const string FailedToLoadInstuctor = "Failed to load instructor info";
     }
 }
