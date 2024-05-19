@@ -1,8 +1,9 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
-using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Responses.Instructor;
+using Auto.School.Mobile.Core.Responses.Instructor.GetOne;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
@@ -16,11 +17,17 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 
             if (instructorsResponse.Status is null)
             {
-                instructorsResponse.Status = "fail";
+                instructorsResponse.Status = ResponseStatuses.Fail;
                 instructorsResponse.Instructors = [];
             }
 
             return instructorsResponse;
+        }
+
+        public async Task<GetOneInstructorResponse> GetOne(string id)
+        {
+            var response = await _getRequest.ExecuteAsync<GetOneInstructorResponse>($"{RoutesConstants.GetOneInstructor}{id}");
+            return response;
         }
     }
 }
