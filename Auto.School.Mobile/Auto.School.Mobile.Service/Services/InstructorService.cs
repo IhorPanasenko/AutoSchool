@@ -1,5 +1,6 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Responses.Instructor;
+using Auto.School.Mobile.Core.Responses.Instructor.GetOne;
 using Auto.School.Mobile.Service.Interfaces;
 
 namespace Auto.School.Mobile.Service.Services
@@ -18,6 +19,12 @@ namespace Auto.School.Mobile.Service.Services
                 response.Message = "";
             }
 
+            return response;
+        }
+
+        public async Task<GetOneInstructorResponse> GetOne(string id)
+        {
+            var response = await _instructorRequest.GetOne(id);
             return response;
         }
     }
