@@ -9,5 +9,6 @@
         public const string Register = "auth/signup";
         public const string GetAllInstructors = "instructors";
         public const string StudentSignUpToInstructor = "students/request-instructor";
+        public const string ForgotPassword = "auth/forgotPassword";
     }
 }
