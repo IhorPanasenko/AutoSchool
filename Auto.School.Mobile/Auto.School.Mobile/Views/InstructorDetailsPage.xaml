@@ -65,27 +65,25 @@
                             <Label Text="{Binding Instructor.Car.Transmission, StringFormat='Transmission {0}'}" Padding="10,5,0,0"/>
                         </StackLayout>
                     </Border>
-                    <!--<Grid Margin="20,0" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*" ColumnSpacing="10" RowSpacing="0">-->
-                        <Button 
+                    <Button 
                             Margin="20,5"
                             FontSize="Medium"
                             Text="{x:Static resx:AppResources.InstructorDetails_InstructorCommentsButton}"
                             TextColor="#f4e558"
                             Command="{Binding ShowInstructorReviewsCommand}"/>
-                        <Button 
+                    <Button 
                              Margin="20,5"
                             FontSize="Medium"
                             TextColor="#f4e558"
                             Text="{x:Static resx:AppResources.InstructorDetails_CarCommentsButton}" 
                             Command="{Binding ShowCarReviewsCommand}"/>
-                        <Button 
+                    <Button 
                              Margin="20,5"
                             FontSize="Medium"
                             BackgroundColor="#7eb693"
                             TextColor="#f4e558"
                             Text="{x:Static resx:AppResources.InstructorDetails_SignUpToInstructorButton}" 
                             Command="{Binding  SignUpToInstructorCommand}"/>
-                    <!--</Grid>-->
                 </StackLayout>
             </Border>
         </StackLayout>
