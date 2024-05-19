@@ -69,17 +69,26 @@
                                 <Button Text="{x:Static resx:AppResources.StudentProfile_UpdatePassword}"  MaximumWidthRequest="150" HorizontalOptions="CenterAndExpand" Command="{Binding UpdatePassword}" BackgroundColor="#f4e558" TextColor="#3D6DFF"/>
                             </StackLayout>
                         </Border>
-                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="5">
+                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="5" IsVisible="{Binding  IsInstructorMessageVisible}">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
                             <StackLayout>
-                                <!-- Lessons Statistics Section -->
+                                <Label Text="{x:Static resx:AppResources.StudentProfile_InstructorRequestStatusTitle}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding InstructorMessage}" HorizontalOptions="CenterAndExpand"/>
+                                <Button Command="{Binding GoToInstructorsCommand}" Text="{x:Static resx:AppResources.StudentProfile_ViewInstructors}" Margin="10" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
+                            </StackLayout>
+                        </Border>
+                        <!--<Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="5" IsVisible="{Binding IsInstructorRequestAccepted}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+                            <StackLayout>
                                 <Label Text="{x:Static resx:AppResources.StudentProfile_LessonsStatisticTitle}" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="Number of Hours/Lessons: " />
                             </StackLayout>
-                        </Border>
-                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                        </Border>-->
+                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding IsInstructorRequestSent}">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
@@ -91,9 +100,9 @@
                                         <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" />
                                     </Frame>
                                     <Label Grid.Column="1" Grid.Row="0" Text="{Binding Instructor.Instructor.FirstName}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" />
-                                    <Button Grid.Column="1" Grid.Row="1" Text="{x:Static resx:AppResources.StudentProfile_DetailedInfo}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
-                                    <Button Grid.Column="1" Grid.Row="2" Text="{x:Static resx:AppResources.StudentProfile_GoToSchedule}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
-                                    <Button Grid.Column="1"  Grid.Row="3" Text="{x:Static resx:AppResources.StudentProfile_SendMessage}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
+                                    <Button Grid.Column="1" Grid.Row="1" Text="{x:Static resx:AppResources.StudentProfile_DetailedInfo}" Command="{Binding ViewDetailedInfoComamnd}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
+                                    <Button Grid.Column="1" Grid.Row="2" Text="{x:Static resx:AppResources.StudentProfile_GoToSchedule}" Command="{Binding GoToScheduleCommand}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
+                                    <Button Grid.Column="1"  Grid.Row="3" Text="{x:Static resx:AppResources.StudentProfile_SendMessage}" Command="{Binding OpenChatCommand}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF"/>
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
