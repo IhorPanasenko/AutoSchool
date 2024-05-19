@@ -34,6 +34,12 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             return result;
         }
 
+        public Task<BaseResponse> Logout(string userId)
+        {
+            throw new NotImplementedException();
+            //var result = await 
+        }
+
         public async Task<RegistrationResponse> Register(RegistrationModel registrationModel)
         {
             var result = await _postRequest.ExecuteAsync<RegistrationModel, RegistrationResponse>(RoutesConstants.Register, registrationModel);

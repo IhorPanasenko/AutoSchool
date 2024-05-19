@@ -10,5 +10,6 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Abstract
         public Task<LoginResponse> Login(LoginModel loginModel);
         public Task<RegistrationResponse> Register(RegistrationModel registrationModel);
         public Task<BaseResponse> ForgotPassword(string email);
+        public Task<BaseResponse> Logout(string userId);
     }
 }
