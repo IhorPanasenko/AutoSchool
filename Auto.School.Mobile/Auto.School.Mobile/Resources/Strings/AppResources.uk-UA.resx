@@ -231,6 +231,54 @@
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="StudentProfile.BirthdayDate" xml:space="preserve">
+    <value>Дата народження</value>
+  </data>
+  <data name="StudentProfile.City" xml:space="preserve">
+    <value>Місто проходження навчання</value>
+  </data>
+  <data name="StudentProfile.DetailedInfo" xml:space="preserve">
+    <value>Повна інформація</value>
+  </data>
+  <data name="StudentProfile.DrivingCategory" xml:space="preserve">
+    <value>Опановувана категорія водіння</value>
+  </data>
+  <data name="StudentProfile.FirstName" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="StudentProfile.GoToSchedule" xml:space="preserve">
+    <value>Відкрити розклад</value>
+  </data>
+  <data name="StudentProfile.InstructorInfoTitle" xml:space="preserve">
+    <value>Мій інструктор</value>
+  </data>
+  <data name="StudentProfile.LastName" xml:space="preserve">
+    <value>Прізвище</value>
+  </data>
+  <data name="StudentProfile.LessonsStatisticTitle" xml:space="preserve">
+    <value>Пройдені уроки</value>
+  </data>
+  <data name="StudentProfile.MainTitle" xml:space="preserve">
+    <value>Мій профіль</value>
+  </data>
+  <data name="StudentProfile.PersonalTitle" xml:space="preserve">
+    <value>Персональна інформація</value>
+  </data>
+  <data name="StudentProfile.PhoneNumber" xml:space="preserve">
+    <value>Номер телефону</value>
+  </data>
+  <data name="StudentProfile.SendMessage" xml:space="preserve">
+    <value>Надіслати повідомлення</value>
+  </data>
+  <data name="StudentProfile.UpdateInfo" xml:space="preserve">
+    <value>Оновити персональну інформацію</value>
+  </data>
+  <data name="StudentProfile.UpdatePassword" xml:space="preserve">
+    <value>Встановити новий пароль</value>
+  </data>
+  <data name="StudentProfile.UpdatePhoto" xml:space="preserve">
+    <value>Завантажити фото</value>
+  </data>
   <data name="UploadPhoto" xml:space="preserve">
     <value>Завантажити фото</value>
   </data>

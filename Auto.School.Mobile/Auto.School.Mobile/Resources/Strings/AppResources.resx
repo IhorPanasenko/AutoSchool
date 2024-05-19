@@ -231,6 +231,54 @@
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="StudentProfile.BirthdayDate" xml:space="preserve">
+    <value>Birthday date</value>
+  </data>
+  <data name="StudentProfile.City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="StudentProfile.DetailedInfo" xml:space="preserve">
+    <value>Open full info</value>
+  </data>
+  <data name="StudentProfile.DrivingCategory" xml:space="preserve">
+    <value>Driving category for learning</value>
+  </data>
+  <data name="StudentProfile.FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="StudentProfile.GoToSchedule" xml:space="preserve">
+    <value>Open Schedule</value>
+  </data>
+  <data name="StudentProfile.InstructorInfoTitle" xml:space="preserve">
+    <value>My instructor</value>
+  </data>
+  <data name="StudentProfile.LastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="StudentProfile.LessonsStatisticTitle" xml:space="preserve">
+    <value>Passed lessons</value>
+  </data>
+  <data name="StudentProfile.MainTitle" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="StudentProfile.PersonalTitle" xml:space="preserve">
+    <value>Personal info</value>
+  </data>
+  <data name="StudentProfile.PhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="StudentProfile.SendMessage" xml:space="preserve">
+    <value>Send message</value>
+  </data>
+  <data name="StudentProfile.UpdateInfo" xml:space="preserve">
+    <value>Update personal info</value>
+  </data>
+  <data name="StudentProfile.UpdatePassword" xml:space="preserve">
+    <value>Update password</value>
+  </data>
+  <data name="StudentProfile.UpdatePhoto" xml:space="preserve">
+    <value>Upload photo</value>
+  </data>
   <data name="UploadPhoto" xml:space="preserve">
     <value>Upload photo</value>
   </data>
