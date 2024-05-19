@@ -23,6 +23,12 @@ namespace Auto.School.Mobile.Service.Services
             return response;
         }
 
+        public async Task<BaseResponse> Logout(string userId)
+        {
+            var response = await _authenticationRequest.Logout(userId);
+            return response;
+        }
+
         public async Task<RegistrationResponse> RegisterAsync(RegistrationModel registrationModel)
         {
             var response = await _authenticationRequest.Register(registrationModel);

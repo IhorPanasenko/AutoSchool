@@ -12,5 +12,7 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<RegistrationResponse> RegisterAsync(RegistrationModel registrationModel);
 
         public Task<BaseResponse> ForgotPassword(string email);
+
+        public Task<BaseResponse> Logout(string userId);
     }
 }
