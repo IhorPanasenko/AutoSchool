@@ -12,6 +12,7 @@ using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
+using CommunityToolkit.Maui;
 
 namespace Auto.School.Mobile
 {
@@ -23,6 +24,7 @@ namespace Auto.School.Mobile
             
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -55,6 +57,7 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<ForgotPasswordViewModel>();
             builder.Services.AddSingleton<AppShellViewModel>();
             builder.Services.AddSingleton<StudentProfileViewModel>();
+            builder.Services.AddSingleton<UpdatePasswordViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
@@ -66,6 +69,7 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<ForgotPasswordPage>();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddSingleton<StudentProfile>();
+            builder.Services.AddSingleton<UpdatePasswordPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
