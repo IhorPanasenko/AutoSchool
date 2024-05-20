@@ -1,16 +1,19 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
+using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Authentication;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Login;
+using Auto.School.Mobile.Core.Responses.UpdatePassword;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
-    public class AuthenticationRequests(IPostRequest postRequest) : IAuthenticationRequest
+    public class AuthenticationRequests(IPostRequest postRequest, IPatchRequest patchRequest) : IAuthenticationRequest
     {
         private readonly IPostRequest _postRequest = postRequest;
+        private readonly IPatchRequest _patchRequest = patchRequest;
 
         public async Task<BaseResponse> ForgotPassword(string email)
         {
@@ -49,6 +52,12 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                 result.Status = "failed";
             }
 
+            return result;
+        }
+
+        public async Task<UpdatePasswordResponse> UpdatePassword(string oldPassword, string newPassword)
+        {
+            var result = await _patchRequest.ExecuteAsync<object, UpdatePasswordResponse>(RoutesConstants.UpdatePassword, new { currentPassword = oldPassword, newPassword = newPassword });
             return result;
         }
     }
