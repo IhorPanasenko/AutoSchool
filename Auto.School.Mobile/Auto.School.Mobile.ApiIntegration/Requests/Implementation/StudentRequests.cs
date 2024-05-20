@@ -2,6 +2,7 @@
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Student.ConnectWithInstructor;
 using Auto.School.Mobile.Core.Responses.Student.GetInfoMe;
 
@@ -57,6 +58,29 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                     }
                 };
 
+            }
+        }
+
+        public async Task<BaseResponse> UpdateProfileImage(Stream stream)
+        {
+            try
+            {
+                var response = await _patchRequest.UploadImageAsync<BaseResponse>(RoutesConstants.UpdatePhoto, stream, "profileAvatar");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse
+                {
+                    Message = ex.Message,
+                    Status = ResponseStatuses.Fail,
+                    Error = new Core.Responses.Base.BaseError()
+                    {
+                        Status = "Fail",
+                        StatusCode = 500,
+                        IsOperational = false
+                    }
+                };
             }
         }
     }
