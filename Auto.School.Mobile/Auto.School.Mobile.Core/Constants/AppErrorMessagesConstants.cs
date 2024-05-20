@@ -8,5 +8,6 @@
         public const string InvalidPhoneNumber = "PLease, enter a phone number in format: XXX-XXX-XXXX";
         public const string NotEqualPasswords = "Entered passwords are not equal";
         public const string FailedToLoadInstuctor = "Failed to load instructor info";
+        public const string FailedToPickImage = "Error while picking image from files. Try again later";
     }
 }
