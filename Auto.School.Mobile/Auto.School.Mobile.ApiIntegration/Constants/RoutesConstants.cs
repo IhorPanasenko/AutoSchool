@@ -9,6 +9,7 @@
         public const string Login = "auth/login";
         public const string Register = "auth/signup";
         public const string ForgotPassword = "auth/forgotPassword";
+        public const string UpdatePassword = "auth/updateMyPassword";
         #endregion
 
         #region Student
