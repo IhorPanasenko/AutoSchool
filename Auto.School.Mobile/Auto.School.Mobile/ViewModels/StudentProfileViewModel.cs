@@ -3,6 +3,7 @@ using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Views;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
@@ -14,13 +15,16 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IStudentService _studentService;
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
+        private readonly IPopupService _popupService;
 
-        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService)
+        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
         {
             _studentService = studentService;
             _instructorService = instructorService;
             _sharedService = sharedService;
+            _popupService = popupService;
             LoadStudent();
+            
         }
 
         private async Task LoadStudent()
@@ -49,30 +53,39 @@ namespace Auto.School.Mobile.ViewModels
             {
                 case LinkToInstructorResponseStatus.NotSent:
                     IsInstructorRequestSent = false;
-                    IsInstructirRequestAccepted = false;
+                    IsInstructorRequestAccepted = false;
                     IsInstructorMessageVisible = true;
+                    IsViewInstructorsVisible = true;
                     InstructorMessage = AppMessages.RequestNotSent;
                     break;
                 case LinkToInstructorResponseStatus.Pending:
                     IsInstructorRequestSent = true;
-                    IsInstructirRequestAccepted = false;
+                    IsInstructorRequestAccepted = false;
                     InstructorMessage = AppMessages.Pending;
                     IsInstructorMessageVisible = true;
+                    IsViewInstructorsVisible = false;
                     await LoadInstructor(Student.InstructorId);
                     break;
                 case LinkToInstructorResponseStatus.Accepted:
+                    IsInstructorRequestSent = true;
+                    IsInstructorRequestAccepted = true;
+                    IsViewInstructorsVisible = true;
+                    IsInstructorMessageVisible = false;
                     await LoadInstructor(Student.InstructorId);
                     break;
                 case LinkToInstructorResponseStatus.Rejected:
                     IsInstructorRequestSent = true;
-                    IsInstructirRequestAccepted = false;
+                    IsInstructorRequestAccepted = false;
                     IsInstructorMessageVisible = true;
+                    IsViewInstructorsVisible = false;
                     InstructorMessage = AppMessages.Rejected;
                     await LoadInstructor(Student.InstructorId);
                     break;
                 default:
                     IsInstructorRequestSent = false;
-                    IsInstructirRequestAccepted = false;
+                    IsInstructorRequestAccepted = false;
+                    IsViewInstructorsVisible = true;
+                    IsInstructorMessageVisible = true;
                     InstructorMessage = AppMessages.RequestNotSent;
                     break;
             }
@@ -112,7 +125,10 @@ namespace Auto.School.Mobile.ViewModels
         private string instructorMessage;
 
         [ObservableProperty]
-        private bool isInstructirRequestAccepted;
+        private bool isInstructorRequestAccepted;
+
+        [ObservableProperty]
+        private bool isViewInstructorsVisible;
 
         [ObservableProperty]
         private bool isInstructorMessageVisible;
@@ -139,7 +155,38 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task UpdatePhoto()
         {
-            throw new NotImplementedException();
+            var imageStream = await PickImage();
+            if(imageStream != null)
+            {
+                await _studentService.UpdateProfileImage(imageStream);
+                await LoadStudent();
+            }
+        }
+
+        private async Task<Stream> PickImage()
+        {
+            try
+            {
+                var result = await FilePicker.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Pick an image",
+                    FileTypes = FilePickerFileType.Images
+                });
+
+                if (result != null)
+                {
+                    var stream = await result.OpenReadAsync();
+                    return stream;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ErrorMesssage = AppErrorMessagesConstants.FailedToPickImage;
+                IsError = true;
+            }
+
+            return null;
         }
 
         [RelayCommand]
@@ -161,9 +208,28 @@ namespace Auto.School.Mobile.ViewModels
         }
 
         [RelayCommand]
-        public async Task ViewDetailedInfoComamnd()
+        public async Task ViewDetailedInfo()
         {
-            
+            try
+            {
+                if (Instructor == null)
+                {
+                    return;
+                }
+
+                _sharedService.Add("instructor", Instructor);
+                await Shell.Current.GoToAsync(nameof(InstructorDetailsPage));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        [RelayCommand]
+        public async Task UpdatePassword()
+        {
+            await _popupService.ShowPopupAsync<UpdatePasswordViewModel>();
         }
 
     }
