@@ -14,6 +14,7 @@
         #region Student
         public const string GetInfoMe = "students/me";
         public const string StudentSignUpToInstructor = "students/request-instructor";
+        public const string UpdatePhoto = "students/updateMyPhoto";
         #endregion
 
         #region City
