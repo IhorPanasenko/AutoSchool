@@ -9,5 +9,6 @@
         public const string NotEqualPasswords = "Entered passwords are not equal";
         public const string FailedToLoadInstuctor = "Failed to load instructor info";
         public const string FailedToPickImage = "Error while picking image from files. Try again later";
+        public const string UpdatePasswordNotFilled = "Please enter both current and new passwords.";
     }
 }
