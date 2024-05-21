@@ -65,8 +65,10 @@
                                         <Label Grid.Column="1" Grid.Row="5" Text="{Binding Student.City.Name}"/>
                                     </Grid>
                                 </StackLayout>
-                                <Button Text="{x:Static resx:AppResources.StudentProfile_UpdateInfo}"  MaximumWidthRequest="150" HorizontalOptions="CenterAndExpand" Command="{Binding UpdateInfoComamnd}" BackgroundColor="#f4e558" TextColor="#3D6DFF" Margin="0,5"/>
-                                <Button Text="{x:Static resx:AppResources.StudentProfile_UpdatePassword}"  MaximumWidthRequest="150" HorizontalOptions="CenterAndExpand" Command="{Binding UpdatePasswordCommand}" BackgroundColor="#f4e558" TextColor="#3D6DFF" Margin="0,5"/>
+                                <HorizontalStackLayout Margin="0,10">
+                                    <Button Text="{x:Static resx:AppResources.StudentProfile_UpdateInfo}"  MaximumWidthRequest="300" HorizontalOptions="CenterAndExpand" Command="{Binding UpdateInfoCommand}" BackgroundColor="#f4e558" TextColor="#3D6DFF" Margin="5,2"/>
+                                    <Button Text="{x:Static resx:AppResources.StudentProfile_UpdatePassword}"  MaximumWidthRequest="150" HorizontalOptions="CenterAndExpand" Command="{Binding UpdatePasswordCommand}" BackgroundColor="#f4e558" TextColor="#3D6DFF" Margin="5,2"/>
+                                </HorizontalStackLayout>
                             </StackLayout>
                         </Border>
                         <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="5" IsVisible="{Binding  IsInstructorMessageVisible}">
