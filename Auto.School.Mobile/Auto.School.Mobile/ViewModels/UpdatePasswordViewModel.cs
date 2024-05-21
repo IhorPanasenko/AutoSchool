@@ -1,19 +1,17 @@
 ﻿using Auto.School.Mobile.Abstract;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
-using Auto.School.Mobile.Services;
 using Auto.School.Mobile.Validators;
-using Auto.School.Mobile.Views;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Auto.School.Mobile.ViewModels
 {
     public partial class UpdatePasswordViewModel(IAuthenticationService authenticationService, IPopupService popupService) : BaseViewModel, INotifyPropertyChanged
-    {
+        {
         private readonly IAuthenticationService _authenticationService = authenticationService;
         private readonly IPopupService _popupService = popupService;
 
@@ -87,12 +85,14 @@ namespace Auto.School.Mobile.ViewModels
             if (string.IsNullOrEmpty(OldPassword) || string.IsNullOrEmpty(NewPassword))
             {
                 NewPasswordErrorMessage = AppErrorMessagesConstants.UpdatePasswordNotFilled;
+                IsNewPasswordError = true;
                 return;
             }
 
             var response = await _authenticationService.UpdatePassword(OldPassword, NewPassword);
+            IsNewPasswordError = false;
 
-            if (string.Compare(response.Status, ResponseStatuses.Sucess) == 0)
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
                 _popupService.ClosePopup(PopupInstance);
             }
