@@ -158,8 +158,6 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private bool isError = false;
 
-        //private bool is
-
         [ObservableProperty]
         private string errorMessage = "Default Error Message";
 
