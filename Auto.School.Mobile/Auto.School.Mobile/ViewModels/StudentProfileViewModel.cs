@@ -238,6 +238,7 @@ namespace Auto.School.Mobile.ViewModels
         {
             _sharedService.Add("student", Student);
             await _popupService.ShowPopupAsync<UpdateStudentInfoPopUp>();
+            await LoadStudent();
         }
     }
 }
