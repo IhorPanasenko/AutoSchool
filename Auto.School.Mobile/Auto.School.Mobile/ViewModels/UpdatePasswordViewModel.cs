@@ -1,30 +1,92 @@
-﻿using Auto.School.Mobile.Core.Constants;
+﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Services;
+using Auto.School.Mobile.Validators;
+using Auto.School.Mobile.Views;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Auto.School.Mobile.ViewModels
 {
-    public partial class UpdatePasswordViewModel(IAuthenticationService authenticationService) : BaseViewModel, INotifyPropertyChanged
+    public partial class UpdatePasswordViewModel(IAuthenticationService authenticationService, IPopupService popupService) : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IAuthenticationService _authenticationService = authenticationService;
+        private readonly IPopupService _popupService = popupService;
 
         [ObservableProperty]
-        private string oldPassword;
+        private Popup popupInstance;
+
+        private string oldPassword = string.Empty;
+
+        public string OldPassword
+        {
+            get => oldPassword;
+            set
+            {
+                var validationResult = PasswordValidator.Validate(value);
+
+                if (validationResult is not null)
+                {
+                    IsOldPasswordError = true;
+                    OldPasswordErrorMessage = validationResult;
+                }
+                else
+                {
+                    IsOldPasswordError = false;
+                    OldPasswordErrorMessage = string.Empty;
+                }
+
+                oldPassword = value;
+            }
+        }
+
+        private string newPassword = string.Empty;
+
+        public string NewPassword
+        {
+            get => newPassword;
+            set
+            {
+                var validationResult = PasswordValidator.Validate(value);
+
+                if (validationResult is not null)
+                {
+                    IsNewPasswordError = true;
+                    NewPasswordErrorMessage = validationResult;
+                }
+                else
+                {
+                    IsNewPasswordError = false;
+                    NewPasswordErrorMessage = string.Empty;
+                }
+
+                newPassword = value;
+            }
+        }
+
 
         [ObservableProperty]
-        private string newPassword;
+        private bool isOldPasswordError = false;
 
         [ObservableProperty]
-        private string errorMessage;
+        private string oldPasswordErrorMessage = string.Empty;
+
+        [ObservableProperty]
+        private bool isNewPasswordError = false;
+
+        [ObservableProperty]
+        private string newPasswordErrorMessage = string.Empty;
 
         [RelayCommand]
         public async Task UpdatePasswordAsync()
         {
             if (string.IsNullOrEmpty(OldPassword) || string.IsNullOrEmpty(NewPassword))
             {
-                ErrorMessage = "Please enter both old and new passwords.";
+                NewPasswordErrorMessage = AppErrorMessagesConstants.UpdatePasswordNotFilled;
                 return;
             }
 
@@ -32,13 +94,18 @@ namespace Auto.School.Mobile.ViewModels
 
             if (string.Compare(response.Status, ResponseStatuses.Sucess) == 0)
             {
-                // Close the popup, you might need to handle this in the view
-                // Or you can set a flag in the ViewModel and bind it to the view to close the popup
+                _popupService.ClosePopup(PopupInstance);
             }
             else
             {
-                ErrorMessage = response.Error?.Status!;
+                NewPasswordErrorMessage = response.Error?.Status!;
             }
+        }
+
+        [RelayCommand]
+        public void Cancel()
+        {
+            _popupService.ClosePopup(PopupInstance);
         }
     }
 }
