@@ -1,6 +1,7 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Responses.City.GetAllCities;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
@@ -14,7 +15,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 
             if (cityResponse.Status is null)
             {
-                cityResponse.Status = "failed";
+                cityResponse.Status = ResponseStatuses.Fail;
                 cityResponse.ResponseData = [];
             }
 

@@ -2,6 +2,7 @@
 using Auto.School.Mobile.Core.Responses.Authentication;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Login;
+using Auto.School.Mobile.Core.Responses.UpdatePassword;
 
 namespace Auto.School.Mobile.Service.Interfaces
 {
@@ -12,5 +13,9 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<RegistrationResponse> RegisterAsync(RegistrationModel registrationModel);
 
         public Task<BaseResponse> ForgotPassword(string email);
+
+        public Task<BaseResponse> Logout(string userId);
+
+        public Task<UpdatePasswordResponse> UpdatePassword(string oldPassword, string newPassword);
     }
 }

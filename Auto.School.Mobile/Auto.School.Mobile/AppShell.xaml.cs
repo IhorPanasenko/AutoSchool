@@ -5,10 +5,10 @@ namespace Auto.School.Mobile
 {
     public partial class AppShell : Shell
     {
-        public AppShell()
+        public AppShell(AppShellViewModel appShellViewModel)
         {
             InitializeComponent();
-            BindingContext = new AppShellViewModel();
+            BindingContext = appShellViewModel;
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
@@ -16,6 +16,7 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(AllInstructorsPage), typeof(AllInstructorsPage));
             Routing.RegisterRoute(nameof(InstructorDetailsPage), typeof(InstructorDetailsPage));
             Routing.RegisterRoute(nameof(ForgotPasswordPage), typeof(ForgotPasswordPage));
+            Routing.RegisterRoute(nameof(UpdatePasswordPopUp), typeof(UpdatePasswordPopUp));
         }
     }
 }

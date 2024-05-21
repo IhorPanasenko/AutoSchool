@@ -3,6 +3,8 @@ using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
 using Auto.School.Mobile.Core.Responses.Base;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Text;
 
 namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
@@ -24,6 +26,29 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
 
             var responseContent = await response.Content.ReadAsStringAsync();
             var responseData = JsonConvert.DeserializeObject<TResponse>(responseContent);
+            return responseData!;
+        }
+
+        public async Task<TResponse> UploadImageAsync<TResponse>(string url, Stream imageStream, string imageName)
+        where TResponse : BaseResponse
+        {
+            var path = RoutesConstants.BaseUrl + url;
+            using var multipartContent = new MultipartFormDataContent();
+
+            var imageContent = new StreamContent(imageStream);
+            imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+            multipartContent.Add(imageContent, "file", imageName);
+
+            var request = new HttpRequestMessage(new HttpMethod("PATCH"), path)
+            {
+                Content = multipartContent
+            };
+
+            var response = await _httpClientService.Client.SendAsync(request);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var responseData = JsonConvert.DeserializeObject<TResponse>(responseContent);
+
             return responseData!;
         }
     }

@@ -12,6 +12,7 @@ using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
+using CommunityToolkit.Maui;
 
 namespace Auto.School.Mobile
 {
@@ -23,6 +24,7 @@ namespace Auto.School.Mobile
             
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -44,6 +46,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<IInstructorService, InstructorService>();
             builder.Services.AddSingleton<ISharedService, SharedService>();
             builder.Services.AddTransient<IStudentService, StudentService>();
+            builder.Services.AddSingleton<IPopupService, Services.PopupService>();
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
@@ -53,6 +56,10 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<AllInstructorsViewModel>();
             builder.Services.AddSingleton<InstructorDetailsViewModel>();
             builder.Services.AddSingleton<ForgotPasswordViewModel>();
+            builder.Services.AddSingleton<AppShellViewModel>();
+            builder.Services.AddSingleton<StudentProfileViewModel>();
+            builder.Services.AddTransient<UpdatePasswordViewModel>();
+            builder.Services.AddTransient<UpdateStudentInfoViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
@@ -62,6 +69,10 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<AllInstructorsPage>();
             builder.Services.AddSingleton<InstructorDetailsPage>();
             builder.Services.AddSingleton<ForgotPasswordPage>();
+            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<StudentProfile>();
+            builder.Services.AddTransient<UpdatePasswordPopUp>();
+            builder.Services.AddTransient<UpdateStudentInfoPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
