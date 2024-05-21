@@ -301,10 +301,13 @@
     <value>Current password</value>
   </data>
   <data name="UpdatePassword.Title" xml:space="preserve">
-    <value>Update Password</value>
+    <value>Update password</value>
   </data>
   <data name="UpdatePassword.UpdateButton" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="UpdateStudent.Title" xml:space="preserve">
+    <value>Update personal info</value>
   </data>
   <data name="UploadPhoto" xml:space="preserve">
     <value>Upload photo</value>

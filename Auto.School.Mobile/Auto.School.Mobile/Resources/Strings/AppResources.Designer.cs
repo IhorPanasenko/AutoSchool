@@ -610,7 +610,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Password.
+        ///   Looks up a localized string similar to Update password.
         /// </summary>
         internal static string UpdatePassword_Title {
             get {
@@ -624,6 +624,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string UpdatePassword_UpdateButton {
             get {
                 return ResourceManager.GetString("UpdatePassword.UpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update personal info.
+        /// </summary>
+        internal static string UpdateStudent_Title {
+            get {
+                return ResourceManager.GetString("UpdateStudent.Title", resourceCulture);
             }
         }
         
