@@ -1,18 +1,84 @@
-﻿using Auto.School.Mobile.Core.Constants;
+﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using Xamarin.Google.Crypto.Tink.Shaded.Protobuf;
 
 
 namespace Auto.School.Mobile.ViewModels
 {
-    public partial class UpdateStudentInfoViewModel(IStudentService studentService) : BaseViewModel, INotifyPropertyChanged
+    public partial class UpdateStudentInfoViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private readonly IStudentService _studentService = studentService;
+        private readonly ICityService _cityService;
+        private readonly IStudentService _studentService;
+        private readonly ISharedService _sharedService;
+        private readonly IPopupService _popupService;
 
+        public UpdateStudentInfoViewModel(
+            IStudentService studentService,
+            ISharedService sharedService,
+            ICityService cityService,
+            IPopupService popupService)
+        {
+            _sharedService = sharedService;
+            _studentService = studentService;
+            _cityService = cityService;
+            SetCities();
+            SetInfo();
+            _popupService = popupService;
+        }
+
+        [ObservableProperty]
+        private Popup popupInstance;
+
+        private async Task SetCities()
+        {
+            var response = await _cityService.GetAll();
+
+            if (response == null)
+            {
+                IsError = true;
+                ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                return;
+            }
+
+            if (string.Compare(response.Status, "Failed", true) == 0)
+            {
+                IsError = true;
+                ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                return;
+            }
+
+            Cities = response.ResponseData;
+        }
+
+        private void SetInfo()
+        {
+            var student = _sharedService.GetValue<StudentModel>("student");
+
+            if (student is null)
+            {
+                return;
+            }
+
+            FirstName = student.Name;
+            LastName = student.Surname;
+            PhoneNumber = student.UserData?.Phone ?? string.Empty;
+            bool success = DateTime.TryParse(student.UserData?.DateOfBirth, out DateTime parsedDate);
+            if (success)
+            {
+                BirthdayDate = parsedDate;
+            }
+
+            SelectedDrivingCategory = student.VehicleCategory;
+            SelectedCity = student.City;
+        }
 
         [ObservableProperty]
         private string firstName = string.Empty;
@@ -74,7 +140,7 @@ namespace Auto.School.Mobile.ViewModels
 
 
         [ObservableProperty]
-        private string selectedDrivingCtegory = "A";
+        private string selectedDrivingCategory = "A";
 
         [ObservableProperty]
         private string[] drivingCategories = ["A", "B", "C", "D", "E"];
@@ -102,5 +168,37 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private List<CityModel> cities = [];
+
+        [RelayCommand]
+        public void Cancel()
+        {
+            _popupService.ClosePopup(PopupInstance);
+        }
+
+        [RelayCommand]
+        public async Task UpdateInfo()
+        {
+            var response = await _studentService.UpdateMe(new UpdateUserMeModel
+            {
+                Name = FirstName,
+                Surname = LastName,
+                Phone = PhoneNumber,
+                DateOfBirth = BirthdayDate.ToString(),
+                CityId = SelectedCity?.Id,
+                VehicleCategory = SelectedDrivingCategory
+            });
+
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                if (response.Data?.Student is not null)
+                {
+                    IsError = false;
+                    _popupService.ClosePopup(PopupInstance);
+                }
+
+                ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                IsError = true;
+            }
+        }
     }
 }
