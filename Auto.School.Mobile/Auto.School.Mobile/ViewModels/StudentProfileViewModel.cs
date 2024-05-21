@@ -4,6 +4,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Views;
 using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
@@ -15,9 +16,9 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IStudentService _studentService;
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
-        private readonly IPopupService _popupService;
+        private readonly Abstract.IPopupService _popupService;
 
-        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
+        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, Abstract.IPopupService popupService)
         {
             _studentService = studentService;
             _instructorService = instructorService;
@@ -229,8 +230,13 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task UpdatePassword()
         {
-            await _popupService.ShowPopupAsync<UpdatePasswordViewModel>();
+            await _popupService.ShowPopupAsync<UpdatePasswordPopUp>();
         }
 
+        [RelayCommand]
+        public async Task UpdateInfo()
+        {
+            await _popupService.ShowPopupAsync<UpdateStudentInfoPopUp>();
+        }
     }
 }
