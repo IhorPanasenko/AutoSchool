@@ -236,6 +236,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task UpdateInfo()
         {
+            _sharedService.Add("student", Student);
             await _popupService.ShowPopupAsync<UpdateStudentInfoPopUp>();
         }
     }
