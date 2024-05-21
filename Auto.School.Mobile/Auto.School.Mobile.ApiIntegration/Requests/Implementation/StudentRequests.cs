@@ -2,9 +2,12 @@
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Student.ConnectWithInstructor;
 using Auto.School.Mobile.Core.Responses.Student.GetInfoMe;
+using Auto.School.Mobile.Core.Responses.Student.UpdateMe;
+using System.IO;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
@@ -58,6 +61,30 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                     }
                 };
 
+            }
+        }
+
+        public async Task<UpdateMeResponse> UpdateMe(UpdateUserMeModel updateMeModel)
+        {
+            try
+            {
+                var response = await _patchRequest.ExecuteAsync<UpdateUserMeModel, UpdateMeResponse>(RoutesConstants.UpdateMe, updateMeModel);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new UpdateMeResponse
+                {
+                    Student = null,
+                    Message = ex.Message,
+                    Status = ResponseStatuses.Fail,
+                    Error = new Core.Responses.Base.BaseError()
+                    {
+                        Status = "Fail",
+                        StatusCode = 500,
+                        IsOperational = false
+                    }
+                };
             }
         }
 
