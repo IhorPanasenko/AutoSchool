@@ -46,6 +46,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<IInstructorService, InstructorService>();
             builder.Services.AddSingleton<ISharedService, SharedService>();
             builder.Services.AddTransient<IStudentService, StudentService>();
+            builder.Services.AddSingleton<IPopupService, Services.PopupService>();
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
@@ -57,7 +58,8 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<ForgotPasswordViewModel>();
             builder.Services.AddSingleton<AppShellViewModel>();
             builder.Services.AddSingleton<StudentProfileViewModel>();
-            builder.Services.AddSingleton<UpdatePasswordViewModel>();
+            builder.Services.AddTransient<UpdatePasswordViewModel>();
+            builder.Services.AddTransient<UpdateStudentInfoViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<LoginPage>();
@@ -69,7 +71,8 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<ForgotPasswordPage>();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddSingleton<StudentProfile>();
-            builder.Services.AddSingleton<UpdatePasswordPopUp>();
+            builder.Services.AddTransient<UpdatePasswordPopUp>();
+            builder.Services.AddTransient<UpdateStudentInfoPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
