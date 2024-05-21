@@ -7,6 +7,6 @@ namespace Auto.School.Mobile.Core.Responses.Student.UpdateMe
     public class UpdateMeResponse : BaseResponse
     {
         [JsonProperty("data")]
-        public StudentModel? Student { get; set; }
+        public UpdateMeResponseData? Data { get; set; }
     }
 }
