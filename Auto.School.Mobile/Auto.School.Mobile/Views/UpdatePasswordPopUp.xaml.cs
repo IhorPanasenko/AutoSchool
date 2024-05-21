@@ -8,5 +8,6 @@ public partial class UpdatePasswordPopUp : Popup
 	{
 		InitializeComponent();
 		BindingContext = updatePasswordViewModel;
+		updatePasswordViewModel.PopupInstance = this;
 	}
 }
