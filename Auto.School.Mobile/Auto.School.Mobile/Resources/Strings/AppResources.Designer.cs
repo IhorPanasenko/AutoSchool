@@ -565,6 +565,69 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string UpdatePassword_CancelButton {
+            get {
+                return ResourceManager.GetString("UpdatePassword.CancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter new password.
+        /// </summary>
+        internal static string UpdatePassword_NewPassword {
+            get {
+                return ResourceManager.GetString("UpdatePassword.NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        internal static string UpdatePassword_NewPasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("UpdatePassword.NewPasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your current password.
+        /// </summary>
+        internal static string UpdatePassword_OldPassword {
+            get {
+                return ResourceManager.GetString("UpdatePassword.OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        internal static string UpdatePassword_OldPasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("UpdatePassword.OldPasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Password.
+        /// </summary>
+        internal static string UpdatePassword_Title {
+            get {
+                return ResourceManager.GetString("UpdatePassword.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string UpdatePassword_UpdateButton {
+            get {
+                return ResourceManager.GetString("UpdatePassword.UpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload photo.
         /// </summary>
         internal static string UploadPhoto {
