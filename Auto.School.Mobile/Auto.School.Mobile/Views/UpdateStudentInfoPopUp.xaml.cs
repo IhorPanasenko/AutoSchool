@@ -8,5 +8,6 @@ public partial class UpdateStudentInfoPopUp : Popup
 	{
 		InitializeComponent();
 		BindingContext = updateStudentInfoViewModel;
+		updateStudentInfoViewModel.PopupInstance = this;
 	}
 }
