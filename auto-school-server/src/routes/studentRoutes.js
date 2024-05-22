@@ -32,6 +32,8 @@ router.patch(
   studentController.requestAssignInstructor
 );
 
+router.get('/:studentId', studentController.getStudent);
+
 // for admin
 
 router.use(restrictTo('admin'));
@@ -42,7 +44,6 @@ router.get(
   studentController.getStudentsWithInstructorRequest,
   studentController.getAllStudents
 );
-router.get('/:studentId', studentController.getStudent);
 
 router.patch(
   '/:studentId/accept-request',

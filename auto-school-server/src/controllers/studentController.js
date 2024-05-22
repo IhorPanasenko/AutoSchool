@@ -39,9 +39,13 @@ exports.getStudent = catchAsync(async (req, res, next) => {
 
   student.photoURL = await getPhotoUrl(s3, student.photoURL);
 
+  const studentLoginData = await UserLoginModel.findOne({
+    userId: student.userId._id,
+  }).select('email');
+
   res.status(200).json({
     status: 'success',
-    data: student,
+    data: { student, email: studentLoginData.email },
   });
 });
 
