@@ -1,6 +1,93 @@
 const mongoose = require('mongoose');
 const InstructorModel = require('./instructor');
 
+const defaultDrivingSkillsData = [
+  {
+    typeEN: 'Preparation for movement',
+    subtypeEN: 'Start from the spot',
+    typeUA: 'Підготовка до руху',
+    subtypeUA: 'Старт з місця',
+  },
+  {
+    typeEN: 'Preparation for movement',
+    subtypeEN: 'Smooth stop',
+    typeUA: 'Підготовка до руху',
+    subtypeUA: 'Плавна зупинка',
+  },
+  {
+    typeEN: 'Preparation for movement',
+    subtypeEN: 'Shifting gears',
+    typeUA: 'Підготовка до руху',
+    subtypeUA: 'Переключення передач',
+  },
+  {
+    typeEN: 'Snake. Crazy eight',
+    subtypeEN: 'Forwards',
+    typeUA: 'Змійка. Віражна вісімка',
+    subtypeUA: 'Передом',
+  },
+  {
+    typeEN: 'Snake. Crazy eight',
+    subtypeEN: 'Backwards',
+    typeUA: 'Змійка. Віражна вісімка',
+    subtypeUA: 'Задом',
+  },
+  {
+    typeEN: 'Garage. Arrival from any trajectory',
+    subtypeEN: 'Forwards',
+    typeUA: 'Гараж. Заїзд з будь-якої траєкторії',
+    subtypeUA: 'Передом',
+  },
+  {
+    typeEN: 'Garage. Arrival from any trajectory',
+    subtypeEN: 'Backwards',
+    typeUA: 'Гараж. Заїзд з будь-якої траєкторії',
+    subtypeUA: 'Задом',
+  },
+  {
+    typeEN: 'Parking parallel to the curb',
+    subtypeEN: 'Forwards',
+    typeUA: 'Паркування паралельно бордюру',
+    subtypeUA: 'Передом',
+  },
+  {
+    typeEN: 'Parking parallel to the curb',
+    subtypeEN: 'Backwards',
+    typeUA: 'Паркування паралельно бордюру',
+    subtypeUA: 'Задом',
+  },
+  {
+    typeEN: 'Dimensions in the dimensional tunnel',
+    subtypeEN: 'Left',
+    typeUA: 'Габарити в габаритному тунелі',
+    subtypeUA: 'Ліве',
+  },
+  {
+    typeEN: 'Dimensions in the dimensional tunnel',
+    subtypeEN: 'Right',
+    typeUA: 'Габарити в габаритному тунелі',
+    subtypeUA: 'Праве',
+  },
+  {
+    typeEN: 'U-turn in limited space',
+    subtypeEN: '-',
+    typeUA: 'Розворот в обмеженому просторі',
+    subtypeUA: '-',
+  },
+  {
+    typeEN: 'Trestle',
+    subtypeEN: 'With handbrake',
+    typeUA: 'Естакада',
+    subtypeUA: 'З ручником',
+  },
+  {
+    typeEN: 'Trestle',
+    subtypeEN: 'Without handbrake',
+    typeUA: 'Естакада',
+    subtypeUA: 'Без ручника',
+  },
+];
+
 const studentSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -43,6 +130,22 @@ const studentSchema = new mongoose.Schema({
   active: {
     type: Boolean,
     default: false,
+  },
+  drivingSkills: {
+    type: [
+      {
+        date: Date,
+        completed: {
+          type: Boolean,
+          default: false,
+        },
+        typeEN: String,
+        subtypeEN: String,
+        typeUA: String,
+        subtypeUA: String,
+      },
+    ],
+    default: defaultDrivingSkillsData,
   },
 });
 
