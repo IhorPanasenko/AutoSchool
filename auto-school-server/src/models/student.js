@@ -88,64 +88,76 @@ const defaultDrivingSkillsData = [
   },
 ];
 
-const studentSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required'],
-  },
-  surname: {
-    type: String,
-    required: [true, 'Surname is required'],
-  },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'userAccounts',
-    unique: true,
-    required: [true, 'User id is required'],
-  },
-  instructorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'instructors',
-  },
-  cityId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'cities',
-  },
-  requestStatus: {
-    type: String,
-    enum: ['unsubmitted', 'pending', 'validated', 'failed'],
-    default: 'unsubmitted',
-  },
-  requestApprovedDate: Date,
-  vehicleCategory: {
-    type: String,
-    enum: ['A', 'B', 'C', 'D'],
-    default: 'B',
-  },
-  photoURL: {
-    type: String,
-    default: 'default-user.jpg',
-  },
-  active: {
-    type: Boolean,
-    default: false,
-  },
-  drivingSkills: {
-    type: [
-      {
-        date: Date,
-        completed: {
-          type: Boolean,
-          default: false,
+const studentSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Name is required'],
+    },
+    surname: {
+      type: String,
+      required: [true, 'Surname is required'],
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'userAccounts',
+      unique: true,
+      required: [true, 'User id is required'],
+    },
+    instructorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'instructors',
+    },
+    cityId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'cities',
+    },
+    requestStatus: {
+      type: String,
+      enum: ['unsubmitted', 'pending', 'validated', 'failed'],
+      default: 'unsubmitted',
+    },
+    requestApprovedDate: Date,
+    vehicleCategory: {
+      type: String,
+      enum: ['A', 'B', 'C', 'D'],
+      default: 'B',
+    },
+    photoURL: {
+      type: String,
+      default: 'default-user.jpg',
+    },
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    drivingSkills: {
+      type: [
+        {
+          date: Date,
+          completed: {
+            type: Boolean,
+            default: false,
+          },
+          typeEN: String,
+          subtypeEN: String,
+          typeUA: String,
+          subtypeUA: String,
         },
-        typeEN: String,
-        subtypeEN: String,
-        typeUA: String,
-        subtypeUA: String,
-      },
-    ],
-    default: defaultDrivingSkillsData,
+      ],
+      default: defaultDrivingSkillsData,
+    },
   },
+  { toJSON: { virtuals: true } }
+);
+
+studentSchema.virtual('drivingSkillsProgress').get(function () {
+  const completedSkills = this.drivingSkills.filter(
+    (skill) => skill.completed
+  ).length;
+  const allSkills = this.drivingSkills.length;
+  const progressInPercentages = (completedSkills / allSkills) * 100;
+  return Math.round(progressInPercentages * 10) / 10;
 });
 
 studentSchema.pre('findOneAndUpdate', async function () {
