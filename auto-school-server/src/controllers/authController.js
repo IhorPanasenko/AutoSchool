@@ -129,8 +129,6 @@ exports.signup = async (req, res, next) => {
         email: newUserLogin.email,
         userData: newUserAccount,
         tokenExpire: expire,
-        accessToken,
-        refreshToken,
       },
     });
   } catch (err) {
@@ -177,8 +175,6 @@ exports.login = catchAsync(async (req, res, next) => {
       email: userLoginData.email,
       userData: userAccountData,
       tokenExpire: expire,
-      accessToken,
-      refreshToken,
     },
   });
 });
@@ -238,7 +234,6 @@ exports.getAccessToken = catchAsync(async (req, res, next) => {
 
       res.status(200).json({
         tokenExpire: accessTokenCookieExpireDate,
-        accessToken,
       });
     }
   );
@@ -376,8 +371,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     message: 'Password reset successfully',
     data: {
       tokenExpire: expire,
-      accessToken,
-      refreshToken,
     },
   });
 });
@@ -416,8 +409,6 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     message: 'Password updated successfully',
     data: {
       tokenExpire: expire,
-      accessToken,
-      refreshToken,
     },
   });
 });
