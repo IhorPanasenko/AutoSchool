@@ -122,7 +122,6 @@ const studentSchema = new mongoose.Schema({
     enum: ['A', 'B', 'C', 'D'],
     default: 'B',
   },
-  // add later default photo
   photoURL: {
     type: String,
     default: 'default-user.jpg',

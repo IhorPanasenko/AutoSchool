@@ -107,6 +107,13 @@ exports.updateMe = async (req, res, next) => {
   }
 };
 
+exports.updateDrivingSkills = (req, res, next) => {
+  Object.keys(req.body).forEach(
+    (key) => key !== 'drivingSkills' && delete req.body[key]
+  );
+  next();
+};
+
 exports.updatePhoto = catchAsync(async (req, res, next) => {
   if (!req.file) {
     return next(new AppError('Please, upload photo file', 404));
@@ -171,9 +178,10 @@ exports.getStudentsWithInstructorRequest = (req, res, next) => {
 };
 
 exports.updateStudent = catchAsync(async (req, res, next) => {
-  const updatedStudent = await StudentModel.findByIdAndUpdate(
-    req.params.studentId,
-    req.body,
+  const updatedStudent = await StudentModel.findOneAndUpdate(
+    (req.params.studentId && { _id: req.params.studentId }) ||
+      (req.params.userId && { userId: req.params.userId }),
+    { $set: req.body },
     { new: true, runValidators: true }
   );
 

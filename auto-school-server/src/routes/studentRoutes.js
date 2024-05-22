@@ -27,6 +27,14 @@ router.patch(
 router.patch('/updateMe', restrictTo('student'), studentController.updateMe);
 
 router.patch(
+  '/my-driving-skills',
+  restrictTo('student'),
+  studentController.getMe,
+  studentController.updateDrivingSkills,
+  studentController.updateStudent
+);
+
+router.patch(
   '/request-instructor/:instructorId',
   restrictTo('student'),
   studentController.requestAssignInstructor
