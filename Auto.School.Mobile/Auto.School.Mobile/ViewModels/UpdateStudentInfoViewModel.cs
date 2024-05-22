@@ -8,8 +8,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using Xamarin.Google.Crypto.Tink.Shaded.Protobuf;
-
 
 namespace Auto.School.Mobile.ViewModels
 {
