@@ -20,7 +20,7 @@ namespace Auto.School.Mobile.ViewModels
                 Preferences.Remove(nameof(App.UserInfo));   
             }
 
-
+            await _authenticationService.Logout();
             await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
         }
     }
