@@ -24,7 +24,7 @@ namespace Auto.School.Mobile.ViewModels
             _instructorService = instructorService;
             _sharedService = sharedService;
             _popupService = popupService;
-            LoadStudent();
+            _ = LoadStudent();
             
         }
 
@@ -159,7 +159,9 @@ namespace Auto.School.Mobile.ViewModels
             var imageStream = await PickImage();
             if(imageStream != null)
             {
-                await _studentService.UpdateProfileImage(imageStream);
+                var response = await _studentService.UpdateProfileImage(imageStream);
+                IsError = true;
+                ErrorMesssage = AppErrorMessagesConstants.FailedUpdateUserPhoto;
                 await LoadStudent();
             }
         }
