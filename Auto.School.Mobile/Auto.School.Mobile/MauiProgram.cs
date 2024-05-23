@@ -32,9 +32,10 @@ namespace Auto.School.Mobile
                 });
 
             builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
-            builder.Services.AddSingleton<IGetRequest, GetRequest>();
-            builder.Services.AddSingleton<IPostRequest, PostRequest>();
-            builder.Services.AddSingleton<IPatchRequest, PatchRequest>();
+            builder.Services.AddTransient<IGetRequest, GetRequest>();
+            builder.Services.AddTransient<IPostRequest, PostRequest>();
+            builder.Services.AddTransient<IPatchRequest, PatchRequest>();
+            builder.Services.AddTransient<IDeleteRequest, DeleteRequest>();
 
             builder.Services.AddTransient<IAuthenticationRequest, AuthenticationRequests>();
             builder.Services.AddTransient<ICityRequest, CityRequests>();
@@ -50,7 +51,7 @@ namespace Auto.School.Mobile
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
-            builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddSingleton<RegistrationViewModel>();
             builder.Services.AddSingleton<HomeViewModel>();
             builder.Services.AddSingleton<AllInstructorsViewModel>();
@@ -60,9 +61,10 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<StudentProfileViewModel>();
             builder.Services.AddTransient<UpdatePasswordViewModel>();
             builder.Services.AddTransient<UpdateStudentInfoViewModel>();
+            builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<RegistrationPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<AboutPage>();
@@ -73,6 +75,7 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<StudentProfile>();
             builder.Services.AddTransient<UpdatePasswordPopUp>();
             builder.Services.AddTransient<UpdateStudentInfoPopUp>();
+            builder.Services.AddTransient<InstructorScheduleStudentPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
