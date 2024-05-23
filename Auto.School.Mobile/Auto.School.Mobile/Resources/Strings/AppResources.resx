@@ -243,6 +243,9 @@
   <data name="StudentProfile.DrivingCategory" xml:space="preserve">
     <value>Driving category for learning</value>
   </data>
+  <data name="StudentProfile.Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="StudentProfile.FirstName" xml:space="preserve">
     <value>First name</value>
   </data>

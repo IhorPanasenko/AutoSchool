@@ -439,6 +439,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string StudentProfile_Email {
+            get {
+                return ResourceManager.GetString("StudentProfile.Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string StudentProfile_FirstName {

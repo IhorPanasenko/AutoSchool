@@ -243,6 +243,9 @@
   <data name="StudentProfile.DrivingCategory" xml:space="preserve">
     <value>Опановувана категорія водіння</value>
   </data>
+  <data name="StudentProfile.Email" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
   <data name="StudentProfile.FirstName" xml:space="preserve">
     <value>Ім'я</value>
   </data>
