@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.InstructorScheduleStudentPage"
+             Title="InstructorScheduleStudentPage"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts">
+    <StackLayout>
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+        <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}" CloseAction="{Binding CloseAction}"/>
+        <CollectionView ItemsSource="{Binding Lessons}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding FromHour}" />
+                        <Label Text=" - " />
+                        <Label Text="{Binding ToHour}" />
+                        <Label Text="{Binding Price}" />
+                        <Button Text="{x:Static resx:AppResources.InstructorSchedule_SingUp}" IsVisible="{Binding IsAvailable}" Command="{Binding SignUpCommand}" CommandParameter="{Binding .}" BackgroundColor="#786868" TextColor="#333333" />
+                        <Button Text="{x:Static resx:AppResources.InstructorSchedule_SingUp}" IsVisible="{Binding IsNotAvailable}" BackgroundColor="#786868" TextColor="#333333"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
