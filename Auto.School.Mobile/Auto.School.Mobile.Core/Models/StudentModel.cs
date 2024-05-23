@@ -7,6 +7,9 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("_id")]
         public string Id { get; set; }
 
+        [JsonIgnore]
+        public string Email { get; set; } = string.Empty;
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
