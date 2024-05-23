@@ -14,7 +14,7 @@ namespace Auto.School.Mobile.Service.Interfaces
 
         public Task<BaseResponse> ForgotPassword(string email);
 
-        public Task<BaseResponse> Logout(string userId);
+        public Task<BaseResponse> Logout();
 
         public Task<UpdatePasswordResponse> UpdatePassword(string oldPassword, string newPassword);
     }

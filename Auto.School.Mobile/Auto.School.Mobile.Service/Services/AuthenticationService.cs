@@ -24,9 +24,9 @@ namespace Auto.School.Mobile.Service.Services
             return response;
         }
 
-        public async Task<BaseResponse> Logout(string userId)
+        public async Task<BaseResponse> Logout()
         {
-            var response = await _authenticationRequest.Logout(userId);
+            var response = await _authenticationRequest.Logout();
             return response;
         }
 
