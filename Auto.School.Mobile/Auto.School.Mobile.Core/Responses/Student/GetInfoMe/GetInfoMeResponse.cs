@@ -7,6 +7,6 @@ namespace Auto.School.Mobile.Core.Responses.Student.GetInfoMe
     public class GetInfoMeResponse : BaseResponse
     {
         [JsonProperty("data")]
-        public StudentModel Student { get; set; }
+        public GetInfoMeResponseData Data { get; set; }
     }
 }
