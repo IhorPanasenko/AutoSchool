@@ -1,4 +1,5 @@
 ﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -33,10 +34,32 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private bool isLoading = true;
 
+        [ObservableProperty]
+        private bool isError;
+
+        [ObservableProperty]
+        private string errorMessage;
+
+        [ObservableProperty]
+        private bool isSuccess;
+
+        [ObservableProperty]
+        private string successMessage;
+
         [RelayCommand]
         public async Task SignUpToInstructor()
         {
-            await _studentService.ConnectWithInstructor(Instructor.Id);
+            var response = await _studentService.ConnectWithInstructor(Instructor.Id);
+            if (string.Compare(response.Status, ResponseStatuses.Fail, true) == 0)
+            {
+                IsError = true;
+                ErrorMessage = response.Message ?? response.Error?.Status ?? AppErrorMessagesConstants.FailedToLoadInstuctor;
+            }
+            else
+            {
+                IsSuccess = true;
+                SuccessMessage = response.Message ?? AppMessages.SignUpToInstructorSuccess;
+            }
         }
 
         [RelayCommand]
