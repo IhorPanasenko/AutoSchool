@@ -41,6 +41,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ICityRequest, CityRequests>();
             builder.Services.AddTransient<IInstructorRequest, InstructorRequests>();
             builder.Services.AddTransient<IStudentRequest, StudentRequests>();
+            builder.Services.AddTransient<ILessonRequest, LessonRequest>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();
@@ -49,6 +50,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<IStudentService, StudentService>();
             builder.Services.AddSingleton<IPopupService, Services.PopupService>();
             builder.Services.AddTransient<ICultureService, CultureService>();
+            builder.Services.AddScoped<ILessonService, LessonService>();
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
@@ -63,6 +65,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<UpdatePasswordViewModel>();
             builder.Services.AddTransient<UpdateStudentInfoViewModel>();
             builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
+            builder.Services.AddTransient<SignUpToLessonViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -77,6 +80,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<UpdatePasswordPopUp>();
             builder.Services.AddTransient<UpdateStudentInfoPopUp>();
             builder.Services.AddTransient<InstructorScheduleStudentPage>();
+            builder.Services.AddTransient<SignUpToLessonPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
