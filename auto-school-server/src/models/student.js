@@ -152,6 +152,10 @@ const studentSchema = new mongoose.Schema(
 );
 
 studentSchema.virtual('drivingSkillsProgress').get(function () {
+  if (!this.drivingSkills) {
+    return undefined;
+  }
+
   const completedSkills = this.drivingSkills.filter(
     (skill) => skill.completed
   ).length;
