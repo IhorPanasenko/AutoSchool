@@ -1,6 +1,8 @@
 const catchAsync = require('../helpers/catchAsync.js');
 const ReviewModel = require('../models/review.js');
 const StudentModel = require('../models/student.js');
+const InstructorModel = require('../models/instructor.js');
+const AppError = require('../helpers/appError.js');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   let filter = {};
@@ -19,15 +21,18 @@ exports.getAllReviews = catchAsync(async (req, res, next) => {
 });
 
 exports.createReview = catchAsync(async (req, res, next) => {
-  // TODO: Check if Student belongs to the Instructor
+  const student = await StudentModel.findOne(
+    (req.body.studentId && { _id: req.body.studentId }) ||
+      (req.user._id && { userId: req.user._id })
+  ).select('_id instructorId');
 
   if (!req.body.instructorId) req.body.instructorId = req.params.instructorId;
-  if (!req.body.studentId) {
-    const student = await StudentModel.findOne({ userId: req.user._id }).select(
-      '_id'
+  if (!req.body.studentId) req.body.studentId = student._id;
+
+  if (!student.instructorId?.equals(req.body.instructorId))
+    return next(
+      new AppError("Only instructor's students can leave a review", 403)
     );
-    req.body.studentId = student._id;
-  }
 
   const newReview = await ReviewModel.create(req.body);
 
