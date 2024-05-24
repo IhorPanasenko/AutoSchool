@@ -3,7 +3,7 @@ const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const { restrictTo } = require('../middlewares/restrictTo.js');
 const reviewController = require('../controllers/reviewController.js');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.get('/', reviewController.getAllReviews);
 

@@ -6,25 +6,16 @@ const upload = require('../config/multerConfig.js');
 const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const { restrictTo } = require('../middlewares/restrictTo.js');
 const lessonController = require('../controllers/lessonController.js');
-const reviewController = require('../controllers/reviewController.js');
+const reviewRouter = require('./reviewRoutes.js');
 
 const router = express.Router();
+
+router.use('/:instructorId/reviews', reviewRouter);
 
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
 
 router.get('/:instructorId/lessons', lessonController.getInstructorSchedule);
-
-// nested routes
-// get /instructor/:instructorId/reviews
-// post /instructor/:instructorId/reviews
-
-router.post(
-  '/:instructorId/reviews',
-  authenticateJWT,
-  restrictTo('student'),
-  reviewController.createReview
-);
 
 // for administrator
 
