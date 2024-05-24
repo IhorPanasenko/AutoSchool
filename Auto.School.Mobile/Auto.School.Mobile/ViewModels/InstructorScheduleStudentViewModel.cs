@@ -90,6 +90,7 @@ namespace Auto.School.Mobile.ViewModels
         private void UpdateSelectedDayLessons()
         {
             SelectedDayLessons = Lessons.Where(l => l.Date.Date == SelectedDay.Date).ToList();
+            //TODO: remove this is just for testing
             if(SelectedDayLessons.Count == 0)
             {
                 SelectedDayLessons = Lessons.Take(9).ToList().OrderBy(x=>x.FromHour).ToList();
