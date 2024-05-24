@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Text.Json.Serialization;
 
 namespace Auto.School.Mobile.Core.Models
 {
@@ -25,5 +24,8 @@ namespace Auto.School.Mobile.Core.Models
 
         [JsonProperty("isAvailable")]
         public bool IsAvailable { get; set; }
+
+        [JsonIgnore] 
+        public string DayOfWeek { get; set; }
     }
 }
