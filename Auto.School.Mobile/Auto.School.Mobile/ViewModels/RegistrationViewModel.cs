@@ -14,10 +14,12 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ICityService _cityService;
         private readonly IAuthenticationService _authenticationService;
-        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService)
+        private readonly ICultureService _cultureService;
+        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService, ICultureService cultureService)
         {
             _cityService = cityService;
-            _authenticationService = authenticationService;
+            _authenticationService = authenticationService; 
+            _cultureService = cultureService;
             SetCities();
         }
 
