@@ -10,10 +10,11 @@ using Auto.School.Mobile.Core.Responses.UpdatePassword;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
-    public class AuthenticationRequests(IPostRequest postRequest, IPatchRequest patchRequest) : IAuthenticationRequest
+    public class AuthenticationRequests(IPostRequest postRequest, IPatchRequest patchRequest, IDeleteRequest deleteRequest) : IAuthenticationRequest
     {
         private readonly IPostRequest _postRequest = postRequest;
         private readonly IPatchRequest _patchRequest = patchRequest;
+        private readonly IDeleteRequest _deleteRequest = deleteRequest;
 
         public async Task<BaseResponse> ForgotPassword(string email)
         {
@@ -37,10 +38,10 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             return result;
         }
 
-        public Task<BaseResponse> Logout(string userId)
+        public async Task<BaseResponse> Logout()
         {
-            throw new NotImplementedException();
-            //var result = await 
+            var result = await _deleteRequest.ExecuteAsync<BaseResponse>(RoutesConstants.Logout);
+            return result;
         }
 
         public async Task<RegistrationResponse> Register(RegistrationModel registrationModel)

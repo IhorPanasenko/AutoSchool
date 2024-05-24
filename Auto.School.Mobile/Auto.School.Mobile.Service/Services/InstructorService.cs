@@ -1,6 +1,7 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Responses.Instructor;
 using Auto.School.Mobile.Core.Responses.Instructor.GetOne;
+using Auto.School.Mobile.Core.Responses.Instructor.GetSchedule;
 using Auto.School.Mobile.Service.Interfaces;
 
 namespace Auto.School.Mobile.Service.Services
@@ -25,6 +26,12 @@ namespace Auto.School.Mobile.Service.Services
         public async Task<GetOneInstructorResponse> GetOne(string id)
         {
             var response = await _instructorRequest.GetOne(id);
+            return response;
+        }
+
+        public async Task<GetScheduleResponse> GetSchedule(string id)
+        {
+            var response = await _instructorRequest.GetSchedule(id);
             return response;
         }
     }

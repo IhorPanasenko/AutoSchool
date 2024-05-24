@@ -10,5 +10,8 @@
         public const string FailedToLoadInstuctor = "Failed to load instructor info";
         public const string FailedToPickImage = "Error while picking image from files. Try again later";
         public const string UpdatePasswordNotFilled = "Please enter both current and new passwords.";
+        public const string FailedLoadSchedule = "Failed to load instructor's schedule";
+        public const string FailedUpdateUserPhoto = "Failed to update profile photo";
+        public const string FiledSignUpToInstructor = "Failed Sign up to instructor";
     }
 }

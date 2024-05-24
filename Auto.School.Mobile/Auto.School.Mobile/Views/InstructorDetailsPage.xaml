@@ -84,6 +84,8 @@
                             TextColor="#f4e558"
                             Text="{x:Static resx:AppResources.InstructorDetails_SignUpToInstructorButton}" 
                             Command="{Binding  SignUpToInstructorCommand}"/>
+                    <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsError}" TextColor ="Red" FontSize="Medium"/>
+                    <Label Text="{Binding SuccessMessage}" IsVisible="{Binding IsSuccess}" TextColor ="#7eb893" FontSize="Medium"/>
                 </StackLayout>
             </Border>
         </StackLayout>

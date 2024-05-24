@@ -2,6 +2,6 @@
 {
     public interface IDeleteRequest
     {
-        public Task<TResponse> ExecuteAsync<TRequest, TResponse>(string url, TRequest? requestBody);
+        public Task<TResponse> ExecuteAsync<TResponse>(string url);
     }
 }

@@ -20,6 +20,6 @@ namespace Auto.School.Mobile.Core.Models
         public required string Role { get; set; }
 
         [JsonProperty("dateOfBirth")]
-        public required string DateOfBirth { get; set; }
+        public required DateTime DateOfBirth { get; set; }
     }
 }
