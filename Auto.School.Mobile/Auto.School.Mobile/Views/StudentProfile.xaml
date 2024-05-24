@@ -32,7 +32,7 @@
                     <StackLayout>
                         <Label HorizontalOptions="CenterAndExpand" Text="{x:Static resx:AppResources.StudentProfile_MainTitle}" FontAttributes="Bold" FontSize="Large"/>
                         <VerticalStackLayout Margin="10" Padding="0" >
-                            <Frame CornerRadius="20" MaximumHeightRequest="200" MaximumWidthRequest="200">
+                            <Frame CornerRadius="20" MaximumHeightRequest="200" MaximumWidthRequest="200" Padding="0" Margin="0" HasShadow="False"  BackgroundColor="Transparent">
                                 <Image Source="{Binding Student.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                             </Frame>
                             <Button Text="{x:Static resx:AppResources.StudentProfile_UpdatePhoto}" Command="{Binding UpdatePhotoCommand}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" Margin="0,10" LineBreakMode="WordWrap" TextTransform="None"/>
@@ -101,8 +101,8 @@
                                 <Label Text="{x:Static resx:AppResources.StudentProfile_InstructorInfoTitle}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Grid HorizontalOptions="CenterAndExpand" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" ColumnSpacing="5" RowSpacing="5">
-                                        <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="4">
-                                            <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" />
+                                        <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Padding="0" HasShadow="False" BackgroundColor="Transparent">
+                                            <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         </Frame>
                                         <Label Grid.Column="1" Grid.Row="0" Text="{Binding Instructor.FullName}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" />
                                         <Button Grid.Column="1" Grid.Row="1" Text="{x:Static resx:AppResources.StudentProfile_DetailedInfo}" Command="{Binding ViewDetailedInfoCommand}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" LineBreakMode="WordWrap" TextTransform="None"/>
