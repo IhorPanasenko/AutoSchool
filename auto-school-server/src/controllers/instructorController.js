@@ -37,6 +37,7 @@ exports.getAllInstructors = catchAsync(async (req, res, next) => {
 
 exports.getOneInstructor = catchAsync(async (req, res, next) => {
   const instructor = await InstructorModel.findById(req.params.instructorId)
+    .populate('reviews')
     .populate('car')
     .populate('city')
     .exec();
@@ -49,8 +50,6 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
 
   instructor.photoURL = await getPhotoUrl(s3, instructor.photoURL);
   instructor.car.photoURL = await getPhotoUrl(s3, instructor.car.photoURL);
-
-  // TODO: Get instructor reviews
 
   res.status(200).json({
     status: 'success',

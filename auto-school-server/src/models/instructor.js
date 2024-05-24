@@ -85,6 +85,12 @@ instructorSchema.virtual('available').get(function () {
   return this.maxNumOfStudents > this.currentNumOfStudents;
 });
 
+instructorSchema.virtual('reviews', {
+  ref: 'reviews',
+  localField: '_id',
+  foreignField: 'instructorId',
+});
+
 const InstructorModel = mongoose.model('instructors', instructorSchema);
 
 module.exports = InstructorModel;

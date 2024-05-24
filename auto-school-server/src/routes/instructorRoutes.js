@@ -6,8 +6,11 @@ const upload = require('../config/multerConfig.js');
 const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const { restrictTo } = require('../middlewares/restrictTo.js');
 const lessonController = require('../controllers/lessonController.js');
+const reviewRouter = require('./reviewRoutes.js');
 
 const router = express.Router();
+
+router.use('/:instructorId/reviews', reviewRouter);
 
 router.get('/', instructorController.getAllInstructors);
 router.get('/:instructorId', instructorController.getOneInstructor);
