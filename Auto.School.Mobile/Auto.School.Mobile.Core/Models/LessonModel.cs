@@ -25,7 +25,12 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("isAvailable")]
         public bool IsAvailable { get; set; }
 
-        [JsonIgnore] 
-        public string DayOfWeek { get; set; }
+        [JsonIgnore]
+        public string DayOfWeek
+        {
+            get => Date.DayOfWeek.ToString();
+            
+            private set { }
+        }
     }
 }
