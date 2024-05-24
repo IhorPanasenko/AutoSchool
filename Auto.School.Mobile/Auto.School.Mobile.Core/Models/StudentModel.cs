@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Auto.School.Mobile.Core.Responses.City.GetAllCities;
+using Newtonsoft.Json;
 
 namespace Auto.School.Mobile.Core.Models
 {
