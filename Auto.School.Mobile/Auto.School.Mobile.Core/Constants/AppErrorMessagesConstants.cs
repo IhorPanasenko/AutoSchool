@@ -12,5 +12,6 @@
         public const string UpdatePasswordNotFilled = "Please enter both current and new passwords.";
         public const string FailedLoadSchedule = "Failed to load instructor's schedule";
         public const string FailedUpdateUserPhoto = "Failed to update profile photo";
+        public const string FiledSignUpToInstructor = "Failed Sign up to instructor";
     }
 }
