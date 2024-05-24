@@ -89,6 +89,19 @@ export const studentsColumns = [
         width: 150
     }
 ];
+export const citiesColumns = [
+    { field: "_id", headerName: "ID", width: 290 },
+    { field: "nameEN", headerName: "nameEN ", width: 290 },
+    { field: "nameUA", headerName: "nameUA", width: 290 }
+];
+export const studentsWithInstructorRequestColumns = [
+    { field: "_id", headerName: "ID", width: 230 },
+    { field: "userId", headerName: "userId", width: 230 },
+    { field: "name", headerName: "name ", width: 230 },
+    { field: "surname", headerName: "surname", width: 230 },
+    { field: "requestStatus", headerName: "requestStatus", width: 230 },
+    { field: "vehicleCategory", headerName: "vehicleCategory", width: 230 }
+];
 export const reservationsColumns = [
     { field: "_id", headerName: "ID", width: 160 },
     {

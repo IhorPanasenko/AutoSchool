@@ -9,10 +9,11 @@ import { Card, Row, Col, Button } from "react-bootstrap"
 
 const Datatable = ({ columns }) => {
   const location = useLocation()
-  const path = location.pathname.split("/")[1]
+  const path = location.pathname
   console.log("path", path)
   const [list, setList] = useState([])
-  const { data, loading, error } = useFetch(`http://localhost:3000/api/${path}`)
+  const { data, loading, error } = useFetch(`http://localhost:3000/api${path}`)
+  console.log("data", data)
 
   useEffect(() => {
     setList(data.data)

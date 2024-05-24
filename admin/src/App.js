@@ -9,7 +9,15 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { warehousesColumns, roomColumns, userColumns, reservationsColumns, studentsColumns } from "./datatablesource";
+import {
+    warehousesColumns,
+    roomColumns,
+    userColumns,
+    reservationsColumns,
+    studentsColumns,
+    citiesColumns,
+    studentsWithInstructorRequestColumns
+} from "./datatablesource";
 import NewWarehouse from "./pages/newWarehouse/NewWarehouse";
 
 function App() {
@@ -63,6 +71,27 @@ function App() {
                                 element={
                                     <ProtectedRoute>
                                         <List columns={studentsColumns} />
+                                    </ProtectedRoute>
+                                }
+                            />
+                        </Route>
+                        <Route path="cities">
+                            <Route
+                                index
+                                element={
+                                    <ProtectedRoute>
+                                        <List columns={citiesColumns} />
+                                    </ProtectedRoute>
+                                }
+                            />
+                        </Route>
+
+                        <Route path="students/requests">
+                            <Route
+                                index
+                                element={
+                                    <ProtectedRoute>
+                                        <List columns={studentsWithInstructorRequestColumns} />
                                     </ProtectedRoute>
                                 }
                             />
