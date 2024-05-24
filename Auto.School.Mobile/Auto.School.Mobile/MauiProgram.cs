@@ -48,31 +48,32 @@ namespace Auto.School.Mobile
             builder.Services.AddSingleton<ISharedService, SharedService>();
             builder.Services.AddTransient<IStudentService, StudentService>();
             builder.Services.AddSingleton<IPopupService, Services.PopupService>();
+            builder.Services.AddTransient<ICultureService, CultureService>();
 
             builder.Services.AddSingleton<ErrorAlertView>();
 
             builder.Services.AddTransient<LoginViewModel>();
-            builder.Services.AddSingleton<RegistrationViewModel>();
-            builder.Services.AddSingleton<HomeViewModel>();
-            builder.Services.AddSingleton<AllInstructorsViewModel>();
-            builder.Services.AddSingleton<InstructorDetailsViewModel>();
-            builder.Services.AddSingleton<ForgotPasswordViewModel>();
+            builder.Services.AddTransient<RegistrationViewModel>();
+            builder.Services.AddTransient<HomeViewModel>();
+            builder.Services.AddTransient<AllInstructorsViewModel>();
+            builder.Services.AddTransient<InstructorDetailsViewModel>();
+            builder.Services.AddTransient<ForgotPasswordViewModel>();
             builder.Services.AddSingleton<AppShellViewModel>();
-            builder.Services.AddSingleton<StudentProfileViewModel>();
+            builder.Services.AddTransient<StudentProfileViewModel>();
             builder.Services.AddTransient<UpdatePasswordViewModel>();
             builder.Services.AddTransient<UpdateStudentInfoViewModel>();
             builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
-            builder.Services.AddSingleton<RegistrationPage>();
-            builder.Services.AddSingleton<ContactPage>();
-            builder.Services.AddSingleton<AboutPage>();
-            builder.Services.AddSingleton<AllInstructorsPage>();
-            builder.Services.AddSingleton<InstructorDetailsPage>();
-            builder.Services.AddSingleton<ForgotPasswordPage>();
+            builder.Services.AddTransient<RegistrationPage>();
+            builder.Services.AddTransient<ContactPage>();
+            builder.Services.AddTransient<AboutPage>();
+            builder.Services.AddTransient<AllInstructorsPage>();
+            builder.Services.AddTransient<InstructorDetailsPage>();
+            builder.Services.AddTransient<ForgotPasswordPage>();
             builder.Services.AddSingleton<AppShell>();
-            builder.Services.AddSingleton<StudentProfile>();
+            builder.Services.AddTransient<StudentProfile>();
             builder.Services.AddTransient<UpdatePasswordPopUp>();
             builder.Services.AddTransient<UpdateStudentInfoPopUp>();
             builder.Services.AddTransient<InstructorScheduleStudentPage>();
