@@ -11,7 +11,7 @@ router.post(
   '/',
   authenticateJWT,
   restrictTo('student'),
-  reviewController.addReview
+  reviewController.createReview
 );
 
 module.exports = router;
