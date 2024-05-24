@@ -7,8 +7,8 @@
             const string placeholder = "//";
             if (url.Contains(placeholder))
             {
-                int index = url.IndexOf(placeholder) + placeholder.Length;
-                return url.Substring(0, index) + id + url.Substring(index);
+                int index = url.IndexOf(placeholder) + 1;
+                return url.Substring(0, index) + id + "/"+url.Substring(index + 1);
             }
             return url;
         }
