@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.SignUpToLessonPopUp"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings">
+    <toolkit:Popup.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        </Style>
+    </toolkit:Popup.Resources>
+    <VerticalStackLayout>
+
+    </VerticalStackLayout>
+</toolkit:Popup>
