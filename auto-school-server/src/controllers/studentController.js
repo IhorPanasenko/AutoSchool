@@ -11,7 +11,10 @@ const UserLoginModel = require('../models/userLogin.js');
 const InstructorModel = require('../models/instructor.js');
 
 exports.getAllStudents = catchAsync(async (req, res, next) => {
-  let studentsQuery = new APIFeatures(StudentModel.find(), req.query)
+  let studentsQuery = new APIFeatures(
+    StudentModel.find().select('-drivingSkillsProgress -drivingSkills'),
+    req.query
+  )
     .filter()
     .paginate();
 
