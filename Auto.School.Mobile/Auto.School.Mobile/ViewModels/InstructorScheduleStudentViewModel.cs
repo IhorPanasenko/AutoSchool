@@ -16,13 +16,15 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private DateTime _currentWeekStart;
+        private readonly IPopupService _popupService;
 
-        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
             CloseAction = CloseActionMethod;
             _currentWeekStart = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            _popupService = popupService;
             _ = LoadLessons();
         }
 
@@ -166,16 +168,17 @@ namespace Auto.School.Mobile.ViewModels
             }
         }
 
-        //[RelayCommand]
-        //public void SignUp(LessonModel lesson)
-        //{
-
-        //}
-
         [RelayCommand]
-        public void ShowLessonDetailsCommand(LessonModel lesson)
+        public async Task ShowLessonDetailsCommand(LessonModel lesson)
         {
-            Console.WriteLine(lesson);
+            if(lesson == null)
+            {
+                return;
+            }
+
+            _sharedService.Add("SignUpLesson", lesson);
+            await _popupService.ShowPopupAsync<UpdateStudentInfoPopUp>();
+            await LoadLessons();
         }
     }
 }
