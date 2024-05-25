@@ -195,6 +195,21 @@
   <data name="LastName" xml:space="preserve">
     <value>Прізвище</value>
   </data>
+  <data name="LessonSignUp.Confirm" xml:space="preserve">
+    <value>Підтвердити запис</value>
+  </data>
+  <data name="LessonSignUp.Date" xml:space="preserve">
+    <value>Дата уроку</value>
+  </data>
+  <data name="LessonSignUp.LessonTime" xml:space="preserve">
+    <value>Час уроку</value>
+  </data>
+  <data name="LessonSignUp.Price" xml:space="preserve">
+    <value>Ціна</value>
+  </data>
+  <data name="LessonSignUp.SignUp" xml:space="preserve">
+    <value>Запис на урок</value>
+  </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Увійдіть, щоб продовжити</value>
   </data>

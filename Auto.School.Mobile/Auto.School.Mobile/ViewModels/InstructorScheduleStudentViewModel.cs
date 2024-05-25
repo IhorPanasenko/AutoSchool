@@ -5,7 +5,6 @@ using Auto.School.Mobile.Service.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
-using System.Globalization;
 using Auto.School.Mobile.Core.Extensions;
 using Auto.School.Mobile.Views;
 
@@ -16,14 +15,18 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private DateTime _currentWeekStart;
+        private readonly IPopupService _popupService;
 
-        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
             CloseAction = CloseActionMethod;
             _currentWeekStart = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            _popupService = popupService;
             _ = LoadLessons();
+            _ = LoadInstructor();
+            IsLoading = false;
         }
 
         [ObservableProperty]
@@ -65,15 +68,29 @@ namespace Auto.School.Mobile.ViewModels
             WeekDays = GetWeekDays();
             SelectedDay = DateTime.Today;
             UpdateSelectedDayLessons();
-            await LoadInstructor(instructorId);
-            IsLoading = false;
+        }
+
+        private async Task LoadInstructor()
+        {
+            var instructorId = _sharedService.GetValue<string>("InstructorId");
+            var response = await _instructorService.GetOne(instructorId!);
+
+            if (response is null || string.Compare(response.Status, ResponseStatuses.Fail, true) == 0)
+            {
+                IsError = true;
+                ErrorMessage = AppErrorMessagesConstants.FailedToLoadInstuctor;
+                return;
+            }
+
+            IsError = false;
+            Instructor = response.Instructor;
         }
 
         [RelayCommand]
         public async Task SelectDate(DateTime date)
         {
             SelectedDay = date;
-            await LoadLessons();
+            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).ToList();
         }
 
         private List<DateTime> GetWeekDays()
@@ -95,21 +112,6 @@ namespace Auto.School.Mobile.ViewModels
             {
                 SelectedDayLessons = Lessons.Take(9).ToList().OrderBy(x=>x.FromHour).ToList();
             }
-        }
-
-        private async Task LoadInstructor(string instructorId)
-        {
-            var response = await _instructorService.GetOne(instructorId);
-
-            if (response is null || string.Compare(response.Status, ResponseStatuses.Fail, true) == 0)
-            {
-                IsError = true;
-                ErrorMessage = AppErrorMessagesConstants.FailedToLoadInstuctor;
-                return;
-            }
-
-            IsError = false;
-            Instructor = response.Instructor;
         }
 
         [ObservableProperty]
@@ -144,6 +146,7 @@ namespace Auto.School.Mobile.ViewModels
         {
             WeekDays = WeekDays.Select(d => d.AddDays(7)).ToList();
             SelectedDay = WeekDays.First();
+            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).ToList();
         }
 
 
@@ -166,16 +169,31 @@ namespace Auto.School.Mobile.ViewModels
             }
         }
 
-        //[RelayCommand]
-        //public void SignUp(LessonModel lesson)
-        //{
-
-        //}
-
         [RelayCommand]
-        public void ShowLessonDetailsCommand(LessonModel lesson)
+        public async Task ShowLessonDetails(LessonModel lesson)
         {
-            Console.WriteLine(lesson);
+            if(lesson == null)
+            {
+                return;
+            }
+
+            _sharedService.Add("SignUpLesson", lesson);
+            await _popupService.ShowPopupAsync<SignUpToLessonPopUp>();
+            UpdateLessonsAfterSignUp();
+            
         }
+
+        private void UpdateLessonsAfterSignUp()
+        {
+            var updatedLesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
+
+            if( updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
+            {
+                return;
+            }
+
+            Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
+        }
+        
     }
 }

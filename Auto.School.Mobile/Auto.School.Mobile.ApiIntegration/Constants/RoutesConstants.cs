@@ -29,5 +29,10 @@
         public const string GetOneInstructor = "instructors/";
         public const string GetSchedule = "instructors//lessons";
         #endregion
+
+        #region Lesson
+        public const string SignUpToLesson = "lessons//signup";
+
+        #endregion
     }
 }

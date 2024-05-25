@@ -46,17 +46,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!--<Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black" />
-            <Style.Triggers>
-                <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
-                    <Setter Property="TextColor" Value="White" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>-->
-
-
     </ContentPage.Resources>
     <ScrollView BackgroundColor="#F5F5F5">
         <StackLayout>
@@ -130,8 +119,10 @@
                                         </DataTrigger>
                                     </Frame.Triggers>
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ShowLessonDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
-                                                      CommandParameter="{Binding .}" />
+                                        <!--<TapGestureRecognizer Command="{Binding ShowLessonDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                      CommandParameter="{Binding .}" />-->
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ShowLessonDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
                                     </Frame.GestureRecognizers>
                                     <StackLayout Orientation="Horizontal" Spacing="5">
                                         <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
