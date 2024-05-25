@@ -13,6 +13,7 @@ namespace Auto.School.Mobile.ViewModels
     public partial class InstructorScheduleStudentViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IInstructorService _instructorService;
+        private readonly IStudentService _studentService;
         private readonly ISharedService _sharedService;
         private DateTime _currentWeekStart;
         private readonly IPopupService _popupService;
@@ -44,6 +45,12 @@ namespace Auto.School.Mobile.ViewModels
         private async Task LoadLessons()
         {
             var instructorId = _sharedService.GetValue<string>("InstructorId");
+
+            if (instructorId is null)
+            {
+                //TODO: implement get instrucotrId from database
+            }
+
             if (instructorId is null)
             {
                 IsLoading = false;
@@ -73,6 +80,12 @@ namespace Auto.School.Mobile.ViewModels
         private async Task LoadInstructor()
         {
             var instructorId = _sharedService.GetValue<string>("InstructorId");
+
+            if (instructorId is null)
+            {
+                //TODO: implement get instrucotrId from database
+            }
+
             var response = await _instructorService.GetOne(instructorId!);
 
             if (response is null || string.Compare(response.Status, ResponseStatuses.Fail, true) == 0)
@@ -108,9 +121,9 @@ namespace Auto.School.Mobile.ViewModels
         {
             SelectedDayLessons = Lessons.Where(l => l.Date.Date == SelectedDay.Date).ToList();
             //TODO: remove this is just for testing
-            if(SelectedDayLessons.Count == 0)
+            if (SelectedDayLessons.Count == 0)
             {
-                SelectedDayLessons = Lessons.Take(9).ToList().OrderBy(x=>x.FromHour).ToList();
+                SelectedDayLessons = Lessons.Take(9).ToList().OrderBy(x => x.FromHour).ToList();
             }
         }
 
@@ -172,7 +185,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task ShowLessonDetails(LessonModel lesson)
         {
-            if(lesson == null)
+            if (lesson == null)
             {
                 return;
             }
@@ -180,20 +193,19 @@ namespace Auto.School.Mobile.ViewModels
             _sharedService.Add("SignUpLesson", lesson);
             await _popupService.ShowPopupAsync<SignUpToLessonPopUp>();
             UpdateLessonsAfterSignUp();
-            
         }
 
         private void UpdateLessonsAfterSignUp()
         {
             var updatedLesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
 
-            if( updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
+            if (updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
             {
                 return;
             }
 
             Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
         }
-        
+
     }
 }

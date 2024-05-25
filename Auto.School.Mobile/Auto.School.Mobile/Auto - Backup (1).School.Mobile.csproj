@@ -110,9 +110,6 @@
 	  <MauiXaml Update="Views\SignUpToLessonPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\StudentMyLessonsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\StudentProfile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

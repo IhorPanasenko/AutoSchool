@@ -6,6 +6,6 @@ namespace Auto.School.Mobile.Core.Constants
         public const string NotSent = "unsubmited";
         public const string Pending = "pending";
         public const string Rejected = "rejected";
-        public const string Accepted = "accepted";
+        public const string Accepted = "validated";
     }
 }
