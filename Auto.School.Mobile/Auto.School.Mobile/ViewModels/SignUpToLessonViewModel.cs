@@ -13,10 +13,12 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ILessonService _lessonService;
         private readonly ISharedService _sharedService;
-        public SignUpToLessonViewModel(ILessonService lessonService, ISharedService sharedService)
+        private readonly IPopupService _popupService;
+        public SignUpToLessonViewModel(ILessonService lessonService, ISharedService sharedService, IPopupService popupService)
         {
             _lessonService = lessonService;
             _sharedService = sharedService;
+            _popupService = popupService;
             GetLesson();
         }
 
@@ -35,6 +37,12 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private LessonModel lesson;
 
+        [ObservableProperty]
+        private bool isError;
+
+        [ObservableProperty]
+        private string errorMessage;
+
         [RelayCommand]
         public async Task SignUp()
         {
@@ -42,7 +50,16 @@ namespace Auto.School.Mobile.ViewModels
 
             if (string.Compare(res.Status, ResponseStatuses.Sucess, true) == 0)
             {
+                IsError = false;
                 Lesson.IsAvailable = false;
+                _sharedService.Add("SignUpLesson", Lesson);
+                _popupService.ClosePopup(PopupInstance);
+            }
+            else
+            {
+                _sharedService.Add<LessonModel>("SignUpLesson", new LessonModel());
+                IsError = true;
+                ErrorMessage = res.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
             }
         }
     }
