@@ -13,13 +13,14 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ILessonService _lessonService;
         private readonly ISharedService _sharedService;
-        public SignUpToLessonViewModel(ILessonService lessonService)
+        public SignUpToLessonViewModel(ILessonService lessonService, ISharedService sharedService)
         {
             _lessonService = lessonService;
-            _ = GetInstructor();
+            _sharedService = sharedService;
+            GetLesson();
         }
 
-        private  async Task GetInstructor()
+        private void GetLesson()
         {
             var lesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
             if(lesson is not null)
