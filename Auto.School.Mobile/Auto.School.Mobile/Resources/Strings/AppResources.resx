@@ -276,6 +276,18 @@
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="StudentMyLessons.FutureLessons" xml:space="preserve">
+    <value>Future lessons</value>
+  </data>
+  <data name="StudentMyLessons.NoFutureLabel" xml:space="preserve">
+    <value>You don't have future lessons</value>
+  </data>
+  <data name="StudentMyLessons.PassedLessons" xml:space="preserve">
+    <value>Passed lessons</value>
+  </data>
+  <data name="StudentMyLessons.SignUp" xml:space="preserve">
+    <value>You can sign up to lesson in schedule</value>
+  </data>
   <data name="StudentProfile.BirthdayDate" xml:space="preserve">
     <value>Birthday date</value>
   </data>

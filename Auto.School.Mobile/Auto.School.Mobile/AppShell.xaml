@@ -13,10 +13,9 @@
     <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"
                       FlyoutItemIsVisible="True"
                       Route="AllInstructorsPage"
-                      
                       xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
                       />
-
+ 
     <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home" ContentTemplate="{DataTemplate views:HomePage}"/>
         <ShellContent Title="Contact" ContentTemplate="{DataTemplate views:ContactPage}"/>
@@ -24,6 +23,7 @@
         <ShellContent Title="Registration" ContentTemplate="{DataTemplate views:RegistrationPage}"/>
         <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:StudentProfile}"/>
         <ShellContent Title="Instructors" ContentTemplate="{DataTemplate views:AllInstructorsPage}"/>
+        <ShellContent Title="My lessons" ContentTemplate="{DataTemplate views:StudentMyLessonsPage}"/>
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

@@ -66,6 +66,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<UpdateStudentInfoViewModel>();
             builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
             builder.Services.AddTransient<SignUpToLessonViewModel>();
+            builder.Services.AddTransient<StudentMyLessonsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -81,6 +82,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<UpdateStudentInfoPopUp>();
             builder.Services.AddTransient<InstructorScheduleStudentPage>();
             builder.Services.AddTransient<SignUpToLessonPopUp>();
+            builder.Services.AddTransient<StudentMyLessonsPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
