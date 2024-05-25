@@ -11,8 +11,30 @@
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="Background" Value="#f4e558"/>
+            <Setter Property="TextColor" Value="#3D6DFF"/>
+            <Setter Property="LineBreakMode" Value="WordWrap"/>
+            <Setter Property="TextTransform" Value="None"/>
+        </Style>
     </toolkit:Popup.Resources>
-    <VerticalStackLayout>
-
+    <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
+        <Label Text="{x:Static resx:AppResources.LessonSignUp_SignUp}" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+        <StackLayout Orientation="Horizontal" Spacing="20">
+            <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}"/>
+            <Label Text="{Binding Lesson.Date, StringFormat='{0:dd.MM.yyyy}'}" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="20" >
+            <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}"/>
+            <Label Text="{Binding Lesson.FromHour}" HorizontalOptions="EndAndExpand"/>
+            <Label Text="---" HorizontalOptions="Center"/>
+            <Label Text="{Binding Lesson.ToHour}" HorizontalOptions="StartAndExpand"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="20">
+            <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}"/>
+            <Label Text="{Binding Lesson.Price, StringFormat='${0}'}" />
+        </StackLayout>
+        <Button Text="{x:Static resx:AppResources.LessonSignUp_Confirm}" Command="{Binding SignUpCommand}" BackgroundColor="#f4e558" TextColor="#3D6DFF" />
     </VerticalStackLayout>
 </toolkit:Popup>
