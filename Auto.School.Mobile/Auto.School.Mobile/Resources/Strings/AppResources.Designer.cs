@@ -538,6 +538,42 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Future lessons.
+        /// </summary>
+        internal static string StudentMyLessons_FutureLessons {
+            get {
+                return ResourceManager.GetString("StudentMyLessons.FutureLessons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have future lessons.
+        /// </summary>
+        internal static string StudentMyLessons_NoFutureLabel {
+            get {
+                return ResourceManager.GetString("StudentMyLessons.NoFutureLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passed lessons.
+        /// </summary>
+        internal static string StudentMyLessons_PassedLessons {
+            get {
+                return ResourceManager.GetString("StudentMyLessons.PassedLessons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can sign up to lesson in schedule.
+        /// </summary>
+        internal static string StudentMyLessons_SignUp {
+            get {
+                return ResourceManager.GetString("StudentMyLessons.SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Birthday date.
         /// </summary>
         internal static string StudentProfile_BirthdayDate {

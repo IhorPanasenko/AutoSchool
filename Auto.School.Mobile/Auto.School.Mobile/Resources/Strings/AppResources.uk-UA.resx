@@ -276,6 +276,18 @@
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="StudentMyLessons.FutureLessons" xml:space="preserve">
+    <value>Майбутні заняття</value>
+  </data>
+  <data name="StudentMyLessons.NoFutureLabel" xml:space="preserve">
+    <value>Схоже у вас немає запланованих занять</value>
+  </data>
+  <data name="StudentMyLessons.PassedLessons" xml:space="preserve">
+    <value>Відвідані заняття</value>
+  </data>
+  <data name="StudentMyLessons.SignUp" xml:space="preserve">
+    <value>Ви можете записатися на заняття через розклад</value>
+  </data>
   <data name="StudentProfile.BirthdayDate" xml:space="preserve">
     <value>Дата народження</value>
   </data>
