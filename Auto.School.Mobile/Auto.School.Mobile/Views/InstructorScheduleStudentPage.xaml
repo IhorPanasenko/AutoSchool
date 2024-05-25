@@ -46,17 +46,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!--<Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black" />
-            <Style.Triggers>
-                <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
-                    <Setter Property="TextColor" Value="White" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>-->
-
-
     </ContentPage.Resources>
     <ScrollView BackgroundColor="#F5F5F5">
         <StackLayout>
