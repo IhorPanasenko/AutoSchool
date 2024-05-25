@@ -16,7 +16,8 @@ import {
     reservationsColumns,
     studentsColumns,
     citiesColumns,
-    studentsWithInstructorRequestColumns
+    studentsWithInstructorRequestColumns,
+    instructorsColumns
 } from "./datatablesource";
 import NewWarehouse from "./pages/newWarehouse/NewWarehouse";
 
@@ -71,6 +72,16 @@ function App() {
                                 element={
                                     <ProtectedRoute>
                                         <List columns={studentsColumns} />
+                                    </ProtectedRoute>
+                                }
+                            />
+                        </Route>
+                        <Route path="instructors">
+                            <Route
+                                index
+                                element={
+                                    <ProtectedRoute>
+                                        <List columns={instructorsColumns} />
                                     </ProtectedRoute>
                                 }
                             />
