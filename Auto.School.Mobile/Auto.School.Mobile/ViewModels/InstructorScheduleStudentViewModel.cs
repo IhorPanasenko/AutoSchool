@@ -180,7 +180,6 @@ namespace Auto.School.Mobile.ViewModels
             _sharedService.Add("SignUpLesson", lesson);
             await _popupService.ShowPopupAsync<SignUpToLessonPopUp>();
             UpdateLessonsAfterSignUp();
-            
         }
 
         private void UpdateLessonsAfterSignUp()
