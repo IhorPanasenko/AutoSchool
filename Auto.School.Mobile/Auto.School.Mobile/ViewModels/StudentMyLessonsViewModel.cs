@@ -2,7 +2,9 @@
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Lesson.StudentGetMy;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
@@ -22,16 +24,21 @@ namespace Auto.School.Mobile.ViewModels
         {
             var res = await _lessonService.StudentGetMyLessonsAsync();
 
-            if (string.Compare(res.Status, ResponseStatuses.Fail) == 0) 
-            { 
+            if (string.Compare(res.Status, ResponseStatuses.Fail) == 0)
+            {
                 IsError = true;
                 ErrorMessage = res.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
             }
 
             Lessons = res.StudentLessons;
             var now = DateTime.Now;
-            PassedLessons = Lessons.Where(l => l.Date.DayOfYear < now.DayOfYear || (l.Date.DayOfYear == now.DayOfYear && TimeToInt(l.ToHour) <= now.Hour )).ToList();
+            PassedLessons = Lessons.Where(l => l.Date.DayOfYear < now.DayOfYear || (l.Date.DayOfYear == now.DayOfYear && TimeToInt(l.ToHour) <= now.Hour)).ToList();
             FutureLessons = Lessons.Where(l => l.Date.DayOfYear > now.DayOfYear || (l.Date.DayOfYear == now.DayOfYear && TimeToInt(l.ToHour) > now.Hour)).ToList();
+
+            if(FutureLessons.Count == 0)
+            {
+                NotHasFutureLessons = true;
+            }
         }
 
         private int TimeToInt(string time)
@@ -58,5 +65,28 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private List<StudentLessonModel> futureLessons;
+
+        [ObservableProperty]
+        private bool notHasFutureLessons = false;
+
+        [RelayCommand]
+        private async Task CancelLesson(StudentLessonModel lesson)
+        {
+            await _lessonService.CancelMyLesson(lesson.Id);
+            _ = GetMyLessons();
+        }
+
+        [RelayCommand]
+        private void AddToGoogleCalendar(StudentLessonModel lesson)
+        {
+            Console.Write("AddToGoogleCalendarCalled");
+            //TOOO: Implement Add to google calendar
+        }
+
+        [RelayCommand]
+        private async Task GoToSchedule()
+        {
+            await Shell.Current.GoToAsync($"/{nameof(InstructorScheduleStudentPage)}");
+        }
     }
 }
