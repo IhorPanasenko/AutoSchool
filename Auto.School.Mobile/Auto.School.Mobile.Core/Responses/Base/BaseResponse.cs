@@ -7,6 +7,9 @@ namespace Auto.School.Mobile.Core.Responses.Base
         [JsonProperty("status")]
         public string? Status { get; set; }
 
+        [JsonProperty("results")]
+        public int Results { get; set; }
+
         [JsonProperty("message")]
         public string? Message { get; set; }
 
