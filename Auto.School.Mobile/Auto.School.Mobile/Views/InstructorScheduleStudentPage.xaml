@@ -119,8 +119,10 @@
                                         </DataTrigger>
                                     </Frame.Triggers>
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ShowLessonDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
-                                                      CommandParameter="{Binding .}" />
+                                        <!--<TapGestureRecognizer Command="{Binding ShowLessonDetailsCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                      CommandParameter="{Binding .}" />-->
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ShowLessonDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
                                     </Frame.GestureRecognizers>
                                     <StackLayout Orientation="Horizontal" Spacing="5">
                                         <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
