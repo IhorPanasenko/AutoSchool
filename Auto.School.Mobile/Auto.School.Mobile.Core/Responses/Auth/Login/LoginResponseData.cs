@@ -14,12 +14,6 @@ namespace Auto.School.Mobile.Core.Responses.Login
         public required UserDataModel UserData { get; set; }
 
         [JsonProperty("tokenExpire")]
-        public required string TokenExpirationTime { get; set; }
-
-        [JsonProperty("accessToken")]
-        public required string AccessToken { get; set; }
-
-        [JsonProperty("refreshToken")]
-        public required string RefreshToken { get; set; }
+        public required DateTime TokenExpirationTime { get; set; }
     }
 }
