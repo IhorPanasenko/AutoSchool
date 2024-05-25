@@ -295,6 +295,51 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Sign up.
+        /// </summary>
+        internal static string LessonSignUp_Confirm {
+            get {
+                return ResourceManager.GetString("LessonSignUp.Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lesson date.
+        /// </summary>
+        internal static string LessonSignUp_Date {
+            get {
+                return ResourceManager.GetString("LessonSignUp.Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lesson Time.
+        /// </summary>
+        internal static string LessonSignUp_LessonTime {
+            get {
+                return ResourceManager.GetString("LessonSignUp.LessonTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string LessonSignUp_Price {
+            get {
+                return ResourceManager.GetString("LessonSignUp.Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up to lesson.
+        /// </summary>
+        internal static string LessonSignUp_SignUp {
+            get {
+                return ResourceManager.GetString("LessonSignUp.SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in to continue.
         /// </summary>
         internal static string LoginGreetingText {

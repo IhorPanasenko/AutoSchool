@@ -195,6 +195,21 @@
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
+  <data name="LessonSignUp.Confirm" xml:space="preserve">
+    <value>Confirm Sign up</value>
+  </data>
+  <data name="LessonSignUp.Date" xml:space="preserve">
+    <value>Lesson date</value>
+  </data>
+  <data name="LessonSignUp.LessonTime" xml:space="preserve">
+    <value>Lesson Time</value>
+  </data>
+  <data name="LessonSignUp.Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="LessonSignUp.SignUp" xml:space="preserve">
+    <value>Sign up to lesson</value>
+  </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Sign in to continue</value>
   </data>
