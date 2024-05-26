@@ -14,8 +14,7 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
             string url,
             TRequest? requestBody)
         {
-            var jsonContent = JsonConvert.SerializeObject(requestBody);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            var content = requestBody != null ? new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json") : null;
 
             var path = RoutesConstants.BaseUrl + url;
             var response = await _httpClientService.Client.PostAsync(path, content);
