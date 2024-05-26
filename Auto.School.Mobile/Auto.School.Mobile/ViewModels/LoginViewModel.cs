@@ -127,7 +127,7 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
-            if (string.Compare(response.Status, "Success", true) == 0)
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
                 if (Preferences.ContainsKey("UserInfo"))
                 {
