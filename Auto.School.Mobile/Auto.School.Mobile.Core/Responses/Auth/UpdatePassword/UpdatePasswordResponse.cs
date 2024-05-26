@@ -1,7 +1,7 @@
 ﻿using Auto.School.Mobile.Core.Responses.Base;
 using Newtonsoft.Json;
 
-namespace Auto.School.Mobile.Core.Responses.UpdatePassword
+namespace Auto.School.Mobile.Core.Responses.Auth.UpdatePassword
 {
     public class UpdatePasswordResponse : BaseResponse
     {

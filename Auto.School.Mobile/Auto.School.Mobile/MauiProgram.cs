@@ -36,6 +36,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<IPostRequest, PostRequest>();
             builder.Services.AddTransient<IPatchRequest, PatchRequest>();
             builder.Services.AddTransient<IDeleteRequest, DeleteRequest>();
+            builder.Services.AddSingleton<ITokenExpirationService, TokenExpirationService>();
 
             builder.Services.AddTransient<IAuthenticationRequest, AuthenticationRequests>();
             builder.Services.AddTransient<ICityRequest, CityRequests>();
@@ -52,7 +53,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ICultureService, CultureService>();
             builder.Services.AddScoped<ILessonService, LessonService>();
 
-            builder.Services.AddSingleton<ErrorAlertView>();
+            builder.Services.AddTransient<ErrorAlertView>();
 
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<RegistrationViewModel>();

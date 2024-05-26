@@ -32,6 +32,8 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
                 }
                 else
                 {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonConvert.DeserializeObject<TResponse>(responseContent);
                     throw new HttpRequestException($"Cannot send get request to: {path},Status code: {response.StatusCode}");
                 }
             }

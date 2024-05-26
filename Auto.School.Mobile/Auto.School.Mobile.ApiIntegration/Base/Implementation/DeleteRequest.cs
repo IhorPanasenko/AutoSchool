@@ -1,7 +1,6 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
-using Auto.School.Mobile.ApiIntegration.Servicecs.Implementation;
 using Newtonsoft.Json;
 using System.Text;
 
