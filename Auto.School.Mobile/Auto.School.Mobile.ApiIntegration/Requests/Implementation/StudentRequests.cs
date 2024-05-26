@@ -16,7 +16,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
     {
         private readonly IPatchRequest _patchRequest = patchRequest;
         private readonly IGetRequest _getRequest = getRequest;
-        private readonly ITokenExpirationService _tokenExpirationService;
+        private readonly ITokenExpirationService _tokenExpirationService = tokenExpirationService;
         public async Task<ConnectWithInstructorResponse> ConnectWithInstructor(string instructorId)
         {
             try
@@ -34,7 +34,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                 {
                     Message = "Internal server error",
                     Status = "Fail",
-                    Error = new Core.Responses.Base.BaseError()
+                    Error = new BaseError()
                     {
                         Status = "Fail",
                         StatusCode = 500,
