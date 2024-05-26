@@ -2,7 +2,7 @@ import "./sidebar.scss"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline"
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"
-import CreditCardIcon from "@mui/icons-material/CreditCard"
+import GroupIcon from "@mui/icons-material/Group"
 import StoreIcon from "@mui/icons-material/Store"
 import ExitToAppIcon from "@mui/icons-material/ExitToApp"
 import { Link } from "react-router-dom"
@@ -45,6 +45,12 @@ const Sidebar = () => {
               <span>Students</span>
             </li>
           </Link>
+          <Link to="/instructors" style={{ textDecoration: "none" }}>
+            <li>
+              <GroupIcon className="icon" />
+              <span>Instructors</span>
+            </li>
+          </Link>
           <Link to="/cities" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
@@ -54,7 +60,7 @@ const Sidebar = () => {
           <Link to="/students/requests" style={{ textDecoration: "none" }}>
             <li>
               <DirectionsCarIcon className="icon" />
-              <span>Students with requests</span>
+              <span>Requests</span>
             </li>
           </Link>
 

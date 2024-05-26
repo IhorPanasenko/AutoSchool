@@ -24,7 +24,8 @@ const Login = () => {
     try {
       const res = await axios.post(
         "http://localhost:3000/api/auth/login",
-        credentials
+        credentials,
+        { withCredentials: true }
       )
       if (res.data.data.userData.role == "admin") {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data })

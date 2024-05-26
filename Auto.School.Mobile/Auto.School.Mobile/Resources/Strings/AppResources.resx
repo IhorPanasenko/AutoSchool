@@ -123,6 +123,9 @@
   <data name="AllInstructors.DetailsButton" xml:space="preserve">
     <value>Open details</value>
   </data>
+  <data name="AllInstructors.NotAvailale" xml:space="preserve">
+    <value>Instructor has maximum number of students</value>
+  </data>
   <data name="AllInstructors.Title" xml:space="preserve">
     <value>Our Instructors</value>
   </data>
@@ -150,8 +153,23 @@
   <data name="ForgotPassword.Label" xml:space="preserve">
     <value>Enter your email address</value>
   </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
   <data name="GoToSchedule" xml:space="preserve">
     <value>Go to schedule</value>
+  </data>
+  <data name="InstructorCard.DrivingCategory" xml:space="preserve">
+    <value>DrivingCategory</value>
+  </data>
+  <data name="InstructorCard.Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="InstructorCard.Raiting" xml:space="preserve">
+    <value>Raiting</value>
+  </data>
+  <data name="InstructorCard.Years" xml:space="preserve">
+    <value>Years</value>
   </data>
   <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
     <value>Reviews about car</value>
@@ -171,11 +189,32 @@
   <data name="InstructorDetails.Title" xml:space="preserve">
     <value>Instructor Details</value>
   </data>
+  <data name="InstructorSchedule.SingUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
+  <data name="LessonSignUp.Confirm" xml:space="preserve">
+    <value>Confirm Sign up</value>
+  </data>
+  <data name="LessonSignUp.Date" xml:space="preserve">
+    <value>Lesson date</value>
+  </data>
+  <data name="LessonSignUp.LessonTime" xml:space="preserve">
+    <value>Lesson Time</value>
+  </data>
+  <data name="LessonSignUp.Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="LessonSignUp.SignUp" xml:space="preserve">
+    <value>Sign up to lesson</value>
+  </data>
   <data name="LoginGreetingText" xml:space="preserve">
     <value>Sign in to continue</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Monday</value>
   </data>
   <data name="NewUser" xml:space="preserve">
     <value>New User?</value>
@@ -219,6 +258,12 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Rememeber me?</value>
   </data>
+  <data name="Schedule.NextWeek" xml:space="preserve">
+    <value>Next Week</value>
+  </data>
+  <data name="Schedule.PreviousWeek" xml:space="preserve">
+    <value>Previous Week</value>
+  </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Select your city</value>
   </data>
@@ -231,6 +276,18 @@
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="StudentMyLessons.FutureLessons" xml:space="preserve">
+    <value>Future lessons</value>
+  </data>
+  <data name="StudentMyLessons.NoFutureLabel" xml:space="preserve">
+    <value>You don't have future lessons</value>
+  </data>
+  <data name="StudentMyLessons.PassedLessons" xml:space="preserve">
+    <value>Passed lessons</value>
+  </data>
+  <data name="StudentMyLessons.SignUp" xml:space="preserve">
+    <value>You can sign up to lesson in schedule</value>
+  </data>
   <data name="StudentProfile.BirthdayDate" xml:space="preserve">
     <value>Birthday date</value>
   </data>
@@ -242,6 +299,9 @@
   </data>
   <data name="StudentProfile.DrivingCategory" xml:space="preserve">
     <value>Driving category for learning</value>
+  </data>
+  <data name="StudentProfile.Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="StudentProfile.FirstName" xml:space="preserve">
     <value>First name</value>
@@ -285,6 +345,12 @@
   <data name="StudentProfile.ViewInstructors" xml:space="preserve">
     <value>View instructors</value>
   </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
   <data name="UpdatePassword.CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -326,6 +392,9 @@
   </data>
   <data name="UserProfile.LessonsStatistic" xml:space="preserve">
     <value>Lessons statistic</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>

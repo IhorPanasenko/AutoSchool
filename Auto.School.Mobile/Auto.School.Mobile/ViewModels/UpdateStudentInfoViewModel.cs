@@ -17,19 +17,23 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IStudentService _studentService;
         private readonly ISharedService _sharedService;
         private readonly IPopupService _popupService;
+        private readonly ICultureService _cultureService;
 
         public UpdateStudentInfoViewModel(
             IStudentService studentService,
             ISharedService sharedService,
             ICityService cityService,
-            IPopupService popupService)
+            IPopupService popupService,
+            ICultureService cultureService)
         {
             _sharedService = sharedService;
             _studentService = studentService;
             _cityService = cityService;
+            _popupService = popupService;
+            _cultureService = cultureService;
             SetCities();
             SetInfo();
-            _popupService = popupService;
+           
         }
 
         [ObservableProperty]
@@ -68,11 +72,7 @@ namespace Auto.School.Mobile.ViewModels
             FirstName = student.Name;
             LastName = student.Surname;
             PhoneNumber = student.UserData?.Phone ?? string.Empty;
-            bool success = DateTime.TryParse(student.UserData?.DateOfBirth, out DateTime parsedDate);
-            if (success)
-            {
-                BirthdayDate = parsedDate;
-            }
+            BirthdayDate = student.UserData?.DateOfBirth ?? DateTime.MinValue;
 
             SelectedDrivingCategory = student.VehicleCategory;
             SelectedCity = student.City;

@@ -7,14 +7,11 @@ using System.Text;
 
 namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
 {
-    public class DeleteRequest(HttpClientService httpClientService) : IDeleteRequest
+    public class DeleteRequest(IHttpClientService httpClientService) : IDeleteRequest
     {
         private readonly IHttpClientService _httpClientService = httpClientService;
-        public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(string url, TRequest? requestBody)
+        public async Task<TResponse> ExecuteAsync<TResponse>(string url)
         {
-            var jsonContent = JsonConvert.SerializeObject(requestBody);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
             var path = RoutesConstants.BaseUrl + url;
             var response = await _httpClientService.Client.DeleteAsync(path);
 

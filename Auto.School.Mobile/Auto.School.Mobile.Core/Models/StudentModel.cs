@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Auto.School.Mobile.Core.Responses.City.GetAllCities;
+using Newtonsoft.Json;
 
 namespace Auto.School.Mobile.Core.Models
 {
@@ -6,6 +7,9 @@ namespace Auto.School.Mobile.Core.Models
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
+
+        [JsonIgnore]
+        public string Email { get; set; } = string.Empty;
 
         [JsonProperty("name")]
         public string Name { get; set; }

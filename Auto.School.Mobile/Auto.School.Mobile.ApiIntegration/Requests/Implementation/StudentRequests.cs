@@ -46,6 +46,10 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             try
             {
                 var response = await _getRequest.ExecuteAsync<GetInfoMeResponse>(RoutesConstants.GetInfoMe);
+                if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+                {
+                    response.Data.Student.Email = response.Data.Email;
+                }
                 return response;
             }
             catch(Exception ex) { 
@@ -53,7 +57,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                 { 
                     Message = ex.Message,
                     Status = ResponseStatuses.Fail,
-                    Error = new Core.Responses.Base.BaseError()
+                    Error = new BaseError()
                     {
                         Status = "Fail",
                         StatusCode = 500,
@@ -75,7 +79,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             {
                 return new UpdateMeResponse
                 {
-                    Student = null,
+                    Data = null,
                     Message = ex.Message,
                     Status = ResponseStatuses.Fail,
                     Error = new Core.Responses.Base.BaseError()

@@ -10,6 +10,7 @@
         public const string Register = "auth/signup";
         public const string ForgotPassword = "auth/forgotPassword";
         public const string UpdatePassword = "auth/updateMyPassword";
+        public const string Logout = "auth/logout";
         #endregion
 
         #region Student
@@ -26,6 +27,14 @@
         #region Instructor
         public const string GetAllInstructors = "instructors";
         public const string GetOneInstructor = "instructors/";
+        public const string GetSchedule = "instructors//lessons";
+        #endregion
+
+        #region Lesson
+        public const string SignUpToLesson = "lessons//signup";
+        public const string GetMyLessons = "lessons/my";
+        public const string CancelMyLesson = "/lessons//cancel-my-lesson";
+        public const string AddLessonToGoogleCalendar = "/lessons//to-calendar";
         #endregion
     }
 }
