@@ -2,19 +2,22 @@
 using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
 using Auto.School.Mobile.Core.Models;
-using Auto.School.Mobile.Core.Responses.Authentication;
+using Auto.School.Mobile.Core.Responses.Auth.Login;
+using Auto.School.Mobile.Core.Responses.Auth.RefreshToken;
+using Auto.School.Mobile.Core.Responses.Auth.Registration;
+using Auto.School.Mobile.Core.Responses.Auth.UpdatePassword;
 using Auto.School.Mobile.Core.Responses.Base;
-using Auto.School.Mobile.Core.Responses.Login;
-using Auto.School.Mobile.Core.Responses.UpdatePassword;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
-    public class AuthenticationRequests(IPostRequest postRequest, IPatchRequest patchRequest, IDeleteRequest deleteRequest) : IAuthenticationRequest
+    public class AuthenticationRequests(IPostRequest postRequest, IPatchRequest patchRequest, IDeleteRequest deleteRequest, ITokenExpirationService tokenExpirationServcie) : IAuthenticationRequest
     {
         private readonly IPostRequest _postRequest = postRequest;
         private readonly IPatchRequest _patchRequest = patchRequest;
         private readonly IDeleteRequest _deleteRequest = deleteRequest;
+        private readonly ITokenExpirationService _tokenExpirationService = tokenExpirationServcie;
 
         public async Task<BaseResponse> ForgotPassword(string email)
         {
@@ -26,13 +29,10 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
         {
             var result = await _postRequest.ExecuteAsync<LoginModel, LoginResponse>(RoutesConstants.Login, loginModel);
 
-            if (result is null)
+            var expireTime = result.LoginResponseData?.TokenExpirationTime;
+            if (expireTime is not null)
             {
-                result = new LoginResponse()
-                {
-                    Message = "",
-                    Status = "Fail",
-                };
+                _tokenExpirationService.SaveTokenExpiration(expireTime);
             }
 
             return result;
@@ -41,6 +41,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
         public async Task<BaseResponse> Logout()
         {
             var result = await _deleteRequest.ExecuteAsync<BaseResponse>(RoutesConstants.Logout);
+            _tokenExpirationService.RemoveExpirationTime();
             return result;
         }
 
