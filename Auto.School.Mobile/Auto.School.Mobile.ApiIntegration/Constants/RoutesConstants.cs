@@ -11,6 +11,7 @@
         public const string ForgotPassword = "auth/forgotPassword";
         public const string UpdatePassword = "auth/updateMyPassword";
         public const string Logout = "auth/logout";
+        public const string TokenRefresh = "auth/token";
         #endregion
 
         #region Student

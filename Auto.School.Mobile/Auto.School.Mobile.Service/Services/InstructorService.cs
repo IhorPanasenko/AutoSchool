@@ -33,11 +33,11 @@ namespace Auto.School.Mobile.Service.Services
         public async Task<GetScheduleResponse> GetSchedule(string id)
         {
             var response = await _instructorRequest.GetSchedule(id);
-            if(string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
                 var minDate = DateTime.Now.AddDays(-14);
                 var maxDate = DateTime.Now.AddDays(21);
-                response.Lessons = response.Lessons.Where(l => l.Date>=minDate && l.Date<=maxDate).ToList();
+                response.Lessons = response.Lessons.Where(l => l.Date >= minDate && l.Date <= maxDate).ToList();
             }
             return response;
         }

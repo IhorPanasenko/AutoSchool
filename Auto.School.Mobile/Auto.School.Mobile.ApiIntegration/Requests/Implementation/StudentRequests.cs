@@ -1,6 +1,7 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
 using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
@@ -11,14 +12,16 @@ using System.IO;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
-    public class StudentRequests(IPatchRequest patchRequest, IGetRequest getRequest) : IStudentRequest
+    public class StudentRequests(IPatchRequest patchRequest, IGetRequest getRequest, ITokenExpirationService tokenExpirationService) : IStudentRequest
     {
         private readonly IPatchRequest _patchRequest = patchRequest;
         private readonly IGetRequest _getRequest = getRequest;
+        private readonly ITokenExpirationService _tokenExpirationService = tokenExpirationService;
         public async Task<ConnectWithInstructorResponse> ConnectWithInstructor(string instructorId)
         {
             try
             {
+                _tokenExpirationService.TryRefreshToken();
                 var requestUrl = $"{RoutesConstants.StudentSignUpToInstructor}/{instructorId}";
                 var response = await _patchRequest.ExecuteAsync<string, ConnectWithInstructorResponse>(
                     url: requestUrl);
@@ -31,7 +34,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                 {
                     Message = "Internal server error",
                     Status = "Fail",
-                    Error = new Core.Responses.Base.BaseError()
+                    Error = new BaseError()
                     {
                         Status = "Fail",
                         StatusCode = 500,
@@ -45,6 +48,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
         {
             try
             {
+                _tokenExpirationService.TryRefreshToken();
                 var response = await _getRequest.ExecuteAsync<GetInfoMeResponse>(RoutesConstants.GetInfoMe);
                 if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
                 {
@@ -72,6 +76,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
         {
             try
             {
+                _tokenExpirationService.TryRefreshToken();
                 var response = await _patchRequest.ExecuteAsync<UpdateUserMeModel, UpdateMeResponse>(RoutesConstants.UpdateMe, updateMeModel);
                 return response;
             }
@@ -96,6 +101,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
         {
             try
             {
+                _tokenExpirationService.TryRefreshToken();
                 var response = await _patchRequest.UploadImageAsync<BaseResponse>(RoutesConstants.UpdatePhoto, stream, "profileAvatar");
                 return response;
             }
