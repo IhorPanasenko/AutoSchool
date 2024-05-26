@@ -130,7 +130,7 @@ const useFetch = url => {
         }
     };
 
-    return { data, deleteData, putData };
+    return { data, deleteData, putData, patchData };
 };
 
 export default useFetch;

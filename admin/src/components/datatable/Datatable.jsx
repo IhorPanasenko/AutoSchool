@@ -12,7 +12,9 @@ const Datatable = ({ columns }) => {
   const path = location.pathname
   console.log("path", path)
   const [list, setList] = useState([])
-  const { data, deleteData } = useFetch(`http://localhost:3000/api${path}`)
+  const { data, deleteData, patchData } = useFetch(
+    `http://localhost:3000/api${path}`
+  )
   console.log("data", data)
 
   useEffect(() => {
@@ -23,6 +25,22 @@ const Datatable = ({ columns }) => {
   const handleDelete = async id => {
     try {
       await deleteData(`http://localhost:3000/api${path}/${id}`)
+      setList(list.filter(item => item._id !== id))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const handleAccept = async id => {
+    try {
+      await patchData(`http://localhost:3000/api/students/${id}/accept-request`)
+      setList(list.filter(item => item._id !== id))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  const handleReject = async id => {
+    try {
+      await patchData(`http://localhost:3000/api/students/${id}/reject-request`)
       setList(list.filter(item => item._id !== id))
     } catch (err) {
       console.log(err)
@@ -64,13 +82,13 @@ const Datatable = ({ columns }) => {
             </Link> */}
             <div
               className="viewButton"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleAccept(params.row._id)}
             >
               Accept
             </div>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleReject(params.row._id)}
             >
               Reject
             </div>
