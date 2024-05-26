@@ -6,7 +6,7 @@ class APIFeatures {
 
   filter() {
     const filterQueryObject = { ...this.queryString };
-    const excludedKeys = ['sort', 'page', 'limit'];
+    const excludedKeys = ['sort', 'page', 'limit', 'all'];
     excludedKeys.forEach((el) => delete filterQueryObject[el]);
 
     this.query = this.query.find(filterQueryObject);
@@ -22,6 +22,8 @@ class APIFeatures {
   }
 
   paginate() {
+    if (this.queryString.all === 'true') return this;
+
     const page = this.queryString.page * 1 || 1;
     const limit = this.queryString.limit * 1 || 10;
     const skip = (page - 1) * limit;
