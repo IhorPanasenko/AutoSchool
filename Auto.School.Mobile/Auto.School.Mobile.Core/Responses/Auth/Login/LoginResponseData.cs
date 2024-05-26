@@ -1,9 +1,7 @@
-﻿
-
-using Auto.School.Mobile.Core.Models;
+﻿using Auto.School.Mobile.Core.Models;
 using Newtonsoft.Json;
 
-namespace Auto.School.Mobile.Core.Responses.Login
+namespace Auto.School.Mobile.Core.Responses.Auth.Login
 {
     public class LoginResponseData
     {
@@ -14,6 +12,6 @@ namespace Auto.School.Mobile.Core.Responses.Login
         public required UserDataModel UserData { get; set; }
 
         [JsonProperty("tokenExpire")]
-        public required DateTime TokenExpirationTime { get; set; }
+        public required DateTime? TokenExpirationTime { get; set; }
     }
 }
