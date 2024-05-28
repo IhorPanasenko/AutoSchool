@@ -84,15 +84,29 @@
                                 <Button IsVisible="{Binding IsViewInstructorsVisible}" Command="{Binding GoToInstructorsCommand}" Text="{x:Static resx:AppResources.StudentProfile_ViewInstructors}" Margin="10" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" LineBreakMode="WordWrap" TextTransform="None"/>
                             </StackLayout>
                         </Border>
-                        <!--<Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="5" IsVisible="{Binding IsInstructorRequestAccepted}">
+                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Padding="10" IsVisible="{Binding IsInstructorRequestAccepted}">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
                             <StackLayout>
-                                <Label Text="{x:Static resx:AppResources.StudentProfile_LessonsStatisticTitle}" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"/>
-                                <Label Text="Number of Hours/Lessons: " />
+                                <Label Text="{x:Static resx:AppResources.StudentProfile_LessonsStatisticTitle}" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+                                <Grid Padding="5" Margin="5" ColumnDefinitions="*,*,*,*,*,*,*" RowDefinitions="*,*,*" ColumnSpacing="2" RowSpacing="10">
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Text="{x:Static resx:AppResources.StudentProfile_NumberLessonsLabel}" HorizontalOptions="StartAndExpand"/>
+                                    <Label Grid.Row="0" Grid.Column="6" Text="{Binding NumberPassedLessons}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+
+                                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Text="{x:Static resx:AppResources.StudentProfile_ProgressLabel}" HorizontalOptions="StartAndExpand"/>
+                                    <Label Grid.Row="1" Grid.Column="6" Text="{Binding Student.DrivingSkillsProgress}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+
+                                    <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Text="{x:Static resx:AppResources.StudentProfile_NumberLearnedExercises}" HorizontalOptions="StartAndExpand"/>
+                                    <Label  Grid.Row="2" Grid.Column="6" Text="{Binding NumberPassedSkills}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                </Grid>
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Text="{x:Static resx:AppResources.StudentProfile_GoToLessonsButton}" Command="{Binding GoToLessonsCommand}"  HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" LineBreakMode="WordWrap" TextTransform="None"/>
+                                    <Button Text="{x:Static resx:AppResources.StudentProfile_OpenDrivingSkills}" Command="{Binding OpenDrivingSillsCommand}" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" LineBreakMode="WordWrap" TextTransform="None"/>
+                                </StackLayout>
                             </StackLayout>
-                        </Border>-->
+                        </Border>
                         <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding IsInstructorRequestSent}">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />

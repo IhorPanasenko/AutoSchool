@@ -3,8 +3,6 @@ using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Views;
-using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
@@ -17,15 +15,16 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private readonly Abstract.IPopupService _popupService;
+        private readonly ILessonService _lessonService;
 
-        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, Abstract.IPopupService popupService)
+        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, Abstract.IPopupService popupService, ILessonService lessonService)
         {
             _studentService = studentService;
             _instructorService = instructorService;
             _sharedService = sharedService;
             _popupService = popupService;
+            _lessonService = lessonService;
             _ = LoadStudent();
-            
         }
 
         private async Task LoadStudent()
@@ -73,6 +72,7 @@ namespace Auto.School.Mobile.ViewModels
                     IsViewInstructorsVisible = true;
                     IsInstructorMessageVisible = false;
                     await LoadInstructor(Student.InstructorId);
+                    await GetLessonStatistic();
                     break;
                 case LinkToInstructorResponseStatus.Rejected:
                     IsInstructorRequestSent = true;
@@ -107,6 +107,17 @@ namespace Auto.School.Mobile.ViewModels
             Instructor = response.Instructor;
         }
 
+        private async Task GetLessonStatistic()
+        {
+            var numberPassedLessons = await _lessonService.GetNumberPassedLessons();
+            NumberPassedLessons = numberPassedLessons;
+            var passedSkills = Student.DrivingSkills.Where(d => d.Completed).ToList().Count;
+            NumberPassedSkills = passedSkills;
+        }
+
+        [ObservableProperty]
+        private int numberPassedLessons;
+
         [ObservableProperty]
         private InstructorModel instructor;
 
@@ -134,6 +145,9 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private bool isInstructorMessageVisible;
 
+        [ObservableProperty]
+        private int numberPassedSkills;
+
         private bool isLoading = true;
 
         public bool IsLoading
@@ -157,7 +171,7 @@ namespace Auto.School.Mobile.ViewModels
         public async Task UpdatePhoto()
         {
             var imageStream = await PickImage();
-            if(imageStream != null)
+            if (imageStream != null)
             {
                 var response = await _studentService.UpdateProfileImage(imageStream);
                 IsError = true;
@@ -203,6 +217,18 @@ namespace Auto.School.Mobile.ViewModels
         {
             _sharedService.Add("InstructorId", Instructor.Id);
             await Shell.Current.GoToAsync($"/{nameof(InstructorScheduleStudentPage)}");
+        }
+
+        [RelayCommand]
+        public async Task GoToLessons()
+        {
+            await Shell.Current.GoToAsync($"{nameof(StudentMyLessonsPage)}");
+        }
+
+        [RelayCommand]
+        public async Task OpenDrivingSills()
+        {
+            //Open Driving Skills popUp
         }
 
         [RelayCommand]
