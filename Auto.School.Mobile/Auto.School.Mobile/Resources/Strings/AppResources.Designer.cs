@@ -628,6 +628,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View my lessons.
+        /// </summary>
+        internal static string StudentProfile_GoToLessonsButton {
+            get {
+                return ResourceManager.GetString("StudentProfile.GoToLessonsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open Schedule.
         /// </summary>
         internal static string StudentProfile_GoToSchedule {
@@ -682,6 +691,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number learned driving skills:.
+        /// </summary>
+        internal static string StudentProfile_NumberLearnedExercises {
+            get {
+                return ResourceManager.GetString("StudentProfile.NumberLearnedExercises", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number passed lessons:.
+        /// </summary>
+        internal static string StudentProfile_NumberLessonsLabel {
+            get {
+                return ResourceManager.GetString("StudentProfile.NumberLessonsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View driving skills to learn.
+        /// </summary>
+        internal static string StudentProfile_OpenDrivingSkills {
+            get {
+                return ResourceManager.GetString("StudentProfile.OpenDrivingSkills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal info.
         /// </summary>
         internal static string StudentProfile_PersonalTitle {
@@ -696,6 +732,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string StudentProfile_PhoneNumber {
             get {
                 return ResourceManager.GetString("StudentProfile.PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage of learned skills.
+        /// </summary>
+        internal static string StudentProfile_ProgressLabel {
+            get {
+                return ResourceManager.GetString("StudentProfile.ProgressLabel", resourceCulture);
             }
         }
         

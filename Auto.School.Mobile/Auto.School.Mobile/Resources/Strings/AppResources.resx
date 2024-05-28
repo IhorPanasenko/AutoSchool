@@ -306,6 +306,9 @@
   <data name="StudentProfile.FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
+  <data name="StudentProfile.GoToLessonsButton" xml:space="preserve">
+    <value>View my lessons</value>
+  </data>
   <data name="StudentProfile.GoToSchedule" xml:space="preserve">
     <value>Open Schedule</value>
   </data>
@@ -324,11 +327,23 @@
   <data name="StudentProfile.MainTitle" xml:space="preserve">
     <value>My profile</value>
   </data>
+  <data name="StudentProfile.NumberLearnedExercises" xml:space="preserve">
+    <value>Number learned driving skills:</value>
+  </data>
+  <data name="StudentProfile.NumberLessonsLabel" xml:space="preserve">
+    <value>Number passed lessons:</value>
+  </data>
+  <data name="StudentProfile.OpenDrivingSkills" xml:space="preserve">
+    <value>View driving skills to learn</value>
+  </data>
   <data name="StudentProfile.PersonalTitle" xml:space="preserve">
     <value>Personal info</value>
   </data>
   <data name="StudentProfile.PhoneNumber" xml:space="preserve">
     <value>Phone number</value>
+  </data>
+  <data name="StudentProfile.ProgressLabel" xml:space="preserve">
+    <value>Percentage of learned skills</value>
   </data>
   <data name="StudentProfile.SendMessage" xml:space="preserve">
     <value>Send message</value>

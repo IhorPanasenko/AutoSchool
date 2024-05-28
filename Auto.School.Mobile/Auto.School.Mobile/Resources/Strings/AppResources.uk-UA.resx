@@ -306,6 +306,9 @@
   <data name="StudentProfile.FirstName" xml:space="preserve">
     <value>Ім'я</value>
   </data>
+  <data name="StudentProfile.GoToLessonsButton" xml:space="preserve">
+    <value>Перейти до моїх уроків</value>
+  </data>
   <data name="StudentProfile.GoToSchedule" xml:space="preserve">
     <value>Відкрити розклад</value>
   </data>
@@ -324,11 +327,23 @@
   <data name="StudentProfile.MainTitle" xml:space="preserve">
     <value>Мій профіль</value>
   </data>
+  <data name="StudentProfile.NumberLearnedExercises" xml:space="preserve">
+    <value>Кількість освоєних навчиок водіння</value>
+  </data>
+  <data name="StudentProfile.NumberLessonsLabel" xml:space="preserve">
+    <value>Кількість відвіданих уроків:</value>
+  </data>
+  <data name="StudentProfile.OpenDrivingSkills" xml:space="preserve">
+    <value>Навички водіння для вивчення</value>
+  </data>
   <data name="StudentProfile.PersonalTitle" xml:space="preserve">
     <value>Персональна інформація</value>
   </data>
   <data name="StudentProfile.PhoneNumber" xml:space="preserve">
     <value>Номер телефону</value>
+  </data>
+  <data name="StudentProfile.ProgressLabel" xml:space="preserve">
+    <value>Відсоток освоєних навичок:</value>
   </data>
   <data name="StudentProfile.SendMessage" xml:space="preserve">
     <value>Надіслати повідомлення</value>
