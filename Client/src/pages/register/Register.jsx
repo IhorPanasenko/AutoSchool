@@ -127,7 +127,8 @@ const Register = () => {
       // Відправляємо дані на сервер
       const response = await axios.post(
         "http://localhost:3000/api/auth/signup",
-        formData
+        formData,
+        { withCredentials: true }
       )
 
       console.log("Server response:", response.data)

@@ -8,7 +8,15 @@
     "linkcontacts": "Контакти",
     "linkinstructors": "Інструктора",
     "linklessons": "Заняття",
-    "linkreviews": "Відгуки"
+    "linkreviews": "Відгуки",
+    "linktimetable": "Розклад"
+  },
+  "profile": {
+    "vehicleCategory": "Категорія",
+    "city": "Місто",
+    "dateOfBirth": "Дата Народження",
+    "phone": "Телефон",
+    "edit": "Редагувати"
   },
   "emailConfirmation": {
     "verifyEmailButton": "Верифікувати пошту",
@@ -80,7 +88,7 @@
     "repeatPasswordLabel": "Повторіть пароль",
     "submitButton": "Відправити"
   },
-  "login":{
+  "login": {
     "forgotPassword": "Забули пароль?"
   }
 }

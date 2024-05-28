@@ -10,7 +10,7 @@ import User from "../../components/profile/Profile"
 const Profile = () => {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <User />
     </div>
   )

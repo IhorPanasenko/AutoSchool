@@ -8,7 +8,15 @@
     "linkcontacts": "Contacts",
     "linkinstructors": "Instructors",
     "linklessons": "Lessons",
-    "linkreviews": "Reviews"
+    "linkreviews": "Reviews",
+    "linktimetable": "Timetable"
+  },
+  "profile": {
+    "vehicleCategory": "Vehicle Category",
+    "city": "City",
+    "dateOfBirth": "Date Of Birth",
+    "phone": "Phone",
+    "edit": "Edit"
   },
   "emailConfirmation": {
     "verifyEmailButton": "Verify email",
@@ -80,7 +88,7 @@
     "repeatPasswordLabel": "Repeat Password",
     "submitButton": "Submit"
   },
-  "login":{
+  "login": {
     "forgotPassword": "Forgot password?"
-  } 
+  }
 }
