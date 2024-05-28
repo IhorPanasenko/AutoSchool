@@ -13,6 +13,7 @@ using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
 using CommunityToolkit.Maui;
+using Auto.School.Mobile.Core.Models;
 
 namespace Auto.School.Mobile
 {
@@ -68,6 +69,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
             builder.Services.AddTransient<SignUpToLessonViewModel>();
             builder.Services.AddTransient<StudentMyLessonsViewModel>();
+            builder.Services.AddTransient<StudentDrivingSkilllsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -84,6 +86,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorScheduleStudentPage>();
             builder.Services.AddTransient<SignUpToLessonPopUp>();
             builder.Services.AddTransient<StudentMyLessonsPage>();
+            builder.Services.AddTransient<DrivingSkillModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
