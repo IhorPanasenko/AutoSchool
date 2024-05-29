@@ -55,14 +55,18 @@ exports.addRating = catchAsync(async (req, res, next) => {
 
   const newRating = { studentId: student._id, rating: req.body.rating };
 
+  const car = await CarModel.findOne({
+    _id: req.params.carId,
+    'ratings.studentId': student._id,
+  });
+
+  if (car) return next(new AppError('Student can add rating only once', 400));
+
   const updatedCar = await CarModel.findByIdAndUpdate(
     req.params.carId,
     { $push: { ratings: newRating } },
     { new: true, runValidators: true }
   );
-
-  if (!updatedCar)
-    return next(new AppError('There is no car with that id', 400));
 
   res.status(200).json({
     status: 'success',
