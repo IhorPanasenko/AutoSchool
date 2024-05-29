@@ -41,13 +41,14 @@ const Login = () => {
 
       console.log("res.data.details")
       console.log(res.data)
-      console.log(res.data.details)
+      console.log("res.data.data", res.data.data)
 
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data })
 
       navigate("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
+      console.log(err)
     }
   }
   console.log(user)

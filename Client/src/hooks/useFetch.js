@@ -99,7 +99,7 @@ const useFetch = url => {
         console.log("storedData", storedData);
         console.log("storedData.tokenExpire", storedData.tokenExpire);
 
-        console.log("dldldl", tokenExpire && new Date(tokenExpire) <= new Date());
+        console.log("tokenExpire", tokenExpire && new Date(tokenExpire) <= new Date());
 
         return tokenExpire && new Date(tokenExpire) <= new Date();
     };

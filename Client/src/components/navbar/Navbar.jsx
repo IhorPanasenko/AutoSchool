@@ -34,7 +34,7 @@ const Navbar = () => {
   }
   console.log("my lang" + document.cookie)
   const { user } = useContext(AuthContext)
-  // console.log(user.data.userData.name)
+  // console.log(user.userDataname)
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" })
@@ -111,7 +111,7 @@ const Navbar = () => {
                   className={styles.btn_profile_container}
                   style={{ textDecoration: "none" }}
                 >
-                  <p>{user.data.userData.name}</p>
+                  <p>{user.userData.name}</p>
                   {/* <p>{user.data.data.surname}</p> */}
 
                   {/* <p>Sychka</p> */}
