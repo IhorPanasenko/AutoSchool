@@ -115,6 +115,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string DrivingSkills_Completed {
+            get {
+                return ResourceManager.GetString("DrivingSkills.Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark completed.
+        /// </summary>
+        internal static string DrivingSkills_MarkCompleted {
+            get {
+                return ResourceManager.GetString("DrivingSkills.MarkCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Driving skills to learn.
+        /// </summary>
+        internal static string DrivingSkills_Title {
+            get {
+                return ResourceManager.GetString("DrivingSkills.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string FirstName {
