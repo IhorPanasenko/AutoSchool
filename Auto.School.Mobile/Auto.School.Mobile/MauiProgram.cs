@@ -86,7 +86,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorScheduleStudentPage>();
             builder.Services.AddTransient<SignUpToLessonPopUp>();
             builder.Services.AddTransient<StudentMyLessonsPage>();
-            builder.Services.AddTransient<DrivingSkillModel>();
+            builder.Services.AddTransient<StudentDrivingSkillsPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
