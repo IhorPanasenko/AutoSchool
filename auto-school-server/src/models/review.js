@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const InstructorModel = require('./instructor.js');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -54,7 +55,10 @@ reviewSchema.statics.calcAverageRatings = async function (instructor) {
     },
   ]);
 
-  console.log(stats);
+  await InstructorModel.findByIdAndUpdate(instructor, {
+    averageRating: stats[0].avgRating,
+    ratingsQuantity: stats[0].nRating,
+  });
 };
 
 reviewSchema.post('save', function () {
