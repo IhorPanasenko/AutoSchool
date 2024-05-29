@@ -16,4 +16,11 @@ router.patch(
   carController.updateCar
 );
 
+router.patch(
+  '/:carId/ratings',
+  authenticateJWT,
+  restrictTo('student'),
+  carController.addRating
+);
+
 module.exports = router;
