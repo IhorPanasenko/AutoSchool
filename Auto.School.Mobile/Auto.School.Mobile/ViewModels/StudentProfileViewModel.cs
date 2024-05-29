@@ -228,7 +228,8 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task OpenDrivingSills()
         {
-            //Open Driving Skills popUp
+            _sharedService.Add("DrivingSkills", Student.DrivingSkills);
+            await _popupService.ShowPopupAsync<StudentDrivingSkillsPopUp>();
         }
 
         [RelayCommand]
