@@ -13,5 +13,6 @@
         public const string FailedLoadSchedule = "Failed to load instructor's schedule";
         public const string FailedUpdateUserPhoto = "Failed to update profile photo";
         public const string FiledSignUpToInstructor = "Failed Sign up to instructor";
+        public const string FailedToLoadDrivingSkills = "Failed to load your driving skills progress. Please, try again later";
     }
 }
