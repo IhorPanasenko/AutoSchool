@@ -9,6 +9,15 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("completed")]
         public bool Completed { get; set; }
 
+        [JsonIgnore]
+        public bool IsNotCompleted {
+            get => !Completed;
+            private set { } 
+        }
+
+        [JsonProperty("date")]
+        public DateTime? DateCompleted { get; set; }
+
         [JsonProperty("_id")]
         public string Id { get; set; } = string.Empty;
 
@@ -29,6 +38,12 @@ namespace Auto.School.Mobile.Core.Models
         {
             get => string.Compare(CultureInfo.CurrentCulture.Name, LocalesConstants.Ukraine, true) == 0 ? TypeUA : TypeEN;
             private set { }
+        }
+
+        [JsonIgnore]
+        public string Subtype
+        {
+            get => string.Compare(CultureInfo.CurrentCulture.Name, LocalesConstants.Ukraine, true) == 0 ? SubtypeUA : SubtypeEN; 
         }
     }
 }
