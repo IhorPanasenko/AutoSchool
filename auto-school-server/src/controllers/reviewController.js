@@ -1,9 +1,7 @@
 const catchAsync = require('../helpers/catchAsync.js');
 const ReviewModel = require('../models/review.js');
 const StudentModel = require('../models/student.js');
-const InstructorModel = require('../models/instructor.js');
 const AppError = require('../helpers/appError.js');
-const { findById } = require('../models/car.js');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   let filter = {};
