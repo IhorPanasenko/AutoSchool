@@ -6,6 +6,8 @@ const { restrictTo } = require('../middlewares/restrictTo.js');
 
 const router = express.Router();
 
+router.get('/', carController.getAllCars);
+
 router.patch(
   '/:carId',
   authenticateJWT,
