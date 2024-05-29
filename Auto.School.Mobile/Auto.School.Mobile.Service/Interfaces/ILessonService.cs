@@ -11,5 +11,7 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<StudentGetMyLessonsResponse> StudentGetMyLessonsAsync();
 
         public Task<BaseResponse> CancelMyLesson(string lessonId);
+
+        public Task<int> GetNumberPassedLessons();
     }
 }

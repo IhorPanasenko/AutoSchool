@@ -86,6 +86,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         private async Task GoToSchedule()
         {
+            //TODO: Set instructor
             await Shell.Current.GoToAsync($"/{nameof(InstructorScheduleStudentPage)}");
         }
     }

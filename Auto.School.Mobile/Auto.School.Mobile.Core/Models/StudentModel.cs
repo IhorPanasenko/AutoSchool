@@ -32,10 +32,16 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("instructorId")]
         public string InstructorId { get; set; }
 
+        [JsonProperty("drivingSkillsProgress")]
+        public double DrivingSkillsProgress {  get; set; }
+
         [JsonProperty("userId")]
         public UserDataModel UserData { get; set; }
 
         [JsonProperty("cityId")]
         public CityModel City { get; set; }
+
+        [JsonProperty("drivingSkills")]
+        public List<DrivingSkillModel> DrivingSkills { get; set;} = new List<DrivingSkillModel>();
     }
 }
