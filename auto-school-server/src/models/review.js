@@ -56,13 +56,17 @@ reviewSchema.statics.calcAverageRatings = async function (instructor) {
   ]);
 
   await InstructorModel.findByIdAndUpdate(instructor, {
-    averageRating: stats[0].avgRating,
-    ratingsQuantity: stats[0].nRating,
+    averageRating: stats[0]?.avgRating || 4.5,
+    ratingsQuantity: stats[0]?.nRating || 0,
   });
 };
 
 reviewSchema.post('save', function () {
   this.constructor.calcAverageRatings(this.instructorId);
+});
+
+reviewSchema.post(/^findOneAnd/, async function (doc) {
+  if (doc) await doc.constructor.calcAverageRatings(doc.instructorId);
 });
 
 const ReviewModel = mongoose.model('reviews', reviewSchema);
