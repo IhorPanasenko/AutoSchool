@@ -35,8 +35,13 @@
         #region Lesson
         public const string SignUpToLesson = "lessons//signup";
         public const string GetMyLessons = "lessons/my";
-        public const string CancelMyLesson = "/lessons//cancel-my-lesson";
-        public const string AddLessonToGoogleCalendar = "/lessons//to-calendar";
+        public const string CancelMyLesson = "lessons//cancel-my-lesson";
+        public const string AddLessonToGoogleCalendar = "lessons//to-calendar";
+        #endregion
+
+        #region
+        public const string GetInstructorsReview = "instructors//reviews";
+        public const string AddReview = "instructors//reviews";
         #endregion
     }
 }
