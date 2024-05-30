@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.InstructorReviewsPopUp"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             >
+    <ScrollView>
+        <VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</toolkit:Popup>
