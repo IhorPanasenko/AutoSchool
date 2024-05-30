@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const InstructorModel = require('./instructor.js');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -38,6 +39,34 @@ reviewSchema.pre(/^find/, function (next) {
     select: 'name surname _id',
   });
   next();
+});
+
+reviewSchema.statics.calcAverageRatings = async function (instructor) {
+  const stats = await this.aggregate([
+    {
+      $match: { instructorId: instructor },
+    },
+    {
+      $group: {
+        _id: '$instructorId',
+        nRating: { $sum: 1 },
+        avgRating: { $avg: '$rating' },
+      },
+    },
+  ]);
+
+  await InstructorModel.findByIdAndUpdate(instructor, {
+    averageRating: stats[0]?.avgRating || 4.5,
+    ratingsQuantity: stats[0]?.nRating || 0,
+  });
+};
+
+reviewSchema.post('save', function () {
+  this.constructor.calcAverageRatings(this.instructorId);
+});
+
+reviewSchema.post(/^findOneAnd/, async function (doc) {
+  if (doc) await doc.constructor.calcAverageRatings(doc.instructorId);
 });
 
 const ReviewModel = mongoose.model('reviews', reviewSchema);

@@ -14,4 +14,11 @@ router.post(
   reviewController.createReview
 );
 
+router.delete(
+  '/:reviewId',
+  authenticateJWT,
+  restrictTo('admin', 'student'),
+  reviewController.deleteReview
+);
+
 module.exports = router;
