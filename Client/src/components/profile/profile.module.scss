@@ -9,18 +9,23 @@
   padding: 20px;
   width: 45%; /* Увеличиваем ширину контейнера */
   margin: 20px auto;
-  margin-top: 160px;
+  margin-top: 200px;
   box-shadow: 0 0px 30px #f4e558;
   background-color: #fff;
 }
-
+.userPhoto {
+  width: 250px; /* Устанавливаем желаемый размер фотографии */
+  height: 250px;
+  border-radius: 50%; /* Обрезаем по центру кружочком */
+}
 .profileContent {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .profilePhoto {
-  margin-right: 15%; /* Отступ справа для фото */
+  // margin-right: 15%; /* Отступ справа для фото */
 }
 
 .profileInfo {
