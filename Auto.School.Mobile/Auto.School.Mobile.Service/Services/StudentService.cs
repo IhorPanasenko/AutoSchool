@@ -3,6 +3,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Student.ConnectWithInstructor;
 using Auto.School.Mobile.Core.Responses.Student.GetInfoMe;
+using Auto.School.Mobile.Core.Responses.Student.UpdateDrivingSkills;
 using Auto.School.Mobile.Core.Responses.Student.UpdateMe;
 using Auto.School.Mobile.Service.Interfaces;
 
@@ -21,6 +22,13 @@ namespace Auto.School.Mobile.Service.Services
         public async Task<GetInfoMeResponse> GetInfoMe()
         {
             var response = await _studentRequest.GetInfoMe();
+            return response;
+        }
+
+        public async Task<UpdateDrivingSkillsResponse> UpdateDrivingSkills(List<DrivingSkillModel> drivingSkillsModel)
+        {
+            var updateDrivingSkillsModel = new UpdateDrivingSkillsModel { DrivingSkills = drivingSkillsModel};
+            var response = await _studentRequest.UpdateDrivingSkills(updateDrivingSkillsModel);
             return response;
         }
 

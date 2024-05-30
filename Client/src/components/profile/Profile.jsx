@@ -17,125 +17,118 @@ const User = () => {
   const { user } = useContext(AuthContext)
   const { t, i18n } = useTranslation()
   const [list, setList] = useState([])
+  const [loading, setLoading] = useState(true)
   const handleEditClick = () => {
     setIsEditing(true)
     // Дополнительные действия при нажатии на кнопку редактирования
   }
-  const [me, setMe] = useState([])
-  // const fetchStudentData = async () => {
-  //   try {
-  //     // Выполнение GET запроса
-  //     const response = await axios.get("http://localhost:3000/api/students/me")
-
-  //     // Обработка успешного ответа
-  //     console.log("Данные студента:", response.data)
-
-  //     // Возвращаем данные студента
-  //     return response.data
-  //   } catch (error) {
-  //     // Обработка ошибки
-  //     console.error("Ошибка при выполнении запроса:", error)
-  //     throw error // Пробрасываем ошибку для обработки в другом месте, если необходимо
-  //   }
-  // }
-  // fetchStudentData()
-  //   .then(studentData => {
-  //     // Обработка полученных данных студента
-  //     console.log("Полученные данные студента:", studentData)
-  //   })
-  //   .catch(error => {
-  //     // Обработка ошибок
-  //     console.error("Ошибка получения данных студента:", error)
-  //   })
-  // useEffect(() => {
-  //   // Function to fetch instructors from backend when component mounts
-  //   const GetMe = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:3000/api/students/me"
-  //       ) // Make GET request to backend
-  //       setMe(response.data.data) // Set instructors state with data from backend
-  //     } catch (error) {
-  //       console.error("Error fetching instructors:", error)
-  //     }
-  //   }
-
-  //   GetMe() // Call the fetchInstructors function
-  // }, [])
 
   const { data, deleteData, patchData } = useFetch(
-    `http://localhost:3000/api/students/me`
+    "http://localhost:3000/api/students/me"
   )
-  console.log("user", data)
+
   useEffect(() => {
-    setList(data.data)
+    // Пример использования данных после загрузки
+    if (data.status == "success") {
+      setLoading(false)
+      console.log("User data: ", data)
+    }
+    console.log("userDATA", data)
+    // console.log("userName", data.data.student.name)
   }, [data])
-  return (
-    <div>
-      <div className={styles.profileContainer}>
-        <div className={styles.profileContent}>
-          <div className={styles.profilePhoto}>
-            <AccountCircleIcon style={{ fontSize: 250, color: "#003580" }} />
-          </div>
-          <div className={styles.profileInfo}>
-            <h2 className={styles.name}>
-              {user.userDataname} {user.userDatasurname}
-            </h2>
-            {user.userDatavehicleCategory && (
-              <div className={styles.profileItem}>
-                <DirectionsCarIcon style={{ color: "#003580" }} />
-                <span className={styles.profileItemText}>
-                  {t("profile.vehicleCategory", { ns: "pages" })}:
-                </span>
 
-                <span className={styles.profileItemTextBd}>
-                  {user.userDatavehicleCategory}
-                </span>
-              </div>
-            )}
-            {user.userDatacity && (
-              <div className={styles.profileItem}>
-                <LocationCityIcon style={{ color: "#003580" }} />
-                <span className={styles.profileItemText}>
-                  {t("profile.city", { ns: "pages" })}:
-                </span>
-                <span className={styles.profileItemTextBd}>
-                  {user.userDatacity}
-                </span>
-              </div>
-            )}
-            {user.userDatadateOfBirth && (
-              <div className={styles.profileItem}>
-                <CalendarTodayIcon style={{ color: "#003580" }} />
-                <span className={styles.profileItemText}>
-                  {t("profile.dateOfBirth", { ns: "pages" })}:
-                </span>
-                <span className={styles.profileItemTextBd}>
-                  {user.userDatadateOfBirth}
-                </span>
-              </div>
-            )}
-            {user.userDataphone && (
-              <div className={styles.profileItem}>
-                <PhoneIcon style={{ color: "#003580" }} />
-                <span className={styles.profileItemText}>
-                  {t("profile.phone", { ns: "pages" })}:
-                </span>
-                <span className={styles.profileItemTextBd}>
-                  {user.userDataphone}
-                </span>
-              </div>
-            )}
+  const formatDate = dateString => {
+    const date = new Date(dateString)
+    const day = String(date.getDate()).padStart(2, "0")
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
+  if (loading) {
+    return <p>Loading...</p>
+  } else {
+    return (
+      <div>
+        {/* {data.data.student ? (
+        "loading"
+      ) : ( */}
+        <div className={styles.profileContainer}>
+          <div className={styles.profileContent}>
+            <div className={styles.profilePhoto}>
+              {data.data.student.photoURL ? (
+                <img
+                  src={data.data.student.photoURL}
+                  alt="User Photo"
+                  className={styles.userPhoto}
+                />
+              ) : (
+                <AccountCircleIcon
+                  style={{ fontSize: 250, color: "#003580" }}
+                />
+              )}
+            </div>
+            <div className={styles.profileInfo}>
+              <h2 className={styles.name}>
+                {data.data.student.name} {data.data.student.surname}
+              </h2>
+              {data.data.student.vehicleCategory && (
+                <div className={styles.profileItem}>
+                  <DirectionsCarIcon style={{ color: "#003580" }} />
+                  <span className={styles.profileItemText}>
+                    {t("profile.vehicleCategory", { ns: "pages" })}:
+                  </span>
+
+                  <span className={styles.profileItemTextBd}>
+                    {data.data.student.vehicleCategory}
+                  </span>
+                </div>
+              )}
+              {data.data.student.cityId && (
+                <div className={styles.profileItem}>
+                  <LocationCityIcon style={{ color: "#003580" }} />
+                  <span className={styles.profileItemText}>
+                    {t("profile.city", { ns: "pages" })}:
+                  </span>
+                  <span className={styles.profileItemTextBd}>
+                    {data.data.student.cityId.nameUA}
+                  </span>
+                </div>
+              )}
+              {data.data.student.userId.dateOfBirth && (
+                <div className={styles.profileItem}>
+                  <CalendarTodayIcon style={{ color: "#003580" }} />
+                  <span className={styles.profileItemText}>
+                    {t("profile.dateOfBirth", { ns: "pages" })}:
+                  </span>
+                  <span className={styles.profileItemTextBd}>
+                    {formatDate(data.data.student.userId.dateOfBirth)}
+                  </span>
+                </div>
+              )}
+              {data.data.student.userId.phone && (
+                <div className={styles.profileItem}>
+                  <PhoneIcon style={{ color: "#003580" }} />
+                  <span className={styles.profileItemText}>
+                    {t("profile.phone", { ns: "pages" })}:
+                  </span>
+                  <span className={styles.profileItemTextBd}>
+                    {data.data.student.userId.phone}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
+
+          <button className={styles.editButton} onClick={handleEditClick}>
+            <EditIcon />
+            Edit Profile
+          </button>
         </div>
-
-        <button className={styles.editButton} onClick={handleEditClick}>
-          <EditIcon />
-          Edit Profile
-        </button>
+        {/*) } */}
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default User

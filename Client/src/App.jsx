@@ -10,11 +10,23 @@ import EmailConfirmation from './pages/emailConfirmation/emailConfirmation';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import ResetPassword from './pages/resetPassword/ResetPassword';
 import PaymentButton from './components/payment/Payment';
+import Timetable from './pages/timetable/Timetable';
 
 function App() {
   return (
     <Routes>
       {/* <h1>Vite + React</h1> */}
+      <Route path='/' element={<Home />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/registration' element={<Register />} />
+      <Route path='/instructors' element={<Instructors />} />
+      <Route path='/profile' element={<Profile />} />
+      <Route path='/timetable' element={<Timetable />} />
+
+      <Route path='/confirmEmail/:userId' element={<EmailConfirmation />} />
+      <Route path='/forgotPassword' element={<ForgotPassword />} />
+      <Route path='/resetPassword/:token' element={<ResetPassword />} />
+
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/registration' element={<Register />} />

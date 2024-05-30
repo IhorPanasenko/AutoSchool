@@ -55,7 +55,5 @@ namespace Auto.School.Mobile.Core.Models
             get => Name + ' ' + Surname;
             set { }
         }
-
-        //TODO Add Raiting array
     }
 }

@@ -7,6 +7,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Student.ConnectWithInstructor;
 using Auto.School.Mobile.Core.Responses.Student.GetInfoMe;
+using Auto.School.Mobile.Core.Responses.Student.UpdateDrivingSkills;
 using Auto.School.Mobile.Core.Responses.Student.UpdateMe;
 using System.IO;
 
@@ -69,6 +70,30 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                     }
                 };
 
+            }
+        }
+
+        public async Task<UpdateDrivingSkillsResponse> UpdateDrivingSkills(UpdateDrivingSkillsModel updateDrivingSkillsModel)
+        {
+            try
+            {
+                _tokenExpirationService.TryRefreshToken();
+                var res = await _patchRequest.ExecuteAsync<UpdateDrivingSkillsModel, UpdateDrivingSkillsResponse>(RoutesConstants.UpdateMyDrivingSkills, updateDrivingSkillsModel);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                return new UpdateDrivingSkillsResponse
+                {
+                    Message = ex.Message,
+                    Status = ResponseStatuses.Fail,
+                    Error = new BaseError()
+                    {
+                        Status = "Fail",
+                        StatusCode = 500,
+                        IsOperational = false
+                    }
+                };
             }
         }
 

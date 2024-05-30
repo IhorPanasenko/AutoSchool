@@ -1,4 +1,5 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Lesson.SignUp;
 using Auto.School.Mobile.Core.Responses.Lesson.StudentGetMy;
@@ -15,6 +16,18 @@ namespace Auto.School.Mobile.Service.Services
         {
             var res = await _lessonRequest.CancelMyLesson(lessonId);
             return res;
+        }
+
+        public async Task<int> GetNumberPassedLessons()
+        {
+            var res = await _lessonRequest.StudentGetMyLessons();
+            if(string.Compare(res.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                var numberLessons = res.StudentLessons.Where(l => l.Date <= DateTime.Now).ToList().Count;
+                return numberLessons;
+            }
+
+            return 0;
         }
 
         public async Task<SignUpToLessonResponse> SignUpToLessonAsync(string lessonId)
