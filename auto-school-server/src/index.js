@@ -14,6 +14,7 @@ const studentRoutes = require('./routes/studentRoutes.js');
 const lessonRoutes = require('./routes/lessonRoutes.js');
 const reviewRoutes = require('./routes/reviewRoutes.js');
 const carRoutes = require('./routes/carRoutes.js');
+const paymentRoutes = require('./routes/paymentRoutes.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -39,6 +40,7 @@ app.use('/api/students', studentRoutes);
 app.use('/api/lessons', lessonRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/cars', carRoutes);
+app.use('/api/payments', paymentRoutes);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
