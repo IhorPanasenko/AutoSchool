@@ -5,6 +5,13 @@ const paymentController = require('../controllers/paymentController.js');
 
 const router = express.Router();
 
+router.get(
+  '/:studentId',
+  authenticateJWT,
+  restrictTo('admin'),
+  paymentController.getStudentPayments
+);
+
 router.post(
   '/',
   authenticateJWT,
