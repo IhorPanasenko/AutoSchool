@@ -177,16 +177,19 @@ exports.login = catchAsync(async (req, res, next) => {
   userLoginData.refreshToken = refreshToken;
   userLoginData.save();
 
-  const studentData = await StudentModel.findOne({
-    userId: userAccountData._id,
-  }).select('instructorId');
+  let studentData;
+  if (userAccountData.role === 'student') {
+    studentData = await StudentModel.findOne({
+      userId: userAccountData._id,
+    }).select('instructorId');
+  }
 
   res.status(200).json({
     status: 'success',
     data: {
       email: userLoginData.email,
       userData: userAccountData,
-      instructor: studentData.instructorId || null,
+      ...(studentData && { instructor: studentData.instructorId || null }),
       tokenExpire: expire,
     },
   });
