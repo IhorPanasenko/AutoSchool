@@ -1,0 +1,31 @@
+.calendarContainer {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  //   background-color: green;
+}
+.calendarLocalizationProvider {
+  width: 30%;
+}
+.css-1rtg91x-MuiDateCalendar-root {
+  margin: 5px;
+}
+.css-1aqny2q-MuiPickersCalendarHeader-root-MuiDatePickerToolbar-root {
+  background-color: green;
+}
+// .calendarLocalizationProvider {
+//   width: 100%;
+// }
+
+.calendarDay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  background-color: yellow !important;
+}

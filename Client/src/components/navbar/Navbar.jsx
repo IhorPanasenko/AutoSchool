@@ -7,6 +7,8 @@ import i18next from "i18next"
 import { AuthContext } from "../../context/AuthContext.jsx"
 import { Link, useLocation } from "react-router-dom"
 import Profile from "../../assets/profile.svg"
+import axios from "axios"
+import useFetch from "../../hooks/useFetch.js"
 
 const Navbar = () => {
   const { t, i18n } = useTranslation()
@@ -32,12 +34,22 @@ const Navbar = () => {
   const isActive = path => {
     return location.pathname === path
   }
-  console.log("my lang" + document.cookie)
+  // console.log("my lang" + document.cookie)
   const { user } = useContext(AuthContext)
   // console.log(user.userDataname)
+  const { data, deleteData, patchData } = useFetch()
+  const handleLogout = async e => {
+    e.preventDefault()
 
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT" })
+    try {
+      const res = await deleteData(`http://localhost:3000/api/auth/logout`)
+      console.log(res)
+      dispatch({ type: "LOGOUT" })
+      localStorage.clear()
+      navigate("/")
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <div className={styles.navbar}>
