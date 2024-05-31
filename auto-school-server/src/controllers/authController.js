@@ -42,7 +42,7 @@ const signSaveTokens = (res, userId, role) => {
   });
 
   res.cookie('refresh_token', refreshToken, {
-    maxAge: process.env.JWT_REFRESH_TOKEN_COOKIE_EXPIRES * 60 * 1000,
+    maxAge: process.env.JWT_REFRESH_TOKEN_COOKIE_EXPIRES * 24 * 60 * 60 * 1000,
     httpOnly: true,
     sameSite: 'None',
     secure: true,
