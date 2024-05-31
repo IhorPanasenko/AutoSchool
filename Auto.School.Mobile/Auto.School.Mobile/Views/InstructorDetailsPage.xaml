@@ -45,10 +45,22 @@
                         </Border.StrokeShape>
                         <StackLayout Padding="5" HorizontalOptions="StartAndExpand">
                             <Label Text="{x:Static resx:AppResources.InstructorDetails_InstructorSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
-                            <Label Text="{Binding Instructor.WorkExperience, StringFormat='Experience: {0} years'}" />
-                            <Label Text="{Binding Instructor.AverageRaiting, StringFormat='Average Rating: {0:F1}'}" />
-                            <Label Text="{Binding Instructor.VehicleCategory, StringFormat='Driving category: {0}'}" />
-                            <Label Text="{Binding Instructor.MaxNumberOfStudents, StringFormat='Max number of students: {0}'}" />
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_Experience}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Instructor.WorkExperience, StringFormat='{0}'}" HorizontalOptions="StartAndExpand" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRating}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Instructor.AverageRaiting, StringFormat='{0:F1}'}" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_DrivingCategory}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Instructor.VehicleCategory, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_MaxNumberOfStudents}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Instructor.MaxNumberOfStudents, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
                         </StackLayout>
                     </Border>
                     <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
@@ -61,22 +73,42 @@
                             <Frame CornerRadius="20" Margin="5" Padding="0">
                                 <Image Source="{Binding Instructor.Car.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                             </Frame>
-                            <Label Text="{Binding Instructor.Car.Year, StringFormat='Manufacture year {0}'}" Padding="10,5,0,0"/>
-                            <Label Text="{Binding Instructor.Car.Transmission, StringFormat='Transmission {0}'}" Padding="10,5,0,0"/>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_CarManufactureYear}"/>
+                                <Label Text="{Binding Instructor.Car.Year, StringFormat='{0}'}" Padding="10,5,0,0"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_Transmission}"/>
+                                <Label Text="{Binding Instructor.Car.Transmission, StringFormat='{0}'}" Padding="10,5,0,0"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRating}"/>
+                                <Label Text="{Binding Instructor.Car.AverageRating, StringFormat='{0}'}" Padding="10,5,0,0"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{x:Static resx:AppResources.InstructorDetails_NumberRatings}"/>
+                                <Label Text="{Binding Instructor.Car.NumberRatings, StringFormat='{0}'}" Padding="10,5,0,0"/>
+                            </StackLayout>
                         </StackLayout>
                     </Border>
-                    <Button 
+                    <Button
                             Margin="20,5"
                             FontSize="Medium"
                             Text="{x:Static resx:AppResources.InstructorDetails_InstructorCommentsButton}"
                             TextColor="#f4e558"
                             Command="{Binding ShowInstructorReviewsCommand}"/>
-                    <Button 
+                    <!--<Button IsEnabled="{Binding IsSignedUpToThisInstructor}"
                              Margin="20,5"
                             FontSize="Medium"
                             TextColor="#f4e558"
-                            Text="{x:Static resx:AppResources.InstructorDetails_CarCommentsButton}" 
-                            Command="{Binding ShowCarReviewsCommand}"/>
+                            Text="{x:Static resx:AppResources.InstructorDetails_AddCommentButton}" 
+                            Command="{Binding AddReviewCommand}"/>-->
+                    <Button 
+         Margin="20,5"
+        FontSize="Medium"
+        TextColor="#f4e558"
+        Text="{x:Static resx:AppResources.InstructorDetails_AddCommentButton}" 
+        Command="{Binding AddReviewCommand}"/>
                     <Button 
                              Margin="20,5"
                             FontSize="Medium"

@@ -2,6 +2,7 @@
 using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
@@ -13,13 +14,25 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private readonly IStudentService _studentService;
+        private readonly IPopupService _popupService;
 
-        public InstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService, IStudentService studentService)
+        public InstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService, IStudentService studentService, IPopupService popupService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
-            LoadInstructor();
             _studentService = studentService;
+            _popupService = popupService;
+            LoadInstructor();
+            _ = SetIsSignedUpToThisInstructor();
+        }
+
+        private async Task SetIsSignedUpToThisInstructor()
+        {
+            var response = await _studentService.GetInfoMe();
+            if(response is not null)
+            {
+                IsSignedUpToThisInstructor = response.Data?.Student?.InstructorId == Instructor.Id;
+            }
         }
 
         private void LoadInstructor()
@@ -30,6 +43,9 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private InstructorModel instructor;
+
+        [ObservableProperty]
+        private bool isSignedUpToThisInstructor = false;
 
         [ObservableProperty]
         private bool isLoading = true;
@@ -63,9 +79,10 @@ namespace Auto.School.Mobile.ViewModels
         }
 
         [RelayCommand]
-        public async Task ShowCarReviews()
+        public async Task AddReview()
         {
-
+            _sharedService.Add("InstructorId", Instructor.Id);
+            await _popupService.ShowPopupAsync<StudentAddInstructorReviewPopUp>();
         }
 
         [RelayCommand]
