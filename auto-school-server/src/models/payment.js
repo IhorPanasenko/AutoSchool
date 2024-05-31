@@ -28,6 +28,10 @@ const paymentSchema = new mongoose.Schema({
     type: String,
     default: 'LiqPay',
   },
+  orderId: {
+    type: String,
+    required: true,
+  },
 });
 
 const PaymentModel = mongoose.model('payments', paymentSchema);
