@@ -48,19 +48,24 @@ exports.signupForLesson = catchAsync(async (req, res, next) => {
     );
   }
 
-  const updatedLesson = await LessonModel.findOneAndUpdate(
-    { _id: req.params.lessonId, isAvailable: true },
-    {
-      'student.studentId': student._id,
-      'student.name': student.name,
-      'student.surname': student.surname,
-      isAvailable: false,
-    },
-    { new: true }
-  );
+  const updatedLesson = await LessonModel.findOne({
+    _id: req.params.lessonId,
+    isAvailable: true,
+  });
 
   if (!updatedLesson)
     return next(new AppError('This lesson is not available', 400));
+
+  if (!updatedLesson.instructorId.equals(student.instructorId))
+    return next(
+      new AppError("You can sign up only for your instructor's lessons", 403)
+    );
+
+  updatedLesson.student.studentId = student._id;
+  updatedLesson.student.name = student.name;
+  updatedLesson.student.surname = student.surname;
+  updatedLesson.isAvailable = false;
+  await updatedLesson.save();
 
   res.status(200).json({
     status: 'success',
