@@ -4,7 +4,9 @@ const PaymentModel = require('../models/payment.js');
 const StudentModel = require('../models/student.js');
 
 exports.getStudentPayments = catchAsync(async (req, res, next) => {
-  const payments = await PaymentModel.find({ studentId: req.params.studentId });
+  const payments = await PaymentModel.find({
+    studentId: req.params.studentId,
+  }).sort('-timestamp');
 
   res.status(200).json({
     status: 'success',
