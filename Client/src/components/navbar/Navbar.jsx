@@ -4,11 +4,12 @@ import NavBarDropdown from "./components/NavbarDropdown.jsx"
 // import "./navbar.css"
 import styles from "./navbar.module.scss"
 import i18next from "i18next"
-import { AuthContext } from "../../context/AuthContext.jsx"
+// import { AuthContext } from "../../context/AuthContext.jsx"
 import { Link, useLocation } from "react-router-dom"
 import Profile from "../../assets/profile.svg"
 import axios from "axios"
 import useFetch from "../../hooks/useFetch.js"
+import { AuthContext } from "../../context/authContext"
 
 const Navbar = () => {
   const { t, i18n } = useTranslation()

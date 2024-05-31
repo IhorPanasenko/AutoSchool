@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 const useFetch = url => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,48 +17,25 @@ const useFetch = url => {
                 });
                 setData(res.data);
             } catch (err) {
-                const tokenExpired = isTokenExpired();
-                if (tokenExpired) {
-                    try {
-                        await refreshAuthToken();
-                        const res = await axios.get(url, {
-                            withCredentials: true
-                        });
-                        setData(res.data);
-                    } catch (refreshError) {
-                        setError(refreshError);
-                    }
-                } else {
-                    setError(err);
-                }
+                handleFetchError(err);
             }
             setLoading(false);
         };
         fetchData();
     }, [url]);
 
-    // const reFetch = async () => {
-    //     setLoading(true);
-    //     try {
-    //         await checkAndRefreshTokenIfNeeded();
-    //         const token = Cookies.get("access_token");
-    //         const res = await axios.get(url, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         });
-    //         setData(res.data);
-    //     } catch (err) {
-    //         setError(err);
-    //     }
-    //     setLoading(false);
-    // };
+    const handleFetchError = err => {
+        if (err.response && err.response.data && err.response.data.message) {
+            setError(err.response.data.message);
+        } else {
+            setError(err.message);
+        }
+    };
 
     const handleRequest = async (method, endpoint, payload = null) => {
         setLoading(true);
         try {
             await checkAndRefreshTokenIfNeeded();
-            // const token = Cookies.get("access_token");
             const config = {
                 method,
                 url: endpoint,
@@ -68,7 +45,7 @@ const useFetch = url => {
             const res = await axios(config);
             setData(res.data);
         } catch (err) {
-            setError(err);
+            handleFetchError(err);
         }
         setLoading(false);
     };
@@ -95,42 +72,25 @@ const useFetch = url => {
         const storedData = JSON.parse(localStorage.getItem("user"));
         let tokenExpire = localStorage.getItem("tokenExpire");
         tokenExpire = storedData.tokenExpire;
-        console.log(tokenExpire);
-        console.log("storedData", storedData);
-        console.log("storedData.tokenExpire", storedData.tokenExpire);
-
-        console.log("tokenExpire", tokenExpire && new Date(tokenExpire) <= new Date());
-
         return tokenExpire && new Date(tokenExpire) <= new Date();
     };
 
     const refreshAuthToken = async () => {
         try {
-            console.log("try");
             const response = await axios.post(
                 "http://localhost:3000/api/auth/token",
                 {},
                 {
-                    withCredentials: true // The request body can contain the refresh token or other data needed to refresh the token
+                    withCredentials: true
                 }
             );
-            // const newToken = response.data.token;
-            console.log("new token");
-            // Assuming the new token is returned in the `token` field
-            // Save the new token in cookies
-            // Cookies.set("access_token", newToken);
-            // Update the token expiration in local storage
-            // const newExpireDate = new Date();
-            // newExpireDate.setMinutes(newExpireDate.getMinutes() + 60); // Assuming the new token is valid for 60 minutes
-            // localStorage.setItem("tokenExpire", newExpireDate.toISOString());
             return response;
         } catch (error) {
-            console.error("Error refreshing token", error);
             throw error;
         }
     };
 
-    return { data, deleteData, putData, patchData };
+    return { data, loading, error, deleteData, putData, patchData };
 };
 
 export default useFetch;
