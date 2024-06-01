@@ -61,6 +61,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set rating for instructor&apos;s car.
+        /// </summary>
+        internal static string AddCarRating_CarRatingLabel {
+            get {
+                return ResourceManager.GetString("AddCarRating.CarRatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set rating for car from 1 to 5.
+        /// </summary>
+        internal static string AddCarRating_RatingLabel {
+            get {
+                return ResourceManager.GetString("AddCarRating.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string AddCarRating_SubmitButton {
+            get {
+                return ResourceManager.GetString("AddCarRating.SubmitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add profile photo.
         /// </summary>
         internal static string AddPhoto {
@@ -466,6 +493,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Review.
+        /// </summary>
+        internal static string InstructorReviews_MyReview {
+            get {
+                return ResourceManager.GetString("InstructorReviews.MyReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rating: .
         /// </summary>
         internal static string InstructorReviews_RatingLabel {
@@ -705,6 +741,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lesson already passed.
+        /// </summary>
+        internal static string Schedule_LessonPassed {
+            get {
+                return ResourceManager.GetString("Schedule.LessonPassed", resourceCulture);
             }
         }
         
