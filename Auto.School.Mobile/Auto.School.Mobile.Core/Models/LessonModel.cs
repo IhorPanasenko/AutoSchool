@@ -32,5 +32,21 @@ namespace Auto.School.Mobile.Core.Models
             
             private set { }
         }
+
+        [JsonIgnore]
+        public bool IsLessonPassed
+        {
+            get
+            {
+                DateTime currentDateTime = DateTime.Now;
+                DateTime lessonEndDateTime = Date.Add(TimeSpan.Parse(ToHour));
+
+                return currentDateTime > lessonEndDateTime;
+            }
+            private set
+            {
+
+            }
+        }
     }
 }
