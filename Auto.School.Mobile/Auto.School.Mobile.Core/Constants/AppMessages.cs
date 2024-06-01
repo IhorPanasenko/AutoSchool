@@ -19,5 +19,9 @@
         #region InstructorReview
         public const string AddReviewSuccessResult = "You review about instructor was successfully added";
         #endregion
+
+        #region Car
+        public const string AddCarRating = "Your rating for car was successfully added";
+        #endregion
     }
 }
