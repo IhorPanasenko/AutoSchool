@@ -13,6 +13,13 @@ const router = express.Router();
 router.use('/:instructorId/reviews', reviewRouter);
 
 router.get('/', instructorController.getAllInstructors);
+router.get(
+  '/me',
+  authenticateJWT,
+  restrictTo('instructor'),
+  instructorController.getMe,
+  instructorController.getOneInstructor
+);
 router.get('/:instructorId', instructorController.getOneInstructor);
 
 router.get('/:instructorId/lessons', lessonController.getInstructorSchedule);
