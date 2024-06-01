@@ -7,7 +7,7 @@
 import axios from "axios"
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
+import { AuthContext } from "../../context/authContext"
 import { useTranslation } from "react-i18next"
 import CarImg from "../../assets/loginBackgr.png"
 

@@ -1,4 +1,4 @@
-import { AuthContext } from "../../context/AuthContext.jsx"
+// import { AuthContext } from "../../context/AuthContext.jsx"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"
 import LocationCityIcon from "@mui/icons-material/LocationCity"
@@ -12,6 +12,8 @@ import i18next from "i18next"
 import { useTranslation } from "react-i18next"
 import axios from "axios"
 import useFetch from "../../hooks/useFetch.js"
+import { AuthContext } from "../../context/authContext"
+// import { AuthContext } from "../../context/AuthContext"
 
 const User = () => {
   const { user } = useContext(AuthContext)
