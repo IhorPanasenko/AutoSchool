@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 using Auto.School.Mobile.Core.Extensions;
 using Auto.School.Mobile.Views;
+using Newtonsoft.Json;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -48,7 +49,12 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                //TODO: implement get instrucotrId from Preferences
+                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                if (!string.IsNullOrEmpty(instructorIdJson))
+                {
+                    instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
+                    
+                }
             }
 
             if (instructorId is null)
@@ -83,7 +89,11 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                //TODO: implement get instrucotrId from preferences
+                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                if (!string.IsNullOrEmpty(instructorIdJson))
+                {
+                    instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
+                }
             }
 
             var response = await _instructorService.GetOne(instructorId!);

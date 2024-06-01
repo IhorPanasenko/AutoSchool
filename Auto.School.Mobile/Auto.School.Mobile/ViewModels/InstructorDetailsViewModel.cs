@@ -51,7 +51,6 @@ namespace Auto.School.Mobile.ViewModels
                     {
                         Instructor = dbInstructor.Instructor;
                     }
-
                 }
             }
             else
@@ -60,11 +59,11 @@ namespace Auto.School.Mobile.ViewModels
 
             }
 
-            IsSignedUpToThisInstructor = Instructor.Id == instructorId;
+            IsSignedUpToThisInstructor = Instructor.Id == myInstructorId;
             IsLoading = false;
         }
 
-        private string? instructorId = null;
+        private string? myInstructorId = null;
 
         [ObservableProperty]
         private InstructorModel instructor;
