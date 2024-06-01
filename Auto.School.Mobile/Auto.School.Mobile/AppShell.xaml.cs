@@ -1,5 +1,6 @@
 ﻿using Auto.School.Mobile.ViewModels;
 using Auto.School.Mobile.Views;
+using Auto.School.Mobile.Views.Instructor;
 
 namespace Auto.School.Mobile
 {
@@ -16,12 +17,13 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(AllInstructorsPage), typeof(AllInstructorsPage));
             Routing.RegisterRoute(nameof(InstructorDetailsPage), typeof(InstructorDetailsPage));
             Routing.RegisterRoute(nameof(ForgotPasswordPage), typeof(ForgotPasswordPage));
-            Routing.RegisterRoute(nameof(UpdatePasswordPopUp), typeof(UpdatePasswordPopUp));
+            //Routing.RegisterRoute(nameof(UpdatePasswordPopUp), typeof(UpdatePasswordPopUp));
             Routing.RegisterRoute(nameof(InstructorScheduleStudentPage), typeof(InstructorScheduleStudentPage));
-            Routing.RegisterRoute(nameof(UpdateStudentInfoPopUp), typeof(UpdateStudentInfoPopUp));
-            Routing.RegisterRoute(nameof(SignUpToLessonPopUp), typeof (SignUpToLessonPopUp));
+            //Routing.RegisterRoute(nameof(UpdateStudentInfoPopUp), typeof(UpdateStudentInfoPopUp));
+           // Routing.RegisterRoute(nameof(SignUpToLessonPopUp), typeof (SignUpToLessonPopUp));
             Routing.RegisterRoute(nameof(StudentMyLessonsPage), typeof(StudentMyLessonsPage));
-            Routing.RegisterRoute(nameof(StudentAddInstructorReviewPopUp), typeof(StudentAddInstructorReviewPopUp));
+            //Routing.RegisterRoute(nameof(StudentAddInstructorReviewPopUp), typeof(StudentAddInstructorReviewPopUp));
+            Routing.RegisterRoute(nameof(InstructorProfilePage), typeof(InstructorProfilePage));
             
         }
     }
