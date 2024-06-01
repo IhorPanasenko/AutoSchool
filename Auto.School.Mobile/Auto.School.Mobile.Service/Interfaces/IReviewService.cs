@@ -9,5 +9,7 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<GetInstructorReviewResponse> GetInstructorReviews(string instructorId);
 
         public Task<BaseResponse> AddReview(AddReviewModel model, string instructorId);
+
+        public Task<BaseResponse> DeleteReview(string instructorId, string reviewId);
     }
 }

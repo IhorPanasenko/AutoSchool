@@ -16,6 +16,12 @@ namespace Auto.School.Mobile.Service.Services
             return response;
         }
 
+        public Task<BaseResponse> DeleteReview(string instructorId, string reviewId)
+        {
+            var response = _reviewerRequest.DeleteReview(instructorId, reviewId);
+            return response;
+        }
+
         public Task<GetInstructorReviewResponse> GetInstructorReviews(string instructorId)
         {
             var res = _reviewerRequest.GetInstructorReview(instructorId);
