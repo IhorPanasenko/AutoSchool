@@ -140,16 +140,15 @@ namespace Auto.School.Mobile.ViewModels
 
                 if (response.LoginResponseData?.InstructorId is not null)
                 {
-                    if (Preferences.ContainsKey("InstructorId"))
+                    if (Preferences.ContainsKey("MyInstructorId"))
                     {
-                        Preferences.Remove("instructorId");
+                        Preferences.Remove("MyInstructorId");
                     }
 
-                    Preferences.Set("InstructorId", JsonConvert.SerializeObject(response.LoginResponseData.InstructorId));
+                    Preferences.Set("MyInstructorId", JsonConvert.SerializeObject(response.LoginResponseData.InstructorId));
                 }
 
                 App.UserInfo = response.LoginResponseData!.UserData;
-
                 Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
 
                 if (string.Compare(response.LoginResponseData.UserData.Role, AppRoles.Instructor) == 0)
