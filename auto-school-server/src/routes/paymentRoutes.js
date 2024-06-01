@@ -6,6 +6,13 @@ const paymentController = require('../controllers/paymentController.js');
 const router = express.Router();
 
 router.get(
+  '/balance',
+  authenticateJWT,
+  restrictTo('student'),
+  paymentController.getBalance
+);
+
+router.get(
   '/:studentId',
   authenticateJWT,
   restrictTo('admin'),

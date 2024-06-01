@@ -15,6 +15,25 @@ exports.getStudentPayments = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getBalance = catchAsync(async (req, res, next) => {
+  const student = await StudentModel.findOne({ userId: req.user._id }).select(
+    '_id'
+  );
+
+  const balance = await PaymentModel.find({
+    studentId: student._id,
+    lessonId: null,
+    status: 'success',
+  });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      balance: balance.length,
+    },
+  });
+});
+
 exports.createPayment = catchAsync(async (req, res, next) => {
   const student = await StudentModel.findOne({ userId: req.user._id }).select(
     '_id'
