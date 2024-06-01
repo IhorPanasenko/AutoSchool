@@ -33,7 +33,7 @@ namespace Auto.School.Mobile.ViewModels
             string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
             if (!string.IsNullOrEmpty(instructorIdJson))
             {
-                instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
+                myInstructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
             }
         }
 
