@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const InstructorModel = require('./instructor');
+const PaymentModel = require('./payment.js');
 
 const defaultDrivingSkillsData = [
   {
@@ -180,6 +181,16 @@ studentSchema.post('findOneAndUpdate', async function (updatedStudent) {
     });
   }
 });
+
+studentSchema.methods.hasPaymentBalance = async function () {
+  const freePayment = await PaymentModel.findOne({
+    studentId: this._id,
+    lessonId: null,
+    status: 'success',
+  });
+
+  return freePayment?._id;
+};
 
 const StudentModel = mongoose.model('students', studentSchema);
 
