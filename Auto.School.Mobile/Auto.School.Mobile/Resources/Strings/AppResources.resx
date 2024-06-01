@@ -123,6 +123,15 @@
   <data name="AddReview.CancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="AddReview.CurrentRating" xml:space="preserve">
+    <value>Chosen Rating</value>
+  </data>
+  <data name="AddReview.RatingLabel" xml:space="preserve">
+    <value>Set rating for instructor from 1 to 5</value>
+  </data>
+  <data name="AddReview.ReviewLabel" xml:space="preserve">
+    <value>Write what you think about instructor</value>
+  </data>
   <data name="AddReview.ReviewPlaceholder" xml:space="preserve">
     <value>Write your review here</value>
   </data>
@@ -192,6 +201,9 @@
   <data name="InstructorCard.Years" xml:space="preserve">
     <value>Years</value>
   </data>
+  <data name="InstructorDetails.AddCarReview" xml:space="preserve">
+    <value>Set rating to car</value>
+  </data>
   <data name="InstructorDetails.AddCommentButton" xml:space="preserve">
     <value>Add comment</value>
   </data>
@@ -233,6 +245,24 @@
   </data>
   <data name="InstructorDetails.Transmission" xml:space="preserve">
     <value>Transmission</value>
+  </data>
+  <data name="InstructorReviews.DateCreatedlabel" xml:space="preserve">
+    <value>Creation date:</value>
+  </data>
+  <data name="InstructorReviews.DeleteButton" xml:space="preserve">
+    <value>Delete my review</value>
+  </data>
+  <data name="InstructorReviews.RatingLabel" xml:space="preserve">
+    <value>Rating: </value>
+  </data>
+  <data name="InstructorReviews.ReviewFrom" xml:space="preserve">
+    <value>Review from</value>
+  </data>
+  <data name="InstructorReviews.ReviewLabel" xml:space="preserve">
+    <value>Review: </value>
+  </data>
+  <data name="InstructorReviews.Title" xml:space="preserve">
+    <value>Reviews about instructor</value>
   </data>
   <data name="InstructorSchedule.SingUp" xml:space="preserve">
     <value>Sign Up</value>

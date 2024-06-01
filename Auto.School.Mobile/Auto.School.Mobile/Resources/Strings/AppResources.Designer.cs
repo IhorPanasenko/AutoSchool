@@ -79,6 +79,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chosen Rating.
+        /// </summary>
+        internal static string AddReview_CurrentRating {
+            get {
+                return ResourceManager.GetString("AddReview.CurrentRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set rating for instructor from 1 to 5.
+        /// </summary>
+        internal static string AddReview_RatingLabel {
+            get {
+                return ResourceManager.GetString("AddReview.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write what you think about instructor.
+        /// </summary>
+        internal static string AddReview_ReviewLabel {
+            get {
+                return ResourceManager.GetString("AddReview.ReviewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Write your review here.
         /// </summary>
         internal static string AddReview_ReviewPlaceholder {
@@ -286,6 +313,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set rating to car.
+        /// </summary>
+        internal static string InstructorDetails_AddCarReview {
+            get {
+                return ResourceManager.GetString("InstructorDetails.AddCarReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add comment.
         /// </summary>
         internal static string InstructorDetails_AddCommentButton {
@@ -408,6 +444,60 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string InstructorDetails_Transmission {
             get {
                 return ResourceManager.GetString("InstructorDetails.Transmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creation date:.
+        /// </summary>
+        internal static string InstructorReviews_DateCreatedlabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.DateCreatedlabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete my review.
+        /// </summary>
+        internal static string InstructorReviews_DeleteButton {
+            get {
+                return ResourceManager.GetString("InstructorReviews.DeleteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating: .
+        /// </summary>
+        internal static string InstructorReviews_RatingLabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review from.
+        /// </summary>
+        internal static string InstructorReviews_ReviewFrom {
+            get {
+                return ResourceManager.GetString("InstructorReviews.ReviewFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review: .
+        /// </summary>
+        internal static string InstructorReviews_ReviewLabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.ReviewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about instructor.
+        /// </summary>
+        internal static string InstructorReviews_Title {
+            get {
+                return ResourceManager.GetString("InstructorReviews.Title", resourceCulture);
             }
         }
         
