@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              x:Class="Auto.School.Mobile.Views.AddCarRatingPopUp"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             >
+    <toolkit:Popup.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        </Style>
+    </toolkit:Popup.Resources>
+    <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
+        <Label Text="{x:Static resx:AppResources.AddReview_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
+
+        <VerticalStackLayout Spacing="20" Padding="10">
+            <StackLayout Orientation="Vertical" Spacing="5">
+                <Label Text="{x:Static resx:AppResources.AddCarRating_RatingLabel}"/>
+                <Slider Minimum="1" Maximum="5" Value="{Binding Rating}" MinimumHeightRequest="20" BackgroundColor="#F5F5F5" ThumbColor="#3D6DFF"/>
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="{x:Static resx:AppResources.AddReview_CurrentRating}"/>
+                    <Label Text="{Binding Rating, StringFormat='{0:F1}'}" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+        <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Button IsEnabled="{Binding IsButtonEnabled}" Text="{x:Static resx:AppResources.AddCarRating_SubmitButton}" Command="{Binding AddReviewCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
+            <Button Text="{x:Static resx:AppResources.AddReview_CancelButton}" Command="{Binding ClosePopupCommand}" BackgroundColor="#333333" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>
