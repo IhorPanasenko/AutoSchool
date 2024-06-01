@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 const useFetch = url => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,25 +17,48 @@ const useFetch = url => {
                 });
                 setData(res.data);
             } catch (err) {
-                handleFetchError(err);
+                const tokenExpired = isTokenExpired();
+                if (tokenExpired) {
+                    try {
+                        await refreshAuthToken();
+                        const res = await axios.get(url, {
+                            withCredentials: true
+                        });
+                        setData(res.data);
+                    } catch (refreshError) {
+                        setError(refreshError);
+                    }
+                } else {
+                    setError(err);
+                }
             }
             setLoading(false);
         };
         fetchData();
     }, [url]);
 
-    const handleFetchError = err => {
-        if (err.response && err.response.data && err.response.data.message) {
-            setError(err.response.data.message);
-        } else {
-            setError(err.message);
-        }
-    };
+    // const reFetch = async () => {
+    //     setLoading(true);
+    //     try {
+    //         await checkAndRefreshTokenIfNeeded();
+    //         const token = Cookies.get("access_token");
+    //         const res = await axios.get(url, {
+    //             headers: {
+    //                 Authorization: Bearer ${token}
+    //             }
+    //         });
+    //         setData(res.data);
+    //     } catch (err) {
+    //         setError(err);
+    //     }
+    //     setLoading(false);
+    // };
 
     const handleRequest = async (method, endpoint, payload = null) => {
         setLoading(true);
         try {
             await checkAndRefreshTokenIfNeeded();
+            // const token = Cookies.get("access_token");
             const config = {
                 method,
                 url: endpoint,
@@ -43,9 +66,10 @@ const useFetch = url => {
                 withCredentials: true
             };
             const res = await axios(config);
+            console.log("Response from UseFetch: ", res);
             setData(res.data);
         } catch (err) {
-            handleFetchError(err);
+            setError(err);
         }
         setLoading(false);
     };
@@ -56,6 +80,10 @@ const useFetch = url => {
 
     const putData = async (endpoint, payload) => {
         await handleRequest("PUT", endpoint, payload);
+    };
+
+    const postData = async (endpoint, payload) => {
+        await handleRequest("POST", endpoint, payload);
     };
 
     const patchData = async (endpoint, payload) => {
@@ -70,13 +98,22 @@ const useFetch = url => {
 
     const isTokenExpired = () => {
         const storedData = JSON.parse(localStorage.getItem("user"));
-        let tokenExpire = localStorage.getItem("tokenExpire");
-        tokenExpire = storedData.tokenExpire;
+        const tokenExpire = storedData.tokenExpire;
+        // console.log(tokenExpire);
+        // console.log('storedData', storedData);
+        // console.log('storedData.tokenExpire', storedData.tokenExpire);
+
+        // console.log(
+        //   'tokenExpire',
+        //   tokenExpire && new Date(tokenExpire) <= new Date(),
+        // );
+
         return tokenExpire && new Date(tokenExpire) <= new Date();
     };
 
     const refreshAuthToken = async () => {
         try {
+            //console.log('try');
             const response = await axios.post(
                 "http://localhost:3000/api/auth/token",
                 {},
@@ -84,13 +121,19 @@ const useFetch = url => {
                     withCredentials: true
                 }
             );
+            console.log("new token: ", response);
+
+            const storedData = JSON.parse(localStorage.getItem("user"));
+            storedData.tokenExpire = response.data.tokenExpire;
+            localStorage.setItem("user", JSON.stringify(storedData));
             return response;
         } catch (error) {
+            console.error("Error refreshing token", error);
             throw error;
         }
     };
 
-    return { data, loading, error, deleteData, putData, patchData };
+    return { data, deleteData, putData, patchData, postData };
 };
 
 export default useFetch;
