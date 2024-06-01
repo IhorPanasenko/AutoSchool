@@ -1,7 +1,7 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
-using Auto.School.Mobile.Core.Responses.Review;
+using Auto.School.Mobile.Core.Responses.Review.GetInstructorReview;
 using Auto.School.Mobile.Service.Interfaces;
 
 namespace Auto.School.Mobile.Service.Services
