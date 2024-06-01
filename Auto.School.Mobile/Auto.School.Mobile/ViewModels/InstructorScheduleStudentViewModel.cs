@@ -48,7 +48,7 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                //TODO: implement get instrucotrId from database
+                //TODO: implement get instrucotrId from Preferences
             }
 
             if (instructorId is null)
@@ -83,7 +83,7 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                //TODO: implement get instrucotrId from database
+                //TODO: implement get instrucotrId from preferences
             }
 
             var response = await _instructorService.GetOne(instructorId!);
