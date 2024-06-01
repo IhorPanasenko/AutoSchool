@@ -88,7 +88,9 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task ShowInstructorReviews()
         {
-
+            _sharedService.Add("InstructorId", Instructor.Id);
+            _sharedService.Add("IsSignedUpToInstructor", (object)IsSignedUpToThisInstructor);
+            await _popupService.ShowPopupAsync<InstructorReviewsPopUp>();
         }
     }
 }
