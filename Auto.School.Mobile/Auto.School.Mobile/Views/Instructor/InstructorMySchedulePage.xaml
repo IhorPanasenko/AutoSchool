@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.Instructor.InstructorMySchedulePage"
+             Title="InstructorMySchedulePage"
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="MaximumWidthRequest" Value="150"/>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="BackgroundColor" Value="#f4e558"/>
+            <Setter Property="TextColor" Value="#3D6DFF"/>
+            <Setter Property="LineBreakMode" Value="WordWrap"/>
+            <Setter Property="TextTransform" Value="None"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="Margin" Value="5,10,5,30" />
+            <Setter Property="Padding" Value="5,5,5,15" />
+            <Setter Property="BackgroundColor" Value="#7FB2FF" />
+        </Style>
+
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#3D6DFF" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView BackgroundColor="#F5F5F5">
+        <StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+            <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}" CloseAction="{Binding CloseAction}"/>
+            <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding IsInstructorRequestSent}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <StackLayout Margin="5">
+                    <StackLayout Orientation="Horizontal">
+                        <Grid HorizontalOptions="CenterAndExpand" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" ColumnSpacing="5" RowSpacing="5">
+                            <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Padding="0" HasShadow="False" BackgroundColor="Transparent">
+                                <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                            </Frame>
+                            <Label Grid.Column="1"  Grid.Row="0" Text="{Binding Instructor.FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
+                            <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
+                                <Label Text="{x:Static resx:AppResources.InstructorCard_Experience}" Margin="5,0,0,0"/>
+                                <Label Text="{Binding Instructor.WorkExperience}" Margin="5,0"/>
+                                <Label Text="{x:Static resx:AppResources.InstructorCard_Years}" Margin="0,0,5,0"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
+                                <Label Text="{x:Static resx:AppResources.InstructorCard_Raiting}" Margin="5,0,0,0"/>
+                                <Label Text="{Binding Instructor.AverageRaiting, StringFormat='{0:F1}'}" Margin="5,0"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Grid.Row="3">
+                                <Label Text="{x:Static resx:AppResources.InstructorCard_DrivingCategory}" Margin="5,0,0,0"/>
+                                <Label Text="{Binding Instructor.VehicleCategory}" Margin="5,0"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+            <Border IsVisible="{Binding IsNotLoading}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="40,0,0,40" />
+                </Border.StrokeShape>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10,0,0" Spacing="20">
+                        <Button Text="{x:Static resx:AppResources.Schedule_PreviousWeek}" Command="{Binding LoadPreviousWeekCommand}" FontSize="Medium"/>
+                        <Button Text="{x:Static resx:AppResources.Schedule_NextWeek}" Command="{Binding LoadNextWeekCommand}" FontSize="Medium"/>
+                    </StackLayout>
+                    <CollectionView ItemsSource="{Binding WeekDays}" SelectionMode="Single" SelectedItem="{Binding SelectedDay}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="30"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5, 10" Padding="0">
+                                    <Border Margin="2,5" Padding="5" BackgroundColor="#333333">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10,10,10,10"/>
+                                        </Border.StrokeShape>
+                                        <Label Text="{Binding ., StringFormat='{0:dd-MM-yyyy}'}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <CollectionView ItemsSource="{Binding SelectedDayLessons}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" CornerRadius="5">
+                                    <Frame.Triggers>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding IsAvailable}" Value="False">
+                                            <Setter Property="BackgroundColor" Value="#333333" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding IsAvailable}" Value="True">
+                                            <Setter Property="BackgroundColor" Value="#3D6DFF" />
+                                        </DataTrigger>
+                                    </Frame.Triggers>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
+                                            <Label Text="--" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="5" IsVisible="{Binding IsNotAvailable}">
+                                            <Label Text="{x:Static resx:AppResources.MySchedule_SignedUpStudent}" HorizontalOptions="Start" FontSize="Medium"/>
+                                            <Label Text="{Binding Student.FullName}" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                        </StackLayout>
+                                        <Button MinimumWidthRequest="150" Text="{x:Static resx:AppResources.MySchedule_ViewStudentProfile}" TextColor="#f4e558" BackgroundColor="#7FB2FF" FontSize="Small" IsVisible="{Binding IsNotAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenStudentProfileCommand}" CommandParameter="{Binding .}"/>
+                                        <Button MinimumWidthRequest="150" Text="{x:Static resx:AppResources.MySchedule_CancelLesson}" TextColor="#f4e558" BackgroundColor="#333333" FontSize="Small" IsVisible="{Binding IsAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}" CommandParameter="{Binding .}"/>
+                                        <Label Text="{x:Static resx:AppResources.Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

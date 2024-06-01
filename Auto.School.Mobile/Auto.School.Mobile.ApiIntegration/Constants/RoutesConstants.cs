@@ -30,6 +30,7 @@
         public const string GetAllInstructors = "instructors";
         public const string GetOneInstructor = "instructors/";
         public const string GetSchedule = "instructors//lessons";
+        public const string InstructorGetInfoMe = "instructors/me";
         #endregion
 
         #region Lesson

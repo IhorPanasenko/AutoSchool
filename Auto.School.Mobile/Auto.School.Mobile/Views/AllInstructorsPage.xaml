@@ -15,12 +15,6 @@
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
         </Style>
-        <!--<Style TargetType="Label">
-            <Setter Property="TextColor" Value="#333333" />
-            <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="Margin" Value="0,0,0,5" />
-            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        </Style>-->
         <Style TargetType="Border">
             <Setter Property="Margin" Value="10,10,10,30" />
             <Setter Property="Padding" Value="5,5,5,15" />
@@ -36,7 +30,6 @@
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout>
-            <!--<Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>-->
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
             <CollectionView ItemsSource="{Binding Instructors}" x:Name="AllInstructorsCollection">
                 <CollectionView.ItemTemplate >
@@ -85,16 +78,9 @@
                                             <Label Text="{Binding Car.Transmission, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="00">
-                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRating}"/>
-                                            <Label Text="{Binding Car.AverageRating, StringFormat='{0}'}"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRatingCar}"/>
+                                            <Label Text="{Binding Car.AverageRating, StringFormat='{0:F1}'}"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
                                         </StackLayout>
-                                       
-                                        <!--<Label Text="{Binding FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
-                                        <Label Text="{Binding WorkExperience, StringFormat='Experience: {0} years'}" />
-                                        <Label Text="{Binding AverageRaiting, StringFormat='Average Rating: {0:F1}'}" />
-                                        <Label Text="{Binding VehicleCategory, StringFormat='Driving category: {0}'}" />
-                                        <Label Text="{Binding Car, StringFormat='Car: {0}'}" />
-                                        <Label Text="{Binding Car.Transmission, StringFormat='transmission: {0}'}"/>-->
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
                                         <Button 

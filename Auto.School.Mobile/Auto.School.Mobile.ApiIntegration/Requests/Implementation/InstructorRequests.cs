@@ -28,6 +28,13 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             return instructorsResponse;
         }
 
+        public async Task<GetOneInstructorResponse> GetInfoMe()
+        {
+            _tokenExpirationService.TryRefreshToken();
+            var response = await _getRequest.ExecuteAsync<GetOneInstructorResponse>(RoutesConstants.InstructorGetInfoMe);
+            return response;
+        }
+
         public async Task<GetOneInstructorResponse> GetOne(string id)
         {
             var response = await _getRequest.ExecuteAsync<GetOneInstructorResponse>($"{RoutesConstants.GetOneInstructor}{id}");

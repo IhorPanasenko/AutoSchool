@@ -24,6 +24,12 @@ namespace Auto.School.Mobile.Service.Services
             return response;
         }
 
+        public async Task<GetOneInstructorResponse> GetInfoMe()
+        {
+            var response = await _instructorRequest.GetInfoMe();
+            return response;
+        }
+
         public async Task<GetOneInstructorResponse> GetOne(string id)
         {
             var response = await _instructorRequest.GetOne(id);

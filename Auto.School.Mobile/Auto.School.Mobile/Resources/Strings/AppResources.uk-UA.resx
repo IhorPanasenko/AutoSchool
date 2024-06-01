@@ -219,6 +219,9 @@
   <data name="InstructorDetails.AverageRating" xml:space="preserve">
     <value>Середня оцінка</value>
   </data>
+  <data name="InstructorDetails.AverageRatingCar" xml:space="preserve">
+    <value>Рейтинг машини</value>
+  </data>
   <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
     <value>Відгуки про машину</value>
   </data>
@@ -303,6 +306,15 @@
   <data name="Monday" xml:space="preserve">
     <value>Понеділок</value>
   </data>
+  <data name="MySchedule.CancelLesson" xml:space="preserve">
+    <value>Відмінити заняття</value>
+  </data>
+  <data name="MySchedule.SignedUpStudent" xml:space="preserve">
+    <value>Записаний студент:</value>
+  </data>
+  <data name="MySchedule.ViewStudentProfile" xml:space="preserve">
+    <value>Відкрити профіль студента</value>
+  </data>
   <data name="NewUser" xml:space="preserve">
     <value>Новий корисутвач?</value>
   </data>
@@ -356,6 +368,24 @@
   </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Оберіть місто</value>
+  </data>
+  <data name="Shell.AllInstructors" xml:space="preserve">
+    <value>Всі інструктори</value>
+  </data>
+  <data name="Shell.MyInstructor" xml:space="preserve">
+    <value>Мій інструктор</value>
+  </data>
+  <data name="Shell.MyLessons" xml:space="preserve">
+    <value>Мої уроки</value>
+  </data>
+  <data name="Shell.MyScheduleInstructor" xml:space="preserve">
+    <value>Мої заняття</value>
+  </data>
+  <data name="Shell.MyScheduleStudent" xml:space="preserve">
+    <value>Розклад занять</value>
+  </data>
+  <data name="Shell.Profile" xml:space="preserve">
+    <value>Мій профіль</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Увійти</value>

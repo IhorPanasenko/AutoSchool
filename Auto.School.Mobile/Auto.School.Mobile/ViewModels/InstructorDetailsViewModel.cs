@@ -5,7 +5,6 @@ using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CoreData;
 using Newtonsoft.Json;
 using System.ComponentModel;
 
@@ -30,7 +29,7 @@ namespace Auto.School.Mobile.ViewModels
 
         private void SetIsSignedUpToThisInstructor()
         {
-            string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+            string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
             if (!string.IsNullOrEmpty(instructorIdJson))
             {
                 myInstructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
@@ -56,10 +55,9 @@ namespace Auto.School.Mobile.ViewModels
             else
             {
                 Instructor = sharedInstructor;
-
             }
 
-            IsSignedUpToThisInstructor = Instructor.Id == myInstructorId;
+            IsSignedUpToThisInstructor = Instructor?.Id == myInstructorId;
             IsLoading = false;
         }
 

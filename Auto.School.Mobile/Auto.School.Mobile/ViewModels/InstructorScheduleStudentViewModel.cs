@@ -113,7 +113,7 @@ namespace Auto.School.Mobile.ViewModels
         public async Task SelectDate(DateTime date)
         {
             SelectedDay = date;
-            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).ToList();
+            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).OrderByDescending(l => TimeSpan.Parse(l.FromHour)).ToList();
         }
 
         private List<DateTime> GetWeekDays()
@@ -129,12 +129,7 @@ namespace Auto.School.Mobile.ViewModels
 
         private void UpdateSelectedDayLessons()
         {
-            SelectedDayLessons = Lessons.Where(l => l.Date.Date == SelectedDay.Date).ToList();
-            //TODO: remove this is just for testing
-            if (SelectedDayLessons.Count == 0)
-            {
-                SelectedDayLessons = Lessons.Take(9).ToList().OrderBy(x => x.FromHour).ToList();
-            }
+            SelectedDayLessons = Lessons.Where(l => l.Date.Date == SelectedDay.Date).OrderByDescending(l => TimeSpan.Parse(l.FromHour)).ToList();
         }
 
         [ObservableProperty]
@@ -169,7 +164,7 @@ namespace Auto.School.Mobile.ViewModels
         {
             WeekDays = WeekDays.Select(d => d.AddDays(7)).ToList();
             SelectedDay = WeekDays.First();
-            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).ToList();
+            SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).OrderByDescending(l => TimeSpan.Parse(l.FromHour)).ToList();
         }
 
 
@@ -216,6 +211,5 @@ namespace Auto.School.Mobile.ViewModels
 
             Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
         }
-
     }
 }
