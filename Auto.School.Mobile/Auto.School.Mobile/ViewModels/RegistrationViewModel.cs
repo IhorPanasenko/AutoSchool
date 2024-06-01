@@ -368,7 +368,7 @@ namespace Auto.School.Mobile.ViewModels
                 ErrorMessage = authenticationResponse.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
             }
 
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
         }
 
         private bool IsModelValid()

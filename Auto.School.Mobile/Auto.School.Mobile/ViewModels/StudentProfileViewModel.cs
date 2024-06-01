@@ -216,7 +216,7 @@ namespace Auto.School.Mobile.ViewModels
         public async Task GoToSchedule()
         {
             _sharedService.Add("InstructorId", Instructor.Id);
-            await Shell.Current.GoToAsync($"/{nameof(InstructorScheduleStudentPage)}");
+            await Shell.Current.GoToAsync($"{nameof(InstructorScheduleStudentPage)}");
         }
 
         [RelayCommand]
@@ -249,7 +249,7 @@ namespace Auto.School.Mobile.ViewModels
                 }
 
                 _sharedService.Add("instructor", Instructor);
-                await Shell.Current.GoToAsync(nameof(InstructorDetailsPage));
+                await Shell.Current.GoToAsync($"/{nameof(InstructorDetailsPage)}");
             }
             catch (Exception ex)
             {

@@ -21,6 +21,8 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(UpdateStudentInfoPopUp), typeof(UpdateStudentInfoPopUp));
             Routing.RegisterRoute(nameof(SignUpToLessonPopUp), typeof (SignUpToLessonPopUp));
             Routing.RegisterRoute(nameof(StudentMyLessonsPage), typeof(StudentMyLessonsPage));
+            Routing.RegisterRoute(nameof(StudentAddInstructorReviewPopUp), typeof(StudentAddInstructorReviewPopUp));
+            
         }
     }
 }

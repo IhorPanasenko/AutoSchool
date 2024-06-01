@@ -19,7 +19,11 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("photoUrl")]
         public string PhotoUrl { get; set; } = string.Empty;
 
-        //TODO: Add Ratings
+        [JsonProperty("averageRating")]
+        public double AverageRating { get; set; }
+
+        [JsonProperty("totalRatings")]
+        public int NumberRatings { get; set; }
 
         public override string ToString()
         {
