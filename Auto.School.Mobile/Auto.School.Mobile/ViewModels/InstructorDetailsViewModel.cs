@@ -46,6 +46,13 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private bool isSignedUpToThisInstructor = false;
+        
+        public bool IsNotSignedUpToThisInstructor { get =>  !IsSignedUpToThisInstructor; private set { } }
+
+        partial void OnIsSignedUpToThisInstructorChanged(bool value)
+        {
+            OnPropertyChanged(nameof(IsNotSignedUpToThisInstructor));
+        }
 
         [ObservableProperty]
         private bool isLoading = true;
@@ -91,6 +98,14 @@ namespace Auto.School.Mobile.ViewModels
             _sharedService.Add("InstructorId", Instructor.Id);
             _sharedService.Add("IsSignedUpToInstructor", (object)IsSignedUpToThisInstructor);
             await _popupService.ShowPopupAsync<InstructorReviewsPopUp>();
+
+        }
+
+        [RelayCommand]
+        public async Task AddCarRating()
+        {
+            _sharedService.Add("CarId", Instructor.Car!.Id);
+            await _popupService.ShowPopupAsync<AddCarRatingPopUp>();
         }
     }
 }
