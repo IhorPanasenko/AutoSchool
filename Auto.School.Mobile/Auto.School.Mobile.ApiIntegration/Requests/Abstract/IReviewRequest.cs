@@ -1,6 +1,6 @@
 ﻿using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
-using Auto.School.Mobile.Core.Responses.Review;
+using Auto.School.Mobile.Core.Responses.Review.GetInstructorReview;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Abstract
 {

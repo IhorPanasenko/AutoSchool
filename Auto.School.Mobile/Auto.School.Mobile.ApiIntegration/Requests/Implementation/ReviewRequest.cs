@@ -4,7 +4,7 @@ using Auto.School.Mobile.ApiIntegration.Helpers;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
-using Auto.School.Mobile.Core.Responses.Review;
+using Auto.School.Mobile.Core.Responses.Review.GetInstructorReview;
 
 namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 {
@@ -16,15 +16,15 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
 
         public async Task<BaseResponse> AddReview(AddReviewModel addReviewModel, string instructorId)
         {
-            var Route = FormUrlHelper.InsertIdIntoUrl(RoutesConstants.AddReview, instructorId);
-            var  response =await _postRequest.ExecuteAsync<AddReviewModel, BaseResponse>(Route, addReviewModel);
+            var route = FormUrlHelper.InsertIdIntoUrl(RoutesConstants.AddReview, instructorId);
+            var  response =await _postRequest.ExecuteAsync<AddReviewModel, BaseResponse>(route, addReviewModel);
             return response;
         }
 
         public async Task<GetInstructorReviewResponse> GetInstructorReview(string instructorId)
         {
-            var Route = FormUrlHelper.InsertIdIntoUrl(RoutesConstants.GetInstructorsReview, instructorId);
-            var response = await _getRequest.ExecuteAsync<GetInstructorReviewResponse>(Route);
+            var route = FormUrlHelper.InsertIdIntoUrl(RoutesConstants.GetInstructorsReview, instructorId);
+            var response = await _getRequest.ExecuteAsync<GetInstructorReviewResponse>(route);
             return response;
         }
     }
