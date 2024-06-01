@@ -45,6 +45,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<IStudentRequest, StudentRequests>();
             builder.Services.AddTransient<ILessonRequest, LessonRequest>();
             builder.Services.AddTransient<IReviewRequest, ReviewRequest>();
+            builder.Services.AddTransient<ICarRequest, CarRequeset>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();
@@ -55,6 +56,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ICultureService, CultureService>();
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
+            builder.Services.AddTransient<ICarService, CarService>();
 
             builder.Services.AddTransient<ErrorAlertView>();
 
@@ -74,6 +76,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<StudentDrivingSkilllsViewModel>();
             builder.Services.AddTransient<AddReviewViewModel>();
             builder.Services.AddTransient<InstructorReviewsViewMode>();
+            builder.Services.AddTransient<AddCarRatingViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -93,6 +96,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<StudentDrivingSkillsPopUp>();
             builder.Services.AddTransient<StudentAddInstructorReviewPopUp>();
             builder.Services.AddTransient<InstructorReviewsPopUp>();
+            builder.Services.AddTransient<AddCarRatingPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
