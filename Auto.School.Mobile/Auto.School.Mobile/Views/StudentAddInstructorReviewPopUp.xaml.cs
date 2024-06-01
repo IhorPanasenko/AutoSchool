@@ -7,7 +7,7 @@ public partial class StudentAddInstructorReviewPopUp : Popup
 {
     public StudentAddInstructorReviewPopUp(AddReviewViewModel addReviewViewModel)
     {
-        //InitializeComponent();
+        InitializeComponent();
         BindingContext = addReviewViewModel;
         addReviewViewModel.PopupInstance = this;
     }

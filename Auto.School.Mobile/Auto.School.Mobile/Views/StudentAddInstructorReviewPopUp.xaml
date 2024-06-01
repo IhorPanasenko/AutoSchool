@@ -17,12 +17,23 @@
         <Label Text="{x:Static resx:AppResources.AddReview_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
         <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
 
-        <Entry Placeholder="{x:Static resx:AppResources.AddReview_ReviewPlaceholder}" Text="{Binding Review}" />
-        <Slider Minimum="1" Maximum="5" Value="{Binding Rating}" />
-
-        <HorizontalStackLayout Spacing="10">
-            <Button Text="{x:Static resx:AppResources.AddReview_SubmitButton}" Command="{Binding AddReviewCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap"/>
-            <Button Text="{x:Static resx:AppResources.AddReview_CancelButton}" Command="{Binding ClosePopupCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap"/>
+        <VerticalStackLayout Spacing="20" Padding="10">
+            <StackLayout Orientation="Vertical" Spacing="5">
+                <Label Text="{x:Static resx:AppResources.AddReview_ReviewLabel}"/>
+                <Entry Placeholder="{x:Static resx:AppResources.AddReview_ReviewPlaceholder}" Text="{Binding Review}" BackgroundColor="#F5F5F5" TextColor="#3D6DFF" PlaceholderColor="#7FB2FF" FontSize="Medium"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Spacing="5">
+                <Label Text="{x:Static resx:AppResources.AddReview_RatingLabel}"/>
+                <Slider Minimum="1" Maximum="5" Value="{Binding Rating}" MinimumHeightRequest="20" BackgroundColor="#F5F5F5" ThumbColor="#3D6DFF"/>
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="{x:Static resx:AppResources.AddReview_CurrentRating}"/>
+                    <Label Text="{Binding Rating, StringFormat='{0:F1}'}" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+        <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Button IsEnabled="{Binding IsButtonEnabled}" Text="{x:Static resx:AppResources.AddReview_SubmitButton}" Command="{Binding AddReviewCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
+            <Button Text="{x:Static resx:AppResources.AddReview_CancelButton}" Command="{Binding ClosePopupCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </toolkit:Popup>

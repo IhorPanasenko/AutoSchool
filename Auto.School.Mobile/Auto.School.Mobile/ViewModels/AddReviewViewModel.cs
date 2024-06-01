@@ -31,6 +31,15 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private string errorMessage;
 
+        [ObservableProperty]
+        private bool isSuccess;
+
+        [ObservableProperty]
+        private string successMessage;
+
+        [ObservableProperty]
+        private bool isButtonEnabled = true;
+
         [RelayCommand]
         public async Task AddReview()
         {
@@ -43,13 +52,23 @@ namespace Auto.School.Mobile.ViewModels
             }
             var request = new AddReviewModel { Raiting = Rating, Review = Review };
             var response = await _reviewService.AddReview(request, instructorId);
-            if(string.Compare(response.Status, ResponseStatuses.Sucess) != 0)
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) != 0)
             {
                 IsError = true;
                 ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
                 return;
             }
+            else
+            {
+                IsSuccess = true;
+                SuccessMessage = AppMessages.AddReviewSuccessResult;
+                IsButtonEnabled = false;
+            }
+        }
 
+        [RelayCommand]
+        public void ClosePopup()
+        {
             _popUpservice.ClosePopup(PopupInstance);
         }
 
