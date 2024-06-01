@@ -10,6 +10,7 @@ const {
 } = require('../config/googleOauth2Client.js');
 const createGoogleDateTime = require('../helpers/createGoogleDateTime.js');
 const UserLoginModel = require('../models/userLogin.js');
+const PaymentModel = require('../models/payment.js');
 
 exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   const lessons = await LessonModel.find({
@@ -82,6 +83,17 @@ exports.signupForLesson = catchAsync(async (req, res, next) => {
       new AppError("You can sign up only for your instructor's lessons", 403)
     );
 
+  if (req.query.useBalance === 'true') {
+    const freePayment = await student.hasPaymentBalance();
+
+    if (!freePayment)
+      return next(new AppError('You have no balance to pay lesson with'), 400);
+
+    await PaymentModel.findByIdAndUpdate(freePayment, {
+      lessonId: updatedLesson._id,
+    });
+  }
+
   updatedLesson.student.studentId = student._id;
   updatedLesson.student.name = student.name;
   updatedLesson.student.surname = student.surname;
@@ -127,6 +139,8 @@ exports.cancelMyLesson = catchAsync(async (req, res, next) => {
         'You can not cancel a lesson later than 24 hours before before its scheduled time.'
       )
     );
+
+  // TODO: In corresponding Payment put lessonId = null
 
   lesson.student = undefined;
   lesson.isAvailable = true;
