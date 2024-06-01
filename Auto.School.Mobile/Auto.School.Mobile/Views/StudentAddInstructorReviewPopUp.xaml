@@ -33,7 +33,7 @@
         </VerticalStackLayout>
         <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Button IsEnabled="{Binding IsButtonEnabled}" Text="{x:Static resx:AppResources.AddReview_SubmitButton}" Command="{Binding AddReviewCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
-            <Button Text="{x:Static resx:AppResources.AddReview_CancelButton}" Command="{Binding ClosePopupCommand}" BackgroundColor="#3D6DFF" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
+            <Button Text="{x:Static resx:AppResources.AddReview_CancelButton}" Command="{Binding ClosePopupCommand}" BackgroundColor="#333333" TextColor="#f4e558" LineBreakMode="WordWrap" FontSize="Medium"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </toolkit:Popup>
