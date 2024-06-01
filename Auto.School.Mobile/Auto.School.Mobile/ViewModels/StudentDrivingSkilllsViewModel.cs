@@ -13,13 +13,14 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ISharedService _sharedService;
         private readonly IStudentService _studentService;
+        private readonly IPopupService _popupService;
 
-        public StudentDrivingSkilllsViewModel(ISharedService sharedService, IStudentService studentService)
+        public StudentDrivingSkilllsViewModel(ISharedService sharedService, IStudentService studentService, IPopupService popupService)
         {
             _sharedService = sharedService;
-            _studentService = studentService;
+            _studentService = studentService; 
+            _popupService = popupService;
             GetInfo();
-            
         }
 
         [ObservableProperty]

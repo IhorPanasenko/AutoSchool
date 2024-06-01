@@ -26,7 +26,7 @@
 
     <FlyoutItem x:Name="InstructorMenu" Route="InstructorProfilePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="{x:Static resx:AppResources.Shell_Profile}" ContentTemplate="{DataTemplate instructorViews:InstructorProfilePage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate views:AllInstructorsPage}" />
+        <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
     </FlyoutItem>
 

@@ -28,6 +28,10 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(StudentMyLessonsPage), typeof(StudentMyLessonsPage));
             Routing.RegisterRoute(nameof(InstructorProfilePage), typeof(InstructorProfilePage));
             Routing.RegisterRoute(nameof(StudentProfilePage), typeof(StudentProfilePage));
+            Routing.RegisterRoute(nameof(InstructorAllInstructorsPage), typeof(InstructorAllInstructorsPage));
+            Routing.RegisterRoute(nameof(InstructorInstructorDetailsPage), typeof(InstructorInstructorDetailsPage));
+            Routing.RegisterRoute(nameof(InstructorMySchedulePage), typeof(InstructorMySchedulePage));
+            Routing.RegisterRoute(nameof(StudentProfilePage), typeof(StudentProfilePage));
         }
 
         public void SetFlyoutItems()
