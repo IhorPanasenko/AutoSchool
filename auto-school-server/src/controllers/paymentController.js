@@ -23,7 +23,7 @@ exports.createPayment = catchAsync(async (req, res, next) => {
   await PaymentModel.create({
     ...req.body,
     timestamp: new Date(req.body.end_date),
-    orderid: req.body.order_id,
+    orderId: req.body.order_id,
     studentId: student._id,
   });
 

@@ -273,7 +273,7 @@ exports.logout = catchAsync(async (req, res, next) => {
     .select('refreshToken');
 
   userLoginData.refreshToken = null;
-  userLoginData.save();
+  await userLoginData.save();
 
   res.sendStatus(204);
 });
