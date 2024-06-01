@@ -69,7 +69,7 @@ const Navbar = () => {
               {t("navbar.linkmain", { ns: "pages" })}
             </p>
           </Link>
-          <Link to="/contacts" style={{ textDecoration: "none" }}>
+          {/* <Link to="/contacts" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
                 isActive("/contacts") ? styles.active : ""
@@ -77,7 +77,7 @@ const Navbar = () => {
             >
               {t("navbar.linkcontacts", { ns: "pages" })}
             </p>
-          </Link>
+          </Link> */}
           <Link to="/instructors" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
@@ -87,7 +87,7 @@ const Navbar = () => {
               {t("navbar.linkinstructors", { ns: "pages" })}
             </p>
           </Link>
-          <Link to="/reviews" style={{ textDecoration: "none" }}>
+          {/* <Link to="/reviews" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
                 isActive("/reviews") ? styles.active : ""
@@ -95,25 +95,29 @@ const Navbar = () => {
             >
               {t("navbar.linkreviews", { ns: "pages" })}
             </p>
-          </Link>
-          <Link to="/timetable" style={{ textDecoration: "none" }}>
-            <p
-              className={`${styles.menu_text} ${
-                isActive("/timetable") ? styles.active : ""
-              }`}
-            >
-              {t("navbar.linktimetable", { ns: "pages" })}
-            </p>
-          </Link>
-          <Link to="/mylessons" style={{ textDecoration: "none" }}>
-            <p
-              className={`${styles.menu_text} ${
-                isActive("/linklessons") ? styles.active : ""
-              }`}
-            >
-              {t("navbar.linklessons", { ns: "pages" })}
-            </p>
-          </Link>
+          </Link> */}
+          {user && user.instructor && (
+            <>
+              <Link to="/timetable" style={{ textDecoration: "none" }}>
+                <p
+                  className={`${styles.menu_text} ${
+                    isActive("/timetable") ? styles.active : ""
+                  }`}
+                >
+                  {t("navbar.linktimetable", { ns: "pages" })}
+                </p>
+              </Link>
+              <Link to="/mylessons" style={{ textDecoration: "none" }}>
+                <p
+                  className={`${styles.menu_text} ${
+                    isActive("/linklessons") ? styles.active : ""
+                  }`}
+                >
+                  {t("navbar.linklessons", { ns: "pages" })}
+                </p>
+              </Link>
+            </>
+          )}
         </div>
         <div className={styles.btn_container}>
           {user ? (

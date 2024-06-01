@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.18",
+    "@mui/x-data-grid": "^7.6.1",
     "@mui/x-date-pickers": "^7.6.0",
     "axios": "^1.6.8",
     "crypto-js": "^4.2.0",
@@ -27,6 +28,7 @@
     "js-cookie": "^3.0.5",
     "nodemon": "^3.0.3",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.2",
     "react-calendar": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.1",
