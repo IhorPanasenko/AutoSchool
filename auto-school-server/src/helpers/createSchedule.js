@@ -41,7 +41,9 @@ const lessonHours = [
   },
 ];
 
-const job = schedule.scheduleJob('0 2 * * 7', async function () {
+const EVERY_SUNDAY_AT_2_AM = '0 2 * * 7';
+
+const job = schedule.scheduleJob(EVERY_SUNDAY_AT_2_AM, async function () {
   try {
     console.log('Creating schedule...');
     const instructors = await InstructorModel.find();
