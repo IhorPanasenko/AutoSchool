@@ -2,11 +2,11 @@
 using Auto.School.Mobile.Core.Responses.Base;
 using Newtonsoft.Json;
 
-namespace Auto.School.Mobile.Core.Responses.Review
+namespace Auto.School.Mobile.Core.Responses.Review.GetInstructorReview
 {
     public class GetInstructorReviewResponse : BaseResponse
     {
         [JsonProperty("data")]
-        public List<ReviewModel> Reviews { get; set; }
+        public GetInstructorReviewResponseData Data { get; set; }
     }
 }
