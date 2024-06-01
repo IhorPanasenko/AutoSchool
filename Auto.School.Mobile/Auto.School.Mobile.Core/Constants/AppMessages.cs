@@ -15,5 +15,9 @@
         #region SignUpToInstructor
         public const string SignUpToInstructorSuccess = "You request was successfully sent. Wait while administrators will confirm it";
         #endregion
+
+        #region InstructorReview
+        public const string AddReviewSuccessResult = "You review about instructor was successfully added";
+        #endregion
     }
 }
