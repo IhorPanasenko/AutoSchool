@@ -117,8 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarRating.CarRatingLabel" xml:space="preserve">
+    <value>Set rating for instructor's car</value>
+  </data>
+  <data name="AddCarRating.RatingLabel" xml:space="preserve">
+    <value>Set rating for car from 1 to 5</value>
+  </data>
+  <data name="AddCarRating.SubmitButton" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Add profile photo</value>
+  </data>
+  <data name="AddReview.CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AddReview.CurrentRating" xml:space="preserve">
+    <value>Chosen Rating</value>
+  </data>
+  <data name="AddReview.RatingLabel" xml:space="preserve">
+    <value>Set rating for instructor from 1 to 5</value>
+  </data>
+  <data name="AddReview.ReviewLabel" xml:space="preserve">
+    <value>Write what you think about instructor</value>
+  </data>
+  <data name="AddReview.ReviewPlaceholder" xml:space="preserve">
+    <value>Write your review here</value>
+  </data>
+  <data name="AddReview.SubmitButton" xml:space="preserve">
+    <value>Add review</value>
+  </data>
+  <data name="AddReview.Title" xml:space="preserve">
+    <value>Add review about instructor</value>
   </data>
   <data name="AllInstructors.DetailsButton" xml:space="preserve">
     <value>Open details</value>
@@ -180,11 +210,29 @@
   <data name="InstructorCard.Years" xml:space="preserve">
     <value>Years</value>
   </data>
+  <data name="InstructorDetails.AddCarReview" xml:space="preserve">
+    <value>Set rating to car</value>
+  </data>
+  <data name="InstructorDetails.AddCommentButton" xml:space="preserve">
+    <value>Add comment</value>
+  </data>
+  <data name="InstructorDetails.AverageRating" xml:space="preserve">
+    <value>Average rating</value>
+  </data>
   <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
     <value>Reviews about car</value>
   </data>
+  <data name="InstructorDetails.CarManufactureYear" xml:space="preserve">
+    <value>Manufacture year</value>
+  </data>
   <data name="InstructorDetails.CarSectionTitle" xml:space="preserve">
     <value>Car for learning</value>
+  </data>
+  <data name="InstructorDetails.DrivingCategory" xml:space="preserve">
+    <value>Driving Category</value>
+  </data>
+  <data name="InstructorDetails.Experience" xml:space="preserve">
+    <value>Experience</value>
   </data>
   <data name="InstructorDetails.InstructorCommentsButton" xml:space="preserve">
     <value>Reviews about instructor</value>
@@ -192,11 +240,41 @@
   <data name="InstructorDetails.InstructorSectionTitle" xml:space="preserve">
     <value>Main information about instructor</value>
   </data>
+  <data name="InstructorDetails.MaxNumberOfStudents" xml:space="preserve">
+    <value>Max number of students </value>
+  </data>
+  <data name="InstructorDetails.NumberRatings" xml:space="preserve">
+    <value>Number ratings</value>
+  </data>
   <data name="InstructorDetails.SignUpToInstructorButton" xml:space="preserve">
     <value>Sign up to instructor</value>
   </data>
   <data name="InstructorDetails.Title" xml:space="preserve">
     <value>Instructor Details</value>
+  </data>
+  <data name="InstructorDetails.Transmission" xml:space="preserve">
+    <value>Transmission</value>
+  </data>
+  <data name="InstructorReviews.DateCreatedlabel" xml:space="preserve">
+    <value>Creation date:</value>
+  </data>
+  <data name="InstructorReviews.DeleteButton" xml:space="preserve">
+    <value>Delete my review</value>
+  </data>
+  <data name="InstructorReviews.MyReview" xml:space="preserve">
+    <value>My Review</value>
+  </data>
+  <data name="InstructorReviews.RatingLabel" xml:space="preserve">
+    <value>Rating: </value>
+  </data>
+  <data name="InstructorReviews.ReviewFrom" xml:space="preserve">
+    <value>Review from</value>
+  </data>
+  <data name="InstructorReviews.ReviewLabel" xml:space="preserve">
+    <value>Review: </value>
+  </data>
+  <data name="InstructorReviews.Title" xml:space="preserve">
+    <value>Reviews about instructor</value>
   </data>
   <data name="InstructorSchedule.SingUp" xml:space="preserve">
     <value>Sign Up</value>
@@ -266,6 +344,9 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Rememeber me?</value>
+  </data>
+  <data name="Schedule.LessonPassed" xml:space="preserve">
+    <value>Lesson already passed</value>
   </data>
   <data name="Schedule.NextWeek" xml:space="preserve">
     <value>Next Week</value>

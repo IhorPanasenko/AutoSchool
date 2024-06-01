@@ -10,11 +10,17 @@
             <Setter Property="BackgroundColor" Value="#F5F5F5" />
         </Style>
         <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        </Style>
+        <!--<Style TargetType="Label">
             <Setter Property="TextColor" Value="#333333" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        </Style>
+        </Style>-->
         <Style TargetType="Border">
             <Setter Property="Margin" Value="10,10,10,30" />
             <Setter Property="Padding" Value="5,5,5,15" />
@@ -22,14 +28,15 @@
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#3D6DFF" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontSize" Value="Medium"/>
         </Style>
 
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout>
-            <Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+            <!--<Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>-->
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
             <CollectionView ItemsSource="{Binding Instructors}" x:Name="AllInstructorsCollection">
                 <CollectionView.ItemTemplate >
@@ -39,7 +46,7 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="40,0,0,40" />
                                 </Border.StrokeShape>
-                                <Grid ColumnSpacing="20" RowSpacing="10" >
+                                <Grid ColumnSpacing="5" RowSpacing="5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -57,12 +64,37 @@
                                     </StackLayout>
                                     <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Padding="10">
                                         <Label Text="{x:Static resx:AppResources.AllInstructors_NotAvailale}" TextColor="Red" FontSize="Medium" IsVisible="{Binding IsNotAvailable}"/>
-                                        <Label Text="{Binding FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_Experience}" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding WorkExperience, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRating}" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding AverageRaiting, StringFormat='{0:F1}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_DrivingCategory}" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding VehicleCategory, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_CarManufactureYear}" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{Binding Car.Year, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_Transmission}"/>
+                                            <Label Text="{Binding Car.Transmission, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="00">
+                                            <Label Text="{x:Static resx:AppResources.InstructorDetails_AverageRating}"/>
+                                            <Label Text="{Binding Car.AverageRating, StringFormat='{0}'}"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                       
+                                        <!--<Label Text="{Binding FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
                                         <Label Text="{Binding WorkExperience, StringFormat='Experience: {0} years'}" />
                                         <Label Text="{Binding AverageRaiting, StringFormat='Average Rating: {0:F1}'}" />
                                         <Label Text="{Binding VehicleCategory, StringFormat='Driving category: {0}'}" />
                                         <Label Text="{Binding Car, StringFormat='Car: {0}'}" />
-                                        <Label Text="{Binding Car.Transmission, StringFormat='transmission: {0}'}"/>
+                                        <Label Text="{Binding Car.Transmission, StringFormat='transmission: {0}'}"/>-->
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
                                         <Button 

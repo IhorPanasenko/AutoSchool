@@ -149,7 +149,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToRegistration()
         {
-            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}");
+            await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
         }
 
         [RelayCommand]

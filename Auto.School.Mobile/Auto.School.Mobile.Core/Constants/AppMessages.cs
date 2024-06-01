@@ -15,5 +15,13 @@
         #region SignUpToInstructor
         public const string SignUpToInstructorSuccess = "You request was successfully sent. Wait while administrators will confirm it";
         #endregion
+
+        #region InstructorReview
+        public const string AddReviewSuccessResult = "You review about instructor was successfully added";
+        #endregion
+
+        #region Car
+        public const string AddCarRating = "Your rating for car was successfully added";
+        #endregion
     }
 }

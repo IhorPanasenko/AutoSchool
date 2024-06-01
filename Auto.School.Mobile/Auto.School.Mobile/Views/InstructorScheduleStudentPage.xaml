@@ -122,10 +122,13 @@
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ShowLessonDetailsCommand}"
                                               CommandParameter="{Binding .}" />
                                     </Frame.GestureRecognizers>
-                                    <StackLayout Orientation="Horizontal" Spacing="5">
-                                        <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
-                                        <Label Text="--" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
+                                            <Label Text="--" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <Label Text="{x:Static resx:AppResources.Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>

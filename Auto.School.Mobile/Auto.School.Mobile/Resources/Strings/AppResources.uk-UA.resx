@@ -117,8 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarRating.CarRatingLabel" xml:space="preserve">
+    <value>Оцініть машину інструктора</value>
+  </data>
+  <data name="AddCarRating.RatingLabel" xml:space="preserve">
+    <value>Оцініть машину від 1 до 5</value>
+  </data>
+  <data name="AddCarRating.SubmitButton" xml:space="preserve">
+    <value>Підтвердити</value>
+  </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Додати фото профілю</value>
+  </data>
+  <data name="AddReview.CancelButton" xml:space="preserve">
+    <value>Відмінити</value>
+  </data>
+  <data name="AddReview.CurrentRating" xml:space="preserve">
+    <value>Виставлений рейтинг</value>
+  </data>
+  <data name="AddReview.RatingLabel" xml:space="preserve">
+    <value>Оцініть інструктора від 1 до 5</value>
+  </data>
+  <data name="AddReview.ReviewLabel" xml:space="preserve">
+    <value>Напишіть що ви думаєте про інструктора</value>
+  </data>
+  <data name="AddReview.ReviewPlaceholder" xml:space="preserve">
+    <value>Напишіть свій відгук тут</value>
+  </data>
+  <data name="AddReview.SubmitButton" xml:space="preserve">
+    <value>Додати відгук</value>
+  </data>
+  <data name="AddReview.Title" xml:space="preserve">
+    <value>Додати відгук про інструктора</value>
   </data>
   <data name="AllInstructors.DetailsButton" xml:space="preserve">
     <value>Переглянути інформацію</value>
@@ -180,11 +210,29 @@
   <data name="InstructorCard.Years" xml:space="preserve">
     <value>Років</value>
   </data>
+  <data name="InstructorDetails.AddCarReview" xml:space="preserve">
+    <value>Оцінити машину</value>
+  </data>
+  <data name="InstructorDetails.AddCommentButton" xml:space="preserve">
+    <value>Додати відгук</value>
+  </data>
+  <data name="InstructorDetails.AverageRating" xml:space="preserve">
+    <value>Середня оцінка</value>
+  </data>
   <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
     <value>Відгуки про машину</value>
   </data>
+  <data name="InstructorDetails.CarManufactureYear" xml:space="preserve">
+    <value>Рік випуску</value>
+  </data>
   <data name="InstructorDetails.CarSectionTitle" xml:space="preserve">
     <value>Машина для навчання</value>
+  </data>
+  <data name="InstructorDetails.DrivingCategory" xml:space="preserve">
+    <value>Категорія водання</value>
+  </data>
+  <data name="InstructorDetails.Experience" xml:space="preserve">
+    <value>Досвід</value>
   </data>
   <data name="InstructorDetails.InstructorCommentsButton" xml:space="preserve">
     <value>Відгуки про інструктора</value>
@@ -192,11 +240,41 @@
   <data name="InstructorDetails.InstructorSectionTitle" xml:space="preserve">
     <value>Основна інформація про інструктора</value>
   </data>
+  <data name="InstructorDetails.MaxNumberOfStudents" xml:space="preserve">
+    <value>Максимальна кількість студентів</value>
+  </data>
+  <data name="InstructorDetails.NumberRatings" xml:space="preserve">
+    <value>Кількість оцінок</value>
+  </data>
   <data name="InstructorDetails.SignUpToInstructorButton" xml:space="preserve">
     <value>Записатися до інструктора</value>
   </data>
   <data name="InstructorDetails.Title" xml:space="preserve">
     <value>Інформація про інструктора</value>
+  </data>
+  <data name="InstructorDetails.Transmission" xml:space="preserve">
+    <value>Коробка передач</value>
+  </data>
+  <data name="InstructorReviews.DateCreatedlabel" xml:space="preserve">
+    <value>Дата створення:</value>
+  </data>
+  <data name="InstructorReviews.DeleteButton" xml:space="preserve">
+    <value>Видалити мій відгук</value>
+  </data>
+  <data name="InstructorReviews.MyReview" xml:space="preserve">
+    <value>Мій відгук</value>
+  </data>
+  <data name="InstructorReviews.RatingLabel" xml:space="preserve">
+    <value>Рейтинг:</value>
+  </data>
+  <data name="InstructorReviews.ReviewFrom" xml:space="preserve">
+    <value>Відгук від</value>
+  </data>
+  <data name="InstructorReviews.ReviewLabel" xml:space="preserve">
+    <value>Відгук:</value>
+  </data>
+  <data name="InstructorReviews.Title" xml:space="preserve">
+    <value>Відгуки про інструктора</value>
   </data>
   <data name="InstructorSchedule.SingUp" xml:space="preserve">
     <value>Записатися</value>
@@ -266,6 +344,9 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запам'ятати мене?</value>
+  </data>
+  <data name="Schedule.LessonPassed" xml:space="preserve">
+    <value>Урок вже пройшов</value>
   </data>
   <data name="Schedule.NextWeek" xml:space="preserve">
     <value>Наступний тиждень</value>

@@ -80,6 +80,9 @@
 	  <MauiXaml Update="Views\AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\AddCarRatingPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AllInstructorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -95,6 +98,9 @@
 	  <MauiXaml Update="Views\InstructorDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\InstructorReviewsPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\InstructorScheduleStudentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -108,6 +114,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SignUpToLessonPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StudentAddInstructorReviewPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\StudentDrivingSkillsPopUp.xaml">
@@ -139,6 +148,9 @@
 	  </Compile>
 	  <Compile Update="Views\AllInstructorsPage.xaml.cs">
 	    <DependentUpon>AllInstructorsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\StudentAddInstructorReviewPopUp.xaml.cs">
+	    <DependentUpon>StudentAddInstructorReviewPopUp.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

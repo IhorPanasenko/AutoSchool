@@ -61,11 +61,101 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set rating for instructor&apos;s car.
+        /// </summary>
+        internal static string AddCarRating_CarRatingLabel {
+            get {
+                return ResourceManager.GetString("AddCarRating.CarRatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set rating for car from 1 to 5.
+        /// </summary>
+        internal static string AddCarRating_RatingLabel {
+            get {
+                return ResourceManager.GetString("AddCarRating.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string AddCarRating_SubmitButton {
+            get {
+                return ResourceManager.GetString("AddCarRating.SubmitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add profile photo.
         /// </summary>
         internal static string AddPhoto {
             get {
                 return ResourceManager.GetString("AddPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string AddReview_CancelButton {
+            get {
+                return ResourceManager.GetString("AddReview.CancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chosen Rating.
+        /// </summary>
+        internal static string AddReview_CurrentRating {
+            get {
+                return ResourceManager.GetString("AddReview.CurrentRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set rating for instructor from 1 to 5.
+        /// </summary>
+        internal static string AddReview_RatingLabel {
+            get {
+                return ResourceManager.GetString("AddReview.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write what you think about instructor.
+        /// </summary>
+        internal static string AddReview_ReviewLabel {
+            get {
+                return ResourceManager.GetString("AddReview.ReviewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your review here.
+        /// </summary>
+        internal static string AddReview_ReviewPlaceholder {
+            get {
+                return ResourceManager.GetString("AddReview.ReviewPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add review.
+        /// </summary>
+        internal static string AddReview_SubmitButton {
+            get {
+                return ResourceManager.GetString("AddReview.SubmitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add review about instructor.
+        /// </summary>
+        internal static string AddReview_Title {
+            get {
+                return ResourceManager.GetString("AddReview.Title", resourceCulture);
             }
         }
         
@@ -250,6 +340,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set rating to car.
+        /// </summary>
+        internal static string InstructorDetails_AddCarReview {
+            get {
+                return ResourceManager.GetString("InstructorDetails.AddCarReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add comment.
+        /// </summary>
+        internal static string InstructorDetails_AddCommentButton {
+            get {
+                return ResourceManager.GetString("InstructorDetails.AddCommentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average rating.
+        /// </summary>
+        internal static string InstructorDetails_AverageRating {
+            get {
+                return ResourceManager.GetString("InstructorDetails.AverageRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reviews about car.
         /// </summary>
         internal static string InstructorDetails_CarCommentsButton {
@@ -259,11 +376,38 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manufacture year.
+        /// </summary>
+        internal static string InstructorDetails_CarManufactureYear {
+            get {
+                return ResourceManager.GetString("InstructorDetails.CarManufactureYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Car for learning.
         /// </summary>
         internal static string InstructorDetails_CarSectionTitle {
             get {
                 return ResourceManager.GetString("InstructorDetails.CarSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Driving Category.
+        /// </summary>
+        internal static string InstructorDetails_DrivingCategory {
+            get {
+                return ResourceManager.GetString("InstructorDetails.DrivingCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Experience.
+        /// </summary>
+        internal static string InstructorDetails_Experience {
+            get {
+                return ResourceManager.GetString("InstructorDetails.Experience", resourceCulture);
             }
         }
         
@@ -286,6 +430,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max number of students .
+        /// </summary>
+        internal static string InstructorDetails_MaxNumberOfStudents {
+            get {
+                return ResourceManager.GetString("InstructorDetails.MaxNumberOfStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number ratings.
+        /// </summary>
+        internal static string InstructorDetails_NumberRatings {
+            get {
+                return ResourceManager.GetString("InstructorDetails.NumberRatings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign up to instructor.
         /// </summary>
         internal static string InstructorDetails_SignUpToInstructorButton {
@@ -300,6 +462,78 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string InstructorDetails_Title {
             get {
                 return ResourceManager.GetString("InstructorDetails.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmission.
+        /// </summary>
+        internal static string InstructorDetails_Transmission {
+            get {
+                return ResourceManager.GetString("InstructorDetails.Transmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creation date:.
+        /// </summary>
+        internal static string InstructorReviews_DateCreatedlabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.DateCreatedlabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete my review.
+        /// </summary>
+        internal static string InstructorReviews_DeleteButton {
+            get {
+                return ResourceManager.GetString("InstructorReviews.DeleteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Review.
+        /// </summary>
+        internal static string InstructorReviews_MyReview {
+            get {
+                return ResourceManager.GetString("InstructorReviews.MyReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating: .
+        /// </summary>
+        internal static string InstructorReviews_RatingLabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.RatingLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review from.
+        /// </summary>
+        internal static string InstructorReviews_ReviewFrom {
+            get {
+                return ResourceManager.GetString("InstructorReviews.ReviewFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review: .
+        /// </summary>
+        internal static string InstructorReviews_ReviewLabel {
+            get {
+                return ResourceManager.GetString("InstructorReviews.ReviewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about instructor.
+        /// </summary>
+        internal static string InstructorReviews_Title {
+            get {
+                return ResourceManager.GetString("InstructorReviews.Title", resourceCulture);
             }
         }
         
@@ -507,6 +741,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lesson already passed.
+        /// </summary>
+        internal static string Schedule_LessonPassed {
+            get {
+                return ResourceManager.GetString("Schedule.LessonPassed", resourceCulture);
             }
         }
         
