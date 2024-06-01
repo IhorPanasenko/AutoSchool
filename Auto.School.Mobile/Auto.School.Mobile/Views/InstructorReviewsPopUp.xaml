@@ -17,8 +17,24 @@
         <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
             <Label Text="{x:Static resx:AppResources.InstructorReviews_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
             <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
-
-            <Button HorizontalOptions="EndAndExpand" Margin="10" Text="{x:Static resx:AppResources.InstructorReviews_DeleteButton}" IsVisible="{Binding IsMyReviewExists}" Command="{Binding DeleteMyReviewCommand}" FontSize="Medium" BackgroundColor="Red" TextColor="#F5F5F5"/>
+            <Frame Margin="5" Padding="10" BackgroundColor="#3D6DFF" CornerRadius="10" IsVisible="{Binding IsMyReviewExists}">
+                <StackLayout Spacing="5">
+                    <Label Text="{x:Static resx:AppResources.InstructorReviews_MyReview}" HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="{x:Static resx:AppResources.InstructorReviews_ReviewLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                        <Label Text="{Binding MyReview.Review}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="{x:Static resx:AppResources.InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                        <Label Text="{Binding MyReview.Raiting, StringFormat='{0:F1}'}" FontSize="Medium" HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10">
+                        <Label Text="{x:Static resx:AppResources.InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand" Margin="3,0"/>
+                        <Label Text="{Binding MyReview.CreatedAt, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="2,0"/>
+                    </StackLayout>
+                    <Button HorizontalOptions="EndAndExpand" Margin="0,10" Text="{x:Static resx:AppResources.InstructorReviews_DeleteButton}" IsVisible="{Binding IsMyReviewExists}" Command="{Binding DeleteMyReviewCommand}" FontSize="Medium" BackgroundColor="Red" TextColor="#F5F5F5"/>
+                </StackLayout>
+            </Frame>
             <CollectionView ItemsSource="{Binding Reviews}" BackgroundColor="#7FB2FF">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -34,11 +50,11 @@
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Label Text="{x:Static resx:AppResources.InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
-                                    <Label Text="{Binding Rating, StringFormat='{0:F1}'}" FontSize="Medium" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Raiting, StringFormat='{0:F1}'}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
-                                <StackLayout HorizontalOptions="End" Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_DateCreatedlabel}" HorizontalOptions="StartAndExpand" FontSize="Small" VerticalOptions="CenterAndExpand" Margin="3,0"/>
-                                    <Label Text="{Binding CreatedAt, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Small" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Margin="2,0"/>
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10">
+                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding CreatedAt, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
