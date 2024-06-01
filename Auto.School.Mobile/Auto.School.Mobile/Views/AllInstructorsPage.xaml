@@ -10,11 +10,17 @@
             <Setter Property="BackgroundColor" Value="#F5F5F5" />
         </Style>
         <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        </Style>
+        <!--<Style TargetType="Label">
             <Setter Property="TextColor" Value="#333333" />
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        </Style>
+        </Style>-->
         <Style TargetType="Border">
             <Setter Property="Margin" Value="10,10,10,30" />
             <Setter Property="Padding" Value="5,5,5,15" />
@@ -22,14 +28,15 @@
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#3D6DFF" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontSize" Value="Medium"/>
         </Style>
 
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout>
-            <Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+            <!--<Label Text="{x:Static resx:AppResources.AllInstructors_Title}" FontSize="Header" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>-->
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
             <CollectionView ItemsSource="{Binding Instructors}" x:Name="AllInstructorsCollection">
                 <CollectionView.ItemTemplate >
