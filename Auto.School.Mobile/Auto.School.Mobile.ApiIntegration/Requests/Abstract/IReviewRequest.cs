@@ -9,5 +9,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Abstract
         public Task<GetInstructorReviewResponse> GetInstructorReview(string instructorId);
 
         public Task<BaseResponse> AddReview(AddReviewModel addReviewModel, string instructorId);
+
+        public Task<BaseResponse> DeleteReview(string instructorId, string reviewId);
     }
 }
