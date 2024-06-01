@@ -53,8 +53,10 @@ const Login = () => {
 
       if (redirectUrl) {
         console.log("dadada")
+        
+        //right redirectUrl: "http://localhost:5173/login?redirectUrl=timetable/payment/665afcd8f5f8eb22f8c3a039"
 
-        navigate(`${redirectUrl}`)
+        window.location.href = `${window.location.origin}/${redirectUrl}`;
       } else {
         navigate("/")
       }
