@@ -16,11 +16,13 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ISharedService _sharedService;
         private readonly IReviewService _reviewService;
+        private readonly IStudentService _studentService;
 
-        public InstructorReviewsViewMode(IReviewService reviewService, ISharedService sharedService)
+        public InstructorReviewsViewMode(IReviewService reviewService, ISharedService sharedService, IStudentService studentService)
         {
             _sharedService = sharedService;
-            _reviewService = reviewService;
+            _reviewService = reviewService; 
+            _studentService = studentService;
             _ = LoadReviews();
         }
 
@@ -36,6 +38,7 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
+            this.instructorId = instructorId;
             var response =await _reviewService.GetInstructorReviews(instructorId);
             if(string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
@@ -45,12 +48,15 @@ namespace Auto.School.Mobile.ViewModels
 
             if (isSignedUpToInstructor)
             {
-                string? userInfoJson = Preferences.Get("UserInfo", null);
-
-                if (!string.IsNullOrEmpty(userInfoJson))
+                var myInfo = await _studentService.GetInfoMe();
+                if (myInfo is not null)
                 {
-                    var userLoginInfo = JsonConvert.DeserializeObject<LoginResponseData>(userInfoJson);
-                    IsMyReviewExists = Reviews.Any(r => r.StudentId.Id == userLoginInfo?.UserData.Id);
+                    MyReview = Reviews.FirstOrDefault(r => r.StudentId.Id == myInfo.Data.Student.Id);
+                    if(MyReview is not null)
+                    {
+                        Reviews.Remove(MyReview);
+                        IsMyReviewExists = true;
+                    }
                 }  
             }
         }
@@ -62,6 +68,9 @@ namespace Auto.School.Mobile.ViewModels
         private List<ReviewModel> reviews;
 
         [ObservableProperty]
+        private ReviewModel? myReview;
+
+        [ObservableProperty]
         private bool isError;
 
         [ObservableProperty]
@@ -70,10 +79,20 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private bool isMyReviewExists;
 
+        private string instructorId;
+
         [RelayCommand]
-        public void DeleteMyReview()
+        public async Task DeleteMyReview()
         {
-            
+            if (MyReview is not null)
+            {
+                var response = await _reviewService.DeleteReview(instructorId, MyReview.Id);
+                if(string.Compare(response.Status, ResponseStatuses.Sucess) == 0)
+                {
+                    IsMyReviewExists = false;
+                    MyReview = null;
+                }
+            }
         }
     }
 }
