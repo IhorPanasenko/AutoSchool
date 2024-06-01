@@ -2,6 +2,8 @@ const AppError = require('../helpers/appError.js');
 const catchAsync = require('../helpers/catchAsync.js');
 const LessonModel = require('../models/lesson.js');
 const StudentModel = require('../models/student.js');
+const s3 = require('../config/s3Bucket.js');
+const { getPhotoUrl } = require('../helpers/s3Handlers.js');
 const {
   googleCalendar,
   oauth2Client,
@@ -17,6 +19,25 @@ exports.getInstructorSchedule = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: lessons,
+  });
+});
+
+exports.getLesson = catchAsync(async (req, res, next) => {
+  const lesson = await LessonModel.findById(req.params.lessonId).populate(
+    'instructorId',
+    'name surname photoURL'
+  );
+
+  lesson.instructorId.photoURL = await getPhotoUrl(
+    s3,
+    lesson.instructorId.photoURL
+  );
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      lesson,
+    },
   });
 });
 

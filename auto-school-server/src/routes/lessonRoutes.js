@@ -13,6 +13,13 @@ router.get(
 );
 
 router.get(
+  '/:lessonId',
+  authenticateJWT,
+  restrictTo('student'),
+  lessonController.getLesson
+);
+
+router.get(
   '/:lessonId/to-calendar',
   authenticateJWT,
   lessonController.addLessonToGoogleCalendar
