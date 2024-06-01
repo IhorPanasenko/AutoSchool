@@ -140,7 +140,10 @@ exports.cancelMyLesson = catchAsync(async (req, res, next) => {
       )
     );
 
-  // TODO: In corresponding Payment put lessonId = null
+  await PaymentModel.findOneAndUpdate(
+    { studentId: student._id, lessonId: lesson._id, status: 'success' },
+    { lessonId: null }
+  );
 
   lesson.student = undefined;
   lesson.isAvailable = true;
