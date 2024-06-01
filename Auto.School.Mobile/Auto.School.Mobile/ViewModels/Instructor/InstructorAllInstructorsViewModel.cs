@@ -3,19 +3,19 @@ using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Auth.Login;
 using Auto.School.Mobile.Service.Interfaces;
-using Auto.School.Mobile.Views;
+using Auto.School.Mobile.Views.Instructor;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.ComponentModel;
 
-namespace Auto.School.Mobile.ViewModels
+namespace Auto.School.Mobile.ViewModels.Instructor
 {
-    public partial class AllInstructorsViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class InstructorAllInstructorsViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
-        public AllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public InstructorAllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
@@ -34,21 +34,13 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
-            var userRole = Preferences.Get("UserRole", string.Empty);
+            var infoJson = Preferences.Get("UserInfo", null);
+            var info = JsonConvert.DeserializeObject<LoginResponseData>(infoJson!);
 
-            if (string.Compare(userRole, AppRoles.Instructor, true) == 0)
+            var me = response.Instructors.FirstOrDefault(i => i.UserId == info!.UserData.Id);
+            if (me is not null)
             {
-                var infoJson = Preferences.Get("UserInfo", null);
-                var info = JsonConvert.DeserializeObject<LoginResponseData>(infoJson!);
-
-                if (info is not null)
-                {
-                    var me = response.Instructors.FirstOrDefault(i => i.UserId == info.UserData.Id);
-                    if (me is not null)
-                    {
-                        response.Instructors.Remove(me);
-                    }
-                }
+                response.Instructors.Remove(me);
             }
 
             Instructors = response.Instructors;
@@ -78,12 +70,13 @@ namespace Auto.School.Mobile.ViewModels
                 }
 
                 _sharedService.Add("instructor", instructor);
-                await Shell.Current.GoToAsync(nameof(InstructorDetailsPage));
+                await Shell.Current.GoToAsync(nameof(InstructorInstructorDetailsPage));
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
         }
+
     }
 }

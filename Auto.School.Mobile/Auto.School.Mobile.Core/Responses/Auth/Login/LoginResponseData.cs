@@ -11,6 +11,9 @@ namespace Auto.School.Mobile.Core.Responses.Auth.Login
         [JsonProperty("userData")]
         public required UserDataModel UserData { get; set; }
 
+        [JsonProperty("instructor")]
+        public string? InstructorId { get; set; }
+
         [JsonProperty("tokenExpire")]
         public required DateTime? TokenExpirationTime { get; set; }
     }

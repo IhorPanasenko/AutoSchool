@@ -15,13 +15,15 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task SignOut()
         {
-            if(Preferences.ContainsKey(nameof(App.UserInfo)))
+            if (Preferences.ContainsKey(nameof(App.UserInfo)))
             {
-                Preferences.Remove(nameof(App.UserInfo));   
+                Preferences.Remove(nameof(App.UserInfo));
+                Preferences.Remove("UserRole");
             }
 
             await _authenticationService.Logout();
             await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
+            ((AppShell)Shell.Current).SetFlyoutItems();
         }
     }
 }

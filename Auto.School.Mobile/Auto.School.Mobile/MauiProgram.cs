@@ -14,6 +14,8 @@ using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
 using CommunityToolkit.Maui;
 using Auto.School.Mobile.Core.Models;
+using Auto.School.Mobile.Views.Instructor;
+using Auto.School.Mobile.ViewModels.Instructor;
 
 namespace Auto.School.Mobile
 {
@@ -22,7 +24,7 @@ namespace Auto.School.Mobile
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            
+
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
@@ -77,12 +79,16 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<AddReviewViewModel>();
             builder.Services.AddTransient<InstructorReviewsViewMode>();
             builder.Services.AddTransient<AddCarRatingViewModel>();
+            builder.Services.AddTransient<InstructorProfielViewModel>();
+            builder.Services.AddTransient<InstructorMyScheduleViewModel>();
+            builder.Services.AddTransient<InstructorStudentProfileViewModel>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
+            builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
+            builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<RegistrationPage>();
-            builder.Services.AddTransient<ContactPage>();
-            builder.Services.AddTransient<AboutPage>();
             builder.Services.AddTransient<AllInstructorsPage>();
             builder.Services.AddTransient<InstructorDetailsPage>();
             builder.Services.AddTransient<ForgotPasswordPage>();
@@ -97,6 +103,12 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<StudentAddInstructorReviewPopUp>();
             builder.Services.AddTransient<InstructorReviewsPopUp>();
             builder.Services.AddTransient<AddCarRatingPopUp>();
+            builder.Services.AddTransient<InstructorProfilePage>();
+            builder.Services.AddTransient<InstructorMySchedulePage>();
+            builder.Services.AddTransient<StudentProfilePage>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillPopUp>();
+            builder.Services.AddTransient<InstructorInstructorDetailsPage>();
+            builder.Services.AddTransient<InstructorAllInstructorsPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

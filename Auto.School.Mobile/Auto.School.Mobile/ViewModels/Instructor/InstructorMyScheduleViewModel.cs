@@ -1,34 +1,32 @@
 ﻿using Auto.School.Mobile.Abstract;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Extensions;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Views;
+using Auto.School.Mobile.Views.Instructor;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
-using Auto.School.Mobile.Core.Extensions;
-using Auto.School.Mobile.Views;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
-namespace Auto.School.Mobile.ViewModels
+namespace Auto.School.Mobile.ViewModels.Instructor
 {
-    public partial class InstructorScheduleStudentViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class InstructorMyScheduleViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IInstructorService _instructorService;
         private readonly IStudentService _studentService;
         private readonly ISharedService _sharedService;
-        private DateTime _currentWeekStart;
-        private readonly IPopupService _popupService;
+        private readonly ILessonService _lessonService;
 
-        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
+        public InstructorMyScheduleViewModel(IInstructorService instructorService, ISharedService sharedService, ILessonService lessonService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
             CloseAction = CloseActionMethod;
-            _currentWeekStart = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-            _popupService = popupService;
+            _lessonService = lessonService;
             _ = LoadLessons();
-            _ = LoadInstructor();
-            IsLoading = false;
+            IsLoading = false;   
         }
 
         [ObservableProperty]
@@ -45,28 +43,19 @@ namespace Auto.School.Mobile.ViewModels
 
         private async Task LoadLessons()
         {
-            var instructorId = _sharedService.GetValue<string>("InstructorId");
+            var responseMe = await _instructorService.GetInfoMe();
 
-            if (instructorId is null)
+            if (responseMe is null || string.Compare(responseMe.Status, ResponseStatuses.Fail, true) == 0)
             {
-                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
-                if (!string.IsNullOrEmpty(instructorIdJson))
-                {
-                    instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
-                    
-                }
-            }
-
-            if (instructorId is null)
-            {
-                IsLoading = false;
                 IsError = true;
-                ErrorMessage = AppErrorMessagesConstants.FailedLoadSchedule;
-                IsLoading = false;
+                ErrorMessage = AppErrorMessagesConstants.FailedToLoadInstuctor;
                 return;
             }
 
-            var response = await _instructorService.GetSchedule(instructorId);
+            IsError = false;
+            Instructor = responseMe.Instructor;
+
+            var response = await _instructorService.GetSchedule(Instructor.Id);
 
             if (string.Compare(response.Status, ResponseStatuses.Fail) == 0)
             {
@@ -83,30 +72,21 @@ namespace Auto.School.Mobile.ViewModels
             UpdateSelectedDayLessons();
         }
 
-        private async Task LoadInstructor()
+        private async Task UpdateLessons()
         {
-            var instructorId = _sharedService.GetValue<string>("InstructorId");
+            var response = await _instructorService.GetSchedule(Instructor.Id);
 
-            if (instructorId is null)
+            if (string.Compare(response.Status, ResponseStatuses.Fail) == 0)
             {
-                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
-                if (!string.IsNullOrEmpty(instructorIdJson))
-                {
-                    instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
-                }
-            }
-
-            var response = await _instructorService.GetOne(instructorId!);
-
-            if (response is null || string.Compare(response.Status, ResponseStatuses.Fail, true) == 0)
-            {
+                IsLoading = false;
                 IsError = true;
-                ErrorMessage = AppErrorMessagesConstants.FailedToLoadInstuctor;
+                ErrorMessage = AppErrorMessagesConstants.FailedLoadSchedule;
+                IsLoading = false;
                 return;
             }
 
-            IsError = false;
-            Instructor = response.Instructor;
+            Lessons = response.Lessons;
+            UpdateSelectedDayLessons();
         }
 
         [RelayCommand]
@@ -167,49 +147,22 @@ namespace Auto.School.Mobile.ViewModels
             SelectedDayLessons = Lessons.Where(l => l.Date == SelectedDay).OrderBy(l => TimeSpan.Parse(l.FromHour)).ToList();
         }
 
-
         [RelayCommand]
-        public async Task ViewDetailedInfo()
+        public async Task OpenStudentProfile(LessonModel lesson)
         {
-            try
-            {
-                if (Instructor == null)
-                {
-                    return;
-                }
-
-                _sharedService.Add("instructor", Instructor);
-                await Shell.Current.GoToAsync(nameof(InstructorDetailsPage));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            _sharedService.Add("StudentId", lesson.Student!.StudentId!);
+            await Shell.Current.GoToAsync($"/{nameof(StudentProfilePage)}");
         }
 
         [RelayCommand]
-        public async Task ShowLessonDetails(LessonModel lesson)
+        public async Task CancelLesson(LessonModel lesson)
         {
-            if (lesson == null)
+            var res = await _lessonService.InstructorCancelLesson(lesson.Id);
+
+            if(string.Compare(res.Status, ResponseStatuses.Sucess, true) == 0)
             {
-                return;
+                await UpdateLessons();
             }
-
-            _sharedService.Add("SignUpLesson", lesson);
-            await _popupService.ShowPopupAsync<SignUpToLessonPopUp>();
-            UpdateLessonsAfterSignUp();
-        }
-
-        private void UpdateLessonsAfterSignUp()
-        {
-            var updatedLesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
-
-            if (updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
-            {
-                return;
-            }
-
-            Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
         }
     }
 }

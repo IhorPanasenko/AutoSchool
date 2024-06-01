@@ -8,32 +8,22 @@ using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.ComponentModel;
 
-namespace Auto.School.Mobile.ViewModels
+namespace Auto.School.Mobile.ViewModels.Instructor
 {
-    public partial class InstructorDetailsViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class InstructorInstructorDetailsViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private readonly IStudentService _studentService;
         private readonly IPopupService _popupService;
 
-        public InstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService, IStudentService studentService, IPopupService popupService)
+        public InstructorInstructorDetailsViewModel(IInstructorService instructorService, ISharedService sharedService, IStudentService studentService, IPopupService popupService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
             _studentService = studentService;
             _popupService = popupService;
-            SetIsSignedUpToThisInstructor();
             _ = LoadInstructor();
-        }
-
-        private void SetIsSignedUpToThisInstructor()
-        {
-            string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
-            if (!string.IsNullOrEmpty(instructorIdJson))
-            {
-                myInstructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
-            }
         }
 
         private async Task LoadInstructor()
@@ -57,24 +47,11 @@ namespace Auto.School.Mobile.ViewModels
                 Instructor = sharedInstructor;
             }
 
-            IsSignedUpToThisInstructor = Instructor?.Id == myInstructorId;
             IsLoading = false;
         }
 
-        private string? myInstructorId = null;
-
         [ObservableProperty]
         private InstructorModel instructor;
-
-        [ObservableProperty]
-        private bool isSignedUpToThisInstructor = false;
-
-        public bool IsNotSignedUpToThisInstructor { get => !IsSignedUpToThisInstructor; private set { } }
-
-        partial void OnIsSignedUpToThisInstructorChanged(bool value)
-        {
-            OnPropertyChanged(nameof(IsNotSignedUpToThisInstructor));
-        }
 
         [ObservableProperty]
         private bool isLoading = true;
@@ -118,9 +95,7 @@ namespace Auto.School.Mobile.ViewModels
         public async Task ShowInstructorReviews()
         {
             _sharedService.Add("InstructorId", Instructor.Id);
-            _sharedService.Add("IsSignedUpToInstructor", (object)IsSignedUpToThisInstructor);
             await _popupService.ShowPopupAsync<InstructorReviewsPopUp>();
-
         }
 
         [RelayCommand]

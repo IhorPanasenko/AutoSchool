@@ -8,6 +8,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Views.Instructor;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -129,17 +130,41 @@ namespace Auto.School.Mobile.ViewModels
 
             if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
+                IsError = false;
                 if (Preferences.ContainsKey("UserInfo"))
                 {
                     Preferences.Remove("UserInfo");
                 }
 
                 Preferences.Set("UserInfo", JsonConvert.SerializeObject(response.LoginResponseData));
-                App.UserInfo = response.LoginResponseData!.UserData;
+                Preferences.Set("UserRole", response.LoginResponseData!.UserData.Role);
 
+                if (Preferences.ContainsKey("MyInstructorId"))
+                {
+                    Preferences.Remove("MyInstructorId");
+                }
+
+                if (response.LoginResponseData?.InstructorId is not null)
+                {
+                    Preferences.Set("MyInstructorId", JsonConvert.SerializeObject(response.LoginResponseData.InstructorId));
+                }
+
+                App.UserInfo = response.LoginResponseData!.UserData;
                 Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-                return;
+
+                var appShell = Shell.Current as AppShell;
+                appShell?.SetFlyoutItems();
+
+                if (string.Compare(response.LoginResponseData.UserData.Role, AppRoles.Instructor) == 0)
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(InstructorProfilePage)}");
+                    return;
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(StudentProfile)}");
+                    return;
+                }
             }
 
             IsError = true;

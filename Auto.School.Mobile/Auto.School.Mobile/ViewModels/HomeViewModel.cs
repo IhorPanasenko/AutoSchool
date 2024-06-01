@@ -14,7 +14,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToAllInstructors()
         {
-            await Shell.Current.GoToAsync($"/{nameof(AllInstructorsPage)}");
+            await Shell.Current.GoToAsync($"{nameof(AllInstructorsPage)}");
         }
 
     }

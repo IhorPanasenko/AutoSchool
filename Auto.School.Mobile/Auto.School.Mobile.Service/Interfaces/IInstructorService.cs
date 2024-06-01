@@ -11,5 +11,7 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<GetOneInstructorResponse> GetOne(string id);
 
         public Task<GetScheduleResponse> GetSchedule(string id);
+
+        public Task<GetOneInstructorResponse> GetInfoMe();
     }
 }

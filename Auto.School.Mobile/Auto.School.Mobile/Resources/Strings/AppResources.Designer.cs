@@ -205,6 +205,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return.
+        /// </summary>
+        internal static string DrivingSkills_CloseButton {
+            get {
+                return ResourceManager.GetString("DrivingSkills.CloseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
         internal static string DrivingSkills_Completed {
@@ -363,6 +372,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string InstructorDetails_AverageRating {
             get {
                 return ResourceManager.GetString("InstructorDetails.AverageRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Car rating.
+        /// </summary>
+        internal static string InstructorDetails_AverageRatingCar {
+            get {
+                return ResourceManager.GetString("InstructorDetails.AverageRatingCar", resourceCulture);
             }
         }
         
@@ -619,6 +637,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel lesson.
+        /// </summary>
+        internal static string MySchedule_CancelLesson {
+            get {
+                return ResourceManager.GetString("MySchedule.CancelLesson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signed up student:.
+        /// </summary>
+        internal static string MySchedule_SignedUpStudent {
+            get {
+                return ResourceManager.GetString("MySchedule.SignedUpStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open student profile.
+        /// </summary>
+        internal static string MySchedule_ViewStudentProfile {
+            get {
+                return ResourceManager.GetString("MySchedule.ViewStudentProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New User?.
         /// </summary>
         internal static string NewUser {
@@ -777,6 +822,60 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string SelectCity {
             get {
                 return ResourceManager.GetString("SelectCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All instructors.
+        /// </summary>
+        internal static string Shell_AllInstructors {
+            get {
+                return ResourceManager.GetString("Shell.AllInstructors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My instructor.
+        /// </summary>
+        internal static string Shell_MyInstructor {
+            get {
+                return ResourceManager.GetString("Shell.MyInstructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My lessons.
+        /// </summary>
+        internal static string Shell_MyLessons {
+            get {
+                return ResourceManager.GetString("Shell.MyLessons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My schedule.
+        /// </summary>
+        internal static string Shell_MyScheduleInstructor {
+            get {
+                return ResourceManager.GetString("Shell.MyScheduleInstructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule.
+        /// </summary>
+        internal static string Shell_MyScheduleStudent {
+            get {
+                return ResourceManager.GetString("Shell.MyScheduleStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My profile.
+        /// </summary>
+        internal static string Shell_Profile {
+            get {
+                return ResourceManager.GetString("Shell.Profile", resourceCulture);
             }
         }
         

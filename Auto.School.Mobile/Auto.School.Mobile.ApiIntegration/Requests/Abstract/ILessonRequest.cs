@@ -11,5 +11,7 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Abstract
         public Task<StudentGetMyLessonsResponse> StudentGetMyLessons();
 
         public Task<BaseResponse> CancelMyLesson(string lessonId);
+
+        public Task<BaseResponse> InstructorCancelLesson(string lessonId);
     }
 }
