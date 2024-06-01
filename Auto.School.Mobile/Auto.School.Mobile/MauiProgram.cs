@@ -81,6 +81,8 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<AddCarRatingViewModel>();
             builder.Services.AddTransient<InstructorProfielViewModel>();
             builder.Services.AddTransient<InstructorMyScheduleViewModel>();
+            builder.Services.AddTransient<InstructorStudentProfileViewModel>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -101,6 +103,8 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<AddCarRatingPopUp>();
             builder.Services.AddTransient<InstructorProfilePage>();
             builder.Services.AddTransient<InstructorMySchedulePage>();
+            builder.Services.AddTransient<StudentProfilePage>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillPopUp>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

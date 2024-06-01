@@ -28,8 +28,11 @@ namespace Auto.School.Mobile.Core.Models
         [JsonIgnore]
         public bool IsNotAvailable { get => !IsAvailable; }
 
+        [JsonIgnore]
+        public bool IsStudentSigned { get => Student is not null; }
+
         [JsonProperty("student")]
-        public StudentModel? Student { get; set; }
+        public StudentInLessonModel? Student { get; set; }
 
         [JsonIgnore]
         public string DayOfWeek

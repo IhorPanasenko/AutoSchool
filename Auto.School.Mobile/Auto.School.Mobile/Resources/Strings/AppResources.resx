@@ -165,6 +165,9 @@
   <data name="BirthdayDate" xml:space="preserve">
     <value>Date of birth</value>
   </data>
+  <data name="DrivingSkills.CloseButton" xml:space="preserve">
+    <value>Return</value>
+  </data>
   <data name="DrivingSkills.Completed" xml:space="preserve">
     <value>Completed</value>
   </data>

@@ -205,6 +205,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return.
+        /// </summary>
+        internal static string DrivingSkills_CloseButton {
+            get {
+                return ResourceManager.GetString("DrivingSkills.CloseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
         internal static string DrivingSkills_Completed {

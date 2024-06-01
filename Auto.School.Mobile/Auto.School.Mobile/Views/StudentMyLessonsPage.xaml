@@ -29,82 +29,103 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F5F5F5">
-            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
-            <Border IsVisible="{Binding IsNotLoading}">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="40,0,0,40" />
-                </Border.StrokeShape>
-                <ScrollView>
-                    <StackLayout Margin="0, 0, 0, 10">
-                        <Label Text="{x:Static resx:AppResources.StudentMyLessons_FutureLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding NotHasFutureLessons}">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20" />
-                            </Border.StrokeShape>
-                            <StackLayout Spacing="3" Margin="10,5">
-                                <Label Text="{x:Static resx:AppResources.StudentMyLessons_NoFutureLabel}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-                                <Label Text="{x:Static resx:AppResources.StudentMyLessons_SignUp}" LineBreakMode="WordWrap"/>
-                                <Button Text="{x:Static resx:AppResources.GoToSchedule}" IsVisible="{Binding NotHasFutureLessons}" Command="{Binding GoToScheduleCommand}" FontSize="Medium"/>
-                            </StackLayout>
-                        </Border>
-                        <CollectionView ItemsSource="{Binding FutureLessons}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="20" />
-                                        </Border.StrokeShape>
-                                        <StackLayout Padding="5" Orientation="Vertical">
-                                            <Label Text="{Binding Date}" />
-                                            <Label Text="{Binding FromHour}" />
-                                            <Label Text="{Binding ToHour}" />
-                                            <Button Text="Cancel Lesson"
+        <ScrollView BackgroundColor="#F5F5F5">
+            <StackLayout>
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+                <Border IsVisible="{Binding IsNotLoading}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="40,0,0,40" />
+                    </Border.StrokeShape>
+                    <ScrollView>
+                        <StackLayout Margin="0, 0, 0, 10">
+                            <Label Text="{x:Static resx:AppResources.StudentMyLessons_FutureLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                            <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding NotHasFutureLessons}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <StackLayout Spacing="3" Margin="10,5">
+                                    <Label Text="{x:Static resx:AppResources.StudentMyLessons_NoFutureLabel}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{x:Static resx:AppResources.StudentMyLessons_SignUp}" LineBreakMode="WordWrap"/>
+                                    <Button Text="{x:Static resx:AppResources.GoToSchedule}" IsVisible="{Binding NotHasFutureLessons}" Command="{Binding GoToScheduleCommand}" FontSize="Medium"/>
+                                </StackLayout>
+                            </Border>
+                            <CollectionView ItemsSource="{Binding FutureLessons}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="20" />
+                                            </Border.StrokeShape>
+                                            <StackLayout Padding="5" Orientation="Vertical">
+                                                <StackLayout Padding="5" Orientation="Vertical">
+                                                    <StackLayout Orientation="Horizontal" Spacing="20" >
+                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
+                                                        <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Spacing="20" >
+                                                        <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="EndAndExpand">
+                                                            <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="StartAndExpand">
+                                                            <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
+                                                            <Label Text="--" HorizontalOptions="Center"/>
+                                                            <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Spacing="20">
+                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
+                                                        <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="20">
+                                                <Button Text="Cancel Lesson"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}"
                                         CommandParameter="{Binding .}" />
-                                            <Button Text="Add to Google Calendar"
+                                                <Button Text="Add to Google Calendar"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddToGoogleCalendarCommand}"
                                         CommandParameter="{Binding .}" />
-                                        </StackLayout>
-                                    </Border>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                        <Label Text="{x:Static resx:AppResources.StudentMyLessons_PassedLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-                        <CollectionView ItemsSource="{Binding PassedLessons}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="20" />
-                                        </Border.StrokeShape>
-                                        <StackLayout Padding="5" Orientation="Vertical">
-                                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                                <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
-                                                <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" HorizontalOptions="StartAndExpand"/>
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="20" >
-                                                <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="EndAndExpand">
-                                                    <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
+                                            </StackLayout>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label Text="{x:Static resx:AppResources.StudentMyLessons_PassedLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                            <CollectionView ItemsSource="{Binding PassedLessons}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="20" />
+                                            </Border.StrokeShape>
+                                            <StackLayout Padding="5" Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                                    <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
+                                                    <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="StartAndExpand">
-                                                    <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
-                                                    <Label Text="--" HorizontalOptions="Center"/>
-                                                    <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="20" >
+                                                    <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="EndAndExpand">
+                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="StartAndExpand">
+                                                        <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
+                                                        <Label Text="--" HorizontalOptions="Center"/>
+                                                        <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                                    <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
+                                                    <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                                <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
-                                                <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </Border>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </ScrollView>
-            </Border>
-        </StackLayout>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </ScrollView>
+                </Border>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

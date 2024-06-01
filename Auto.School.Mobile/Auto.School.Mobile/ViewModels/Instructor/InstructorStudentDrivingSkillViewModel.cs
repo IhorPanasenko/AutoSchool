@@ -7,19 +7,21 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
-namespace Auto.School.Mobile.ViewModels
+namespace Auto.School.Mobile.ViewModels.Instructor
 {
-    public partial class StudentDrivingSkilllsViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class InstructorStudentDrivingSkillViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly ISharedService _sharedService;
         private readonly IStudentService _studentService;
+        private readonly IPopupService _popupService;
 
-        public StudentDrivingSkilllsViewModel(ISharedService sharedService, IStudentService studentService)
+        public InstructorStudentDrivingSkillViewModel(ISharedService sharedService, IStudentService studentService, IPopupService popupService)
         {
             _sharedService = sharedService;
             _studentService = studentService;
+            _popupService = popupService;
             GetInfo();
-            
+
         }
 
         [ObservableProperty]
@@ -41,7 +43,7 @@ namespace Auto.School.Mobile.ViewModels
         {
             var skills = _sharedService.GetValue<List<DrivingSkillModel>>("DrivingSkills");
 
-            if(skills is  null) 
+            if (skills is null)
             {
                 IsError = true;
                 ErrorMessage = AppErrorMessagesConstants.FailedToLoadDrivingSkills;
@@ -55,34 +57,8 @@ namespace Auto.School.Mobile.ViewModels
         {
             DrivingSkills = DrivingSkills
                 .OrderBy(s => s.TypeEN)
-                .ThenBy(s => s.SubtypeEN) 
+                .ThenBy(s => s.SubtypeEN)
                 .ToList();
-        }
-
-        [RelayCommand]
-        public async Task CompleteSkill(DrivingSkillModel skill)
-        {
-            if (skill == null || skill.Completed)
-            {
-                return;
-            }
-            DrivingSkills.FirstOrDefault(ds => ds.Id == skill.Id)!.Completed = true;
-            DrivingSkills.FirstOrDefault(ds => ds.Id == skill.Id)!.DateCompleted = DateTime.Now.Date;
-            var result = await _studentService.UpdateDrivingSkills(DrivingSkills);
-
-            if (string.Compare(result.Status, ResponseStatuses.Sucess, true) == 0)
-            {
-                if (result.Data?.DrivingSkills is not null)
-                {
-                    DrivingSkills = result.Data.DrivingSkills;
-                    OrderDrivingSkills();
-                }
-            }
-            else
-            {
-                IsError = true;
-                ErrorMessage = AppErrorMessagesConstants.FailedToUpdateSkill;
-            }
         }
 
         [RelayCommand]

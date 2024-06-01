@@ -1,4 +1,5 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Base;
 using Auto.School.Mobile.Core.Responses.Student.ConnectWithInstructor;
@@ -22,6 +23,24 @@ namespace Auto.School.Mobile.Service.Services
         public async Task<GetInfoMeResponse> GetInfoMe()
         {
             var response = await _studentRequest.GetInfoMe();
+
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                response.Data.Student.Email = response.Data.Email;
+            }
+
+            return response;
+        }
+
+        public async Task<GetInfoMeResponse> GetOne(string studentId)
+        {
+            var response = await _studentRequest.GetOne(studentId);
+
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                response.Data.Student.Email = response.Data.Email;
+            }
+
             return response;
         }
 

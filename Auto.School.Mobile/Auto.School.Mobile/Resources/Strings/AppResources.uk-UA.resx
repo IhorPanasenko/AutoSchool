@@ -165,6 +165,9 @@
   <data name="BirthdayDate" xml:space="preserve">
     <value>Дата народження</value>
   </data>
+  <data name="DrivingSkills.CloseButton" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="DrivingSkills.Completed" xml:space="preserve">
     <value>Вивчено</value>
   </data>

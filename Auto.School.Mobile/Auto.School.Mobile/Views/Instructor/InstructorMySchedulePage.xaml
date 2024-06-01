@@ -123,11 +123,15 @@
                                             <Label Text="--" HorizontalOptions="Center"/>
                                             <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal" Spacing="5" IsVisible="{Binding IsNotAvailable}">
-                                            <Label Text="{x:Static resx:AppResources.MySchedule_SignedUpStudent}" HorizontalOptions="Start" FontSize="Medium"/>
-                                            <Label Text="{Binding Student.FullName}" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                        <StackLayout IsVisible="{Binding IsNotAvailable}">
+                                            <StackLayout Orientation="Horizontal" Spacing="5" IsVisible="{Binding IsStudentSigned}">
+                                                <Label Text="{x:Static resx:AppResources.MySchedule_SignedUpStudent}" HorizontalOptions="Start" FontSize="Medium"/>
+                                                <Label Text="{Binding Student.FullName}" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                            </StackLayout>
                                         </StackLayout>
-                                        <Button MinimumWidthRequest="150" Text="{x:Static resx:AppResources.MySchedule_ViewStudentProfile}" TextColor="#f4e558" BackgroundColor="#7FB2FF" FontSize="Small" IsVisible="{Binding IsNotAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenStudentProfileCommand}" CommandParameter="{Binding .}"/>
+                                        <StackLayout IsVisible="{Binding IsNotAvailable}">
+                                            <Button MinimumWidthRequest="150" Text="{x:Static resx:AppResources.MySchedule_ViewStudentProfile}" TextColor="#f4e558" BackgroundColor="#7FB2FF" FontSize="Small" IsVisible="{Binding IsStudentSigned}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenStudentProfileCommand}" CommandParameter="{Binding .}"/>
+                                        </StackLayout>
                                         <Button MinimumWidthRequest="150" Text="{x:Static resx:AppResources.MySchedule_CancelLesson}" TextColor="#f4e558" BackgroundColor="#333333" FontSize="Small" IsVisible="{Binding IsAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}" CommandParameter="{Binding .}"/>
                                         <Label Text="{x:Static resx:AppResources.Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>

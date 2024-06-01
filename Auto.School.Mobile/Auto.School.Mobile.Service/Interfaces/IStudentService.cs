@@ -14,5 +14,6 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<BaseResponse> UpdateProfileImage(Stream imageStream);
         public Task<UpdateMeResponse> UpdateMe(UpdateUserMeModel updateMeModel);
         public Task<UpdateDrivingSkillsResponse> UpdateDrivingSkills(List<DrivingSkillModel> drivingSkillsModel);
+        public Task<GetInfoMeResponse> GetOne(string studentId);
     };
 }
