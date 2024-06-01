@@ -1,16 +1,10 @@
-// import Featured from "../../components/featured/Featured"
-// import Footer from "../../components/footer/Footer"
-// import Header from "../../components/header/Header"
-// import MailList from "../../components/mailList/MailList"
-// import Navbar from "../../components/navbar/Navbar"
-// import Car from "../../assets/loginCar.svg"
 import axios from "axios"
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/authContext"
 import { useTranslation } from "react-i18next"
 import CarImg from "../../assets/loginBackgr.png"
-
+import { useLocation } from "react-router-dom"
 import styles from "./login.module.scss"
 import { Link } from "react-router-dom"
 
@@ -23,6 +17,18 @@ const Login = () => {
   const { user, loading, error, dispatch } = useContext(AuthContext)
 
   const navigate = useNavigate()
+
+  const location = useLocation()
+
+  // Function to parse query parameters
+  const getQueryParams = query => {
+    return new URLSearchParams(query)
+  }
+
+  // Extract the redirectUrl from the query parameters
+  const queryParams = getQueryParams(location.search)
+  const redirectUrl = queryParams.get("redirectUrl")
+  console.log(redirectUrl)
 
   const handleChange = e => {
     setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }))
@@ -45,7 +51,13 @@ const Login = () => {
 
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data })
 
-      navigate("/")
+      if (redirectUrl) {
+        console.log("dadada")
+
+        navigate(`${redirectUrl}`)
+      } else {
+        navigate("/")
+      }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
       console.log(err)

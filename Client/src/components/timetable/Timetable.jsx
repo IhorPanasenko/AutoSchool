@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar"
 import useFetch from "../../hooks/useFetch"
 import styles from "./timetable.module.scss"
+import LessonsList from "./lessons/Lessons"
 
 const TimetableUser = () => {
   const today = dayjs() // Get current date
@@ -74,13 +75,13 @@ const TimetableUser = () => {
             renderDay={(day, _, DayProps) => (
               <div
                 {...DayProps}
-                style={{
-                  backgroundColor: "lightblue",
-                  borderRadius: "50%",
-                  padding: "10px",
-                  margin: "2px",
-                  textAlign: "center"
-                }}
+                // style={{
+                //   backgroundColor: "lightblue",
+                //   borderRadius: "50%",
+                //   padding: "10px",
+                //   margin: "2px",
+                //   textAlign: "center"
+                // }}
               >
                 {day.format("DD")}
               </div>
@@ -88,22 +89,23 @@ const TimetableUser = () => {
           />
         </LocalizationProvider>
       </div>
-      <div>
-        <h2>Lessons</h2>
+      <div className={styles.lessons}>
+        <h2>Choose lesson to book</h2>
         {filteredLessons.length === 0 ? (
           <p>No lessons available</p>
         ) : (
-          <ul>
-            {filteredLessons.map(lesson => (
-              <li
-                key={lesson._id}
-                style={{ color: lesson.student ? "red" : "black" }}
-              >
-                {lesson.name} - {dayjs(lesson.date).format("MMMM D, YYYY")} -{" "}
-                {lesson.fromHour}
-              </li>
-            ))}
-          </ul>
+          <LessonsList filteredLessons={filteredLessons} />
+          // <ul>
+          //   {filteredLessons.map(lesson => (
+          //     <li
+          //       key={lesson._id}
+          //       style={{ color: lesson.student ? "red" : "black" }}
+          //     >
+          //       {lesson.name} - {dayjs(lesson.date).format("MMMM D, YYYY")} -{" "}
+          //       {lesson.fromHour} - {lesson.toHour}
+          //     </li>
+          //   ))}
+          // </ul>
         )}
       </div>
     </div>

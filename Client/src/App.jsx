@@ -9,8 +9,8 @@ import Register from "./pages/register/Register"
 import EmailConfirmation from "./pages/emailConfirmation/emailConfirmation"
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword"
 import ResetPassword from "./pages/resetPassword/ResetPassword"
-import PaymentButton from "./components/payment/Payment"
 import Timetable from "./pages/timetable/Timetable"
+import Payment from "./pages/payment/Payment"
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
       <Route path="/confirmEmail/:userId" element={<EmailConfirmation />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/resetPassword/:token" element={<ResetPassword />} />
-      <Route path="/payButton" element={<PaymentButton />} />
+      <Route path="/timetable/payment/:chosenLessonId" element={<Payment />} />
       {/* <Route path="/warehouses" element={<List />} />
         <Route path="/warehouses/:id" element={<Warehouse />} />
         <Route path="/login" element={<Login />} />

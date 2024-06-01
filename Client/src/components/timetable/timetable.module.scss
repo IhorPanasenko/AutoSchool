@@ -1,11 +1,17 @@
+@import "../../styles/index.scss";
+
 .calendarContainer {
-  margin-top: 200px;
+  margin-top: 160px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 5%;
   //   background-color: green;
 }
 .calendarLocalizationProvider {
   width: 30%;
+}
+.lessons {
+  width: 40%;
 }
 .css-1rtg91x-MuiDateCalendar-root {
   margin: 5px;
@@ -16,7 +22,9 @@
 // .calendarLocalizationProvider {
 //   width: 100%;
 // }
-
+h2 {
+  @include fontSize("Roboto", 500, $dark-blue, 24px, 26px);
+}
 .calendarDay {
   display: flex;
   align-items: center;

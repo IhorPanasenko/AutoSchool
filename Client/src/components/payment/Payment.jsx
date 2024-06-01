@@ -1,16 +1,41 @@
 import styles from "./payment.module.scss"
 import CryptoJS from "crypto-js"
-import axios from "axios"
 import useFetch from "../../hooks/useFetch.js"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import LessonInPayment from "./lessonInPayment/LessonInPayment"
 
 const PaymentButton = () => {
-  const amount = 700
+  const { chosenLessonId } = useParams()
+  console.log("chosenLessonId", chosenLessonId)
   const order_id = Date.now() // can be lessonId + studentId, should be unique
   const description = "Sign up for a lesson"
-  const lessonId = "6633f318656b487f06489aea"
+  const lessonId = `${chosenLessonId}`
+  const [lesson, setLesson] = useState(null)
+  const [amount, setAmount] = useState(null)
 
   const { patchData, postData } = useFetch()
+  const { data: lessonData, error: lessonError } = useFetch(
+    `http://localhost:3000/api/lessons/${chosenLessonId}`
+  )
 
+  useEffect(() => {
+    if (lessonData) {
+      const lessonExist = lessonData.data?.lesson
+      if (lessonExist) {
+        setLesson(lessonData.data.lesson)
+        setAmount(lessonExist.price)
+        console.log("Lesson :", lessonData)
+      }
+    }
+  }, [lessonData])
+
+  if (lessonError) {
+    return <div>Error loading lessons: {lessonError}</div>
+  }
+  if (!lesson) {
+    return <div>Loading lesson data...</div>
+  }
   const generateData = (orderId, amount, description) => {
     const json = JSON.stringify({
       version: 3,
@@ -34,7 +59,7 @@ const PaymentButton = () => {
         {}
       )
 
-      //console.log(res);
+      console.log(res)
     } catch (err) {
       console.log(err)
     }
@@ -48,7 +73,7 @@ const PaymentButton = () => {
         requestData
       )
 
-      //console.log(res);
+      console.log(res)
     } catch (err) {
       console.log(err)
     }
@@ -74,10 +99,24 @@ const PaymentButton = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div id="#liqpay_checkout"></div>
-      <button className={styles.payment_button} onClick={handleClick}>
-        Pay
-      </button>
+      {lesson.isAvailable ? (
+        <>
+          <div className={styles.lesson}>
+            {lesson && <LessonInPayment lesson={lesson} />}
+          </div>
+          <div className={styles.btn}>
+            <div id="#liqpay_checkout"></div>
+            <button className={styles.payment_button} onClick={handleClick}>
+              Pay
+            </button>
+          </div>
+        </>
+      ) : (
+        <h2 className={styles.title}>
+          Обране заняття вже заброньовано, поверніться на календар та оберіть
+          інше заняття
+        </h2>
+      )}
     </div>
   )
 }
@@ -89,7 +128,6 @@ const sha1Base64 = str => {
 }
 
 const processLiqPayPayment = (data, signature, successCb, errorCb, cb) => {
-  console.log("processLiqPayPayment called")
   ;(window.LiqPayCheckoutCallback = function() {
     LiqPayCheckout.init({
       data: data,
