@@ -8,6 +8,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Views.Instructor;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -135,11 +136,32 @@ namespace Auto.School.Mobile.ViewModels
                 }
 
                 Preferences.Set("UserInfo", JsonConvert.SerializeObject(response.LoginResponseData));
+
+
+                if (response.LoginResponseData?.InstructorId is not null)
+                {
+                    if (Preferences.ContainsKey("InstructorId"))
+                    {
+                        Preferences.Remove("instructorId");
+                    }
+
+                    Preferences.Set("InstructorId", JsonConvert.SerializeObject(response.LoginResponseData.InstructorId));
+                }
+
                 App.UserInfo = response.LoginResponseData!.UserData;
 
                 Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-                return;
+
+                if (string.Compare(response.LoginResponseData.UserData.Role, AppRoles.Instructor) == 0)
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(InstructorProfilePage)}");
+                    return;
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                    return;
+                }
             }
 
             IsError = true;
