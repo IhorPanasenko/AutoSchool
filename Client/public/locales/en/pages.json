@@ -8,7 +8,22 @@
     "linkcontacts": "Contacts",
     "linkinstructors": "Instructors",
     "linklessons": "Lessons",
-    "linkreviews": "Reviews"
+    "linkreviews": "Reviews",
+    "linktimetable": "Timetable"
+  },
+  "profile": {
+    "vehicleCategory": "Vehicle Category",
+    "city": "City",
+    "dateOfBirth": "Date Of Birth",
+    "phone": "Phone",
+    "edit": "Edit"
+  },
+  "emailConfirmation": {
+    "verifyEmailButton": "Verify email",
+    "title": "Email confirmation",
+    "redirecting": "Email confirmed. Redirecting to login page...",
+    "confirming": "Confirming your email. This may take a few minutes",
+    "error": "Error confirming email. Please try again later."
   },
   "header": {
     "headerTitle": "Need Warehouse Space? Look No Further!",
@@ -56,5 +71,24 @@
     "btn": "Check warehouse Now!",
     "p": "Warehouse has already booked by another user",
     "pp": "Please select another dates"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password?",
+    "invalidEmail": "Please enter a valid email address.",
+    "successMessage": "We have sent an email with the reset link. Please check you inbox",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "emailLabel": "Enter your email",
+    "submitButton": "Reset Password"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "passwordMismatch": "Passwords do not match.",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "newPasswordLabel": "Enter New Password",
+    "repeatPasswordLabel": "Repeat Password",
+    "submitButton": "Submit"
+  },
+  "login": {
+    "forgotPassword": "Forgot password?"
   }
 }

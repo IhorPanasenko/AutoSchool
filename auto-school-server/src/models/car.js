@@ -2,50 +2,57 @@ const mongoose = require('mongoose');
 const s3 = require('../config/s3Bucket.js');
 const { deletePhotoFromS3 } = require('../helpers/s3Handlers');
 
-const carSchema = new mongoose.Schema({
-  model: {
-    type: String,
-    required: [true, 'Car model is required'],
-  },
-  year: {
-    type: Number,
-    required: [true, 'Car year is required'],
-    validate: {
-      validator: function (value) {
-        const currentYear = new Date().getFullYear();
-        return (value) => 1980 && value <= currentYear;
-      },
-      message: (props) =>
-        `${props.value} is not a valid car year. Must be gte than 1980 and lte to current year`,
+const carSchema = new mongoose.Schema(
+  {
+    model: {
+      type: String,
+      required: [true, 'Car model is required'],
     },
-  },
-  transmission: {
-    type: String,
-    enum: ['manual', 'automatic'],
-    default: 'manual',
-  },
-  photoURL: {
-    type: String,
-    default: 'default-car.jpg',
-  },
-  ratings: [
-    {
-      studentId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'students',
-        required: true,
-      },
-      rating: {
-        type: Number,
-        required: true,
-        min: [1, 'Rating must be above 1.0'],
-        max: [5, 'Rating must be below 5.0'],
+    year: {
+      type: Number,
+      required: [true, 'Car year is required'],
+      validate: {
+        validator: function (value) {
+          const currentYear = new Date().getFullYear();
+          return (value) => 1980 && value <= currentYear;
+        },
+        message: (props) =>
+          `${props.value} is not a valid car year. Must be gte than 1980 and lte to current year`,
       },
     },
-  ],
-});
+    transmission: {
+      type: String,
+      enum: ['manual', 'automatic'],
+      default: 'manual',
+    },
+    photoURL: {
+      type: String,
+      default: 'default-car.jpg',
+    },
+    ratings: [
+      {
+        studentId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'students',
+          required: true,
+        },
+        rating: {
+          type: Number,
+          required: true,
+          min: [1, 'Rating must be above 1.0'],
+          max: [5, 'Rating must be below 5.0'],
+        },
+      },
+    ],
+  },
+  {
+    toJSON: { virtuals: true },
+  }
+);
 
 carSchema.virtual('averageRating').get(function () {
+  if (!this.ratings) return undefined;
+
   if (this.ratings.length === 0) return 0;
 
   const totalRating = this.ratings.reduce((acc, curr) => acc + curr.rating, 0);
@@ -53,6 +60,8 @@ carSchema.virtual('averageRating').get(function () {
 });
 
 carSchema.virtual('totalRatings').get(function () {
+  if (!this.ratings) return undefined;
+
   return this.ratings.length;
 });
 

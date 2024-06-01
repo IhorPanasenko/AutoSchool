@@ -4,6 +4,18 @@ using Microsoft.Extensions.Logging;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Service.Services;
 using Auto.School.Mobile.Shared.Alerts;
+using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Services;
+using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
+using Auto.School.Mobile.ApiIntegration.Servicecs.Implementation;
+using Auto.School.Mobile.ApiIntegration.Base.Abstract;
+using Auto.School.Mobile.ApiIntegration.Base.Implementation;
+using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
+using CommunityToolkit.Maui;
+using Auto.School.Mobile.Core.Models;
+using Auto.School.Mobile.Views.Instructor;
+using Auto.School.Mobile.ViewModels.Instructor;
 
 namespace Auto.School.Mobile
 {
@@ -12,36 +24,93 @@ namespace Auto.School.Mobile
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            
+
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<IHttpClientService, HttpClientService>();
+            builder.Services.AddTransient<IGetRequest, GetRequest>();
+            builder.Services.AddTransient<IPostRequest, PostRequest>();
+            builder.Services.AddTransient<IPatchRequest, PatchRequest>();
+            builder.Services.AddTransient<IDeleteRequest, DeleteRequest>();
+            builder.Services.AddSingleton<ITokenExpirationService, TokenExpirationService>();
 
-            builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<RegistrationPage>();
-            builder.Services.AddSingleton<ContactPage>();
-            builder.Services.AddSingleton<AboutPage>();
-            builder.Services.AddSingleton<AllInstructorsPage>();
-
-            builder.Services.AddSingleton<ErrorAlertView>();
-
-            builder.Services.AddSingleton<LoginViewModel>();
-            builder.Services.AddSingleton<RegistrationViewModel>();
-            builder.Services.AddSingleton<HomeViewModel>();
-            builder.Services.AddSingleton<AllInstructorsViewModel>();
+            builder.Services.AddTransient<IAuthenticationRequest, AuthenticationRequests>();
+            builder.Services.AddTransient<ICityRequest, CityRequests>();
+            builder.Services.AddTransient<IInstructorRequest, InstructorRequests>();
+            builder.Services.AddTransient<IStudentRequest, StudentRequests>();
+            builder.Services.AddTransient<ILessonRequest, LessonRequest>();
+            builder.Services.AddTransient<IReviewRequest, ReviewRequest>();
+            builder.Services.AddTransient<ICarRequest, CarRequeset>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
-            builder.Services.AddTransient<ICityService, CityService>();   
+            builder.Services.AddTransient<ICityService, CityService>();
             builder.Services.AddTransient<IInstructorService, InstructorService>();
+            builder.Services.AddSingleton<ISharedService, SharedService>();
+            builder.Services.AddTransient<IStudentService, StudentService>();
+            builder.Services.AddSingleton<IPopupService, Services.PopupService>();
+            builder.Services.AddTransient<ICultureService, CultureService>();
+            builder.Services.AddScoped<ILessonService, LessonService>();
+            builder.Services.AddScoped<IReviewService, ReviewService>();
+            builder.Services.AddTransient<ICarService, CarService>();
 
+            builder.Services.AddTransient<ErrorAlertView>();
+
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<RegistrationViewModel>();
+            builder.Services.AddTransient<HomeViewModel>();
+            builder.Services.AddTransient<AllInstructorsViewModel>();
+            builder.Services.AddTransient<InstructorDetailsViewModel>();
+            builder.Services.AddTransient<ForgotPasswordViewModel>();
+            builder.Services.AddSingleton<AppShellViewModel>();
+            builder.Services.AddTransient<StudentProfileViewModel>();
+            builder.Services.AddTransient<UpdatePasswordViewModel>();
+            builder.Services.AddTransient<UpdateStudentInfoViewModel>();
+            builder.Services.AddTransient<InstructorScheduleStudentViewModel>();
+            builder.Services.AddTransient<SignUpToLessonViewModel>();
+            builder.Services.AddTransient<StudentMyLessonsViewModel>();
+            builder.Services.AddTransient<StudentDrivingSkilllsViewModel>();
+            builder.Services.AddTransient<AddReviewViewModel>();
+            builder.Services.AddTransient<InstructorReviewsViewMode>();
+            builder.Services.AddTransient<AddCarRatingViewModel>();
+            builder.Services.AddTransient<InstructorProfielViewModel>();
+            builder.Services.AddTransient<InstructorMyScheduleViewModel>();
+            builder.Services.AddTransient<InstructorStudentProfileViewModel>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
+            builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
+            builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
+
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<RegistrationPage>();
+            builder.Services.AddTransient<AllInstructorsPage>();
+            builder.Services.AddTransient<InstructorDetailsPage>();
+            builder.Services.AddTransient<ForgotPasswordPage>();
+            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddTransient<StudentProfile>();
+            builder.Services.AddTransient<UpdatePasswordPopUp>();
+            builder.Services.AddTransient<UpdateStudentInfoPopUp>();
+            builder.Services.AddTransient<InstructorScheduleStudentPage>();
+            builder.Services.AddTransient<SignUpToLessonPopUp>();
+            builder.Services.AddTransient<StudentMyLessonsPage>();
+            builder.Services.AddTransient<StudentDrivingSkillsPopUp>();
+            builder.Services.AddTransient<StudentAddInstructorReviewPopUp>();
+            builder.Services.AddTransient<InstructorReviewsPopUp>();
+            builder.Services.AddTransient<AddCarRatingPopUp>();
+            builder.Services.AddTransient<InstructorProfilePage>();
+            builder.Services.AddTransient<InstructorMySchedulePage>();
+            builder.Services.AddTransient<StudentProfilePage>();
+            builder.Services.AddTransient<InstructorStudentDrivingSkillPopUp>();
+            builder.Services.AddTransient<InstructorInstructorDetailsPage>();
+            builder.Services.AddTransient<InstructorAllInstructorsPage>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

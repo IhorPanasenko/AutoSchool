@@ -8,6 +8,7 @@ using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
 using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Views.Instructor;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -61,8 +62,46 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private string errorMessage = string.Empty;
 
-        [ObservableProperty]
-        private bool isPasswordVisible = false;
+        private bool isPassword = true;
+
+        public bool IsPassword
+        {
+            get
+            {
+                return isPassword;
+            }
+
+            set
+            {
+                isPassword = value;
+                PasswordVisibleImageSource = isPassword ? "closed_eye.png" : "open_eye.png";
+                OnPropertyChanged(nameof(IsPassword));
+            }
+        }
+
+        private string passwordVisibleImageSource = "closed_eye.png";
+
+        public string PasswordVisibleImageSource
+        {
+            get
+            {
+               return passwordVisibleImageSource;
+            }
+
+            set {
+                if (passwordVisibleImageSource != value)
+                {
+                    passwordVisibleImageSource = value;
+                    OnPropertyChanged(nameof(PasswordVisibleImageSource));
+                }
+            }
+        }
+
+        [RelayCommand]
+        public void ShowPassword()
+        {
+            IsPassword = !IsPassword;
+        }
 
         [RelayCommand]
         public async Task Login()
@@ -89,19 +128,43 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
 
-            if (string.Compare(response.Status, "Success", true) == 0)
+            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
+                IsError = false;
                 if (Preferences.ContainsKey("UserInfo"))
                 {
                     Preferences.Remove("UserInfo");
                 }
 
                 Preferences.Set("UserInfo", JsonConvert.SerializeObject(response.LoginResponseData));
-                App.UserInfo = response.LoginResponseData!.UserData;
+                Preferences.Set("UserRole", response.LoginResponseData!.UserData.Role);
 
+                if (Preferences.ContainsKey("MyInstructorId"))
+                {
+                    Preferences.Remove("MyInstructorId");
+                }
+
+                if (response.LoginResponseData?.InstructorId is not null)
+                {
+                    Preferences.Set("MyInstructorId", JsonConvert.SerializeObject(response.LoginResponseData.InstructorId));
+                }
+
+                App.UserInfo = response.LoginResponseData!.UserData;
                 Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-                return;
+
+                var appShell = Shell.Current as AppShell;
+                appShell?.SetFlyoutItems();
+
+                if (string.Compare(response.LoginResponseData.UserData.Role, AppRoles.Instructor) == 0)
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(InstructorProfilePage)}");
+                    return;
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(StudentProfile)}");
+                    return;
+                }
             }
 
             IsError = true;
@@ -111,7 +174,13 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task GoToRegistration()
         {
-            await Shell.Current.GoToAsync($"/{nameof(RegistrationPage)}");
+            await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
+        }
+
+        [RelayCommand]
+        public async Task ForgotPassword()
+        {
+            await Shell.Current.GoToAsync($"{nameof(ForgotPasswordPage)}");
         }
 
         public void CloseActionMethod()

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Auto.School.Mobile.Core.Models
 {
@@ -41,13 +40,23 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("photoUrl")]
         public string? PhotoUrl {  get; set; }
 
+        [JsonProperty("currentNumOfStudents")]
+        public int CurrentNumberOfStudents { get; private set; }
+
+        [JsonProperty("available")]
+        public bool IsAvailable { get; private set; }
+
+        [JsonProperty("reviews")]
+        public List<ReviewModel> Reviews { get; set; } = [];
+
+        [JsonIgnore]
+        public bool IsNotAvailable { get => !IsAvailable; private set { } }
+
         [JsonIgnore]
         public string FullName
         {
             get => Name + ' ' + Surname;
             set { }
         }
-
-        //TODO Add Raiting array
     }
 }

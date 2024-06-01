@@ -4,9 +4,12 @@ import NavBarDropdown from "./components/NavbarDropdown.jsx"
 // import "./navbar.css"
 import styles from "./navbar.module.scss"
 import i18next from "i18next"
-import { AuthContext } from "../../context/AuthContext.jsx"
+// import { AuthContext } from "../../context/AuthContext.jsx"
 import { Link, useLocation } from "react-router-dom"
 import Profile from "../../assets/profile.svg"
+import axios from "axios"
+import useFetch from "../../hooks/useFetch.js"
+import { AuthContext } from "../../context/authContext"
 
 const Navbar = () => {
   const { t, i18n } = useTranslation()
@@ -32,12 +35,22 @@ const Navbar = () => {
   const isActive = path => {
     return location.pathname === path
   }
-  console.log("my lang" + document.cookie)
+  // console.log("my lang" + document.cookie)
   const { user } = useContext(AuthContext)
-  // console.log(user.data.userData.name)
+  // console.log(user.userDataname)
+  const { data, deleteData, patchData } = useFetch()
+  const handleLogout = async e => {
+    e.preventDefault()
 
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT" })
+    try {
+      const res = await deleteData(`http://localhost:3000/api/auth/logout`)
+      console.log(res)
+      dispatch({ type: "LOGOUT" })
+      localStorage.clear()
+      navigate("/")
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <div className={styles.navbar}>
@@ -56,7 +69,7 @@ const Navbar = () => {
               {t("navbar.linkmain", { ns: "pages" })}
             </p>
           </Link>
-          <Link to="/contacts" style={{ textDecoration: "none" }}>
+          {/* <Link to="/contacts" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
                 isActive("/contacts") ? styles.active : ""
@@ -64,7 +77,7 @@ const Navbar = () => {
             >
               {t("navbar.linkcontacts", { ns: "pages" })}
             </p>
-          </Link>
+          </Link> */}
           <Link to="/instructors" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
@@ -74,7 +87,7 @@ const Navbar = () => {
               {t("navbar.linkinstructors", { ns: "pages" })}
             </p>
           </Link>
-          <Link to="/reviews" style={{ textDecoration: "none" }}>
+          {/* <Link to="/reviews" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
                 isActive("/reviews") ? styles.active : ""
@@ -82,7 +95,29 @@ const Navbar = () => {
             >
               {t("navbar.linkreviews", { ns: "pages" })}
             </p>
-          </Link>
+          </Link> */}
+          {user && user.instructor && (
+            <>
+              <Link to="/timetable" style={{ textDecoration: "none" }}>
+                <p
+                  className={`${styles.menu_text} ${
+                    isActive("/timetable") ? styles.active : ""
+                  }`}
+                >
+                  {t("navbar.linktimetable", { ns: "pages" })}
+                </p>
+              </Link>
+              <Link to="/mylessons" style={{ textDecoration: "none" }}>
+                <p
+                  className={`${styles.menu_text} ${
+                    isActive("/linklessons") ? styles.active : ""
+                  }`}
+                >
+                  {t("navbar.linklessons", { ns: "pages" })}
+                </p>
+              </Link>
+            </>
+          )}
         </div>
         <div className={styles.btn_container}>
           {user ? (
@@ -93,7 +128,7 @@ const Navbar = () => {
                   className={styles.btn_profile_container}
                   style={{ textDecoration: "none" }}
                 >
-                  <p>{user.data.userData.name}</p>
+                  <p>{user.userData.name}</p>
                   {/* <p>{user.data.data.surname}</p> */}
 
                   {/* <p>Sychka</p> */}

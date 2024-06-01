@@ -47,6 +47,7 @@ const NavBarDropdown = ({ title, items, defaultClick }) => {
       >
         {items.map((item, i) => (
           <li
+            key={i}
             className={styles.menu__dropdown}
             onClick={e => {
               closeDropdownHandler()

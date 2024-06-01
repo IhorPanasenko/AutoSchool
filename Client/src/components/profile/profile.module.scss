@@ -1,0 +1,66 @@
+@import "../../styles/index.scss";
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #f4e558;
+  border-radius: 10px;
+  padding: 20px;
+  width: 45%; /* Увеличиваем ширину контейнера */
+  margin: 20px auto;
+  margin-top: 200px;
+  box-shadow: 0 0px 30px #f4e558;
+  background-color: #fff;
+}
+.userPhoto {
+  width: 250px; /* Устанавливаем желаемый размер фотографии */
+  height: 250px;
+  border-radius: 50%; /* Обрезаем по центру кружочком */
+}
+.profileContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profilePhoto {
+  // margin-right: 15%; /* Отступ справа для фото */
+}
+
+.profileInfo {
+  width: 100%;
+}
+
+.profileItem {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.profileItem span {
+  margin-left: 10px;
+  font-size: 16px;
+}
+.profileItem .profileItemText {
+  @include fontSize("Roboto", 500, $dark-blue, 14px, 15px);
+}
+.profileItem .profileItemTextBd {
+  @include fontSize("Roboto", 600, $dark-blue, 20px, 25px);
+}
+.name {
+  @include fontSize("Roboto", 600, #f4e558, 30px, 39px);
+}
+.editButton {
+  margin-top: 20px; /* Отступ сверху для кнопки редактирования */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #007bff; /* Цвет кнопки редактирования */
+}
+
+.editButton:hover {
+  text-decoration: underline; /* Подчеркивание при наведении на кнопку */
+}

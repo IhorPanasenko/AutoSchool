@@ -1,19 +1,29 @@
-﻿using Auto.School.Mobile.Views;
+﻿using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Auto.School.Mobile.ViewModels
 {
     public partial class AppShellViewModel : BaseViewModel
     {
+        private readonly IAuthenticationService _authenticationService;
+        public AppShellViewModel(IAuthenticationService authenticationService)
+        {
+            _authenticationService = authenticationService;
+        }
+
         [RelayCommand]
         public async Task SignOut()
         {
-            if(Preferences.ContainsKey(nameof(App.UserInfo)))
+            if (Preferences.ContainsKey(nameof(App.UserInfo)))
             {
-                Preferences.Remove(nameof(App.UserInfo));   
+                Preferences.Remove(nameof(App.UserInfo));
+                Preferences.Remove("UserRole");
             }
 
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            await _authenticationService.Logout();
+            await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
+            ((AppShell)Shell.Current).SetFlyoutItems();
         }
     }
 }

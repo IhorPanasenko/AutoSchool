@@ -12,9 +12,7 @@ exports.getAllCities = catchAsync(async (req, res, next) => {
 });
 
 exports.addCity = catchAsync(async (req, res, next) => {
-  const newCity = await CityModel.create({
-    name: req.body.name,
-  });
+  const newCity = await CityModel.create(req.body);
 
   res.status(201).json({
     status: 'success',
@@ -37,13 +35,16 @@ exports.updateCity = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteCity = catchAsync(async (req, res, next) => {
-  const city = await CityModel.findByIdAndDelete(req.params.cityId);
+  // const city = await CityModel.findByIdAndDelete(req.params.cityId);
 
-  if (!city) {
-    return next(new AppError('No city was found with such id', 404));
-  }
+  // if (!city) {
+  //   return next(new AppError('No city was found with such id', 404));
+  // }
 
-  res.status(204).json({
-    status: 'success',
+  // res.status(204).json({
+  //   status: 'success',
+  // });
+  res.status(500).json({
+    message: 'Route is not yet implemented',
   });
 });

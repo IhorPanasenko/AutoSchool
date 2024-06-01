@@ -36,7 +36,11 @@ exports.getAllInstructors = catchAsync(async (req, res, next) => {
 });
 
 exports.getOneInstructor = catchAsync(async (req, res, next) => {
-  const instructor = await InstructorModel.findById(req.params.instructorId)
+  const instructor = await InstructorModel.findOne(
+    (req.params.instructorId && { _id: req.params.instructorId }) ||
+      (req.params.userId && { userId: req.params.userId })
+  )
+    .populate('reviews')
     .populate('car')
     .populate('city')
     .exec();
@@ -50,13 +54,16 @@ exports.getOneInstructor = catchAsync(async (req, res, next) => {
   instructor.photoURL = await getPhotoUrl(s3, instructor.photoURL);
   instructor.car.photoURL = await getPhotoUrl(s3, instructor.car.photoURL);
 
-  // TODO: Get instructor reviews
-
   res.status(200).json({
     status: 'success',
     data: instructor,
   });
 });
+
+exports.getMe = (req, res, next) => {
+  req.params.userId = req.user._id;
+  next();
+};
 
 exports.createInstructor = async (req, res, next) => {
   const session = await mongoose.startSession();

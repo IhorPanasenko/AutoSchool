@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
 const citySchema = new mongoose.Schema({
-  name: {
+  nameEN: {
     type: String,
-    required: [true, 'City name is required'],
+    required: [true, 'City name in English is required'],
+    unique: true,
+  },
+  nameUA: {
+    type: String,
+    required: [true, 'City name in Ukrainian is required'],
     unique: true,
   },
 });

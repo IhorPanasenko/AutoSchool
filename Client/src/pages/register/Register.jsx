@@ -11,7 +11,7 @@ import axios from "axios"
 import Joi from "joi"
 import styles from "./register.module.scss"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
+import { AuthContext } from "../../context/authContext"
 import { useNavigate } from "react-router-dom"
 
 // import { useState } from "react"
@@ -127,7 +127,8 @@ const Register = () => {
       // Відправляємо дані на сервер
       const response = await axios.post(
         "http://localhost:3000/api/auth/signup",
-        formData
+        formData,
+        { withCredentials: true }
       )
 
       console.log("Server response:", response.data)

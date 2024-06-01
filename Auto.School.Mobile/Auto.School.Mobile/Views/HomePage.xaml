@@ -5,7 +5,7 @@
              Title="HomePage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Welcome to AutoSchool"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button Text="All Instructors" Command="{Binding GoToAllInstructorsCommand}"/>

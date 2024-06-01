@@ -1,0 +1,64 @@
+@import "../../../styles/index.scss";
+.title {
+  margin: 0 0 auto;
+  @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
+  padding-bottom: 30px;
+}
+
+.card {
+  max-width: 600px;
+
+  display: flex;
+  gap: 20%;
+  padding: 30px;
+
+  box-shadow: 0 1px 30px #f4e558;
+  border-radius: 15px;
+}
+
+.media {
+  height: 250px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.icon {
+  margin-right: 8px;
+  color: #888;
+}
+.text {
+  @include fontSize("Roboto", 500, $dark-blue, 15px, 16px);
+}
+
+.available {
+  display: flex;
+  align-items: center;
+  color: green;
+}
+
+.notAvailable {
+  display: flex;
+  align-items: center;
+  color: red;
+}
+
+.price {
+  margin-top: 16px;
+  @include fontSize("Roboto", 600, black, 20px, 25px);
+}

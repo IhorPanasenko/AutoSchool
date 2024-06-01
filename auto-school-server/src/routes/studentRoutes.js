@@ -2,30 +2,68 @@ const express = require('express');
 const { authenticateJWT } = require('../middlewares/authenticateJWT.js');
 const studentController = require('../controllers/studentController.js');
 const upload = require('../config/multerConfig.js');
+const { restrictTo } = require('../middlewares/restrictTo.js');
 
 const router = express.Router();
 
-// for authorized user
+// for authorized students
+
+router.use(authenticateJWT);
 
 router.get(
   '/me',
-  authenticateJWT,
+  restrictTo('student'),
   studentController.getMe,
   studentController.getStudent
 );
 
 router.patch(
   '/updateMyPhoto',
-  authenticateJWT,
+  restrictTo('student'),
   upload.single('photo'),
   studentController.updatePhoto
 );
 
-router.patch('/updateMe', authenticateJWT, studentController.updateMe);
+router.patch('/updateMe', restrictTo('student'), studentController.updateMe);
+
+router.patch(
+  '/my-driving-skills',
+  restrictTo('student'),
+  studentController.getMe,
+  studentController.updateDrivingSkills,
+  studentController.updateStudent
+);
+
+router.patch(
+  '/request-instructor/:instructorId',
+  restrictTo('student'),
+  studentController.requestAssignInstructor
+);
+
+router.get(
+  '/requests',
+  restrictTo('admin'),
+  studentController.getStudentsWithInstructorRequest,
+  studentController.getAllStudents
+);
+
+router.get('/:studentId', studentController.getStudent);
 
 // for admin
 
+router.use(restrictTo('admin'));
+
 router.get('/', studentController.getAllStudents);
-router.get('/:studentId', studentController.getStudent);
+
+router.patch(
+  '/:studentId/accept-request',
+  studentController.acceptRequest,
+  studentController.updateStudent
+);
+router.patch(
+  '/:studentId/reject-request',
+  studentController.rejectRequest,
+  studentController.updateStudent
+);
 
 module.exports = router;

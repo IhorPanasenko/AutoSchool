@@ -14,10 +14,12 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ICityService _cityService;
         private readonly IAuthenticationService _authenticationService;
-        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService)
+        private readonly ICultureService _cultureService;
+        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService, ICultureService cultureService)
         {
             _cityService = cityService;
-            _authenticationService = authenticationService;
+            _authenticationService = authenticationService; 
+            _cultureService = cultureService;
             SetCities();
         }
 
@@ -57,7 +59,7 @@ namespace Auto.School.Mobile.ViewModels
 
                 OnPropertyChanged(nameof(PhoneNumber));
 
-                
+
                 //if (value != null && cursorPosition != value.Length)
                 //{
                 //    // Move the cursor to the appropriate position after formatting
@@ -136,7 +138,19 @@ namespace Auto.School.Mobile.ViewModels
                     PasswordErrorMessage = string.Empty;
                 }
 
-                password = value; 
+                if (!string.IsNullOrEmpty(RepeatPassword))
+                {
+                    if (!string.Equals(value, RepeatPassword, StringComparison.Ordinal))
+                    {
+                        IsRepeatPasswordError = true;
+                    }
+                    else
+                    {
+                        IsRepeatPasswordError = false;
+                    }
+                }
+
+                password = value;
             }
         }
 
@@ -145,8 +159,6 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private bool isError = false;
-
-        //private bool is
 
         [ObservableProperty]
         private string errorMessage = "Default Error Message";
@@ -183,6 +195,122 @@ namespace Auto.School.Mobile.ViewModels
 
         [ObservableProperty]
         private string[] drivingCategories = ["A", "B", "C", "D", "E"];
+
+        private string repeatPassword;
+
+        public string RepeatPassword
+        {
+            get
+            {
+                return repeatPassword;
+            }
+            set
+            {
+                repeatPassword = value;
+
+                if (!string.Equals(value, Password, StringComparison.Ordinal))
+                {
+                    IsRepeatPasswordError = true;
+                }
+                else
+                {
+                    IsRepeatPasswordError = false;
+                }
+
+                OnPropertyChanged(nameof(RepeatPassword));
+            }
+        }
+
+        [ObservableProperty]
+        private bool isRepeatPasswordError = false;
+
+        [ObservableProperty]
+        private string repeatPasswordErrorMessage = AppErrorMessagesConstants.NotEqualPasswords;
+
+        private bool isPassword = true;
+
+        public bool IsPassword
+        {
+            get
+            {
+                return isPassword;
+            }
+
+            set
+            {
+                isPassword = value;
+                PasswordVisibleImageSource = isPassword ? "closed_eye.png" : "open_eye.png";
+                OnPropertyChanged(nameof(IsPassword));
+            }
+        }
+
+        private string passwordVisibleImageSource = "closed_eye.png";
+
+        public string PasswordVisibleImageSource
+        {
+            get
+            {
+                return passwordVisibleImageSource;
+            }
+
+            set
+            {
+                if (passwordVisibleImageSource != value)
+                {
+                    passwordVisibleImageSource = value;
+                    OnPropertyChanged(nameof(PasswordVisibleImageSource));
+                }
+            }
+        }
+
+
+        [RelayCommand]
+        public void ShowPassword()
+        {
+            IsPassword = !IsPassword;
+        }
+
+        private bool isRepeatPassword = true;
+
+        public bool IsRepeatPassword
+        {
+            get
+            {
+                return isRepeatPassword;
+            }
+
+            set
+            {
+                isRepeatPassword = value;
+                RepeatPasswordVisibleImageSource = IsRepeatPassword ? "closed_eye.png" : "open_eye.png";
+                OnPropertyChanged(nameof(IsRepeatPassword));
+            }
+        }
+
+        private string repeatPasswordVisibleImageSource = "closed_eye.png";
+
+        public string RepeatPasswordVisibleImageSource
+        {
+            get
+            {
+                return repeatPasswordVisibleImageSource;
+            }
+
+            set
+            {
+                if (repeatPasswordVisibleImageSource != value)
+                {
+                    repeatPasswordVisibleImageSource = value;
+                    OnPropertyChanged(nameof(RepeatPasswordVisibleImageSource));
+                }
+            }
+        }
+
+        [RelayCommand]
+        public void ShowRepeatPassword()
+        {
+            IsRepeatPassword = !IsRepeatPassword;
+        }
 
         private async Task SetCities()
         {
@@ -232,7 +360,7 @@ namespace Auto.School.Mobile.ViewModels
                 CityId = SelectedCity!.Id
             };
 
-           var authenticationResponse = await _authenticationService.RegisterAsync(registrationModel);
+            var authenticationResponse = await _authenticationService.RegisterAsync(registrationModel);
 
             if (string.Equals(authenticationResponse.Status, "Failed", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -240,7 +368,7 @@ namespace Auto.School.Mobile.ViewModels
                 ErrorMessage = authenticationResponse.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
             }
 
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            await Shell.Current.GoToAsync($"/{nameof(LoginPage)}");
         }
 
         private bool IsModelValid()
