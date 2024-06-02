@@ -15,6 +15,7 @@ const lessonRoutes = require('./routes/lessonRoutes.js');
 const reviewRoutes = require('./routes/reviewRoutes.js');
 const carRoutes = require('./routes/carRoutes.js');
 const paymentRoutes = require('./routes/paymentRoutes.js');
+const chatRoutes = require('./routes/chatRoutes.js');
 require('./webSocketServer.js');
 
 const app = express();
@@ -42,6 +43,7 @@ app.use('/api/lessons', lessonRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/chats', chatRoutes);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
