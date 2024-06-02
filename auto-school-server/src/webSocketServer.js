@@ -19,7 +19,7 @@ server.on('connection', (ws) => {
     } else if (parsedMessage.type === 'message') {
       const recipientId = parsedMessage.recipientId;
       const text = parsedMessage.text;
-      const senderId = ws.userId;
+      const senderId = ws.userId || parsedMessage.senderId;
 
       if (users.has(recipientId)) {
         const recipientSocket = users.get(recipientId);

@@ -27,11 +27,9 @@ exports.getMyChats = catchAsync(async (req, res, next) => {
         { fromUser: req.user._id, toUser: student.userId },
       ],
     }).sort('-timestamp');
-    //console.log(studentObj.lastMessage);
+
     studentsWithLastMessage.push(studentObj);
   }
-
-  //console.log(studentsWithLastMessage);
 
   res.status(200).json({
     status: 'success',
@@ -47,7 +45,7 @@ exports.getAllChatMessages = catchAsync(async (req, res, next) => {
       { fromUser: req.params.userId, toUser: req.user._id },
       { fromUser: req.user._id, toUser: req.params.userId },
     ],
-  }).sort('-timestamp');
+  }).sort('timestamp');
 
   res.status(200).json({
     status: 'success',
