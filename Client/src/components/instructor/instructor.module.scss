@@ -83,3 +83,18 @@
 .ratingcontainer {
   @include flex(center, center);
 }
+.btn_choose {
+  @include fontSize("Roboto", 700, $white, 19px, 29px);
+  margin-left: 20px;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #003580;
+}
+
+.btn_choose:hover {
+  @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
+
+  background-color: $yellow;
+}

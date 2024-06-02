@@ -12,34 +12,66 @@ const TimetableUser = () => {
   const [selectedDate, setSelectedDate] = useState(null)
   const [instructorId, setInstructorId] = useState(null)
   const [lessons, setLessons] = useState([])
+  const [studentData, setStudentData] = useState([])
 
-  const { data: studentData, error: studentError } = useFetch(
-    "http://localhost:3000/api/students/me"
-  )
-  console.log(studentData)
-
-  const { data: lessonsData, error: lessonsError } = useFetch(
-    instructorId
-      ? `http://localhost:3000/api/instructors/${instructorId}/lessons`
-      : null
-  )
-  console.log(lessonsData)
+  const { data, error: studentError, getData } = useFetch()
+  // "http://localhost:3000/api/students/me"
 
   useEffect(() => {
-    if (studentData && studentData.data && studentData.data.student) {
-      setInstructorId(studentData.data.student.instructorId)
-      console.log("studentDataaa", studentData.data.student.instructorId)
+    const fetchData = async () => {
+      try {
+        const res = await getData("http://localhost:3000/api/students/me")
+        console.log(res)
+        // console.log(studentData)
+        setStudentData(res)
+        console.log("instructorId", res.data.student.instructorId)
+        setInstructorId(res.data.student.instructorId)
+      } catch (err) {
+        console.error("Failed to fetch lessons my", err)
+      }
     }
-  }, [studentData])
+    fetchData()
+  }, [])
+
+  // const { data: lessonsData, error: lessonsError } = useFetch()
+  // instructorId
+  //   ? `http://localhost:3000/api/instructors/${instructorId}/lessons`
+  //   : null
+  // console.log(lessonsData)
 
   useEffect(() => {
-    if (lessonsData) {
-      setLessons(lessonsData.data)
-      console.log("Lessons :", lessonsData)
-
-      console.log("Lessons data:", lessonsData.data)
+    if (instructorId) {
+      const fetchData = async () => {
+        try {
+          const result = await getData(
+            `http://localhost:3000/api/instructors/${instructorId}/lessons`
+          )
+          console.log("result lessonsData", result)
+          setLessons(result.data)
+          // console.log("lessonsData", studentData)
+        } catch (err) {
+          console.error("Failed to fetch lessons my", err)
+        }
+      }
+      fetchData()
     }
-  }, [lessonsData])
+  }, [instructorId])
+
+  // useEffect(() => {
+  //   if (studentData && studentData.data && studentData.data.student) {
+  //     setInstructorId(studentData.data.student.instructorId)
+  //     console.log("studentDataaa", studentData.data.student.instructorId)
+  //   }
+  // }, [studentData])
+
+  // useEffect(() => {
+  //   if (lessonsData) {
+  //     setLessons(lessonsData.data)
+  //     console.log("Lessons :", lessonsData)
+
+  //     console.log("Lessons data:", lessonsData.data)
+  //   }
+  // }, [lessonsData])
 
   const handleDateChange = newDate => {
     // Check if the new date is today or after
@@ -60,9 +92,9 @@ const TimetableUser = () => {
     return <div>Error loading student data: {studentError.message}</div>
   }
 
-  if (lessonsError) {
-    return <div>Error loading lessons: {lessonsError.message}</div>
-  }
+  // if (lessonsError) {
+  //   return <div>Error loading lessons: {lessonsError.message}</div>
+  // }
 
   return (
     <div className={styles.calendarContainer}>

@@ -29,7 +29,7 @@ const LessonsList = ({ filteredLessons }) => {
       <ul className={styles.calendarContainer}>
         {sortedLessons.map(lesson => {
           const isChosen = lesson._id === chosenLessonId
-          const isUnavailable = !!lesson.student
+          const isUnavailable = !lesson.isAvailable
           let className = styles.available
 
           if (isUnavailable) {

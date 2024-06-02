@@ -14,21 +14,51 @@ const PaymentButton = () => {
   const [lesson, setLesson] = useState(null)
   const [amount, setAmount] = useState(null)
 
-  const { patchData, postData } = useFetch()
-  const { data: lessonData, error: lessonError } = useFetch(
-    `http://localhost:3000/api/lessons/${chosenLessonId}`
-  )
+  const {
+    data: lessonData,
+    error: lessonError,
+    patchData,
+    postData,
+    getData
+  } = useFetch()
+  // const { data: lessonData, error: lessonError } = useFetch()
+  // `http://localhost:3000/api/lessons/${chosenLessonId}`
+
+  // useEffect(() => {
+  //   if (lessonData) {
+  //     const lessonExist = lessonData.data?.lesson
+  //     if (lessonExist) {
+  //       setLesson(lessonData.data.lesson)
+  //       setAmount(lessonExist.price)
+  //       console.log("Lesson :", lessonData)
+  //     }
+  //   }
+  // }, [lessonData])
 
   useEffect(() => {
-    if (lessonData) {
-      const lessonExist = lessonData.data?.lesson
-      if (lessonExist) {
-        setLesson(lessonData.data.lesson)
-        setAmount(lessonExist.price)
-        console.log("Lesson :", lessonData)
+    const fetchData = async () => {
+      try {
+        let res = await getData(
+          `http://localhost:3000/api/lessons/${chosenLessonId}`
+        )
+        console.log(res)
+        console.log("res.data.lesson", res.data.lesson)
+        console.log("price", res.data.price)
+
+        setLesson(res.data.lesson)
+        setAmount(res.data.lesson.price)
+      } catch (err) {
+        console.error("Failed to fetch lessonData", err)
       }
     }
-  }, [lessonData])
+    if (chosenLessonId && typeof getData === "function") {
+      fetchData()
+    }
+  }, [chosenLessonId])
+
+  if (!lesson || !amount) {
+    return <div>Loading lesson data...</div>
+  }
 
   if (lessonError) {
     return <div>Error loading lessons: {lessonError}</div>

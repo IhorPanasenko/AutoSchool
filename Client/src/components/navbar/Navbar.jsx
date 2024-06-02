@@ -96,7 +96,7 @@ const Navbar = () => {
               {t("navbar.linkreviews", { ns: "pages" })}
             </p>
           </Link> */}
-          {user && user.instructor && (
+          {user && user.instructor && user.requestStatus != "pending" && (
             <>
               <Link to="/timetable" style={{ textDecoration: "none" }}>
                 <p

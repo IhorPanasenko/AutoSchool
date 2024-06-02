@@ -2,40 +2,40 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const useFetch = url => {
+const useFetch = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                await checkAndRefreshTokenIfNeeded();
-                const res = await axios.get(url, {
-                    withCredentials: true
-                });
-                setData(res.data);
-            } catch (err) {
-                const tokenExpired = isTokenExpired();
-                if (tokenExpired) {
-                    try {
-                        await refreshAuthToken();
-                        const res = await axios.get(url, {
-                            withCredentials: true
-                        });
-                        setData(res.data);
-                    } catch (refreshError) {
-                        setError(refreshError);
-                    }
-                } else {
-                    setError(err);
-                }
-            }
-            setLoading(false);
-        };
-        fetchData();
-    }, [url]);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         setLoading(true);
+    //         try {
+    //             await checkAndRefreshTokenIfNeeded();
+    //             const res = await axios.get(url, {
+    //                 withCredentials: true
+    //             });
+    //             setData(res.data);
+    //         } catch (err) {
+    //             const tokenExpired = isTokenExpired();
+    //             if (tokenExpired) {
+    //                 try {
+    //                     await refreshAuthToken();
+    //                     const res = await axios.get(url, {
+    //                         withCredentials: true
+    //                     });
+    //                     setData(res.data);
+    //                 } catch (refreshError) {
+    //                     setError(refreshError);
+    //                 }
+    //             } else {
+    //                 setError(err);
+    //             }
+    //         }
+    //         setLoading(false);
+    //     };
+    //     fetchData();
+    // }, [url]);
 
     // const reFetch = async () => {
     //     setLoading(true);
@@ -65,8 +65,20 @@ const useFetch = url => {
                 data: payload,
                 withCredentials: true
             };
-            const res = await axios(config);
-            console.log("Response from UseFetch: ", res);
+            try {
+                const res = await axios(config);
+                console.log("Response from UseFetch: ", res);
+                setData(res.data);
+                return res.data;
+            } catch (err) {
+                console.log("err from UseFetch: ", err);
+                console.log("err from UseFetch: ", err.response);
+
+                setError(err.response);
+                return err;
+            }
+            console.log("data.message from UseFetch: ", res.data.message);
+
             setData(res.data);
         } catch (err) {
             setError(err);
@@ -74,6 +86,9 @@ const useFetch = url => {
         setLoading(false);
     };
 
+    const getData = async endpoint => {
+        return await handleRequest("GET", endpoint);
+    };
     const deleteData = async endpoint => {
         await handleRequest("DELETE", endpoint);
     };
@@ -87,7 +102,8 @@ const useFetch = url => {
     };
 
     const patchData = async (endpoint, payload) => {
-        await handleRequest("PATCH", endpoint, payload);
+        let res = await handleRequest("PATCH", endpoint, payload);
+        return res;
     };
 
     const checkAndRefreshTokenIfNeeded = async () => {
@@ -133,7 +149,7 @@ const useFetch = url => {
         }
     };
 
-    return { data, deleteData, putData, patchData, postData };
+    return { data, deleteData, putData, patchData, postData, error, getData };
 };
 
 export default useFetch;
