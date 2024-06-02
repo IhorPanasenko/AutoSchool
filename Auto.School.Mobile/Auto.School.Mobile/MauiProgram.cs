@@ -13,7 +13,6 @@ using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
 using CommunityToolkit.Maui;
-using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Views.Instructor;
 using Auto.School.Mobile.ViewModels.Instructor;
 
@@ -59,6 +58,7 @@ namespace Auto.School.Mobile
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddTransient<ICarService, CarService>();
+            builder.Services.AddSingleton<IWebSocketService, WebSocketService>();
 
             builder.Services.AddTransient<ErrorAlertView>();
 
@@ -85,6 +85,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
             builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
             builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
+            builder.Services.AddTransient<ChatViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -109,6 +110,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorStudentDrivingSkillPopUp>();
             builder.Services.AddTransient<InstructorInstructorDetailsPage>();
             builder.Services.AddTransient<InstructorAllInstructorsPage>();
+            builder.Services.AddTransient<ChatPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
