@@ -18,7 +18,7 @@ public class WebSocketService : IWebSocketService
     public async Task ConnectAsync(string uri)
     {
         await _clientWebSocket.ConnectAsync(new Uri(uri), CancellationToken.None);
-        await ReceiveMessages();
+        ReceiveMessages();
     }
 
     public async Task SendMessageAsync(MessageModel messageModel)
@@ -36,14 +36,17 @@ public class WebSocketService : IWebSocketService
         {
             var result = await _clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             var messageJson = Encoding.UTF8.GetString(buffer, 0, result.Count);
-            try
+            if (messageJson != null)
             {
-                var message = JsonConvert.DeserializeObject<MessageModel>(messageJson);
-                OnMessageReceived?.Invoke(message!);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                try
+                {
+                    var message = JsonConvert.DeserializeObject<MessageModel>(messageJson);
+                    OnMessageReceived?.Invoke(message!);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
     }
