@@ -1,4 +1,5 @@
-﻿using Auto.School.Mobile.Core.Constants;
+﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Lesson.StudentGetMy;
 using Auto.School.Mobile.Service.Interfaces;
@@ -13,7 +14,7 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly ILessonService _lessonService;
 
-        public StudentMyLessonsViewModel(ILessonService lessonService)
+        public StudentMyLessonsViewModel(ILessonService lessonService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
             _lessonService = lessonService;
             _ = GetMyLessons();

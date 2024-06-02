@@ -58,7 +58,9 @@ namespace Auto.School.Mobile
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddTransient<ICarService, CarService>();
-            builder.Services.AddSingleton<IWebSocketService, WebSocketService>();
+            builder.Services.AddTransient<IWebSocketService, WebSocketService>();
+            builder.Services.AddSingleton<IModifyCultureService, ModifyCultureService>();
+
 
             builder.Services.AddTransient<ErrorAlertView>();
 

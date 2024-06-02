@@ -9,15 +9,18 @@ using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
 using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Views.Instructor;
+using Auto.School.Mobile.Abstract;
 
 namespace Auto.School.Mobile.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly IModifyCultureService _modifyCultureService;
 
-        public LoginViewModel(IAuthenticationService authenticationService)
+        public LoginViewModel(IAuthenticationService authenticationService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
+            _modifyCultureService = modifyCultureService;
             CloseAction = CloseActionMethod;
             _authenticationService = authenticationService;
         }
@@ -150,7 +153,7 @@ namespace Auto.School.Mobile.ViewModels
                 }
 
                 App.UserInfo = response.LoginResponseData!.UserData;
-                Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
+                Shell.Current.FlyoutHeader = new FlyoutHeaderControl(_modifyCultureService);
 
                 var appShell = Shell.Current as AppShell;
                 appShell?.SetFlyoutItems();

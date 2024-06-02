@@ -15,11 +15,11 @@ namespace Auto.School.Mobile.ViewModels.Instructor
     {
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
-        public InstructorAllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public InstructorAllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;
-            LoadInstructors();
+            _ = LoadInstructors();
         }
 
         private async Task LoadInstructors()

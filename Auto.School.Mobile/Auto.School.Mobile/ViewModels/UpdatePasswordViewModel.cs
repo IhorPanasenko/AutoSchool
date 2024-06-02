@@ -2,6 +2,7 @@
 using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
+using Auto.School.Mobile.Service.Services;
 using Auto.School.Mobile.Validators;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -10,10 +11,16 @@ using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
 {
-    public partial class UpdatePasswordViewModel(IAuthenticationService authenticationService, IPopupService popupService) : BaseViewModel, INotifyPropertyChanged
+    public partial class UpdatePasswordViewModel : BaseViewModel, INotifyPropertyChanged
         {
-        private readonly IAuthenticationService _authenticationService = authenticationService;
-        private readonly IPopupService _popupService = popupService;
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IPopupService _popupService;
+
+        public UpdatePasswordViewModel(IAuthenticationService authenticationService, IPopupService popupService, IModifyCultureService modifyCultureService) :base(modifyCultureService)
+        {
+            _authenticationService = authenticationService;
+            _popupService = popupService;
+        }
 
         [ObservableProperty]
         private Popup popupInstance;

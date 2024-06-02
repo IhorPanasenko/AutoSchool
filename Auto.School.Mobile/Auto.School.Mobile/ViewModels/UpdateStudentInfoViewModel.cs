@@ -24,7 +24,7 @@ namespace Auto.School.Mobile.ViewModels
             ISharedService sharedService,
             ICityService cityService,
             IPopupService popupService,
-            ICultureService cultureService)
+            ICultureService cultureService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
             _sharedService = sharedService;
             _studentService = studentService;

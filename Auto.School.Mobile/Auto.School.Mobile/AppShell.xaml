@@ -30,6 +30,7 @@
         <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
+        <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

@@ -4,6 +4,7 @@ using Auto.School.Mobile.Validators;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
+using Auto.School.Mobile.Abstract;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -12,7 +13,7 @@ namespace Auto.School.Mobile.ViewModels
 
         private readonly IAuthenticationService _authenticationService;
 
-        public ForgotPasswordViewModel(IAuthenticationService authenticationService)
+        public ForgotPasswordViewModel(IAuthenticationService authenticationService, IModifyCultureService modifyCultureSevice) : base(modifyCultureSevice)
         {
             CloseAction = CloseActionMethod;
             _authenticationService = authenticationService;

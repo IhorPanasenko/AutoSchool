@@ -15,7 +15,7 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
-        public AllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService)
+        public AllInstructorsViewModel(IInstructorService instructorService, ISharedService sharedService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;

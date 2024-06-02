@@ -18,7 +18,7 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IReviewService _reviewService;
         private readonly IStudentService _studentService;
 
-        public InstructorReviewsViewMode(IReviewService reviewService, ISharedService sharedService, IStudentService studentService)
+        public InstructorReviewsViewMode(IReviewService reviewService, ISharedService sharedService, IStudentService studentService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
         {
             _sharedService = sharedService;
             _reviewService = reviewService; 
