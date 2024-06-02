@@ -22,12 +22,14 @@
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyInstructor}" ContentTemplate="{DataTemplate views:InstructorDetailsPage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyLessons}" ContentTemplate="{DataTemplate views:StudentMyLessonsPage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleStudent}" ContentTemplate="{DataTemplate views:InstructorScheduleStudentPage}" />
+        <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
     </FlyoutItem>
 
     <FlyoutItem x:Name="InstructorMenu" Route="InstructorProfilePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="{x:Static resx:AppResources.Shell_Profile}" ContentTemplate="{DataTemplate instructorViews:InstructorProfilePage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
         <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
+        <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>

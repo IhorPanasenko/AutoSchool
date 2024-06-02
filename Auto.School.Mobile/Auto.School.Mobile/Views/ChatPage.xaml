@@ -4,14 +4,14 @@
              x:Class="Auto.School.Mobile.Views.ChatPage"
              Title="ChatPage">
     <StackLayout>
-        <CollectionView x:Name="MessagesCollectionView">
+        <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Label Text="{Binding .}" />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Entry x:Name="MessageEntry" Placeholder="Type a message" />
-        <Button Text="Send" Clicked="OnSendClicked" />
+        <Entry x:Name="MessageEntry" Placeholder="Type a message" Text="{Binding MessageText}"/>
+        <Button Text="Send" Command="{Binding SendMessageCommand}" />
     </StackLayout>
 </ContentPage>
