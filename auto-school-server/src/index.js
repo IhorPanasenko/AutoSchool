@@ -15,6 +15,7 @@ const lessonRoutes = require('./routes/lessonRoutes.js');
 const reviewRoutes = require('./routes/reviewRoutes.js');
 const carRoutes = require('./routes/carRoutes.js');
 const paymentRoutes = require('./routes/paymentRoutes.js');
+require('./webSocketServer.js');
 
 const app = express();
 const port = process.env.PORT || 3000;
