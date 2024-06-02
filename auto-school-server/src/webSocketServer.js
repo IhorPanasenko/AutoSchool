@@ -13,24 +13,29 @@ server.on('connection', (ws) => {
     if (parsedMessage.type === 'register') {
       const userId = parsedMessage.userId;
       users.set(userId, ws);
-      ws.userId = userId; // Store userId in the WebSocket object
-      ws.send(JSON.stringify({ type: 'registered', userId })); // Respond to the requesting client
+      ws.userId = userId;
+      ws.send(JSON.stringify({ type: 'registered', userId }));
       console.log(`User registered: ${userId}`);
     } else if (parsedMessage.type === 'message') {
       const recipientId = parsedMessage.recipientId;
       const text = parsedMessage.text;
-      const senderId = ws.userId;
+      const senderId = parsedMessage.senderId;
+      const senderIdInWs = ws.userId;
+
+      console.log('senderIdInWs: ', senderIdInWs);
 
       if (users.has(recipientId)) {
         const recipientSocket = users.get(recipientId);
         if (recipientSocket.readyState === WebSocket.OPEN) {
-          recipientSocket.send(
-            JSON.stringify({ senderId: userId, recipientId, text })
-          );
+          recipientSocket.send(JSON.stringify({ senderId, recipientId, text }));
         }
+        //TODO: save message in db
       } else {
         //TODO: save message in db
       }
+    } else if (parsedMessage.type === 'listUsers') {
+      const userList = Array.from(users.keys());
+      ws.send(JSON.stringify({ type: 'userList', users: userList }));
     }
 
     ws.send('Response from server');
@@ -38,12 +43,8 @@ server.on('connection', (ws) => {
 
   ws.on('close', () => {
     //users.delete(userId);
-    console.log('User left chat');
+    console.log(`User ${ws.userId} left chat`);
   });
 });
-
-function generateUniqueId() {
-  return Math.random().toString(36).slice(2, 9);
-}
 
 console.log('WebSocket server is running on ws://localhost:8080');
