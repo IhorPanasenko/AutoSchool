@@ -40,3 +40,19 @@ exports.getMyChats = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getAllChatMessages = catchAsync(async (req, res, next) => {
+  const messages = await ChatMessageModel.find({
+    $or: [
+      { fromUser: req.params.userId, toUser: req.user._id },
+      { fromUser: req.user._id, toUser: req.params.userId },
+    ],
+  }).sort('-timestamp');
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      messages,
+    },
+  });
+});

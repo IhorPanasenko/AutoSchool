@@ -12,4 +12,10 @@ router.get(
   chatController.getMyChats
 );
 
+router.get(
+  '/messages/:userId',
+  authenticateJWT,
+  chatController.getAllChatMessages
+);
+
 module.exports = router;
