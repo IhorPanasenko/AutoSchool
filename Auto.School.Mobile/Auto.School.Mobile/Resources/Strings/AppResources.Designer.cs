@@ -880,6 +880,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chat with instructor.
+        /// </summary>
+        internal static string Shell_StudentChatMenuItem {
+            get {
+                return ResourceManager.GetString("Shell.StudentChatMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign in.
         /// </summary>
         internal static string SignIn {
