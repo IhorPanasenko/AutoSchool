@@ -20,6 +20,7 @@
         public const string UpdatePhoto = "students/updateMyPhoto";
         public const string UpdateMe = "students/updateMe";
         public const string UpdateMyDrivingSkills = "students/my-driving-skills";
+        public const string GetOneStudent = "students/";
         #endregion
 
         #region City
@@ -30,6 +31,7 @@
         public const string GetAllInstructors = "instructors";
         public const string GetOneInstructor = "instructors/";
         public const string GetSchedule = "instructors//lessons";
+        public const string InstructorGetInfoMe = "instructors/me";
         #endregion
 
         #region Lesson
@@ -37,6 +39,7 @@
         public const string GetMyLessons = "lessons/my";
         public const string CancelMyLesson = "lessons//cancel-my-lesson";
         public const string AddLessonToGoogleCalendar = "lessons//to-calendar";
+        public const string InstructorCancelLesson = "lessons//cancel";
         #endregion
 
         #region Reviews

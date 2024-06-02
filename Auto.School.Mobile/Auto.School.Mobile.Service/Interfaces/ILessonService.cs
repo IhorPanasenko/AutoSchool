@@ -13,5 +13,8 @@ namespace Auto.School.Mobile.Service.Interfaces
         public Task<BaseResponse> CancelMyLesson(string lessonId);
 
         public Task<int> GetNumberPassedLessons();
+
+        public Task<BaseResponse> InstructorCancelLesson(string lessonId);
+
     }
 }

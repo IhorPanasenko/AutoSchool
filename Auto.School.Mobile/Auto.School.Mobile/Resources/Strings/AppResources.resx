@@ -165,6 +165,9 @@
   <data name="BirthdayDate" xml:space="preserve">
     <value>Date of birth</value>
   </data>
+  <data name="DrivingSkills.CloseButton" xml:space="preserve">
+    <value>Return</value>
+  </data>
   <data name="DrivingSkills.Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
@@ -218,6 +221,9 @@
   </data>
   <data name="InstructorDetails.AverageRating" xml:space="preserve">
     <value>Average rating</value>
+  </data>
+  <data name="InstructorDetails.AverageRatingCar" xml:space="preserve">
+    <value>Car rating</value>
   </data>
   <data name="InstructorDetails.CarCommentsButton" xml:space="preserve">
     <value>Reviews about car</value>
@@ -303,6 +309,15 @@
   <data name="Monday" xml:space="preserve">
     <value>Monday</value>
   </data>
+  <data name="MySchedule.CancelLesson" xml:space="preserve">
+    <value>Cancel lesson</value>
+  </data>
+  <data name="MySchedule.SignedUpStudent" xml:space="preserve">
+    <value>Signed up student:</value>
+  </data>
+  <data name="MySchedule.ViewStudentProfile" xml:space="preserve">
+    <value>Open student profile</value>
+  </data>
   <data name="NewUser" xml:space="preserve">
     <value>New User?</value>
   </data>
@@ -356,6 +371,24 @@
   </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Select your city</value>
+  </data>
+  <data name="Shell.AllInstructors" xml:space="preserve">
+    <value>All instructors</value>
+  </data>
+  <data name="Shell.MyInstructor" xml:space="preserve">
+    <value>My instructor</value>
+  </data>
+  <data name="Shell.MyLessons" xml:space="preserve">
+    <value>My lessons</value>
+  </data>
+  <data name="Shell.MyScheduleInstructor" xml:space="preserve">
+    <value>My schedule</value>
+  </data>
+  <data name="Shell.MyScheduleStudent" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="Shell.Profile" xml:space="preserve">
+    <value>My profile</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>

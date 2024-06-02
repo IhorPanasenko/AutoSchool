@@ -23,6 +23,14 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
             return res;
         }
 
+        public async Task<BaseResponse> InstructorCancelLesson(string lessonId)
+        {
+            _tokenExpirationService.TryRefreshToken();
+            var url = FormUrlHelper.InsertIdIntoUrl(RoutesConstants.InstructorCancelLesson, lessonId);
+            var res = await _patchRequest.ExecuteAsync<object, BaseResponse>(url);
+            return res;
+        }
+
         public async Task<SignUpToLessonResponse> SignUpToLesson(string lessonId)
         {
             _tokenExpirationService.TryRefreshToken();

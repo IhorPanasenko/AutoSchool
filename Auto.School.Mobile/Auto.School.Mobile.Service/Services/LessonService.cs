@@ -30,6 +30,12 @@ namespace Auto.School.Mobile.Service.Services
             return 0;
         }
 
+        public async Task<BaseResponse> InstructorCancelLesson(string lessonId)
+        {
+            var res = await _lessonRequest.InstructorCancelLesson(lessonId);
+            return res;
+        }
+
         public async Task<SignUpToLessonResponse> SignUpToLessonAsync(string lessonId)
         {
             var res = await _lessonRequest.SignUpToLesson(lessonId);

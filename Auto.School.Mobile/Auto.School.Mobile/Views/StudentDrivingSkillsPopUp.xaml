@@ -14,10 +14,11 @@
             <Setter Property="LineBreakMode" Value="WordWrap"/>
         </Style>
     </toolkit:Popup.Resources>
-    <ScrollView>
+    <ScrollView Margin="10,30">
         <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
             <Label Text="{x:Static resx:AppResources.DrivingSkills_Title}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
+            <Button Text="{x:Static resx:AppResources.DrivingSkills_CloseButton}" BackgroundColor="#7eb693" TextColor="#333333" FontSize="Medium" LineBreakMode="WordWrap" Command="{Binding CloseCommand}"/>
             <ScrollView>
                 <CollectionView ItemsSource="{Binding DrivingSkills}" BackgroundColor="#7FB2FF">
                     <CollectionView.ItemTemplate>

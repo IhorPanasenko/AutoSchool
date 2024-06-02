@@ -5,6 +5,7 @@ using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
@@ -22,32 +23,53 @@ namespace Auto.School.Mobile.ViewModels
             _sharedService = sharedService;
             _studentService = studentService;
             _popupService = popupService;
-            LoadInstructor();
-            _ = SetIsSignedUpToThisInstructor();
+            SetIsSignedUpToThisInstructor();
+            _ = LoadInstructor();
         }
 
-        private async Task SetIsSignedUpToThisInstructor()
+        private void SetIsSignedUpToThisInstructor()
         {
-            var response = await _studentService.GetInfoMe();
-            if(response is not null)
+            string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
+            if (!string.IsNullOrEmpty(instructorIdJson))
             {
-                IsSignedUpToThisInstructor = response.Data?.Student?.InstructorId == Instructor.Id;
+                myInstructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
             }
         }
 
-        private void LoadInstructor()
+        private async Task LoadInstructor()
         {
-            Instructor = _sharedService.GetValue<InstructorModel>("instructor")!;
+            var sharedInstructor = _sharedService.GetValue<InstructorModel>("instructor");
+            if (sharedInstructor is null)
+            {
+                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                if (!string.IsNullOrEmpty(instructorIdJson))
+                {
+                    var instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
+                    var dbInstructor = await _instructorService.GetOne(instructorId!);
+                    if (dbInstructor is not null)
+                    {
+                        Instructor = dbInstructor.Instructor;
+                    }
+                }
+            }
+            else
+            {
+                Instructor = sharedInstructor;
+            }
+
+            IsSignedUpToThisInstructor = Instructor?.Id == myInstructorId;
             IsLoading = false;
         }
+
+        private string? myInstructorId = null;
 
         [ObservableProperty]
         private InstructorModel instructor;
 
         [ObservableProperty]
         private bool isSignedUpToThisInstructor = false;
-        
-        public bool IsNotSignedUpToThisInstructor { get =>  !IsSignedUpToThisInstructor; private set { } }
+
+        public bool IsNotSignedUpToThisInstructor { get => !IsSignedUpToThisInstructor; private set { } }
 
         partial void OnIsSignedUpToThisInstructorChanged(bool value)
         {

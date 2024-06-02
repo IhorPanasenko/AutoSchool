@@ -14,5 +14,6 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Abstract
         public Task<BaseResponse> UpdateProfileImage(Stream stream);
         public Task<UpdateMeResponse> UpdateMe(UpdateUserMeModel updateMeModel);
         public Task<UpdateDrivingSkillsResponse> UpdateDrivingSkills(UpdateDrivingSkillsModel updateDrivingSkillsModel);
+        public Task<GetInfoMeResponse> GetOne(string studentId);
     }
 }

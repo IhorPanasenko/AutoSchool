@@ -12,6 +12,8 @@ import ResetPassword from "./pages/resetPassword/ResetPassword"
 import Timetable from "./pages/timetable/Timetable"
 import Payment from "./pages/payment/Payment"
 
+import Lessons from "./pages/lessons/Lessons"
+
 function App() {
   return (
     <Routes>
@@ -27,6 +29,8 @@ function App() {
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/resetPassword/:token" element={<ResetPassword />} />
       <Route path="/timetable/payment/:chosenLessonId" element={<Payment />} />
+      <Route path="/mylessons" element={<Lessons />} />
+
       {/* <Route path="/warehouses" element={<List />} />
         <Route path="/warehouses/:id" element={<Warehouse />} />
         <Route path="/login" element={<Login />} />

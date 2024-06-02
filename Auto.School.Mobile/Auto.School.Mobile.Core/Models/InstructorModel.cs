@@ -46,6 +46,9 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("available")]
         public bool IsAvailable { get; private set; }
 
+        [JsonProperty("reviews")]
+        public List<ReviewModel> Reviews { get; set; } = [];
+
         [JsonIgnore]
         public bool IsNotAvailable { get => !IsAvailable; private set { } }
 

@@ -1,5 +1,6 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Base.Abstract;
 using Auto.School.Mobile.ApiIntegration.Constants;
+using Auto.School.Mobile.ApiIntegration.Helpers;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Servicecs.Abstract;
 using Auto.School.Mobile.Core.Constants;
@@ -71,6 +72,13 @@ namespace Auto.School.Mobile.ApiIntegration.Requests.Implementation
                 };
 
             }
+        }
+
+        public async Task<GetInfoMeResponse> GetOne(string studentId)
+        {
+            var url = $"{RoutesConstants.GetOneStudent}{studentId}";
+            var response = await _getRequest.ExecuteAsync<GetInfoMeResponse>(url);
+            return response;
         }
 
         public async Task<UpdateDrivingSkillsResponse> UpdateDrivingSkills(UpdateDrivingSkillsModel updateDrivingSkillsModel)
