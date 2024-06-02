@@ -1,34 +1,38 @@
 const WebSocket = require('ws');
 
 const server = new WebSocket.Server({ port: 8080 });
-//const users = new Map();
+const users = new Map();
 
 server.on('connection', (ws) => {
-  // const userId = generateUniqueId();
-  // users.set(userId, ws);
-
-  // Notify the client of their userId
-  //ws.send(JSON.stringify({ type: 'init', userId }));
-
   ws.on('message', (message) => {
-    // const parsedMessage = JSON.parse(message);
-    // const recipientId = parsedMessage.recipientId;
-    // const text = parsedMessage.text;
-
-    // Creating textDecoder instance
     let decoder = new TextDecoder('utf-8');
-
-    // Using decode method to get string output
     let str = decoder.decode(message);
+    const parsedMessage = JSON.parse(str);
+    console.log('Receive: ', parsedMessage);
 
-    console.log(str);
+    if (parsedMessage.type === 'register') {
+      const userId = parsedMessage.userId;
+      users.set(userId, ws);
+      ws.userId = userId; // Store userId in the WebSocket object
+      ws.send(JSON.stringify({ type: 'registered', userId })); // Respond to the requesting client
+      console.log(`User registered: ${userId}`);
+    } else if (parsedMessage.type === 'message') {
+      const recipientId = parsedMessage.recipientId;
+      const text = parsedMessage.text;
+      const senderId = ws.userId;
 
-    // if (users.has(recipientId)) {
-    //   const recipientSocket = users.get(recipientId);
-    //   if (recipientSocket.readyState === WebSocket.OPEN) {
-    //     recipientSocket.send(JSON.stringify({ senderId: userId, recipientId, text }));
-    //   }
-    // }
+      if (users.has(recipientId)) {
+        const recipientSocket = users.get(recipientId);
+        if (recipientSocket.readyState === WebSocket.OPEN) {
+          recipientSocket.send(
+            JSON.stringify({ senderId: userId, recipientId, text })
+          );
+        }
+      } else {
+        //TODO: save message in db
+      }
+    }
+
     ws.send('Response from server');
   });
 
@@ -38,8 +42,8 @@ server.on('connection', (ws) => {
   });
 });
 
-// function generateUniqueId() {
-//   return Math.random().toString(36).substr(2, 9);
-// }
+function generateUniqueId() {
+  return Math.random().toString(36).slice(2, 9);
+}
 
 console.log('WebSocket server is running on ws://localhost:8080');
