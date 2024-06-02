@@ -1,5 +1,4 @@
-﻿using Auto.School.Mobile.Abstract;
-using Auto.School.Mobile.Views;
+﻿using Auto.School.Mobile.Views;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 
@@ -7,7 +6,7 @@ namespace Auto.School.Mobile.ViewModels
 {
     public partial class HomeViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        public HomeViewModel(IModifyCultureService modifyCultureService) : base(modifyCultureService)
+        public HomeViewModel()
         {
             
         }

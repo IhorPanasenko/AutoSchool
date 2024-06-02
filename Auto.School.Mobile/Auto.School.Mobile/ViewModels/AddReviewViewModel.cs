@@ -10,18 +10,11 @@ using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
 {
-    public partial class AddReviewViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class AddReviewViewModel(IReviewService reviewService, ISharedService sharedService, IPopupService popupService) : BaseViewModel, INotifyPropertyChanged
     {
-        private readonly IReviewService _reviewService;
-        private readonly ISharedService _sharedService;
-        private readonly IPopupService _popUpservice;
-
-        public AddReviewViewModel(IReviewService reviewService, ISharedService sharedService, IPopupService popupService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
-        {
-            _reviewService = reviewService;
-            _sharedService = sharedService;
-            _popUpservice = popupService;
-        }
+        private readonly IReviewService _reviewService = reviewService;
+        private readonly ISharedService _sharedService = sharedService;
+        private readonly IPopupService _popUpservice = popupService;
 
         [ObservableProperty]
         private Popup popupInstance;

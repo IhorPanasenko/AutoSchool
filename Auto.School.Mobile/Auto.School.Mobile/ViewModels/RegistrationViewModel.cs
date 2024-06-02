@@ -1,5 +1,4 @@
-﻿using Auto.School.Mobile.Abstract;
-using Auto.School.Mobile.Core.Constants;
+﻿using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
 using Auto.School.Mobile.Validators;
@@ -16,7 +15,7 @@ namespace Auto.School.Mobile.ViewModels
         private readonly ICityService _cityService;
         private readonly IAuthenticationService _authenticationService;
         private readonly ICultureService _cultureService;
-        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService, ICultureService cultureService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
+        public RegistrationViewModel(ICityService cityService, IAuthenticationService authenticationService, ICultureService cultureService)
         {
             _cityService = cityService;
             _authenticationService = authenticationService; 

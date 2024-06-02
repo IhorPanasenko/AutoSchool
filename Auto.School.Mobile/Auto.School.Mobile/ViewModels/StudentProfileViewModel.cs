@@ -17,7 +17,7 @@ namespace Auto.School.Mobile.ViewModels
         private readonly Abstract.IPopupService _popupService;
         private readonly ILessonService _lessonService;
 
-        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, Abstract.IPopupService popupService, ILessonService lessonService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
+        public StudentProfileViewModel(IStudentService studentService, IInstructorService instructorService, ISharedService sharedService, Abstract.IPopupService popupService, ILessonService lessonService)
         {
             _studentService = studentService;
             _instructorService = instructorService;

@@ -19,7 +19,7 @@ namespace Auto.School.Mobile.ViewModels
         private DateTime _currentWeekStart;
         private readonly IPopupService _popupService;
 
-        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService, IPopupService popupService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
+        public InstructorScheduleStudentViewModel(IInstructorService instructorService, ISharedService sharedService, IPopupService popupService)
         {
             _instructorService = instructorService;
             _sharedService = sharedService;

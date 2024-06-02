@@ -8,19 +8,11 @@ using System.ComponentModel;
 
 namespace Auto.School.Mobile.ViewModels
 {
-    public partial class AddCarRatingViewModel : BaseViewModel, INotifyPropertyChanged
+    public partial class AddCarRatingViewModel(ICarService carService, IPopupService popupService, ISharedService sharedService) : BaseViewModel, INotifyPropertyChanged
     {
-        private readonly ICarService _carService;
-        private readonly ISharedService _sharedService;
-        private readonly IPopupService _popUpservice;
-
-        public AddCarRatingViewModel(ICarService carService, IPopupService popupService, ISharedService sharedService, IModifyCultureService modifyCultureService) : base(modifyCultureService)
-        {
-            _carService = carService;
-            _sharedService = sharedService;
-            _popUpservice = popupService;
-
-        }
+        private readonly ICarService _carService = carService;
+        private readonly ISharedService _sharedService = sharedService;
+        private readonly IPopupService _popUpservice = popupService;
 
         [ObservableProperty]
         private Popup popupInstance;
@@ -57,7 +49,7 @@ namespace Auto.School.Mobile.ViewModels
                 return;
             }
             var response = await _carService.AddRating(carId, Rating);
-            if (string.Compare(response.Status, ResponseStatuses.Sucess, true) != 0)
+            if(string.Compare(response.Status, ResponseStatuses.Sucess, true) != 0)
             {
                 IsError = true;
                 ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;

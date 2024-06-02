@@ -14,6 +14,12 @@ public partial class ChatPage : ContentPage
         _viewModel = chatViewModel;
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.ConnectAsync();
+    }
+
     protected override async void OnDisappearing()
     {
         base.OnDisappearing();
