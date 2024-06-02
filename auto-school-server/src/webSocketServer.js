@@ -14,7 +14,14 @@ server.on('connection', (ws) => {
     // const parsedMessage = JSON.parse(message);
     // const recipientId = parsedMessage.recipientId;
     // const text = parsedMessage.text;
-    console.log(message);
+
+    // Creating textDecoder instance
+    let decoder = new TextDecoder('utf-8');
+
+    // Using decode method to get string output
+    let str = decoder.decode(message);
+
+    console.log(str);
 
     // if (users.has(recipientId)) {
     //   const recipientSocket = users.get(recipientId);
