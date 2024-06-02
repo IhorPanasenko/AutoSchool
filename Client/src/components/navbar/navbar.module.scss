@@ -26,6 +26,7 @@
 
 .logo_container {
   text-align: center;
+  width: 10%;
 }
 .name {
   margin-top: 10px;
@@ -40,6 +41,7 @@
 }
 
 .menu {
+  width: 35%;
   @include flex(center, center);
   gap: 10%;
 }
@@ -72,10 +74,12 @@
 }
 
 .language {
+  width: 10%;
   color: $dark-blue;
   @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
 }
 .btn_container {
+  width: 35%;
   @include flex(center, center);
   gap: 15%;
 }

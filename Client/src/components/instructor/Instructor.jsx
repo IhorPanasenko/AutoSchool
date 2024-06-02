@@ -4,7 +4,7 @@ import axios from "axios"
 import CarImg1 from "../../assets/CarImg1.png"
 import CarImg2 from "../../assets/CarImg2.png"
 import CarImg3 from "../../assets/CarImg3.png"
-
+import StarIcon from "@mui/icons-material/Star"
 import InstructorImg from "../../assets/man1.png"
 import InstructorImg1 from "../../assets/man2.png"
 
@@ -13,7 +13,7 @@ import i18next from "i18next"
 // import { AuthContext } from "../../context/AuthContext.js"
 import { Link, useLocation } from "react-router-dom"
 
-const Instructor = () => {
+const InstructorsList = () => {
   const { t, i18n } = useTranslation()
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language)
   const [nav, setNav] = useState(false)
@@ -55,142 +55,6 @@ const Instructor = () => {
   console.log("instructors" + instructors.data)
   const fakeId = 2714781348913789
   return (
-    // <div className={styles.wrapper}>
-    //   <div className={styles.wrapper_instructor}>
-    //     <Link
-    //       to={`/instructors/${fakeId}`}
-    //       style={{ textDecoration: "none" }}
-    //       //   className={styles.wrapper}
-    //     >
-    //       <img src={CarImg1} alt="Car" className={styles.car_img} />
-    //       <img
-    //         src={InstructorImg}
-    //         alt="Instructor"
-    //         className={styles.instructor_img}
-    //       />
-
-    //       <div className={styles.car_text}>
-    //         <h3 className={styles.car_model}>BMV caaaarrrrr</h3>
-    //         <h3 className={styles.name_instructor}>Юрій володимирович</h3>
-    //         <h3 className={styles.car_type}>Коробка передач: механічна</h3>
-    //         <div className={styles.price_rating_section}>
-    //           <h3 className={styles.rating}>3/5</h3>
-    //           <div className={styles.price_section}>
-    //             <h3 className={styles.price_text}>ціна</h3>
-    //             <h3 className={styles.price_number}>700 ₴</h3>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    //   <div className={styles.wrapper_instructor}>
-    //     <Link
-    //       to={`/instructors/${fakeId}`}
-    //       style={{ textDecoration: "none" }}
-    //       //   className={styles.wrapper}
-    //     >
-    //       <img src={CarImg2} alt="Car" className={styles.car_img} />
-    //       <img
-    //         src={InstructorImg}
-    //         alt="Instructor"
-    //         className={styles.instructor_img}
-    //       />
-
-    //       <div className={styles.car_text}>
-    //         <h3 className={styles.car_model}>BMV caaaarrrrr</h3>
-    //         <h3 className={styles.name_instructor}>Юрій володимирович</h3>
-    //         <h3 className={styles.car_type}>Коробка передач: механічна</h3>
-    //         <div className={styles.price_rating_section}>
-    //           <h3 className={styles.rating}>3/5</h3>
-    //           <div className={styles.price_section}>
-    //             <h3 className={styles.price_text}>ціна</h3>
-    //             <h3 className={styles.price_number}>700 ₴</h3>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    //   <div className={styles.wrapper_instructor}>
-    //     <Link
-    //       to={`/instructors/${fakeId}`}
-    //       style={{ textDecoration: "none" }}
-    //       //   className={styles.wrapper}
-    //     >
-    //       <img src={CarImg3} alt="Car" className={styles.car_img} />
-    //       <img
-    //         src={InstructorImg}
-    //         alt="Instructor"
-    //         className={styles.instructor_img}
-    //       />
-    //       <div className={styles.car_text}>
-    //         <h3 className={styles.car_model}>BMV caaaarrrrr</h3>
-    //         <h3 className={styles.name_instructor}>Юрій володимирович</h3>
-    //         <h3 className={styles.car_type}>Коробка передач: механічна</h3>
-    //         <div className={styles.price_rating_section}>
-    //           <h3 className={styles.rating}>3/5</h3>
-    //           <div className={styles.price_section}>
-    //             <h3 className={styles.price_text}>ціна</h3>
-    //             <h3 className={styles.price_number}>700 ₴</h3>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    //   <div className={styles.wrapper_instructor}>
-    //     <Link
-    //       to={`/instructors/${fakeId}`}
-    //       style={{ textDecoration: "none" }}
-    //       //   className={styles.wrapper}
-    //     >
-    //       <img src={CarImg1} alt="Car" className={styles.car_img} />
-    //       <img
-    //         src={InstructorImg1}
-    //         alt="Instructor"
-    //         className={styles.instructor_img}
-    //       />
-
-    //       <div className={styles.car_text}>
-    //         <h3 className={styles.car_model}>BMV caaaarrrrr</h3>
-    //         <h3 className={styles.name_instructor}>Юрій володимирович</h3>
-    //         <h3 className={styles.car_type}>Коробка передач: механічна</h3>
-    //         <div className={styles.price_rating_section}>
-    //           <h3 className={styles.rating}>3/5</h3>
-    //           <div className={styles.price_section}>
-    //             <h3 className={styles.price_text}>ціна</h3>
-    //             <h3 className={styles.price_number}>700 ₴</h3>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    //   <div className={styles.wrapper_instructor}>
-    //     <Link
-    //       to={`/instructors/${fakeId}`}
-    //       style={{ textDecoration: "none" }}
-    //       //   className={styles.wrapper}
-    //     >
-    //       <img src={CarImg1} alt="Car" className={styles.car_img} />
-    //       <img
-    //         src={InstructorImg}
-    //         alt="Instructor"
-    //         className={styles.instructor_img}
-    //       />
-
-    //       <div className={styles.car_text}>
-    //         <h3 className={styles.car_model}>BMV caaaarrrrr</h3>
-    //         <h3 className={styles.name_instructor}>Юрій володимирович</h3>
-    //         <h3 className={styles.car_type}>Коробка передач: механічна</h3>
-    //         <div className={styles.price_rating_section}>
-    //           <h3 className={styles.rating}>3/5</h3>
-    //           <div className={styles.price_section}>
-    //             <h3 className={styles.price_text}>ціна</h3>
-    //             <h3 className={styles.price_number}>700 ₴</h3>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   </div>
-    // </div>
     <div className={styles.wrapper}>
       {instructors.map(instructor => (
         <div key={instructor._id} className={styles.wrapper_instructor}>
@@ -224,9 +88,12 @@ const Instructor = () => {
                 className={styles.car_type}
               >{`Рік: ${instructor.car.year}`}</h3>
               <div className={styles.price_rating_section}>
-                <h3
-                  className={styles.rating}
-                >{`${instructor.averageRating}/5`}</h3>
+                <div className={styles.ratingcontainer}>
+                  <StarIcon style={{ color: "gold", marginRight: "5px" }} />
+                  <h3
+                    className={styles.rating}
+                  >{`${instructor.averageRating}/5`}</h3>
+                </div>
                 <div className={styles.price_section}>
                   <h3 className={styles.price_text}>ціна</h3>
                   <h3 className={styles.price_number}>700 ₴</h3>
@@ -240,4 +107,4 @@ const Instructor = () => {
   )
 }
 
-export default Instructor
+export default InstructorsList
