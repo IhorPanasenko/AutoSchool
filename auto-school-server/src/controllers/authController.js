@@ -181,7 +181,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (userAccountData.role === 'student') {
     studentData = await StudentModel.findOne({
       userId: userAccountData._id,
-    }).select('instructorId');
+    }).select('instructorId requestStatus');
   }
 
   res.status(200).json({
@@ -190,6 +190,7 @@ exports.login = catchAsync(async (req, res, next) => {
       email: userLoginData.email,
       userData: userAccountData,
       ...(studentData && { instructor: studentData.instructorId || null }),
+      ...(studentData && { requestStatus: studentData.requestStatus }),
       tokenExpire: expire,
     },
   });
