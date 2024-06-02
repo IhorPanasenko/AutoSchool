@@ -1,4 +1,5 @@
 const WebSocket = require('ws');
+const { saveMessageToDB } = require('./controllers/chatController.js');
 
 const server = new WebSocket.Server({ port: 8080 });
 const users = new Map();
@@ -25,10 +26,9 @@ server.on('connection', (ws) => {
         if (recipientSocket.readyState === WebSocket.OPEN) {
           recipientSocket.send(JSON.stringify({ senderId, recipientId, text }));
         }
-        //TODO: save message in db
-      } else {
-        //TODO: save message in db
       }
+
+      saveMessageToDB({ fromUser: senderId, toUser: recipientId, text });
     } else if (parsedMessage.type === 'listUsers') {
       const userList = Array.from(users.keys());
       ws.send(JSON.stringify({ type: 'userList', users: userList }));

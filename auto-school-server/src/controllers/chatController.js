@@ -56,3 +56,11 @@ exports.getAllChatMessages = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.saveMessageToDB = async (message) => {
+  try {
+    await ChatMessageModel.create(message);
+  } catch (err) {
+    console.log('Error saving message: ', err);
+  }
+};
