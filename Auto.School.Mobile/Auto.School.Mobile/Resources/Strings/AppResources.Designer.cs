@@ -65,7 +65,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddCarRating_CarRatingLabel {
             get {
-                return ResourceManager.GetString("AddCarRating.CarRatingLabel", resourceCulture);
+                return ResourceManager.GetString("AddCarRating_CarRatingLabel", resourceCulture);
             }
         }
         
@@ -74,7 +74,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddCarRating_RatingLabel {
             get {
-                return ResourceManager.GetString("AddCarRating.RatingLabel", resourceCulture);
+                return ResourceManager.GetString("AddCarRating_RatingLabel", resourceCulture);
             }
         }
         
@@ -83,7 +83,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddCarRating_SubmitButton {
             get {
-                return ResourceManager.GetString("AddCarRating.SubmitButton", resourceCulture);
+                return ResourceManager.GetString("AddCarRating_SubmitButton", resourceCulture);
             }
         }
         
@@ -101,7 +101,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_CancelButton {
             get {
-                return ResourceManager.GetString("AddReview.CancelButton", resourceCulture);
+                return ResourceManager.GetString("AddReview_CancelButton", resourceCulture);
             }
         }
         
@@ -110,7 +110,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_CurrentRating {
             get {
-                return ResourceManager.GetString("AddReview.CurrentRating", resourceCulture);
+                return ResourceManager.GetString("AddReview_CurrentRating", resourceCulture);
             }
         }
         
@@ -119,7 +119,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_RatingLabel {
             get {
-                return ResourceManager.GetString("AddReview.RatingLabel", resourceCulture);
+                return ResourceManager.GetString("AddReview_RatingLabel", resourceCulture);
             }
         }
         
@@ -128,7 +128,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_ReviewLabel {
             get {
-                return ResourceManager.GetString("AddReview.ReviewLabel", resourceCulture);
+                return ResourceManager.GetString("AddReview_ReviewLabel", resourceCulture);
             }
         }
         
@@ -137,7 +137,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_ReviewPlaceholder {
             get {
-                return ResourceManager.GetString("AddReview.ReviewPlaceholder", resourceCulture);
+                return ResourceManager.GetString("AddReview_ReviewPlaceholder", resourceCulture);
             }
         }
         
@@ -146,7 +146,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_SubmitButton {
             get {
-                return ResourceManager.GetString("AddReview.SubmitButton", resourceCulture);
+                return ResourceManager.GetString("AddReview_SubmitButton", resourceCulture);
             }
         }
         
@@ -155,7 +155,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AddReview_Title {
             get {
-                return ResourceManager.GetString("AddReview.Title", resourceCulture);
+                return ResourceManager.GetString("AddReview_Title", resourceCulture);
             }
         }
         
@@ -164,7 +164,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AllInstructors_DetailsButton {
             get {
-                return ResourceManager.GetString("AllInstructors.DetailsButton", resourceCulture);
+                return ResourceManager.GetString("AllInstructors_DetailsButton", resourceCulture);
             }
         }
         
@@ -173,7 +173,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AllInstructors_NotAvailale {
             get {
-                return ResourceManager.GetString("AllInstructors.NotAvailale", resourceCulture);
+                return ResourceManager.GetString("AllInstructors_NotAvailale", resourceCulture);
             }
         }
         
@@ -182,7 +182,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string AllInstructors_Title {
             get {
-                return ResourceManager.GetString("AllInstructors.Title", resourceCulture);
+                return ResourceManager.GetString("AllInstructors_Title", resourceCulture);
             }
         }
         
@@ -209,7 +209,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string DrivingSkills_CloseButton {
             get {
-                return ResourceManager.GetString("DrivingSkills.CloseButton", resourceCulture);
+                return ResourceManager.GetString("DrivingSkills_CloseButton", resourceCulture);
             }
         }
         
@@ -218,7 +218,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string DrivingSkills_Completed {
             get {
-                return ResourceManager.GetString("DrivingSkills.Completed", resourceCulture);
+                return ResourceManager.GetString("DrivingSkills_Completed", resourceCulture);
             }
         }
         
@@ -227,7 +227,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string DrivingSkills_MarkCompleted {
             get {
-                return ResourceManager.GetString("DrivingSkills.MarkCompleted", resourceCulture);
+                return ResourceManager.GetString("DrivingSkills_MarkCompleted", resourceCulture);
             }
         }
         
@@ -236,7 +236,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string DrivingSkills_Title {
             get {
-                return ResourceManager.GetString("DrivingSkills.Title", resourceCulture);
+                return ResourceManager.GetString("DrivingSkills_Title", resourceCulture);
             }
         }
         
@@ -246,6 +246,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string FirstName {
             get {
                 return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose language.
+        /// </summary>
+        internal static string FlyoutHeader_ChooseLanguage {
+            get {
+                return ResourceManager.GetString("FlyoutHeader_ChooseLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,.
+        /// </summary>
+        internal static string FlyoutHeader_Hello {
+            get {
+                return ResourceManager.GetString("FlyoutHeader_Hello", resourceCulture);
             }
         }
         
@@ -263,7 +281,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string ForgotPassword_Button {
             get {
-                return ResourceManager.GetString("ForgotPassword.Button", resourceCulture);
+                return ResourceManager.GetString("ForgotPassword_Button", resourceCulture);
             }
         }
         
@@ -272,7 +290,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string ForgotPassword_Email {
             get {
-                return ResourceManager.GetString("ForgotPassword.Email", resourceCulture);
+                return ResourceManager.GetString("ForgotPassword_Email", resourceCulture);
             }
         }
         
@@ -281,7 +299,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string ForgotPassword_Head {
             get {
-                return ResourceManager.GetString("ForgotPassword.Head", resourceCulture);
+                return ResourceManager.GetString("ForgotPassword_Head", resourceCulture);
             }
         }
         
@@ -290,7 +308,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string ForgotPassword_Label {
             get {
-                return ResourceManager.GetString("ForgotPassword.Label", resourceCulture);
+                return ResourceManager.GetString("ForgotPassword_Label", resourceCulture);
             }
         }
         
@@ -317,7 +335,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorCard_DrivingCategory {
             get {
-                return ResourceManager.GetString("InstructorCard.DrivingCategory", resourceCulture);
+                return ResourceManager.GetString("InstructorCard_DrivingCategory", resourceCulture);
             }
         }
         
@@ -326,7 +344,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorCard_Experience {
             get {
-                return ResourceManager.GetString("InstructorCard.Experience", resourceCulture);
+                return ResourceManager.GetString("InstructorCard_Experience", resourceCulture);
             }
         }
         
@@ -335,7 +353,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorCard_Raiting {
             get {
-                return ResourceManager.GetString("InstructorCard.Raiting", resourceCulture);
+                return ResourceManager.GetString("InstructorCard_Raiting", resourceCulture);
             }
         }
         
@@ -344,7 +362,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorCard_Years {
             get {
-                return ResourceManager.GetString("InstructorCard.Years", resourceCulture);
+                return ResourceManager.GetString("InstructorCard_Years", resourceCulture);
             }
         }
         
@@ -353,7 +371,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_AddCarReview {
             get {
-                return ResourceManager.GetString("InstructorDetails.AddCarReview", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_AddCarReview", resourceCulture);
             }
         }
         
@@ -362,7 +380,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_AddCommentButton {
             get {
-                return ResourceManager.GetString("InstructorDetails.AddCommentButton", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_AddCommentButton", resourceCulture);
             }
         }
         
@@ -371,7 +389,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_AverageRating {
             get {
-                return ResourceManager.GetString("InstructorDetails.AverageRating", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_AverageRating", resourceCulture);
             }
         }
         
@@ -380,7 +398,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_AverageRatingCar {
             get {
-                return ResourceManager.GetString("InstructorDetails.AverageRatingCar", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_AverageRatingCar", resourceCulture);
             }
         }
         
@@ -389,7 +407,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_CarCommentsButton {
             get {
-                return ResourceManager.GetString("InstructorDetails.CarCommentsButton", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_CarCommentsButton", resourceCulture);
             }
         }
         
@@ -398,7 +416,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_CarManufactureYear {
             get {
-                return ResourceManager.GetString("InstructorDetails.CarManufactureYear", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_CarManufactureYear", resourceCulture);
             }
         }
         
@@ -407,7 +425,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_CarSectionTitle {
             get {
-                return ResourceManager.GetString("InstructorDetails.CarSectionTitle", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_CarSectionTitle", resourceCulture);
             }
         }
         
@@ -416,7 +434,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_DrivingCategory {
             get {
-                return ResourceManager.GetString("InstructorDetails.DrivingCategory", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_DrivingCategory", resourceCulture);
             }
         }
         
@@ -425,7 +443,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_Experience {
             get {
-                return ResourceManager.GetString("InstructorDetails.Experience", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_Experience", resourceCulture);
             }
         }
         
@@ -434,7 +452,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_InstructorCommentsButton {
             get {
-                return ResourceManager.GetString("InstructorDetails.InstructorCommentsButton", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_InstructorCommentsButton", resourceCulture);
             }
         }
         
@@ -443,7 +461,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_InstructorSectionTitle {
             get {
-                return ResourceManager.GetString("InstructorDetails.InstructorSectionTitle", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_InstructorSectionTitle", resourceCulture);
             }
         }
         
@@ -452,7 +470,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_MaxNumberOfStudents {
             get {
-                return ResourceManager.GetString("InstructorDetails.MaxNumberOfStudents", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_MaxNumberOfStudents", resourceCulture);
             }
         }
         
@@ -461,7 +479,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_NumberRatings {
             get {
-                return ResourceManager.GetString("InstructorDetails.NumberRatings", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_NumberRatings", resourceCulture);
             }
         }
         
@@ -470,7 +488,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_SignUpToInstructorButton {
             get {
-                return ResourceManager.GetString("InstructorDetails.SignUpToInstructorButton", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_SignUpToInstructorButton", resourceCulture);
             }
         }
         
@@ -479,7 +497,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_Title {
             get {
-                return ResourceManager.GetString("InstructorDetails.Title", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_Title", resourceCulture);
             }
         }
         
@@ -488,7 +506,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorDetails_Transmission {
             get {
-                return ResourceManager.GetString("InstructorDetails.Transmission", resourceCulture);
+                return ResourceManager.GetString("InstructorDetails_Transmission", resourceCulture);
             }
         }
         
@@ -497,7 +515,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_DateCreatedlabel {
             get {
-                return ResourceManager.GetString("InstructorReviews.DateCreatedlabel", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_DateCreatedlabel", resourceCulture);
             }
         }
         
@@ -506,7 +524,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_DeleteButton {
             get {
-                return ResourceManager.GetString("InstructorReviews.DeleteButton", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_DeleteButton", resourceCulture);
             }
         }
         
@@ -524,7 +542,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_RatingLabel {
             get {
-                return ResourceManager.GetString("InstructorReviews.RatingLabel", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_RatingLabel", resourceCulture);
             }
         }
         
@@ -533,7 +551,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_ReviewFrom {
             get {
-                return ResourceManager.GetString("InstructorReviews.ReviewFrom", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_ReviewFrom", resourceCulture);
             }
         }
         
@@ -542,7 +560,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_ReviewLabel {
             get {
-                return ResourceManager.GetString("InstructorReviews.ReviewLabel", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_ReviewLabel", resourceCulture);
             }
         }
         
@@ -551,7 +569,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorReviews_Title {
             get {
-                return ResourceManager.GetString("InstructorReviews.Title", resourceCulture);
+                return ResourceManager.GetString("InstructorReviews_Title", resourceCulture);
             }
         }
         
@@ -560,7 +578,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string InstructorSchedule_SingUp {
             get {
-                return ResourceManager.GetString("InstructorSchedule.SingUp", resourceCulture);
+                return ResourceManager.GetString("InstructorSchedule_SingUp", resourceCulture);
             }
         }
         
@@ -578,7 +596,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string LessonSignUp_Confirm {
             get {
-                return ResourceManager.GetString("LessonSignUp.Confirm", resourceCulture);
+                return ResourceManager.GetString("LessonSignUp_Confirm", resourceCulture);
             }
         }
         
@@ -587,7 +605,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string LessonSignUp_Date {
             get {
-                return ResourceManager.GetString("LessonSignUp.Date", resourceCulture);
+                return ResourceManager.GetString("LessonSignUp_Date", resourceCulture);
             }
         }
         
@@ -596,7 +614,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string LessonSignUp_LessonTime {
             get {
-                return ResourceManager.GetString("LessonSignUp.LessonTime", resourceCulture);
+                return ResourceManager.GetString("LessonSignUp_LessonTime", resourceCulture);
             }
         }
         
@@ -605,7 +623,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string LessonSignUp_Price {
             get {
-                return ResourceManager.GetString("LessonSignUp.Price", resourceCulture);
+                return ResourceManager.GetString("LessonSignUp_Price", resourceCulture);
             }
         }
         
@@ -614,7 +632,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string LessonSignUp_SignUp {
             get {
-                return ResourceManager.GetString("LessonSignUp.SignUp", resourceCulture);
+                return ResourceManager.GetString("LessonSignUp_SignUp", resourceCulture);
             }
         }
         
@@ -641,7 +659,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string MySchedule_CancelLesson {
             get {
-                return ResourceManager.GetString("MySchedule.CancelLesson", resourceCulture);
+                return ResourceManager.GetString("MySchedule_CancelLesson", resourceCulture);
             }
         }
         
@@ -650,7 +668,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string MySchedule_SignedUpStudent {
             get {
-                return ResourceManager.GetString("MySchedule.SignedUpStudent", resourceCulture);
+                return ResourceManager.GetString("MySchedule_SignedUpStudent", resourceCulture);
             }
         }
         
@@ -659,7 +677,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string MySchedule_ViewStudentProfile {
             get {
-                return ResourceManager.GetString("MySchedule.ViewStudentProfile", resourceCulture);
+                return ResourceManager.GetString("MySchedule_ViewStudentProfile", resourceCulture);
             }
         }
         
@@ -722,7 +740,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_DrivingCaregoryLabel {
             get {
-                return ResourceManager.GetString("Registration.DrivingCaregoryLabel", resourceCulture);
+                return ResourceManager.GetString("Registration_DrivingCaregoryLabel", resourceCulture);
             }
         }
         
@@ -731,7 +749,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_EmailLabel {
             get {
-                return ResourceManager.GetString("Registration.EmailLabel", resourceCulture);
+                return ResourceManager.GetString("Registration_EmailLabel", resourceCulture);
             }
         }
         
@@ -740,7 +758,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_EnterFirstName {
             get {
-                return ResourceManager.GetString("Registration.EnterFirstName", resourceCulture);
+                return ResourceManager.GetString("Registration_EnterFirstName", resourceCulture);
             }
         }
         
@@ -749,7 +767,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_EnterLastName {
             get {
-                return ResourceManager.GetString("Registration.EnterLastName", resourceCulture);
+                return ResourceManager.GetString("Registration_EnterLastName", resourceCulture);
             }
         }
         
@@ -758,7 +776,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_PasswordLabel {
             get {
-                return ResourceManager.GetString("Registration.PasswordLabel", resourceCulture);
+                return ResourceManager.GetString("Registration_PasswordLabel", resourceCulture);
             }
         }
         
@@ -767,7 +785,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_PhoneLabel {
             get {
-                return ResourceManager.GetString("Registration.PhoneLabel", resourceCulture);
+                return ResourceManager.GetString("Registration_PhoneLabel", resourceCulture);
             }
         }
         
@@ -776,7 +794,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Registration_RepeatPassword {
             get {
-                return ResourceManager.GetString("Registration.RepeatPassword", resourceCulture);
+                return ResourceManager.GetString("Registration_RepeatPassword", resourceCulture);
             }
         }
         
@@ -794,7 +812,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Schedule_LessonPassed {
             get {
-                return ResourceManager.GetString("Schedule.LessonPassed", resourceCulture);
+                return ResourceManager.GetString("Schedule_LessonPassed", resourceCulture);
             }
         }
         
@@ -803,7 +821,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Schedule_NextWeek {
             get {
-                return ResourceManager.GetString("Schedule.NextWeek", resourceCulture);
+                return ResourceManager.GetString("Schedule_NextWeek", resourceCulture);
             }
         }
         
@@ -812,7 +830,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Schedule_PreviousWeek {
             get {
-                return ResourceManager.GetString("Schedule.PreviousWeek", resourceCulture);
+                return ResourceManager.GetString("Schedule_PreviousWeek", resourceCulture);
             }
         }
         
@@ -830,7 +848,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_AllInstructors {
             get {
-                return ResourceManager.GetString("Shell.AllInstructors", resourceCulture);
+                return ResourceManager.GetString("Shell_AllInstructors", resourceCulture);
             }
         }
         
@@ -839,7 +857,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_MyInstructor {
             get {
-                return ResourceManager.GetString("Shell.MyInstructor", resourceCulture);
+                return ResourceManager.GetString("Shell_MyInstructor", resourceCulture);
             }
         }
         
@@ -848,7 +866,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_MyLessons {
             get {
-                return ResourceManager.GetString("Shell.MyLessons", resourceCulture);
+                return ResourceManager.GetString("Shell_MyLessons", resourceCulture);
             }
         }
         
@@ -857,7 +875,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_MyScheduleInstructor {
             get {
-                return ResourceManager.GetString("Shell.MyScheduleInstructor", resourceCulture);
+                return ResourceManager.GetString("Shell_MyScheduleInstructor", resourceCulture);
             }
         }
         
@@ -866,7 +884,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_MyScheduleStudent {
             get {
-                return ResourceManager.GetString("Shell.MyScheduleStudent", resourceCulture);
+                return ResourceManager.GetString("Shell_MyScheduleStudent", resourceCulture);
             }
         }
         
@@ -875,7 +893,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_Profile {
             get {
-                return ResourceManager.GetString("Shell.Profile", resourceCulture);
+                return ResourceManager.GetString("Shell_Profile", resourceCulture);
             }
         }
         
@@ -884,7 +902,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string Shell_StudentChatMenuItem {
             get {
-                return ResourceManager.GetString("Shell.StudentChatMenuItem", resourceCulture);
+                return ResourceManager.GetString("Shell_StudentChatMenuItem", resourceCulture);
             }
         }
         
@@ -920,7 +938,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentMyLessons_FutureLessons {
             get {
-                return ResourceManager.GetString("StudentMyLessons.FutureLessons", resourceCulture);
+                return ResourceManager.GetString("StudentMyLessons_FutureLessons", resourceCulture);
             }
         }
         
@@ -929,7 +947,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentMyLessons_NoFutureLabel {
             get {
-                return ResourceManager.GetString("StudentMyLessons.NoFutureLabel", resourceCulture);
+                return ResourceManager.GetString("StudentMyLessons_NoFutureLabel", resourceCulture);
             }
         }
         
@@ -938,7 +956,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentMyLessons_PassedLessons {
             get {
-                return ResourceManager.GetString("StudentMyLessons.PassedLessons", resourceCulture);
+                return ResourceManager.GetString("StudentMyLessons_PassedLessons", resourceCulture);
             }
         }
         
@@ -947,7 +965,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentMyLessons_SignUp {
             get {
-                return ResourceManager.GetString("StudentMyLessons.SignUp", resourceCulture);
+                return ResourceManager.GetString("StudentMyLessons_SignUp", resourceCulture);
             }
         }
         
@@ -956,7 +974,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_BirthdayDate {
             get {
-                return ResourceManager.GetString("StudentProfile.BirthdayDate", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_BirthdayDate", resourceCulture);
             }
         }
         
@@ -965,7 +983,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_City {
             get {
-                return ResourceManager.GetString("StudentProfile.City", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_City", resourceCulture);
             }
         }
         
@@ -974,7 +992,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_DetailedInfo {
             get {
-                return ResourceManager.GetString("StudentProfile.DetailedInfo", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_DetailedInfo", resourceCulture);
             }
         }
         
@@ -983,7 +1001,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_DrivingCategory {
             get {
-                return ResourceManager.GetString("StudentProfile.DrivingCategory", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_DrivingCategory", resourceCulture);
             }
         }
         
@@ -992,7 +1010,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_Email {
             get {
-                return ResourceManager.GetString("StudentProfile.Email", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_Email", resourceCulture);
             }
         }
         
@@ -1001,7 +1019,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_FirstName {
             get {
-                return ResourceManager.GetString("StudentProfile.FirstName", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_FirstName", resourceCulture);
             }
         }
         
@@ -1010,7 +1028,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_GoToLessonsButton {
             get {
-                return ResourceManager.GetString("StudentProfile.GoToLessonsButton", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_GoToLessonsButton", resourceCulture);
             }
         }
         
@@ -1019,7 +1037,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_GoToSchedule {
             get {
-                return ResourceManager.GetString("StudentProfile.GoToSchedule", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_GoToSchedule", resourceCulture);
             }
         }
         
@@ -1028,7 +1046,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_InstructorInfoTitle {
             get {
-                return ResourceManager.GetString("StudentProfile.InstructorInfoTitle", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_InstructorInfoTitle", resourceCulture);
             }
         }
         
@@ -1037,7 +1055,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_InstructorRequestStatusTitle {
             get {
-                return ResourceManager.GetString("StudentProfile.InstructorRequestStatusTitle", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_InstructorRequestStatusTitle", resourceCulture);
             }
         }
         
@@ -1046,7 +1064,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_LastName {
             get {
-                return ResourceManager.GetString("StudentProfile.LastName", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_LastName", resourceCulture);
             }
         }
         
@@ -1055,7 +1073,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_LessonsStatisticTitle {
             get {
-                return ResourceManager.GetString("StudentProfile.LessonsStatisticTitle", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_LessonsStatisticTitle", resourceCulture);
             }
         }
         
@@ -1064,7 +1082,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_MainTitle {
             get {
-                return ResourceManager.GetString("StudentProfile.MainTitle", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_MainTitle", resourceCulture);
             }
         }
         
@@ -1073,7 +1091,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_NumberLearnedExercises {
             get {
-                return ResourceManager.GetString("StudentProfile.NumberLearnedExercises", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_NumberLearnedExercises", resourceCulture);
             }
         }
         
@@ -1082,7 +1100,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_NumberLessonsLabel {
             get {
-                return ResourceManager.GetString("StudentProfile.NumberLessonsLabel", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_NumberLessonsLabel", resourceCulture);
             }
         }
         
@@ -1091,7 +1109,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_OpenDrivingSkills {
             get {
-                return ResourceManager.GetString("StudentProfile.OpenDrivingSkills", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_OpenDrivingSkills", resourceCulture);
             }
         }
         
@@ -1100,7 +1118,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_PersonalTitle {
             get {
-                return ResourceManager.GetString("StudentProfile.PersonalTitle", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_PersonalTitle", resourceCulture);
             }
         }
         
@@ -1109,7 +1127,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_PhoneNumber {
             get {
-                return ResourceManager.GetString("StudentProfile.PhoneNumber", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_PhoneNumber", resourceCulture);
             }
         }
         
@@ -1118,7 +1136,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_ProgressLabel {
             get {
-                return ResourceManager.GetString("StudentProfile.ProgressLabel", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_ProgressLabel", resourceCulture);
             }
         }
         
@@ -1127,7 +1145,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_SendMessage {
             get {
-                return ResourceManager.GetString("StudentProfile.SendMessage", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_SendMessage", resourceCulture);
             }
         }
         
@@ -1136,7 +1154,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_UpdateInfo {
             get {
-                return ResourceManager.GetString("StudentProfile.UpdateInfo", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_UpdateInfo", resourceCulture);
             }
         }
         
@@ -1145,7 +1163,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_UpdatePassword {
             get {
-                return ResourceManager.GetString("StudentProfile.UpdatePassword", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_UpdatePassword", resourceCulture);
             }
         }
         
@@ -1154,7 +1172,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_UpdatePhoto {
             get {
-                return ResourceManager.GetString("StudentProfile.UpdatePhoto", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_UpdatePhoto", resourceCulture);
             }
         }
         
@@ -1163,7 +1181,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string StudentProfile_ViewInstructors {
             get {
-                return ResourceManager.GetString("StudentProfile.ViewInstructors", resourceCulture);
+                return ResourceManager.GetString("StudentProfile_ViewInstructors", resourceCulture);
             }
         }
         
@@ -1190,7 +1208,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_CancelButton {
             get {
-                return ResourceManager.GetString("UpdatePassword.CancelButton", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_CancelButton", resourceCulture);
             }
         }
         
@@ -1199,7 +1217,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_NewPassword {
             get {
-                return ResourceManager.GetString("UpdatePassword.NewPassword", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_NewPassword", resourceCulture);
             }
         }
         
@@ -1208,7 +1226,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_NewPasswordPlaceholder {
             get {
-                return ResourceManager.GetString("UpdatePassword.NewPasswordPlaceholder", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_NewPasswordPlaceholder", resourceCulture);
             }
         }
         
@@ -1217,7 +1235,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_OldPassword {
             get {
-                return ResourceManager.GetString("UpdatePassword.OldPassword", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_OldPassword", resourceCulture);
             }
         }
         
@@ -1226,7 +1244,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_OldPasswordPlaceholder {
             get {
-                return ResourceManager.GetString("UpdatePassword.OldPasswordPlaceholder", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_OldPasswordPlaceholder", resourceCulture);
             }
         }
         
@@ -1235,7 +1253,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_Title {
             get {
-                return ResourceManager.GetString("UpdatePassword.Title", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_Title", resourceCulture);
             }
         }
         
@@ -1244,7 +1262,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdatePassword_UpdateButton {
             get {
-                return ResourceManager.GetString("UpdatePassword.UpdateButton", resourceCulture);
+                return ResourceManager.GetString("UpdatePassword_UpdateButton", resourceCulture);
             }
         }
         
@@ -1253,7 +1271,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UpdateStudent_Title {
             get {
-                return ResourceManager.GetString("UpdateStudent.Title", resourceCulture);
+                return ResourceManager.GetString("UpdateStudent_Title", resourceCulture);
             }
         }
         
@@ -1280,7 +1298,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UserProfile_Address {
             get {
-                return ResourceManager.GetString("UserProfile.Address", resourceCulture);
+                return ResourceManager.GetString("UserProfile_Address", resourceCulture);
             }
         }
         
@@ -1289,7 +1307,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UserProfile_DrivingCategory {
             get {
-                return ResourceManager.GetString("UserProfile.DrivingCategory", resourceCulture);
+                return ResourceManager.GetString("UserProfile_DrivingCategory", resourceCulture);
             }
         }
         
@@ -1298,7 +1316,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UserProfile_InstructiorInfo {
             get {
-                return ResourceManager.GetString("UserProfile.InstructiorInfo", resourceCulture);
+                return ResourceManager.GetString("UserProfile_InstructiorInfo", resourceCulture);
             }
         }
         
@@ -1307,7 +1325,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         /// </summary>
         internal static string UserProfile_LessonsStatistic {
             get {
-                return ResourceManager.GetString("UserProfile.LessonsStatistic", resourceCulture);
+                return ResourceManager.GetString("UserProfile_LessonsStatistic", resourceCulture);
             }
         }
         

@@ -1,4 +1,7 @@
-﻿using Auto.School.Mobile.Core.Models;
+﻿using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Models;
+using Auto.School.Mobile.Extension;
+using System.Globalization;
 
 namespace Auto.School.Mobile
 {
@@ -9,6 +12,11 @@ namespace Auto.School.Mobile
         public App(AppShell appShell)
         {
             InitializeComponent();
+            var savedLanguage = Preferences.Get("AppLanguage", LocalesConstants.English);
+            if (savedLanguage != null)
+            {
+                SetAppLanguage(savedLanguage);
+            }
             MainPage = appShell;
         }
 
@@ -27,5 +35,13 @@ namespace Auto.School.Mobile
             return window;
         }
 #endif
+        private void SetAppLanguage(string language)
+        {
+            CultureInfo culture = new CultureInfo(language);
+
+            Translator.Instance.CultureInfo = culture;
+            CultureInfo.CurrentCulture = culture;
+            CultureInfo.CurrentUICulture = culture;
+        }
     }
 }

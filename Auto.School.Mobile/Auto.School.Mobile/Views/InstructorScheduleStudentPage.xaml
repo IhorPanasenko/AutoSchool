@@ -4,7 +4,8 @@
              x:Class="Auto.School.Mobile.Views.InstructorScheduleStudentPage"
              Title="InstructorScheduleStudentPage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts">
+             xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <ContentPage.Resources>
         <Style TargetType="Button">
             <Setter Property="MaximumWidthRequest" Value="150"/>
@@ -56,7 +57,7 @@
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
                 <StackLayout Margin="5">
-                    <Label Text="{x:Static resx:AppResources.StudentProfile_InstructorInfoTitle}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                    <Label Text="{extension:Translate Key=StudentProfile_InstructorInfoTitle}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
                     <StackLayout Orientation="Horizontal">
                         <Grid HorizontalOptions="CenterAndExpand" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" ColumnSpacing="5" RowSpacing="5">
                             <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Padding="0" HasShadow="False" BackgroundColor="Transparent">
@@ -64,16 +65,16 @@
                             </Frame>
                             <Label Grid.Column="1"  Grid.Row="0" Text="{Binding Instructor.FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
                             <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
-                                <Label Text="{x:Static resx:AppResources.InstructorCard_Experience}" Margin="5,0,0,0"/>
+                                <Label Text="{extension:Translate Key=InstructorCard_Experience}" Margin="5,0,0,0"/>
                                 <Label Text="{Binding Instructor.WorkExperience}" Margin="5,0"/>
-                                <Label Text="{x:Static resx:AppResources.InstructorCard_Years}" Margin="0,0,5,0"/>
+                                <Label Text="{extension:Translate Key=InstructorCard_Years}" Margin="0,0,5,0"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
-                                <Label Text="{x:Static resx:AppResources.InstructorCard_Raiting}" Margin="5,0,0,0"/>
+                                <Label Text="{extension:Translate Key=InstructorCard_Raiting}" Margin="5,0,0,0"/>
                                 <Label Text="{Binding Instructor.AverageRaiting, StringFormat='{0:F1}'}" Margin="5,0"/>
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Grid.Column="1" Grid.Row="3">
-                                <Label Text="{x:Static resx:AppResources.InstructorCard_DrivingCategory}" Margin="5,0,0,0"/>
+                                <Label Text="{extension:Translate Key=InstructorCard_DrivingCategory}" Margin="5,0,0,0"/>
                                 <Label Text="{Binding Instructor.VehicleCategory}" Margin="5,0"/>
                             </HorizontalStackLayout>
                         </Grid>
@@ -86,8 +87,8 @@
                 </Border.StrokeShape>
                 <StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10,0,0" Spacing="20">
-                        <Button Text="{x:Static resx:AppResources.Schedule_PreviousWeek}" Command="{Binding LoadPreviousWeekCommand}" FontSize="Medium"/>
-                        <Button Text="{x:Static resx:AppResources.Schedule_NextWeek}" Command="{Binding LoadNextWeekCommand}" FontSize="Medium"/>
+                        <Button Text="{extension:Translate Key=Schedule_PreviousWeek}" Command="{Binding LoadPreviousWeekCommand}" FontSize="Medium"/>
+                        <Button Text="{extension:Translate Key=Schedule_NextWeek}" Command="{Binding LoadNextWeekCommand}" FontSize="Medium"/>
                     </StackLayout>
                     <CollectionView ItemsSource="{Binding WeekDays}" SelectionMode="Single" SelectedItem="{Binding SelectedDay}">
                         <CollectionView.ItemsLayout>
@@ -128,7 +129,7 @@
                                             <Label Text="--" HorizontalOptions="Center"/>
                                             <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
                                         </StackLayout>
-                                        <Label Text="{x:Static resx:AppResources.Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
+                                        <Label Text="{extension:Translate Key=Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>

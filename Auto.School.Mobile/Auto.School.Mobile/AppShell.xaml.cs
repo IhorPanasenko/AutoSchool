@@ -12,7 +12,11 @@ namespace Auto.School.Mobile
             InitializeComponent();
             BindingContext = appShellViewModel;
             RegisterRoutes();
-            SetFlyoutItems();   
+            //SetFlyoutItems();   
+        }
+
+        public AppShell()
+        {
         }
 
         private void RegisterRoutes()

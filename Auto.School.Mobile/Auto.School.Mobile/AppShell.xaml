@@ -8,7 +8,8 @@
     xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
     Shell.TabBarIsVisible="False"
     Shell.TitleColor="#f4e558"
-    Shell.BackgroundColor="#3D6DFF">
+    Shell.BackgroundColor="#3D6DFF"
+    xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
 
 
     <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"
@@ -17,24 +18,24 @@
                       />
 
     <FlyoutItem x:Name="StudentMenu" Route="StudentProfile" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="{x:Static resx:AppResources.Shell_Profile}" ContentTemplate="{DataTemplate views:StudentProfile}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate views:AllInstructorsPage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_MyInstructor}" ContentTemplate="{DataTemplate views:InstructorDetailsPage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_MyLessons}" ContentTemplate="{DataTemplate views:StudentMyLessonsPage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleStudent}" ContentTemplate="{DataTemplate views:InstructorScheduleStudentPage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_Profile}" ContentTemplate="{DataTemplate views:StudentProfile}" />
+        <ShellContent Title="{extension:Translate Key=Shell_AllInstructors}" ContentTemplate="{DataTemplate views:AllInstructorsPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_MyInstructor}" ContentTemplate="{DataTemplate views:InstructorDetailsPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_MyLessons}" ContentTemplate="{DataTemplate views:StudentMyLessonsPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_MyScheduleStudent}" ContentTemplate="{DataTemplate views:InstructorScheduleStudentPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
     </FlyoutItem>
 
     <FlyoutItem x:Name="InstructorMenu" Route="InstructorProfilePage" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="{x:Static resx:AppResources.Shell_Profile}" ContentTemplate="{DataTemplate instructorViews:InstructorProfilePage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
-        <ShellContent Title="{x:Static resx:AppResources.Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_Profile}" ContentTemplate="{DataTemplate instructorViews:InstructorProfilePage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
         <StackLayout>
-            <Button Margin="10,20" Text="{x:Static resx:AppResources.SignOut}" Command="{Binding SignOutCommand}" BackgroundColor="#333333" TextColor="#f4e558"/>
+            <Button Margin="10,20" Text="{extension:Translate Key=SignOut}" Command="{Binding SignOutCommand}" BackgroundColor="#333333" TextColor="#f4e558"/>
         </StackLayout>
     </Shell.FlyoutFooter>
 </Shell>

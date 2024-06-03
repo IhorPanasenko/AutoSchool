@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.ChatPage"
-             Title="ChatPage">
+             Title="ChatPage"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <StackLayout>
         <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}">
             <CollectionView.ItemTemplate>

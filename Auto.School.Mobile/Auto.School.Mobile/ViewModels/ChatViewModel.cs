@@ -8,7 +8,6 @@ using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -40,7 +39,7 @@ namespace Auto.School.Mobile.ViewModels
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    if (!string.IsNullOrEmpty(message.Message))
+                    if (message is not null && !string.IsNullOrEmpty(message.Message))
                     {
                         Messages.Add(message.Message!);
                     }
@@ -54,6 +53,7 @@ namespace Auto.School.Mobile.ViewModels
 
         private async Task GetUsersData()
         {
+            await ConnectAsync();
             var userDataJson = Preferences.Get("UserInfo", string.Empty);
             var userData = JsonConvert.DeserializeObject<LoginResponseData>(userDataJson);
             SenderUserDataModel = userData!.UserData;
@@ -66,6 +66,17 @@ namespace Auto.School.Mobile.ViewModels
                     Name = recipientData.Instructor.Name,
                     Surname = recipientData.Instructor.Surname,
                     Role = AppRoles.Instructor
+                };
+            }
+            else
+            {
+                //var studentId = 
+                RecipientUserDataModel = new UserDataModel
+                {
+                    Id = "662a9d4cda78745c161be0ee",
+                    Name = "Name",
+                    Surname = "Surname",
+                    Role = AppRoles.Student
                 };
             }
 
@@ -98,7 +109,7 @@ namespace Auto.School.Mobile.ViewModels
                 var message = new MessageModel
                 {
                     SenderId = SenderUserDataModel.Id,
-                    RecipientId = SenderUserDataModel.Id, //RecipientUserDataModel.Id,
+                    RecipientId = RecipientUserDataModel.Id,
                     Message = MessageText,
                     Type = MessageTypes.Message
                 };

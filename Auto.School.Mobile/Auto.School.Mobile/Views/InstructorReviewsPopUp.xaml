@@ -4,6 +4,7 @@
              x:Class="Auto.School.Mobile.Views.InstructorReviewsPopUp"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension"
              >
     <toolkit:Popup.Resources>
         <Style TargetType="Label">
@@ -15,24 +16,24 @@
     </toolkit:Popup.Resources>
     <ScrollView Margin="5,15">
         <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
-            <Label Text="{x:Static resx:AppResources.InstructorReviews_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Label Text="{extension:Translate Key=InstructorReviews_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
             <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
             <Frame Margin="5" Padding="10" BackgroundColor="#3D6DFF" CornerRadius="10" IsVisible="{Binding IsMyReviewExists}">
                 <StackLayout Spacing="5">
-                    <Label Text="{x:Static resx:AppResources.InstructorReviews_MyReview}" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="{extension:Translate Key=InstructorReviews_MyReview}" HorizontalOptions="CenterAndExpand"/>
                     <StackLayout Orientation="Horizontal" Spacing="10">
-                        <Label Text="{x:Static resx:AppResources.InstructorReviews_ReviewLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                        <Label Text="{extension:Translate Key=InstructorReviews_ReviewLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
                         <Label Text="{Binding MyReview.Review}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Spacing="10">
-                        <Label Text="{x:Static resx:AppResources.InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                        <Label Text="{extension:Translate Key=InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
                         <Label Text="{Binding MyReview.Raiting, StringFormat='{0:F1}'}" FontSize="Medium" HorizontalOptions="Start"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10">
-                        <Label Text="{x:Static resx:AppResources.InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand" Margin="3,0"/>
+                        <Label Text="{extension:Translate Key=InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand" Margin="3,0"/>
                         <Label Text="{Binding MyReview.CreatedAt, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="2,0"/>
                     </StackLayout>
-                    <Button HorizontalOptions="EndAndExpand" Margin="0,10" Text="{x:Static resx:AppResources.InstructorReviews_DeleteButton}" IsVisible="{Binding IsMyReviewExists}" Command="{Binding DeleteMyReviewCommand}" FontSize="Medium" BackgroundColor="Red" TextColor="#F5F5F5"/>
+                    <Button HorizontalOptions="EndAndExpand" Margin="0,10" Text="{extension:Translate Key=InstructorReviews_DeleteButton}" IsVisible="{Binding IsMyReviewExists}" Command="{Binding DeleteMyReviewCommand}" FontSize="Medium" BackgroundColor="Red" TextColor="#F5F5F5"/>
                 </StackLayout>
             </Frame>
             <CollectionView ItemsSource="{Binding Reviews}" BackgroundColor="#7FB2FF">
@@ -41,19 +42,19 @@
                         <Frame Margin="5" Padding="10" BackgroundColor="#3D6DFF" CornerRadius="10">
                             <StackLayout Spacing="5">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
-                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_ReviewFrom}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0"/>
+                                    <Label Text="{extension:Translate Key=InstructorReviews_ReviewFrom}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="0"/>
                                     <Label Text="{Binding StudentId.FullName}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" LineBreakMode="WordWrap" Margin="0"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_ReviewLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{extension:Translate Key=InstructorReviews_ReviewLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
                                     <Label Text="{Binding Review}" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{extension:Translate Key=InstructorReviews_RatingLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
                                     <Label Text="{Binding Raiting, StringFormat='{0:F1}'}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{x:Static resx:AppResources.InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    <Label Text="{extension:Translate Key=InstructorReviews_DateCreatedlabel}" HorizontalOptions="Start" FontSize="Small" VerticalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding CreatedAt, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Small" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>

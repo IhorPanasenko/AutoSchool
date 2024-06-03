@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.StudentMyLessonsPage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             Title="My Lessons">
+             Title="My Lessons"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
 
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -38,15 +39,15 @@
                     </Border.StrokeShape>
                     <ScrollView>
                         <StackLayout Margin="0, 0, 0, 10">
-                            <Label Text="{x:Static resx:AppResources.StudentMyLessons_FutureLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                            <Label Text="{extension:Translate Key=StudentMyLessons_FutureLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
                             <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding NotHasFutureLessons}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
                                 <StackLayout Spacing="3" Margin="10,5">
-                                    <Label Text="{x:Static resx:AppResources.StudentMyLessons_NoFutureLabel}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center"/>
-                                    <Label Text="{x:Static resx:AppResources.StudentMyLessons_SignUp}" LineBreakMode="WordWrap"/>
-                                    <Button Text="{x:Static resx:AppResources.GoToSchedule}" IsVisible="{Binding NotHasFutureLessons}" Command="{Binding GoToScheduleCommand}" FontSize="Medium"/>
+                                    <Label Text="{extension:Translate Key=StudentMyLessons_NoFutureLabel}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{extension:Translate Key=StudentMyLessons_SignUp}" LineBreakMode="WordWrap"/>
+                                    <Button Text="{extension:Translate Key=GoToSchedule}" IsVisible="{Binding NotHasFutureLessons}" Command="{Binding GoToScheduleCommand}" FontSize="Medium"/>
                                 </StackLayout>
                             </Border>
                             <CollectionView ItemsSource="{Binding FutureLessons}">
@@ -59,12 +60,12 @@
                                             <StackLayout Padding="5" Orientation="Vertical">
                                                 <StackLayout Padding="5" Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal" Spacing="20" >
-                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
+                                                        <Label Text="{extension:Translate Key=LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
                                                         <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Horizontal" Spacing="20" >
                                                         <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="EndAndExpand">
-                                                            <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
+                                                            <Label Text="{extension:Translate Key=LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
                                                         </StackLayout>
                                                         <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="StartAndExpand">
                                                             <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
@@ -73,7 +74,7 @@
                                                         </StackLayout>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
+                                                        <Label Text="{extension:Translate Key=LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
                                                         <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                 </StackLayout>
@@ -90,7 +91,7 @@
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-                            <Label Text="{x:Static resx:AppResources.StudentMyLessons_PassedLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                            <Label Text="{extension:Translate Key=StudentMyLessons_PassedLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
                             <CollectionView ItemsSource="{Binding PassedLessons}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
@@ -100,12 +101,12 @@
                                             </Border.StrokeShape>
                                             <StackLayout Padding="5" Orientation="Vertical">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                                    <Label Text="{x:Static resx:AppResources.LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
+                                                    <Label Text="{extension:Translate Key=LessonSignUp_Date}" HorizontalOptions="EndAndExpand"/>
                                                     <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Spacing="20" >
                                                     <StackLayout Orientation="Horizontal" Spacing="0"  HorizontalOptions="EndAndExpand">
-                                                        <Label Text="{x:Static resx:AppResources.LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
+                                                        <Label Text="{extension:Translate Key=LessonSignUp_LessonTime}" HorizontalOptions="Start"/>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="StartAndExpand">
                                                         <Label Text="{Binding FromHour}" HorizontalOptions="EndAndExpand"/>
@@ -114,7 +115,7 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                                    <Label Text="{x:Static resx:AppResources.LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
+                                                    <Label Text="{extension:Translate Key=LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
                                                     <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </StackLayout>
