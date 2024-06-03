@@ -4,9 +4,9 @@ namespace Auto.School.Mobile.Abstract
 {
     public interface IWebSocketService
     {
-        event Action<MessageModel> OnMessageReceived;
+        event Action<SendMessageModel> OnMessageReceived;
         Task ConnectAsync(string uri);
-        Task SendMessageAsync(MessageModel message);
+        Task SendMessageAsync(SendMessageModel message);
         Task DisconnectAsync();
     }
 }
