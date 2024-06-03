@@ -16,7 +16,8 @@
     "city": "Місто",
     "dateOfBirth": "Дата Народження",
     "phone": "Телефон",
-    "edit": "Редагувати"
+    "edit": "Редагувати",
+    "countStudents": "Кількість студентів"
   },
   "emailConfirmation": {
     "verifyEmailButton": "Верифікувати пошту",

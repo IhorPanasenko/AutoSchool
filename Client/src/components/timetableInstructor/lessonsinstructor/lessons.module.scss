@@ -1,0 +1,55 @@
+@import "../../../styles/index.scss";
+
+.calendarContainer {
+  list-style-type: none;
+  padding: 0;
+
+  div {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &.available {
+      background-color: #f1edc9;
+      color: black;
+    }
+
+    &.chosen {
+      background-color: #90ee90; /* light green */
+      color: black;
+    }
+
+    &.unavailable {
+      background-color: #f8d7da;
+      color: red;
+    }
+  }
+}
+li,
+p {
+  @include fontSize("Roboto", 400, $dark-blue, 14px, 16px);
+}
+
+.chooseButton {
+  padding: 10px 20px;
+  @include fontSize("Roboto", 700, $white, 19px, 29px);
+
+  border: none;
+  padding: 10px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #003580;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.chooseButton:hover {
+  @include fontSize("Roboto", 700, $dark-blue, 19px, 29px);
+
+  background-color: $yellow;
+}

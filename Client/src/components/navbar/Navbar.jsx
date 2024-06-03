@@ -96,6 +96,17 @@ const Navbar = () => {
               {t("navbar.linkreviews", { ns: "pages" })}
             </p>
           </Link> */}
+          {user && user.userData.role == "instructor" && (
+            <Link to="/timetable/instructor" style={{ textDecoration: "none" }}>
+              <p
+                className={`${styles.menu_text} ${
+                  isActive("/timetable/instructor") ? styles.active : ""
+                }`}
+              >
+                {t("navbar.linktimetable", { ns: "pages" })}
+              </p>
+            </Link>
+          )}
           {user && user.instructor && user.requestStatus != "pending" && (
             <>
               <Link to="/timetable" style={{ textDecoration: "none" }}>
@@ -122,26 +133,42 @@ const Navbar = () => {
         <div className={styles.btn_container}>
           {user ? (
             <>
-              <div>
-                <Link
-                  to="/profile"
-                  className={styles.btn_profile_container}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p>{user.userData.name}</p>
-                  {/* <p>{user.data.data.surname}</p> */}
-
-                  {/* <p>Sychka</p> */}
-
-                  <div className={styles.btn_page_container}>
-                    <img
-                      src={Profile}
-                      alt="Profile"
-                      className={styles.profile_ico}
-                    />
-                  </div>
-                </Link>
-              </div>
+              {user.userData.role == "student" && (
+                <div>
+                  <Link
+                    to="/profile"
+                    className={styles.btn_profile_container}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <p>{user.userData.name}</p>
+                    <div className={styles.btn_page_container}>
+                      <img
+                        src={Profile}
+                        alt="Profile"
+                        className={styles.profile_ico}
+                      />
+                    </div>
+                  </Link>
+                </div>
+              )}
+              {user.userData.role == "instructor" && (
+                <div>
+                  <Link
+                    to="/profile/instructor"
+                    className={styles.btn_profile_container}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <p>{user.userData.name}</p>
+                    <div className={styles.btn_page_container}>
+                      <img
+                        src={Profile}
+                        alt="Profile"
+                        className={styles.profile_ico}
+                      />
+                    </div>
+                  </Link>
+                </div>
+              )}
               <button className={styles.navButton} onClick={handleLogout}>
                 {t("navbar.btnlogout", { ns: "pages" })}
               </button>

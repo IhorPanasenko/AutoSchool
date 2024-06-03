@@ -13,6 +13,8 @@ import Timetable from "./pages/timetable/Timetable"
 import Payment from "./pages/payment/Payment"
 
 import Lessons from "./pages/lessons/Lessons"
+import ProfileInstructor from "./pages/instructorProfile/ProfileInstructor"
+import TimetableInstructor from "./pages/timetableInstructors/TimetableInstructors"
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
       <Route path="/resetPassword/:token" element={<ResetPassword />} />
       <Route path="/timetable/payment/:chosenLessonId" element={<Payment />} />
       <Route path="/mylessons" element={<Lessons />} />
+      <Route path="/profile/instructor" element={<ProfileInstructor />} />
+      <Route path="/timetable/instructor" element={<TimetableInstructor />} />
 
       {/* <Route path="/warehouses" element={<List />} />
         <Route path="/warehouses/:id" element={<Warehouse />} />

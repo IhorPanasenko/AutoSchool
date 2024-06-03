@@ -16,7 +16,8 @@
     "city": "City",
     "dateOfBirth": "Date Of Birth",
     "phone": "Phone",
-    "edit": "Edit"
+    "edit": "Edit",
+    "countStudents": "Count of students"
   },
   "emailConfirmation": {
     "verifyEmailButton": "Verify email",

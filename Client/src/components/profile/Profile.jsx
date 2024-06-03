@@ -286,12 +286,12 @@ const User = () => {
                       />
                     </div>
                     {/* <input
-                  type="text"
-                  name="vehicleCategory"
-                  value={formData.vehicleCategory}
-                  onChange={handleChange}
-                  className={styles.inputBase}
-                /> */}
+                      type="text"
+                      name="vehicleCategory"
+                      value={formData.vehicleCategory}
+                      onChange={handleChange}
+                      className={styles.inputBase}
+                    /> */}
                     <div className={styles.df}>
                       <select
                         name="vehicleCategory"
