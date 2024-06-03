@@ -2,7 +2,7 @@
 
 namespace Auto.School.Mobile.Core.Models
 {
-    public class MessageModel
+    public class SendMessageModel
     {
         [JsonProperty("recipientId")]
         public string? RecipientId { get; set; }

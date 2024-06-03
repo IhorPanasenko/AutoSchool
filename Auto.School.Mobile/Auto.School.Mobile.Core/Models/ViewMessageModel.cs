@@ -5,16 +5,16 @@ namespace Auto.School.Mobile.Core.Models
     public  class ViewMessageModel
     {
         [JsonProperty("_id")]
-        public int Id { get; set; }
+        public string? Id { get; set; }
 
         [JsonProperty("fromUser")]
-        public string FromUser {  get; set; }
+        public string? FromUser {  get; set; }
 
         [JsonProperty("toUser")]
-        public string ToUser { get; set; }
-
+        public string? ToUser { get; set; }
+        
         [JsonProperty("text")]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         [JsonProperty("timestmap")]
         public DateTime SendingTime { get; set; }

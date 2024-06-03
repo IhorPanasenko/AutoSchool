@@ -47,6 +47,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ILessonRequest, LessonRequest>();
             builder.Services.AddTransient<IReviewRequest, ReviewRequest>();
             builder.Services.AddTransient<ICarRequest, CarRequeset>();
+            builder.Services.AddTransient<IChatRequest, ChatRequest>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();
@@ -58,7 +59,8 @@ namespace Auto.School.Mobile
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddTransient<ICarService, CarService>();
-            builder.Services.AddSingleton<IWebSocketService, WebSocketService>();
+            builder.Services.AddTransient<IWebSocketService, WebSocketService>();
+            builder.Services.AddTransient<IChatService, ChatService>();
 
             builder.Services.AddTransient<ErrorAlertView>();
 
@@ -111,6 +113,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorInstructorDetailsPage>();
             builder.Services.AddTransient<InstructorAllInstructorsPage>();
             builder.Services.AddTransient<ChatPage>();
+            builder.Services.AddTransient<InstructorAllChatsPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -15,25 +15,13 @@ namespace Auto.School.Mobile.ViewModels
     {
         private readonly IWebSocketService _webSocketService;
         private readonly IInstructorService _instructorService;
-        private readonly IStudentService _studentService;
         private readonly ISharedService _sharedService;
+        private readonly IChatService _chatService;
 
-        [ObservableProperty]
-        private ObservableCollection<string?> _messages;
-
-        [ObservableProperty]
-        private string _messageText;
-
-        [ObservableProperty]
-        private UserDataModel _recipientUserDataModel;
-
-        [ObservableProperty]
-        private UserDataModel _senderUserDataModel;
-
-        public ChatViewModel(IWebSocketService webSocketService, IInstructorService instructorService, IStudentService studentService)
+        public ChatViewModel(IWebSocketService webSocketService, IInstructorService instructorService, IChatService chatService)
         {
             _webSocketService = webSocketService;
-            _messages = new ObservableCollection<string>();
+            _messages = new ObservableCollection<ViewMessageModel>();
 
             _webSocketService.OnMessageReceived += (message) =>
             {
@@ -41,14 +29,14 @@ namespace Auto.School.Mobile.ViewModels
                 {
                     if (message is not null && !string.IsNullOrEmpty(message.Message))
                     {
-                        Messages.Add(message.Message!);
+                        Messages.Add(Convert(message));
                     }
                 });
             };
 
             _instructorService = instructorService;
-            _studentService = studentService;
             _ = GetUsersData();
+            _chatService = chatService;
         }
 
         private async Task GetUsersData()
@@ -70,22 +58,46 @@ namespace Auto.School.Mobile.ViewModels
             }
             else
             {
-                //var studentId = 
-                RecipientUserDataModel = new UserDataModel
+                var recipientData = _sharedService.GetValue<ChatPreviewModel>("OneChat");
+                if(recipientData is not null)
                 {
-                    Id = "662a9d4cda78745c161be0ee",
-                    Name = "Name",
-                    Surname = "Surname",
-                    Role = AppRoles.Student
-                };
+                    RecipientUserDataModel = new UserDataModel
+                    {
+                        Id = recipientData.UserId,
+                        Name = recipientData.Name,
+                        Surname = recipientData.Surname,
+                        Role = AppRoles.Student
+                    };
+                }
             }
 
             await SendInitialMessage();
+            await GetChatMessages();
+        }
+
+        private async Task GetChatMessages()
+        {
+            var result = await _chatService.GetChatMessages(RecipientUserDataModel.Id!);
+
+            if(string.Compare(result.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                if (result.Data is not null && result.Data.ChatMessages.Count > 0)
+                {
+                    Messages = new ObservableCollection<ViewMessageModel>(result.Data!.ChatMessages);
+                    IsChatNotHasMessages = false;
+                    IsChatHasMessages = true;
+                }
+                else
+                {
+                    IsChatNotHasMessages = true;
+                    IsChatHasMessages = false;
+                }
+            }
         }
 
         private async Task SendInitialMessage()
         {
-            var message = new MessageModel
+            var message = new SendMessageModel
             {
                 SenderId = SenderUserDataModel.Id,
                 Type = MessageTypes.Register
@@ -93,6 +105,24 @@ namespace Auto.School.Mobile.ViewModels
 
             await _webSocketService.SendMessageAsync(message);
         }
+
+        [ObservableProperty]
+        private ObservableCollection<ViewMessageModel> _messages;
+
+        [ObservableProperty]
+        private string _messageText;
+
+        [ObservableProperty]
+        private UserDataModel _recipientUserDataModel;
+
+        [ObservableProperty]
+        private UserDataModel _senderUserDataModel;
+
+        [ObservableProperty]
+        private bool isChatNotHasMessages = true;
+
+        [ObservableProperty]
+        private bool isChatHasMessages = false;
 
         [RelayCommand]
         public async Task ConnectAsync()
@@ -105,8 +135,7 @@ namespace Auto.School.Mobile.ViewModels
         {
             if (!string.IsNullOrEmpty(MessageText))
             {
-                Messages.Add("My message " + MessageText);
-                var message = new MessageModel
+                var message = new SendMessageModel
                 {
                     SenderId = SenderUserDataModel.Id,
                     RecipientId = RecipientUserDataModel.Id,
@@ -114,6 +143,7 @@ namespace Auto.School.Mobile.ViewModels
                     Type = MessageTypes.Message
                 };
 
+                Messages.Add(Convert(message));
                 await _webSocketService.SendMessageAsync(message);
                 MessageText = string.Empty;
             }
@@ -123,6 +153,28 @@ namespace Auto.School.Mobile.ViewModels
         public async Task DisconnectAsync()
         {
             await _webSocketService.DisconnectAsync();
+        }
+
+        private ViewMessageModel Convert(SendMessageModel model)
+        {
+            return new ViewMessageModel
+            {
+                FromUser = model.SenderId,
+                ToUser = model.RecipientId,
+                Id = Guid.NewGuid().ToString(),
+                Text = model.Message,
+                SendingTime = DateTime.Now,
+            };
+        }
+        private SendMessageModel Convert(ViewMessageModel model)
+        {
+            return new SendMessageModel
+            {
+                Message = model.Text,
+                SenderId = model.FromUser,
+                RecipientId = model.ToUser,
+                Type = MessageTypes.Message,
+            };
         }
     }
 }

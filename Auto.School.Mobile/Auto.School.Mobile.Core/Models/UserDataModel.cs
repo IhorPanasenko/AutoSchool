@@ -5,7 +5,7 @@ namespace Auto.School.Mobile.Core.Models
     public class UserDataModel
     {
         [JsonProperty("_id")]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [JsonProperty("name")]
         public string? Name { get; set; }
