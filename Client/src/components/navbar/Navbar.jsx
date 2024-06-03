@@ -5,7 +5,7 @@ import NavBarDropdown from "./components/NavbarDropdown.jsx"
 import styles from "./navbar.module.scss"
 import i18next from "i18next"
 // import { AuthContext } from "../../context/AuthContext.jsx"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Profile from "../../assets/profile.svg"
 import axios from "axios"
 import useFetch from "../../hooks/useFetch.js"
@@ -24,6 +24,7 @@ const Navbar = () => {
     i18next.changeLanguage(lang)
     setNav(false)
   }
+  const navigate = useNavigate()
   const language = i18n.language
   var cookies = document.cookie.split(";")
   for (var i = 0; i < cookies.length; i++) {
@@ -45,9 +46,9 @@ const Navbar = () => {
     try {
       const res = await deleteData(`http://localhost:3000/api/auth/logout`)
       console.log(res)
+      navigate("/")
       dispatch({ type: "LOGOUT" })
       localStorage.clear()
-      navigate("/")
     } catch (err) {
       console.log(err)
     }
@@ -169,9 +170,11 @@ const Navbar = () => {
                   </Link>
                 </div>
               )}
-              <button className={styles.navButton} onClick={handleLogout}>
-                {t("navbar.btnlogout", { ns: "pages" })}
-              </button>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <button className={styles.navButton} onClick={handleLogout}>
+                  {t("navbar.btnlogout", { ns: "pages" })}
+                </button>
+              </Link>
             </>
           ) : (
             <div className={styles.navItems}>
