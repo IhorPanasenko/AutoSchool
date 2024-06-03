@@ -94,8 +94,8 @@ exports.signup = async (req, res, next) => {
 
     const { accessToken, refreshToken, expire } = signSaveTokens(
       res,
-      newUserAccount._id,
-      newUserAccount.role
+      newUserAccount[0]._id,
+      newUserAccount[0].role
     );
 
     const newUserLogin = await userLogin.create(
@@ -134,8 +134,8 @@ exports.signup = async (req, res, next) => {
     res.status(201).json({
       status: 'success',
       data: {
-        email: newUserLogin.email,
-        userData: newUserAccount,
+        email: newUserLogin[0].email,
+        userData: newUserAccount[0],
         tokenExpire: expire,
       },
     });
