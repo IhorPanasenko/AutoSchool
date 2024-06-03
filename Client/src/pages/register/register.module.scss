@@ -8,15 +8,16 @@
   gap: 30px;
 }
 .login_wrapper {
-  padding-right: 10%;
-  padding-left: 10%;
+  padding-right: 5%;
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   border-radius: 15px;
   // border: 1px solid rgba(0, 0, 0, 0.07);
-
+  width: 40%;
   background: #fff;
+  text-align: center;
 
   // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
   border: 3px solid #eaeaff;
@@ -25,12 +26,16 @@
 }
 
 .menu__icon {
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 30px;
-  width: 75%;
+  width: 90%;
   height: 230px;
   margin-bottom: 30px;
-
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-right: auto;
+  margin-left: auto;
   // font-size: 20px;
 }
 
@@ -76,16 +81,19 @@
   @include flex(space-between, center);
 }
 .input_witherr_container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 .date_label {
   display: block;
   @include fontSize("Roboto", 400, $dark-blue, 15px, 19px);
 }
 .date_container {
-  width: 41%;
+  width: 100%;
 }
 .date_container input {
-  width: 83%;
+  width: 100%;
 }
 
 .link_btn_logIn {
@@ -97,8 +105,12 @@
   position: relative;
 }
 
-.btn_logIn {
+.btnLogIn {
   // width: 80%;
+  padding-right: 17%;
+  padding-left: 17%;
+  margin-right: auto;
+  margin-left: auto;
   background-color: $dark-blue;
   @include fontSize("Roboto", 400, $white, 19px, 22px);
   padding-right: 35px;

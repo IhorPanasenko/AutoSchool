@@ -79,6 +79,21 @@ const Register = () => {
             "Password must contain at least one uppercase letter, one digit, and be at least 6 characters long"
         }
         break
+      case "dateOfBirth":
+        const today = new Date()
+        const birthDate = new Date(value)
+        let age = today.getFullYear() - birthDate.getFullYear()
+        const monthDifference = today.getMonth() - birthDate.getMonth()
+        if (
+          monthDifference < 0 ||
+          (monthDifference === 0 && today.getDate() < birthDate.getDate())
+        ) {
+          age--
+        }
+        if (age < 18) {
+          errorMessage = "You must be at least 18 years old"
+        }
+        break
       default:
         break
     }
@@ -158,63 +173,81 @@ const Register = () => {
                 <span className={styles.error_message}>{errors.firstName}</span>
               )}
             </div>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Enter your last name"
-              value={user.lastName}
-              onChange={handleChange}
-              className={styles.input_base}
-            />
-            {errors.lastName && (
-              <span className={styles.error_message}>{errors.lastName}</span>
-            )}
-          </div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={user.email}
-            onChange={handleChange}
-            className={styles.input_base}
-          />
-          {errors.email && (
-            <span className={styles.error_message}>{errors.email}</span>
-          )}
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={user.password}
-            onChange={handleChange}
-            className={styles.input_base}
-          />
-          {errors.password && (
-            <span className={styles.error_message}>{errors.password}</span>
-          )}
-          <div className={styles.inputs_container}>
-            <div className={styles.date_container}>
+            <div className={styles.input_witherr_container}>
               <input
-                type="date"
-                name="dateOfBirth"
-                value={user.dateOfBirth}
+                type="text"
+                name="lastName"
+                placeholder="Enter your last name"
+                value={user.lastName}
                 onChange={handleChange}
                 className={styles.input_base}
               />
+              {errors.lastName && (
+                <span className={styles.error_message}>{errors.lastName}</span>
+              )}
             </div>
-            <select
-              name="city"
-              value={user.city}
-              onChange={handleChange}
-              className={styles.input_base}
-            >
-              <option value="">Select your city</option>
-              {cities.map(city => (
-                <option key={city.id} value={city.id}>
-                  {city.nameEN}
-                </option>
-              ))}
-            </select>
+          </div>
+          <div className={styles.inputs_container}>
+            <div className={styles.input_witherr_container}>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={user.email}
+                onChange={handleChange}
+                className={styles.input_base}
+              />
+              {errors.email && (
+                <span className={styles.error_message}>{errors.email}</span>
+              )}
+            </div>
+            <div className={styles.input_witherr_container}>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={user.password}
+                onChange={handleChange}
+                className={styles.input_base}
+              />
+              {errors.password && (
+                <span className={styles.error_message}>{errors.password}</span>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputs_container}>
+            <div className={styles.input_witherr_container}>
+              <div className={styles.date_container}>
+                <input
+                  type="date"
+                  name="dateOfBirth"
+                  value={user.dateOfBirth}
+                  onChange={handleChange}
+                  className={styles.input_base}
+                />
+              </div>
+              {errors.dateOfBirth && (
+                <span className={styles.error_message}>
+                  {errors.dateOfBirth}
+                </span>
+              )}
+            </div>
+            <div className={styles.input_witherr_container}>
+              <select
+                name="city"
+                value={user.city}
+                onChange={handleChange}
+                className={styles.input_base}
+              >
+                <option value="">Select your city</option>
+                {cities.map(city => (
+                  <option key={city.id} value={city.id}>
+                    {city.nameEN}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           <div className={styles.inputs_container}>
             <input
@@ -244,7 +277,7 @@ const Register = () => {
             </select>
           </div>
 
-          <button type="submit" className={styles.btn_logIn}>
+          <button type="submit" className={styles.btnLogIn}>
             Get Started
           </button>
         </form>
