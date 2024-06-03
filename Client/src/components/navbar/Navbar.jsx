@@ -97,7 +97,7 @@ const Navbar = () => {
               {t("navbar.linkreviews", { ns: "pages" })}
             </p>
           </Link> */}
-          {user && user.userData.role == "instructor" && (
+          {user && user.userData && user.userData.role == "instructor" && (
             <Link to="/timetable/instructor" style={{ textDecoration: "none" }}>
               <p
                 className={`${styles.menu_text} ${
