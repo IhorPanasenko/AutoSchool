@@ -5,26 +5,30 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar"
 import GroupIcon from "@mui/icons-material/Group"
 import StoreIcon from "@mui/icons-material/Store"
 import ExitToAppIcon from "@mui/icons-material/ExitToApp"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { DarkModeContext } from "../../context/darkModeContext"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
+import useFetch from "../../hooks/useFetch"
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext)
   const { user } = useContext(AuthContext)
+  const { deleteData } = useFetch()
+  const navigate = useNavigate()
 
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT" })
-    const cookies = document.cookie.split(";")
+  const handleLogout = async (e) => {
+    e.preventDefault()
 
-    for (let cookie of cookies) {
-      const eqPos = cookie.indexOf("=")
-      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie
-      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/"
+    try {
+      const res = await deleteData(`http://localhost:3000/api/auth/logout`)
+      console.log(res)
+      navigate("/login")
+      dispatch({ type: "LOGOUT" })
+      localStorage.clear()
+    } catch (err) {
+      console.log(err)
     }
-    localStorage.clear()
-    window.location.reload()
   }
   return (
     <div className="sidebar">
