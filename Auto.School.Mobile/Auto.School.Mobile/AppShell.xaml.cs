@@ -15,10 +15,6 @@ namespace Auto.School.Mobile
             //SetFlyoutItems();   
         }
 
-        public AppShell()
-        {
-        }
-
         private void RegisterRoutes()
         {
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
