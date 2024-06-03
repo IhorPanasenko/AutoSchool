@@ -8,7 +8,7 @@ public class WebSocketService : IWebSocketService
 {
     private ClientWebSocket _clientWebSocket;
 
-    public event Action<MessageModel> OnMessageReceived;
+    public event Action<SendMessageModel> OnMessageReceived;
 
     public WebSocketService()
     {
@@ -21,7 +21,7 @@ public class WebSocketService : IWebSocketService
         ReceiveMessages();
     }
 
-    public async Task SendMessageAsync(MessageModel messageModel)
+    public async Task SendMessageAsync(SendMessageModel messageModel)
     {
         var JsonObject = JsonConvert.SerializeObject(messageModel);
         var bytes = Encoding.UTF8.GetBytes(JsonObject);
@@ -40,7 +40,7 @@ public class WebSocketService : IWebSocketService
             {
                 try
                 {
-                    var message = JsonConvert.DeserializeObject<MessageModel>(messageJson);
+                    var message = JsonConvert.DeserializeObject<SendMessageModel>(messageJson);
                     OnMessageReceived?.Invoke(message!);
                 }
                 catch (Exception ex)
