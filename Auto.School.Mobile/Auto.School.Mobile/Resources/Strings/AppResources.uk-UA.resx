@@ -165,6 +165,15 @@
   <data name="BirthdayDate" xml:space="preserve">
     <value>Дата народження</value>
   </data>
+  <data name="Chat_Loading" xml:space="preserve">
+    <value>Завантаження...</value>
+  </data>
+  <data name="Chat_NoMessages" xml:space="preserve">
+    <value>В чаті ще немає повідомлень</value>
+  </data>
+  <data name="Chat_TitleLabel" xml:space="preserve">
+    <value>Отримувач:</value>
+  </data>
   <data name="DrivingSkills_CloseButton" xml:space="preserve">
     <value>Назад</value>
   </data>

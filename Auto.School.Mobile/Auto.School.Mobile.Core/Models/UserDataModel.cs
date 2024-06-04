@@ -21,5 +21,8 @@ namespace Auto.School.Mobile.Core.Models
 
         [JsonProperty("dateOfBirth")]
         public DateTime DateOfBirth { get; set; }
+
+        [JsonIgnore]
+        public string FullName { get => $"{Name} {Surname}"; private set { } }
     }
 }

@@ -35,13 +35,13 @@ namespace Auto.School.Mobile.ViewModels
             };
 
             _instructorService = instructorService;
-            _ = GetUsersData();
             _chatService = chatService;
+            _ = GetUsersData();
         }
 
         private async Task GetUsersData()
         {
-            await ConnectAsync();
+            //await ConnectAsync();
             var userDataJson = Preferences.Get("UserInfo", string.Empty);
             var userData = JsonConvert.DeserializeObject<LoginResponseData>(userDataJson);
             SenderUserDataModel = userData!.UserData;
@@ -59,7 +59,7 @@ namespace Auto.School.Mobile.ViewModels
             else
             {
                 var recipientData = _sharedService.GetValue<ChatPreviewModel>("OneChat");
-                if(recipientData is not null)
+                if (recipientData is not null)
                 {
                     RecipientUserDataModel = new UserDataModel
                     {
@@ -77,21 +77,18 @@ namespace Auto.School.Mobile.ViewModels
 
         private async Task GetChatMessages()
         {
-            var result = await _chatService.GetChatMessages(RecipientUserDataModel.Id!);
+            var result = await _chatService.GetChatMessages(SenderUserDataModel.Id!, RecipientUserDataModel.Id!);
 
-            if(string.Compare(result.Status, ResponseStatuses.Sucess, true) == 0)
+            if (result.Count > 0)
             {
-                if (result.Data is not null && result.Data.ChatMessages.Count > 0)
-                {
-                    Messages = new ObservableCollection<ViewMessageModel>(result.Data!.ChatMessages);
-                    IsChatNotHasMessages = false;
-                    IsChatHasMessages = true;
-                }
-                else
-                {
-                    IsChatNotHasMessages = true;
-                    IsChatHasMessages = false;
-                }
+                Messages = new ObservableCollection<ViewMessageModel>(result);
+                IsChatNotHasMessages = false;
+                IsChatHasMessages = true;
+            }
+            else
+            {
+                IsChatNotHasMessages = true;
+                IsChatHasMessages = false;
             }
         }
 
@@ -118,11 +115,50 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private UserDataModel _senderUserDataModel;
 
-        [ObservableProperty]
-        private bool isChatNotHasMessages = true;
+        //[ObservableProperty]
+        //private bool isChatNotHasMessages = true;
 
-        [ObservableProperty]
+        //[ObservableProperty]
+        //private bool isChatHasMessages = false;
+
         private bool isChatHasMessages = false;
+
+        public bool IsChatHasMessages
+        {
+            get { return isChatHasMessages; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged(nameof(IsChatHasMessages));
+                OnPropertyChanged(nameof(IsChatNotHasMessages));
+            }
+        }
+
+        public bool IsChatNotHasMessages
+        {
+            get { return !IsChatHasMessages; }
+            private set { }
+        }
+
+
+        private bool isLoading = true;
+
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged(nameof(IsLoading));
+                OnPropertyChanged(nameof(IsNotLoading));
+            }
+        }
+
+        public bool IsNotLoading
+        {
+            get { return !isLoading; }
+            private set { }
+        }
 
         [RelayCommand]
         public async Task ConnectAsync()

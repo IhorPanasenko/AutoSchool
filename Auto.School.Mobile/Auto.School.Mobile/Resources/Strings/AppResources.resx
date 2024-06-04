@@ -165,6 +165,15 @@
   <data name="BirthdayDate" xml:space="preserve">
     <value>Date of birth</value>
   </data>
+  <data name="Chat_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Chat_NoMessages" xml:space="preserve">
+    <value>No messages in chat</value>
+  </data>
+  <data name="Chat_TitleLabel" xml:space="preserve">
+    <value>Recivier:</value>
+  </data>
   <data name="DrivingSkills_CloseButton" xml:space="preserve">
     <value>Return</value>
   </data>

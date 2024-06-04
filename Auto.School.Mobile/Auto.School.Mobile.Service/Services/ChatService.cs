@@ -1,4 +1,6 @@
 ﻿using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
+using Auto.School.Mobile.Core.Constants;
+using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Core.Responses.Chat.GetChatMessages;
 using Auto.School.Mobile.Core.Responses.Chat.GetChatsPreview;
 using Auto.School.Mobile.Service.Interfaces;
@@ -13,10 +15,21 @@ namespace Auto.School.Mobile.Service.Services
         {
             _chatRequest = chatRequest;
         }
-        public Task<GetChatMessagesReponse> GetChatMessages(string recipientId)
+        public async Task<List<ViewMessageModel>> GetChatMessages(string currentUserid, string recipientId)
         {
-            var response =_chatRequest.GetChatMessages(recipientId);
-            return response;
+            var response = await _chatRequest.GetChatMessages(recipientId);
+            if(string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
+            {
+                var messages = response.Data!.ChatMessages;
+                foreach (var item in messages)
+                {
+                    item.CurrentUserId = currentUserid;
+                }
+
+                return messages;
+            }
+
+            return [];
         }
 
         public Task<GetChatsPreviewResponse> GetChatsPreview()

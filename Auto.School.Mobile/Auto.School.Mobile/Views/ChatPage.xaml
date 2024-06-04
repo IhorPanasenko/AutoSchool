@@ -2,21 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.ChatPage"
-             Title="ChatPage"
+             Title="{Binding RecipientUserDataModel.FullName}"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <StackLayout>
-        <Label Text="No messages" IsVisible="{Binding IsChatNotHasMessages}"/>
-        <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}" IsVisible="{Binding IsChatHasMessages}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Text}" />
-                        <Label Text="{Binding SendingTime}"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Entry x:Name="MessageEntry" Placeholder="Type a message" Text="{Binding MessageText}"/>
-        <Button Text="Send" Command="{Binding SendMessageCommand}" />
+        <StackLayout  IsVisible="{Binding IsLoading}" MinimumHeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator IsRunning="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
+            <Label Text="{extension:Translate Key=Chat_Loading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+        </StackLayout>
+        <StackLayout IsVisible="{Binding IsNotLoading}">
+            <Label Text="{extension:Translate Key=Chat_NoMessages}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsChatNotHasMessages}"/>
+            <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}" IsVisible="{Binding IsChatHasMessages}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="10" Orientation="Horizontal" Spacing="30">
+                            <Frame HorizontalOptions="Start" IsVisible="{Binding IsNotMyMessage}" BackgroundColor="#7FB2FF">
+                                <StackLayout >
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding SendingTime, StringFormat='{0:dd-MM HH:MM}'}" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame HorizontalOptions="EndAndExpand" IsVisible="{Binding IsMyMessage}" BackgroundColor="#f4e558" >
+                                <StackLayout>
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" />
+                                    <Label Text="{Binding SendingTime, StringFormat='{0:dd-MM HH:MM}'}" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Entry x:Name="MessageEntry" Placeholder="Type a message" Text="{Binding MessageText}"/>
+            <Button Text="Send" Command="{Binding SendMessageCommand}" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

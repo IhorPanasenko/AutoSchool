@@ -205,6 +205,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading....
+        /// </summary>
+        internal static string Chat_Loading {
+            get {
+                return ResourceManager.GetString("Chat_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No messages in chat.
+        /// </summary>
+        internal static string Chat_NoMessages {
+            get {
+                return ResourceManager.GetString("Chat_NoMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recivier:.
+        /// </summary>
+        internal static string Chat_TitleLabel {
+            get {
+                return ResourceManager.GetString("Chat_TitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return.
         /// </summary>
         internal static string DrivingSkills_CloseButton {
