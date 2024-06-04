@@ -110,7 +110,7 @@ exports.signup = async (req, res, next) => {
       { session }
     );
 
-    await StudentModel.create(
+    const newStudent = await StudentModel.create(
       [
         {
           name: req.body.name,
@@ -136,6 +136,9 @@ exports.signup = async (req, res, next) => {
       data: {
         email: newUserLogin[0].email,
         userData: newUserAccount[0],
+        instructor: newStudent[0].instructorId || null,
+        requestStatus: newStudent[0].requestStatus,
+        emailVerificationStatus: newUserLogin[0].emailVerificationStatus,
         tokenExpire: expire,
       },
     });
@@ -191,6 +194,9 @@ exports.login = catchAsync(async (req, res, next) => {
       userData: userAccountData,
       ...(studentData && { instructor: studentData.instructorId || null }),
       ...(studentData && { requestStatus: studentData.requestStatus }),
+      ...(studentData && {
+        emailVerificationStatus: userLoginData.emailVerificationStatus,
+      }),
       tokenExpire: expire,
     },
   });
