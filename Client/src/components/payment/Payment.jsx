@@ -2,7 +2,7 @@ import styles from "./payment.module.scss"
 import CryptoJS from "crypto-js"
 import useFetch from "../../hooks/useFetch.js"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import LessonInPayment from "./lessonInPayment/LessonInPayment"
 
 const PaymentButton = () => {
@@ -13,6 +13,7 @@ const PaymentButton = () => {
   const lessonId = `${chosenLessonId}`
   const [lesson, setLesson] = useState(null)
   const [amount, setAmount] = useState(null)
+  const navigate = useNavigate()
 
   const {
     data: lessonData,
@@ -121,7 +122,9 @@ const PaymentButton = () => {
     processLiqPayPayment(
       data,
       signature,
-      () => sendServerRequestLessons(),
+      () => {
+        sendServerRequestLessons(), navigate("/")
+      },
       () => console.log("Error"),
       requestData => sendServerRequestPayments({ ...requestData, lessonId })
     )
@@ -181,7 +184,7 @@ const processLiqPayPayment = (data, signature, successCb, errorCb, cb) => {
       .on("liqpay.ready", function(data) {
         // ready
       })
-      .on("liqpay.close", function(data) {
+      .on("liqpay.close", function(requestData) {
         // close
       })
   })()
