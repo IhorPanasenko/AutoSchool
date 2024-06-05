@@ -15,5 +15,8 @@ namespace Auto.School.Mobile.Core.Models
 
         [JsonProperty("text")]
         public string? Message { get; set; }
+
+        [JsonIgnore] 
+        public DateTime SendTime { get; set;}
     }
 }

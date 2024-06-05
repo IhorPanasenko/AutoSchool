@@ -160,6 +160,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No messages was send yet. Start chatting.
+        /// </summary>
+        internal static string AllChats_NoMessages {
+            get {
+                return ResourceManager.GetString("AllChats_NoMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open details.
         /// </summary>
         internal static string AllInstructors_DetailsButton {
@@ -219,6 +228,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string Chat_NoMessages {
             get {
                 return ResourceManager.GetString("Chat_NoMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your message.
+        /// </summary>
+        internal static string Chat_Placeholder {
+            get {
+                return ResourceManager.GetString("Chat_Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Chat_Send {
+            get {
+                return ResourceManager.GetString("Chat_Send", resourceCulture);
             }
         }
         
@@ -867,6 +894,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string SelectCity {
             get {
                 return ResourceManager.GetString("SelectCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My chats.
+        /// </summary>
+        internal static string Shell_AllChats {
+            get {
+                return ResourceManager.GetString("Shell_AllChats", resourceCulture);
             }
         }
         

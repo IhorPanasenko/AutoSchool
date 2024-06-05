@@ -88,6 +88,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
             builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
             builder.Services.AddTransient<ChatViewModel>();
+            builder.Services.AddTransient<InstructorAllChatsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();

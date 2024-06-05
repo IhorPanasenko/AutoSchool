@@ -21,7 +21,6 @@ namespace Auto.School.Mobile.ViewModels
         public ChatViewModel(IWebSocketService webSocketService, IInstructorService instructorService, IChatService chatService)
         {
             _webSocketService = webSocketService;
-            _messages = new ObservableCollection<ViewMessageModel>();
 
             _webSocketService.OnMessageReceived += (message) =>
             {
@@ -58,7 +57,7 @@ namespace Auto.School.Mobile.ViewModels
             }
             else
             {
-                var recipientData = _sharedService.GetValue<ChatPreviewModel>("OneChat");
+                var recipientData = _sharedService.GetValue<ChatPreviewModel>("ChatView");
                 if (recipientData is not null)
                 {
                     RecipientUserDataModel = new UserDataModel
@@ -73,6 +72,9 @@ namespace Auto.School.Mobile.ViewModels
 
             await SendInitialMessage();
             await GetChatMessages();
+            IsLoading = false;
+            Thread.Sleep(1000);
+            MessagingCenter.Send(this, "ScrollToBottom");
         }
 
         private async Task GetChatMessages()
@@ -87,6 +89,7 @@ namespace Auto.School.Mobile.ViewModels
             }
             else
             {
+                Messages = new ObservableCollection<ViewMessageModel>(result);
                 IsChatNotHasMessages = true;
                 IsChatHasMessages = false;
             }
@@ -115,12 +118,6 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private UserDataModel _senderUserDataModel;
 
-        //[ObservableProperty]
-        //private bool isChatNotHasMessages = true;
-
-        //[ObservableProperty]
-        //private bool isChatHasMessages = false;
-
         private bool isChatHasMessages = false;
 
         public bool IsChatHasMessages
@@ -128,7 +125,7 @@ namespace Auto.School.Mobile.ViewModels
             get { return isChatHasMessages; }
             set
             {
-                isLoading = value;
+                isChatHasMessages = value;
                 OnPropertyChanged(nameof(IsChatHasMessages));
                 OnPropertyChanged(nameof(IsChatNotHasMessages));
             }
@@ -176,12 +173,14 @@ namespace Auto.School.Mobile.ViewModels
                     SenderId = SenderUserDataModel.Id,
                     RecipientId = RecipientUserDataModel.Id,
                     Message = MessageText,
-                    Type = MessageTypes.Message
+                    Type = MessageTypes.Message,
+                    SendTime = DateTime.Now,
                 };
 
                 Messages.Add(Convert(message));
                 await _webSocketService.SendMessageAsync(message);
                 MessageText = string.Empty;
+                MessagingCenter.Send(this, "ScrollToBottom");
             }
         }
 
@@ -199,7 +198,8 @@ namespace Auto.School.Mobile.ViewModels
                 ToUser = model.RecipientId,
                 Id = Guid.NewGuid().ToString(),
                 Text = model.Message,
-                SendingTime = DateTime.Now,
+                SendingTime = model.SendTime,
+                CurrentUserId = model.SenderId
             };
         }
         private SendMessageModel Convert(ViewMessageModel model)

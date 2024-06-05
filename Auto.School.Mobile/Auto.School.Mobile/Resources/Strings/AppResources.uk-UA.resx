@@ -150,6 +150,9 @@
   <data name="AddReview_Title" xml:space="preserve">
     <value>Додати відгук про інструктора</value>
   </data>
+  <data name="AllChats_NoMessages" xml:space="preserve">
+    <value>Ще ні одного повідомлення не було відправлено. Почніть переписку</value>
+  </data>
   <data name="AllInstructors_DetailsButton" xml:space="preserve">
     <value>Переглянути інформацію</value>
   </data>
@@ -170,6 +173,12 @@
   </data>
   <data name="Chat_NoMessages" xml:space="preserve">
     <value>В чаті ще немає повідомлень</value>
+  </data>
+  <data name="Chat_Placeholder" xml:space="preserve">
+    <value>Введіть своє повідомлення</value>
+  </data>
+  <data name="Chat_Send" xml:space="preserve">
+    <value>Відправити</value>
   </data>
   <data name="Chat_TitleLabel" xml:space="preserve">
     <value>Отримувач:</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Оберіть місто</value>
+  </data>
+  <data name="Shell_AllChats" xml:space="preserve">
+    <value>Мої чати</value>
   </data>
   <data name="Shell_AllInstructors" xml:space="preserve">
     <value>Всі інструктори</value>

@@ -150,6 +150,9 @@
   <data name="AddReview_Title" xml:space="preserve">
     <value>Add review about instructor</value>
   </data>
+  <data name="AllChats_NoMessages" xml:space="preserve">
+    <value>No messages was send yet. Start chatting</value>
+  </data>
   <data name="AllInstructors_DetailsButton" xml:space="preserve">
     <value>Open details</value>
   </data>
@@ -170,6 +173,12 @@
   </data>
   <data name="Chat_NoMessages" xml:space="preserve">
     <value>No messages in chat</value>
+  </data>
+  <data name="Chat_Placeholder" xml:space="preserve">
+    <value>Type your message</value>
+  </data>
+  <data name="Chat_Send" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="Chat_TitleLabel" xml:space="preserve">
     <value>Recivier:</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Select your city</value>
+  </data>
+  <data name="Shell_AllChats" xml:space="preserve">
+    <value>My chats</value>
   </data>
   <data name="Shell_AllInstructors" xml:space="preserve">
     <value>All instructors</value>

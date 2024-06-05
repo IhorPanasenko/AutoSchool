@@ -20,6 +20,12 @@ namespace Auto.School.Mobile.Core.Models
         public string? PhotoUrl { get; set; }
 
         [JsonProperty("lastMessage")]
-        public string? LastMessage { get; set; }
+        public ViewMessageModel? LastMessage { get; set; }
+
+        [JsonIgnore]
+        public bool HasMessages { get => LastMessage is not null; }
+
+        [JsonIgnore]
+        public bool HasNoMessages {  get => LastMessage is null; }
     }
 }

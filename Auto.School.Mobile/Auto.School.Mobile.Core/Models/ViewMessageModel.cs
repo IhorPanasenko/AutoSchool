@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Auto.School.Mobile.Core.Constants;
+using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Auto.School.Mobile.Core.Models
 {
@@ -16,7 +18,7 @@ namespace Auto.School.Mobile.Core.Models
         [JsonProperty("text")]
         public string? Text { get; set; }
 
-        [JsonProperty("timestmap")]
+        [JsonProperty("timestamp")]
         public string? SendingTimeString { get; set; }
 
         [JsonIgnore]
@@ -44,6 +46,5 @@ namespace Auto.School.Mobile.Core.Models
 
         [JsonIgnore]
         public bool IsNotMyMessage { get => CurrentUserId != FromUser; }
-
     }
 }

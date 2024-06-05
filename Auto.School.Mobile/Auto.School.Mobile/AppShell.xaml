@@ -30,7 +30,7 @@
         <ShellContent Title="{extension:Translate Key=Shell_Profile}" ContentTemplate="{DataTemplate instructorViews:InstructorProfilePage}" />
         <ShellContent Title="{extension:Translate Key=Shell_AllInstructors}" ContentTemplate="{DataTemplate instructorViews:InstructorAllInstructorsPage}" />
         <ShellContent Title="{extension:Translate Key=Shell_MyScheduleInstructor}" ContentTemplate="{DataTemplate instructorViews:InstructorMySchedulePage}" />
-        <ShellContent Title="{extension:Translate Key=Shell_StudentChatMenuItem}" ContentTemplate="{DataTemplate views:ChatPage}" />
+        <ShellContent Title="{extension:Translate Key=Shell_AllChats}" ContentTemplate="{DataTemplate instructorViews:InstructorAllChatsPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooter>
