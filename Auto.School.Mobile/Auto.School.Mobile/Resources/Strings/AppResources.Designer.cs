@@ -259,6 +259,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bottom.
+        /// </summary>
+        internal static string Chat_ToBottom {
+            get {
+                return ResourceManager.GetString("Chat_ToBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return.
         /// </summary>
         internal static string DrivingSkills_CloseButton {

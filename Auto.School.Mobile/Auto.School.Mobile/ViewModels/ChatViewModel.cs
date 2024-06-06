@@ -190,6 +190,12 @@ namespace Auto.School.Mobile.ViewModels
             await _webSocketService.DisconnectAsync();
         }
 
+        [RelayCommand]
+        public async Task GoToBottom()
+        {
+            MessagingCenter.Send(this, "ScrollToBottom");
+        }
+
         private ViewMessageModel Convert(SendMessageModel model)
         {
             return new ViewMessageModel

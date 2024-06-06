@@ -17,6 +17,9 @@ namespace Auto.School.Mobile.ViewModels.Instructor
         [ObservableProperty]
         private ObservableCollection<ChatPreviewModel> _chatPreviews;
 
+        [ObservableProperty]
+        private bool isLoading = true;
+
         public InstructorAllChatsViewModel(IChatService chatService, ISharedService sharedService)
         {
             _chatService = chatService;
@@ -24,7 +27,7 @@ namespace Auto.School.Mobile.ViewModels.Instructor
             _chatPreviews = new ObservableCollection<ChatPreviewModel>();
             var task = LoadChatPreviews();
             task.ConfigureAwait(true);
-           
+
         }
 
         private async Task LoadChatPreviews()
@@ -37,6 +40,8 @@ namespace Auto.School.Mobile.ViewModels.Instructor
                     ChatPreviews.Add(chat);
                 }
             }
+
+            IsLoading = false;
         }
 
         [RelayCommand]

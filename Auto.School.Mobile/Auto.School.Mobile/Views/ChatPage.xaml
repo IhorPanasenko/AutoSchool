@@ -12,8 +12,10 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
-            <Label Text="{extension:Translate Key=Chat_Loading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}" Spacing="10">
+                <ActivityIndicator IsRunning="{Binding IsLoading}"  VerticalOptions="CenterAndExpand"/>
+                <Label Text="{extension:Translate Key=Chat_Loading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            </StackLayout>
             <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}" IsVisible="{Binding IsNotLoading}" ItemsUpdatingScrollMode="KeepLastItemInView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -35,7 +37,8 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10">
+        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10" Spacing="5">
+            <Button Text="{extension:Translate Key=Chat_ToBottom}" Command="{Binding GoToBottomCommand}" MaximumWidthRequest="100" LineBreakMode="WordWrap" />
             <Entry x:Name="MessageEntry" Placeholder="{extension:Translate Key=Chat_Placeholder}" Text="{Binding MessageText}" HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
             <Button Text="{extension:Translate Key=Chat_Send}" Command="{Binding SendMessageCommand}" />
         </StackLayout>

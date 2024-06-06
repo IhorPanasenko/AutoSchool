@@ -5,6 +5,10 @@
              Title="InstructorAllChatsPage"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <Grid>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}" Spacing="10">
+            <ActivityIndicator IsRunning="{Binding IsLoading}"  VerticalOptions="CenterAndExpand"/>
+            <Label Text="{extension:Translate Key=Chat_Loading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+        </StackLayout>
         <CollectionView ItemsSource="{Binding ChatPreviews}" SelectionChanged="CollectionView_SelectionChanged" Background="#F5F5F5">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -15,13 +19,13 @@
                             <StackLayout IsVisible="{Binding HasNoMessages}">
                                 <Label Text="{extension:Translate Key=AllChats_NoMessages}" LineBreakMode="WordWrap" FontSize="Small" MaximumWidthRequest="250"/>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                            <StackLayout HorizontalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,0,0,10" IsVisible="{Binding HasMessages}">
-                                <Label Text="{Binding LastMessage.Text}" FontAttributes="None" FontSize="Small" LineBreakMode="WordWrap" HorizontalOptions="Start"/>
-                                <Label Text="{Binding LastMessage.SendingTimeString, StringFormat='{0:MM:HH dd:MM:YYYY}'}" FontSize="Micro" HorizontalOptions="Start"/>
-                            </StackLayout>
-                            <Button HorizontalOptions="EndAndExpand" Text="Open Chat" Command="{Binding BindingContext.OpenChatCommand, Source={x:Reference Name=Page}}" 
-                                    CommandParameter="{Binding .}"/>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
+                                <StackLayout HorizontalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,0,0,10" IsVisible="{Binding HasMessages}">
+                                    <Label Text="{Binding LastMessage.Text}" FontAttributes="None" FontSize="Small" LineBreakMode="WordWrap" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding LastMessage.SendingTimeString, StringFormat='{0:MM:HH dd:MM:YYYY}'}" FontSize="Micro" HorizontalOptions="Start"/>
+                                </StackLayout>
+                                <Button HorizontalOptions="End" Text="Open Chat" Command="{Binding BindingContext.OpenChatCommand, Source={x:Reference ChatCollectionView}}" 
+                                        CommandParameter="{Binding .}"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
