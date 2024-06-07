@@ -112,7 +112,7 @@
                         Text="{extension:Translate Key=InstructorDetails_AddCarReview}" 
                         Command="{Binding AddCarRatingCommand}"/>
                     <Button 
-                            IsVisible="{Binding IsNotSignedUpToThisInstructor}"
+                            IsVisible="{Binding IsNotSigendUpToAnyInstructor}"
                              Margin="20,5"
                             FontSize="Medium"
                             BackgroundColor="#7eb693"
