@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto.School.Mobile.Views.ChatPage"
+             Title="{Binding RecipientUserDataModel.FullName}"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}" Spacing="10">
+                <ActivityIndicator IsRunning="{Binding IsLoading}"  VerticalOptions="CenterAndExpand"/>
+                <Label Text="{extension:Translate Key=Chat_Loading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            </StackLayout>
+            <CollectionView x:Name="MessagesCollectionView" ItemsSource="{Binding Messages}" IsVisible="{Binding IsNotLoading}" ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="10" Orientation="Horizontal" Spacing="30">
+                            <Frame HorizontalOptions="Start" IsVisible="{Binding IsNotMyMessage}" BackgroundColor="#7FB2FF">
+                                <StackLayout MaximumWidthRequest="300">
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
+                                    <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame HorizontalOptions="EndAndExpand" IsVisible="{Binding IsMyMessage}" BackgroundColor="#f4e558">
+                                <StackLayout MaximumWidthRequest="300">
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
+                                    <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10" Spacing="5">
+            <Button Text="{extension:Translate Key=Chat_ToBottom}" Command="{Binding GoToBottomCommand}" MaximumWidthRequest="100" LineBreakMode="WordWrap" />
+            <Entry x:Name="MessageEntry" Placeholder="{extension:Translate Key=Chat_Placeholder}" Text="{Binding MessageText}" HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
+            <Button Text="{extension:Translate Key=Chat_Send}" Command="{Binding SendMessageCommand}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -51,5 +51,10 @@
         #region Car
         public const string AddCarRating = "cars//ratings";
         #endregion
+
+        #region Chat
+        public const string GetChatMessages = "chats/messages/";
+        public const string GetChatsPreview = "chats";
+        #endregion
     }
 }

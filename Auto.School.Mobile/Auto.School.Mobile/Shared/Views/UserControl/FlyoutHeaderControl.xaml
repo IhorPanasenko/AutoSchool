@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Auto.School.Mobile.UserControl.FlyoutHeaderControl">
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             x:Class="Auto.School.Mobile.UserControl.FlyoutHeaderControl"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <StackLayout Padding="10" BackgroundColor="#f4e558">
-        <Label x:Name="lblUserName" FontSize="20" FontAttributes="Bold" TextColor="#3D6DFF"/>
-        <Label x:Name="lblUserEmail" FontSize="20" FontAttributes="Bold" TextColor="#3D6DFF"/>
+        <StackLayout Orientation="Horizontal" Spacing="3">
+            <Label Text="{extension:Translate Key=FlyoutHeader_Hello}" TextColor="#3D6DFF" FontSize="Medium"/>
+            <Label x:Name="lblUserName" FontAttributes="Bold" TextColor="#3D6DFF" FontSize="Medium"/>
+            <Label x:Name="lblUserEmail" FontAttributes="Bold" TextColor="#3D6DFF" FontSize="Medium"/>
+        </StackLayout>
+        <Picker x:Name="languagePicker" Title="{extension:Translate Key=FlyoutHeader_ChooseLanguage}" SelectedIndexChanged="OnLanguageSelected" TextColor="#333333" />
     </StackLayout>
 </ContentView>

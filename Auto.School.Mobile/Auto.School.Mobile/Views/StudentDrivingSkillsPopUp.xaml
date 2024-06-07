@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.StudentDrivingSkillsPopUp"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings">
+             xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
+             xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <toolkit:Popup.Resources>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="#f4e558" />
@@ -16,9 +17,9 @@
     </toolkit:Popup.Resources>
     <ScrollView Margin="10,30">
         <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
-            <Label Text="{x:Static resx:AppResources.DrivingSkills_Title}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{extension:Translate Key=DrivingSkills_Title}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
-            <Button Text="{x:Static resx:AppResources.DrivingSkills_CloseButton}" BackgroundColor="#7eb693" TextColor="#333333" FontSize="Medium" LineBreakMode="WordWrap" Command="{Binding CloseCommand}"/>
+            <Button Text="{extension:Translate Key=DrivingSkills_CloseButton}" BackgroundColor="#7eb693" TextColor="#333333" FontSize="Medium" LineBreakMode="WordWrap" Command="{Binding CloseCommand}"/>
             <ScrollView>
                 <CollectionView ItemsSource="{Binding DrivingSkills}" BackgroundColor="#7FB2FF">
                     <CollectionView.ItemTemplate>
@@ -28,8 +29,8 @@
 
                                     <Label Text="{Binding Type}" FontSize="Large" FontAttributes="Bold"/>
                                     <Label Text="{Binding Subtype}" FontSize="Medium" FontAttributes="Italic"/>
-                                    <Label Text="{x:Static resx:AppResources.DrivingSkills_Completed}" IsVisible="{Binding Completed}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#7eb693"/>
-                                    <Button Text="{x:Static resx:AppResources.DrivingSkills_MarkCompleted}"
+                                    <Label Text="{extension:Translate Key=DrivingSkills_Completed}" IsVisible="{Binding Completed}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#7eb693"/>
+                                    <Button Text="{extension:Translate Key=DrivingSkills_MarkCompleted}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type toolkit:Popup}}, Path=BindingContext.CompleteSkillCommand}"
                                         CommandParameter="{Binding .}"
                                         IsVisible="{Binding IsNotCompleted}"
