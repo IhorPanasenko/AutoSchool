@@ -1,5 +1,4 @@
 import CarImg from "../../assets/registerBackgr.png"
-import IcoGoogle from "../../assets/googleIco.svg"
 import { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import Joi from "joi"
@@ -7,8 +6,7 @@ import styles from "./register.module.scss"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/authContext"
 import { useNavigate } from "react-router-dom"
-
-// import { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const Register = () => {
   const [user, setuser] = useState({
@@ -24,8 +22,9 @@ const Register = () => {
   const [cities, setCities] = useState([])
   const vehicleCategories = ["A", "B", "C", "D"]
   const [errors, setErrors] = useState({})
-  const { loading, error, dispatch } = useContext(AuthContext)
+  const { dispatch } = useContext(AuthContext)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -51,7 +50,6 @@ const Register = () => {
     switch (name) {
       case "firstName":
       case "lastName":
-        // Перевірка, щоб поля firstName та lastName містили тільки букви
         if (!/^[a-zA-Zа-яА-ЯёЁ]+$/.test(value)) {
           errorMessage = "This field should contain only letters"
         }
@@ -67,7 +65,6 @@ const Register = () => {
         }
         break
       case "password":
-        // Перевірка, щоб пароль містив принаймні одну велику літеру, одну цифру і був довше 6 символів
         const passwordSchema = Joi.object({
           password: Joi.string()
             .pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})"))
@@ -113,16 +110,14 @@ const Register = () => {
     }
 
     console.log("Form data is valid, submitting...")
-    // Додайте код для відправки даних на сервер
+
     dispatch({ type: "LOGIN_START" })
     try {
-      // Формуємо номер телефону з дефісами
       const formattedPhoneNumber = user.phoneNumber.replace(
         /(\d{3})(\d{3})(\d{4})/,
         "$1-$2-$3"
       )
 
-      // Дані для відправки
       const formData = {
         name: user.firstName,
         surname: user.lastName,
@@ -134,7 +129,6 @@ const Register = () => {
       }
       console.log("formData:", formData)
 
-      // Відправляємо дані на сервер
       const response = await axios.post(
         "http://localhost:3000/api/auth/signup",
         formData,
@@ -164,7 +158,7 @@ const Register = () => {
               <input
                 type="text"
                 name="firstName"
-                placeholder="Enter your first name"
+                placeholder={t("register.firstName", { ns: "pages" })}
                 value={user.firstName}
                 onChange={handleChange}
                 className={styles.input_base}
@@ -177,7 +171,7 @@ const Register = () => {
               <input
                 type="text"
                 name="lastName"
-                placeholder="Enter your last name"
+                placeholder={t("register.lastName", { ns: "pages" })}
                 value={user.lastName}
                 onChange={handleChange}
                 className={styles.input_base}
@@ -192,7 +186,7 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder={t("register.email", { ns: "pages" })}
                 value={user.email}
                 onChange={handleChange}
                 className={styles.input_base}
@@ -205,7 +199,7 @@ const Register = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="Enter password"
+                placeholder={t("register.password", { ns: "pages" })}
                 value={user.password}
                 onChange={handleChange}
                 className={styles.input_base}
@@ -240,7 +234,7 @@ const Register = () => {
                 onChange={handleChange}
                 className={styles.input_base}
               >
-                <option value="">Select your city</option>
+                <option value="">{t("register.city", { ns: "pages" })}</option>
                 {cities.map(city => (
                   <option key={city.id} value={city.id}>
                     {city.nameEN}
@@ -253,7 +247,7 @@ const Register = () => {
             <input
               type="tel"
               name="phoneNumber"
-              placeholder="Enter your phone"
+              placeholder={t("register.phoneNumber", { ns: "pages" })}
               value={user.phoneNumber}
               onChange={handleChange}
               className={styles.input_base}
@@ -268,7 +262,9 @@ const Register = () => {
               className={styles.input_base}
               onChange={handleChange}
             >
-              <option value="">Select vehicle category</option>
+              <option value="">
+                {t("register.vehicleCategory", { ns: "pages" })}
+              </option>
               {vehicleCategories.map(category => (
                 <option key={category} value={category}>
                   {category}
@@ -288,7 +284,7 @@ const Register = () => {
             style={{ textDecoration: "none" }}
             className={styles.link_registration}
           >
-            Log in
+            {t("register.link_registration", { ns: "pages" })}
           </Link>
         </div>
       </div>

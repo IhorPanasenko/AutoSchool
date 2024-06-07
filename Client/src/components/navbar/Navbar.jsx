@@ -1,13 +1,10 @@
 import React, { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
 import NavBarDropdown from "./components/NavbarDropdown.jsx"
-// import "./navbar.css"
 import styles from "./navbar.module.scss"
 import i18next from "i18next"
-// import { AuthContext } from "../../context/AuthContext.jsx"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import Profile from "../../assets/profile.svg"
-import axios from "axios"
 import useFetch from "../../hooks/useFetch.js"
 import { AuthContext } from "../../context/authContext"
 
@@ -25,21 +22,14 @@ const Navbar = () => {
     setNav(false)
   }
   const navigate = useNavigate()
-  const language = i18n.language
-  var cookies = document.cookie.split(";")
-  for (var i = 0; i < cookies.length; i++) {
-    var parts = cookies[i].split("="),
-      name = parts[0],
-      value = parts[1]
-  }
 
   const isActive = path => {
     return location.pathname === path
   }
-  // console.log("my lang" + document.cookie)
+
   const { user } = useContext(AuthContext)
-  // console.log(user.userDataname)
-  const { data, deleteData, patchData } = useFetch()
+
+  const { data, deleteData } = useFetch()
   const handleLogout = async e => {
     e.preventDefault()
 
@@ -70,15 +60,6 @@ const Navbar = () => {
               {t("navbar.linkmain", { ns: "pages" })}
             </p>
           </Link>
-          {/* <Link to="/contacts" style={{ textDecoration: "none" }}>
-            <p
-              className={`${styles.menu_text} ${
-                isActive("/contacts") ? styles.active : ""
-              }`}
-            >
-              {t("navbar.linkcontacts", { ns: "pages" })}
-            </p>
-          </Link> */}
           <Link to="/instructors" style={{ textDecoration: "none" }}>
             <p
               className={`${styles.menu_text} ${
@@ -88,15 +69,6 @@ const Navbar = () => {
               {t("navbar.linkinstructors", { ns: "pages" })}
             </p>
           </Link>
-          {/* <Link to="/reviews" style={{ textDecoration: "none" }}>
-            <p
-              className={`${styles.menu_text} ${
-                isActive("/reviews") ? styles.active : ""
-              }`}
-            >
-              {t("navbar.linkreviews", { ns: "pages" })}
-            </p>
-          </Link> */}
           {user && user.userData && user.userData.role == "instructor" && (
             <Link to="/timetable/instructor" style={{ textDecoration: "none" }}>
               <p

@@ -19,6 +19,23 @@
     "edit": "Редагувати",
     "countStudents": "Кількість студентів"
   },
+  "home": {
+    "title": "Курси водіння",
+    "regular_text1": "Реалізуйте свою мрію бути водієм",
+    "regular_text2": "Навчіться впевнено керувати автомоюілем",
+    "regular_text3": "Індивідуальний підхід до кожного студента",
+    "btn_register": "Записатися на курси"
+  },
+  "register": {
+    "firstName": "Введіть ім'я",
+    "lastName": "Введіть фамілію",
+    "email": "Введіть email",
+    "password": "Введіть пароль",
+    "city": "Введіть місто",
+    "phoneNumber": "Введіть телефон",
+    "vehicleCategory": "Оберіть категорію",
+    "link_registration": "Зареєстуватися"
+  },
   "emailConfirmation": {
     "verifyEmailButton": "Верифікувати пошту",
     "title": "Підтвердження пошти",

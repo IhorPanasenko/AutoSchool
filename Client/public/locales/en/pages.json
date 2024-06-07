@@ -19,6 +19,23 @@
     "edit": "Edit",
     "countStudents": "Count of students"
   },
+  "home": {
+    "title": "Driving courses",
+    "regular_text1": "Realize your dream of being a driver",
+    "regular_text2": "Learn to confidently drive a car",
+    "regular_text3": "Individual approach to each student",
+    "btn_register": "Sign up for courses"
+  },
+  "register": {
+    "firstName": "Enter your first name",
+    "lastName": "Enter your lastname",
+    "email": "Enter your email",
+    "password": "Enter password",
+    "city": "Select your city",
+    "phoneNumber": "Enter your phone",
+    "vehicleCategory": "Select vehicle category",
+    "link_registration": " Get Started"
+  },
   "emailConfirmation": {
     "verifyEmailButton": "Verify email",
     "title": "Email confirmation",

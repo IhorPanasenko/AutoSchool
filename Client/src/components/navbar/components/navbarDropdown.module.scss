@@ -25,5 +25,5 @@
   text-decoration: none;
 }
 .menu__dropdown_item {
-  @include fontSize("Roboto", 400, $dark-blue, 19px, 29px);
+  @include fontSize("Roboto", 400, $dark-blue, 14px, 16px);
 }
