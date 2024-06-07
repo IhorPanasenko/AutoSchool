@@ -21,10 +21,10 @@
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#f4e558" />
             <Setter Property="TextColor" Value="#3D6DFF" />
-            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="HorizontalOptions" Value="End" />
             <Setter Property="Margin" Value="0,10" />
-            <Setter Property="MaximumWidthRequest" Value="150" />
-            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="MaximumWidthRequest" Value="400" />
+            <Setter Property="LineBreakMode" Value="NoWrap" />
             <Setter Property="TextTransform" Value="None" />
         </Style>
     </ContentPage.Resources>
@@ -73,19 +73,22 @@
                                                             <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Spacing="20">
-                                                        <Label Text="{extension:Translate Key=LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
-                                                        <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
+                                                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="StartAndExpand">
+                                                        <Label Text="{extension:Translate Key=LessonSignUp_Price}" VerticalOptions="Center"/>
+                                                        <Label Text="{Binding Price, StringFormat='{0}'}" VerticalOptions="Center"/>
+                                                        
+                                                        <Button Text="{extension:Translate Key=StudentMyLessons_CancelLesson}"
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}"
+                                                                CommandParameter="{Binding .}" VerticalOptions="Center"/>
+                                                        
                                                     </StackLayout>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="20">
-                                                    <Button Text="{extension:Translate Key=StudentMyLessons_CancelLesson}"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}"
-                                        CommandParameter="{Binding .}" />
+                                                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="20">-->
+
                                                 <!--<Button Text="Add to Google Calendar"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddToGoogleCalendarCommand}"
                                         CommandParameter="{Binding .}" />-->
-                                            </StackLayout>
+                                                <!--</StackLayout>-->
                                             </StackLayout>
                                         </Border>
                                     </DataTemplate>
@@ -114,7 +117,7 @@
                                                         <Label Text="{Binding ToHour}" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="CenterAndExpand">
                                                     <Label Text="{extension:Translate Key=LessonSignUp_Price}" HorizontalOptions="EndAndExpand"/>
                                                     <Label Text="{Binding Price, StringFormat='{0}'}" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>

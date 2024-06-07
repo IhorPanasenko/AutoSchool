@@ -18,7 +18,7 @@ namespace Auto.School.Mobile.Core.Models
         public string Phone { get; set; }
 
         [JsonProperty("dateOfBirth")]
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [JsonProperty("vehicleCategory")]
         public string VehicleCategory{ get; set; }

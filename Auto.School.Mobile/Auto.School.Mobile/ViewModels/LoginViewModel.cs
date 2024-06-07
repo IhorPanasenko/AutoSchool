@@ -124,7 +124,7 @@ namespace Auto.School.Mobile.ViewModels
             if (string.Compare(response.Status, "Fail", true) == 0)
             {
                 IsError = true;
-                ErrorMessage = response.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                ErrorMessage = response.Message is not null ? AppErrorMessagesConstants.InvalidCreds : AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
                 return;
             }
 

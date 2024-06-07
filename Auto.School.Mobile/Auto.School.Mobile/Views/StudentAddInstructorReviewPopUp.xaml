@@ -17,6 +17,7 @@
     <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#7FB2FF">
         <Label Text="{extension:Translate Key=AddReview_Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
         <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
+        <Label Text="{Binding SuccessMessage}" TextColor="Black" IsVisible="{Binding IsSuccess}" HorizontalOptions="Center"/>
 
         <VerticalStackLayout Spacing="20" Padding="10">
             <StackLayout Orientation="Vertical" Spacing="5">

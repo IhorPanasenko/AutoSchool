@@ -56,5 +56,9 @@
         public const string GetChatMessages = "chats/messages/";
         public const string GetChatsPreview = "chats";
         #endregion
+
+        #region Payment
+        public const string PaymentLink = "http://10.0.2.2:5173/login?redirectUrl=timetable/payment/";
+        #endregion
     }
 }

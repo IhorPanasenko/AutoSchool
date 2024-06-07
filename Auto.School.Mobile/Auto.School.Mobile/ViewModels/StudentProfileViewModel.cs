@@ -174,8 +174,14 @@ namespace Auto.School.Mobile.ViewModels
             if (imageStream != null)
             {
                 var response = await _studentService.UpdateProfileImage(imageStream);
-                IsError = true;
-                ErrorMesssage = AppErrorMessagesConstants.FailedUpdateUserPhoto;
+                if (string.Compare(response.Status, ResponseStatuses.Sucess, true) != 0)
+                {
+                    IsError = true;
+                    ErrorMesssage = AppErrorMessagesConstants.FailedUpdateUserPhoto;
+                    return;
+                }
+
+                IsError = false;
                 await LoadStudent();
             }
         }
@@ -235,7 +241,7 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task OpenChat()
         {
-            throw new NotImplementedException();
+            await Shell.Current.GoToAsync($"{nameof(ChatPage)}");
         }
 
         [RelayCommand]

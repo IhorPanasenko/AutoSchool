@@ -15,7 +15,7 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
 
         public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(
             string url,
-            TRequest? requestBody) 
+            TRequest? requestBody)
             where TRequest : class
             where TResponse : BaseResponse
         {
@@ -26,6 +26,7 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
 
             var responseContent = await response.Content.ReadAsStringAsync();
             var responseData = JsonConvert.DeserializeObject<TResponse>(responseContent);
+
             return responseData!;
         }
 
@@ -36,8 +37,8 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
             using var multipartContent = new MultipartFormDataContent();
 
             var imageContent = new StreamContent(imageStream);
-            imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-            multipartContent.Add(imageContent, "file", imageName);
+            imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+            multipartContent.Add(imageContent, "photo", imageName);
 
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), path)
             {

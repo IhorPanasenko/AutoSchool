@@ -42,6 +42,7 @@
             <Label Text="{extension:Translate Key=LessonSignUp_Price}"/>
             <Label Text="{Binding Lesson.Price, StringFormat='{0}'}" />
         </StackLayout>
+        <Label Text="{extension:Translate Key=LessonSignUp_NeedOpenBrowser}"/>
         <Button Text="{extension:Translate Key=LessonSignUp_Confirm}" Command="{Binding SignUpCommand}" BackgroundColor="#f4e558" TextColor="#3D6DFF" FontSize="Medium"/>
         <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsErrorMessage}" FontSize="Small" TextColor="Red"/>
     </VerticalStackLayout>

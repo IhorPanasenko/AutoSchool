@@ -360,6 +360,9 @@
   <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
     <value>Профіль студента</value>
   </data>
+  <data name="InvalidCreds" xml:space="preserve">
+    <value>Невірна пошта або пароль</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Будь ласка, введіть дійсну електронну адресу</value>
   </data>
@@ -377,6 +380,9 @@
   </data>
   <data name="LessonSignUp_LessonTime" xml:space="preserve">
     <value>Час уроку</value>
+  </data>
+  <data name="LessonSignUp_NeedOpenBrowser" xml:space="preserve">
+    <value>Щоб завершити запис на урок, вам необхідно оплатити його. Будь-ласка, натисніть на кнопку нижче та проведіть оплату на нашому веб-сайті</value>
   </data>
   <data name="LessonSignUp_Price" xml:space="preserve">
     <value>Ціна</value>
@@ -622,7 +628,7 @@
     <value>Будь ласка, введіть обидва паролі: поточний і новий</value>
   </data>
   <data name="UpdatePassword_CancelButton" xml:space="preserve">
-    <value>Відмінити</value>
+    <value>Закрити</value>
   </data>
   <data name="UpdatePassword_NewPassword" xml:space="preserve">
     <value>Введіть новий пароль</value>

@@ -790,6 +790,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect email or password.
+        /// </summary>
+        internal static string InvalidCreds {
+            get {
+                return ResourceManager.GetString("InvalidCreds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter correct email address.
         /// </summary>
         internal static string InvalidEmail {
@@ -840,6 +849,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string LessonSignUp_LessonTime {
             get {
                 return ResourceManager.GetString("LessonSignUp_LessonTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To finish registration for lesson you need to pay for it. Please click on button bellow and pay through our web-site..
+        /// </summary>
+        internal static string LessonSignUp_NeedOpenBrowser {
+            get {
+                return ResourceManager.GetString("LessonSignUp_NeedOpenBrowser", resourceCulture);
             }
         }
         
@@ -1564,7 +1582,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string UpdatePassword_CancelButton {
             get {

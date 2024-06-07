@@ -52,12 +52,13 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Background="#7FB2FF">
-                                        <Frame CornerRadius="100" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Frame CornerRadius="30" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MaximumHeightRequest="200" MaximumWidthRequest="200">
                                             <Image Source="{Binding PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                                         </Frame>
                                     </StackLayout>
                                     <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Padding="10">
                                         <Label Text="{extension:Translate Key=AllInstructors_NotAvailale}" TextColor="Red" FontSize="Medium" IsVisible="{Binding IsNotAvailable}"/>
+                                        <Label Text="{Binding FullName, StringFormat='{0}'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold"/>
                                         <StackLayout Orientation="Horizontal" Spacing="0">
                                             <Label Text="{extension:Translate Key=InstructorDetails_Experience}" HorizontalOptions="StartAndExpand"/>
                                             <Label Text="{Binding WorkExperience, StringFormat='{0}'}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>

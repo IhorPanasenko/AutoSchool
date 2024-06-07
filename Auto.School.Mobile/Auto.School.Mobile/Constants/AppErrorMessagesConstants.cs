@@ -18,5 +18,6 @@ namespace Auto.School.Mobile.Core.Constants
         public static string FailedToLoadDrivingSkills => AppResources.FailedToLoadDrivingSkills;
         public static string FailedToUpdateSkill => AppResources.FailedToUpdateSkill;
         public static string FailedGetInstructorId => AppResources.FailedGetInstructorId;
+        public static string InvalidCreds = AppResources.InvalidCreds;
     }
 }
