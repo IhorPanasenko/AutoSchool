@@ -12,7 +12,7 @@ namespace Auto.School.Mobile
             InitializeComponent();
             BindingContext = appShellViewModel;
             RegisterRoutes();
-            SetFlyoutItems();   
+            //SetFlyoutItems();   
         }
 
         private void RegisterRoutes()
@@ -32,6 +32,7 @@ namespace Auto.School.Mobile
             Routing.RegisterRoute(nameof(InstructorInstructorDetailsPage), typeof(InstructorInstructorDetailsPage));
             Routing.RegisterRoute(nameof(InstructorMySchedulePage), typeof(InstructorMySchedulePage));
             Routing.RegisterRoute(nameof(StudentProfilePage), typeof(StudentProfilePage));
+            Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
         }
 
         public void SetFlyoutItems()

@@ -13,7 +13,6 @@ using Auto.School.Mobile.ApiIntegration.Base.Implementation;
 using Auto.School.Mobile.ApiIntegration.Requests.Abstract;
 using Auto.School.Mobile.ApiIntegration.Requests.Implementation;
 using CommunityToolkit.Maui;
-using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Views.Instructor;
 using Auto.School.Mobile.ViewModels.Instructor;
 
@@ -21,6 +20,7 @@ namespace Auto.School.Mobile
 {
     public static class MauiProgram
     {
+        public static IServiceProvider Services { get; private set; }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -48,6 +48,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ILessonRequest, LessonRequest>();
             builder.Services.AddTransient<IReviewRequest, ReviewRequest>();
             builder.Services.AddTransient<ICarRequest, CarRequeset>();
+            builder.Services.AddTransient<IChatRequest, ChatRequest>();
 
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
             builder.Services.AddTransient<ICityService, CityService>();
@@ -59,6 +60,9 @@ namespace Auto.School.Mobile
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<IReviewService, ReviewService>();
             builder.Services.AddTransient<ICarService, CarService>();
+            builder.Services.AddTransient<IWebSocketService, WebSocketService>();
+            builder.Services.AddTransient<IChatService, ChatService>();
+            
 
             builder.Services.AddTransient<ErrorAlertView>();
 
@@ -85,6 +89,8 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
             builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
             builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
+            builder.Services.AddScoped<ChatViewModel>();
+            builder.Services.AddTransient<InstructorAllChatsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddTransient<LoginPage>();
@@ -109,11 +115,14 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorStudentDrivingSkillPopUp>();
             builder.Services.AddTransient<InstructorInstructorDetailsPage>();
             builder.Services.AddTransient<InstructorAllInstructorsPage>();
+            builder.Services.AddTransient<ChatPage>();
+            builder.Services.AddTransient<InstructorAllChatsPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
-            return builder.Build();
+            var app = builder.Build();
+            Services = app.Services;
+            return app;
         }
     }
 }
