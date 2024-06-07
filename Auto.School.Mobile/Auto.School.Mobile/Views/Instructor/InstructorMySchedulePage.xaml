@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.Instructor.InstructorMySchedulePage"
-             Title="InstructorMySchedulePage"
+             Title="{extension:Translate Key=Schedule_MySchedule}"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
              xmlns:Alert ="clr-namespace:Auto.School.Mobile.Shared.Alerts"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">

@@ -2,33 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.Instructor.InstructorAllChatsPage"
-             Title="InstructorAllChatsPage"
+             Title="{extension:Translate Key=AllChats_MyChats}"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <Grid>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}" Spacing="10">
-            <ActivityIndicator IsRunning="{Binding IsLoading}"  VerticalOptions="CenterAndExpand"/>
-            <Label Text="{extension:Translate Key=Chat_Loading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
-        </StackLayout>
-        <CollectionView ItemsSource="{Binding ChatPreviews}" SelectionChanged="CollectionView_SelectionChanged" Background="#F5F5F5">
+        <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}" Spacing="10">-->
+        <ActivityIndicator IsRunning="{Binding IsLoading}"  VerticalOptions="CenterAndExpand" IsVisible="{Binding IsLoading}"/>
+        <Label Text="{extension:Translate Key=Chat_Loading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+        <!--</StackLayout>-->
+        <CollectionView ItemsSource="{Binding ChatPreviews}" SelectionChanged="CollectionView_SelectionChanged" Background="#F5F5F5" x:Name="ChatCollectionView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal" Padding="10" Margin="10,5" Spacing="10" BackgroundColor="#7FB2FF">
-                        <Image Source="{Binding PhotoUrl}" WidthRequest="60" HeightRequest="60" Aspect="AspectFill"/>
-                        <StackLayout Orientation="Vertical" Padding="10,0">
-                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Medium"/>
-                            <StackLayout IsVisible="{Binding HasNoMessages}">
-                                <Label Text="{extension:Translate Key=AllChats_NoMessages}" LineBreakMode="WordWrap" FontSize="Small" MaximumWidthRequest="250"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
+                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" Margin="15,15" Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <StackLayout Orientation="Horizontal" Padding="0" Margin="0" Spacing="10">
+                            <Frame CornerRadius="50" WidthRequest="80" HeightRequest="80" Padding="0" Margin="0">
+                                <Image Source="{Binding PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
+                            </Frame>
+                            <StackLayout Orientation="Vertical" Padding="10,0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Medium"/>
+                                <StackLayout  HorizontalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,0,0,10" IsVisible="{Binding HasNoMessages}">
+                                    <Label Text="{extension:Translate Key=AllChats_NoMessages}" FontAttributes="None" FontSize="Small" LineBreakMode="WordWrap" HorizontalOptions="Start"/>
+                                </StackLayout>
                                 <StackLayout HorizontalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,0,0,10" IsVisible="{Binding HasMessages}">
                                     <Label Text="{Binding LastMessage.Text}" FontAttributes="None" FontSize="Small" LineBreakMode="WordWrap" HorizontalOptions="Start"/>
                                     <Label Text="{Binding LastMessage.SendingTimeString, StringFormat='{0:MM:HH dd:MM:YYYY}'}" FontSize="Micro" HorizontalOptions="Start"/>
                                 </StackLayout>
-                                <Button HorizontalOptions="End" Text="Open Chat" Command="{Binding BindingContext.OpenChatCommand, Source={x:Reference ChatCollectionView}}" 
-                                        CommandParameter="{Binding .}"/>
+                                <Button 
+                                    HorizontalOptions="Start" 
+                                    Text="{extension:Translate Key=AllChats_OpenChat}" 
+                                    Command="{Binding Path=BindingContext.OpenChatCommand, Source={x:Reference ChatCollectionView}}" 
+                                        CommandParameter="{Binding .}" BackgroundColor="#f4e558" TextColor="Black"/>
                             </StackLayout>
                         </StackLayout>
-                    </StackLayout>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

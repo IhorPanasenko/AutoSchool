@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.InstructorDetailsPage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             Title="InstructorDetailsPage"
+             Title="{extension:Translate Key=InstructorDetails_Title}"
              xmlns:viewModels="clr-namespace:Auto.School.Mobile.ViewModels"
             xmlns:views="clr-namespace:Auto.School.Mobile.Views"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">

@@ -61,6 +61,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your rating for car was successfully added.
+        /// </summary>
+        internal static string AddCarRating {
+            get {
+                return ResourceManager.GetString("AddCarRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set rating for instructor&apos;s car.
         /// </summary>
         internal static string AddCarRating_CarRatingLabel {
@@ -160,11 +169,38 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No messages was send yet. Start chatting.
+        ///   Looks up a localized string similar to You review about instructor was successfully added.
+        /// </summary>
+        internal static string AddReviewSuccessResult {
+            get {
+                return ResourceManager.GetString("AddReviewSuccessResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My chats.
+        /// </summary>
+        internal static string AllChats_MyChats {
+            get {
+                return ResourceManager.GetString("AllChats_MyChats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start chatting.
         /// </summary>
         internal static string AllChats_NoMessages {
             get {
                 return ResourceManager.GetString("AllChats_NoMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open chat.
+        /// </summary>
+        internal static string AllChats_OpenChat {
+            get {
+                return ResourceManager.GetString("AllChats_OpenChat", resourceCulture);
             }
         }
         
@@ -304,6 +340,78 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to get instructor instance. Try again later.
+        /// </summary>
+        internal static string FailedGetInstructorId {
+            get {
+                return ResourceManager.GetString("FailedGetInstructorId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load instructor&apos;s schedule.
+        /// </summary>
+        internal static string FailedLoadSchedule {
+            get {
+                return ResourceManager.GetString("FailedLoadSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load your driving skills progress. Please, try again later.
+        /// </summary>
+        internal static string FailedToLoadDrivingSkills {
+            get {
+                return ResourceManager.GetString("FailedToLoadDrivingSkills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load instructor info.
+        /// </summary>
+        internal static string FailedToLoadInstuctor {
+            get {
+                return ResourceManager.GetString("FailedToLoadInstuctor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while picking image from files. Try again later.
+        /// </summary>
+        internal static string FailedToPickImage {
+            get {
+                return ResourceManager.GetString("FailedToPickImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update driving skill. Try again later.
+        /// </summary>
+        internal static string FailedToUpdateSkill {
+            get {
+                return ResourceManager.GetString("FailedToUpdateSkill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update profile photo.
+        /// </summary>
+        internal static string FailedUpdateUserPhoto {
+            get {
+                return ResourceManager.GetString("FailedUpdateUserPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed Sign up to instructor.
+        /// </summary>
+        internal static string FiledSignUpToInstructor {
+            get {
+                return ResourceManager.GetString("FiledSignUpToInstructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string FirstName {
@@ -372,6 +480,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string ForgotPassword_Label {
             get {
                 return ResourceManager.GetString("ForgotPassword_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot Password.
+        /// </summary>
+        internal static string ForgotPassword_Title {
+            get {
+                return ResourceManager.GetString("ForgotPassword_Title", resourceCulture);
             }
         }
         
@@ -538,6 +655,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My profile.
+        /// </summary>
+        internal static string InstructorDetails_MyProfile {
+            get {
+                return ResourceManager.GetString("InstructorDetails_MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number ratings.
         /// </summary>
         internal static string InstructorDetails_NumberRatings {
@@ -646,6 +772,42 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lessons schedule.
+        /// </summary>
+        internal static string InstructorScheduleStudent_Title {
+            get {
+                return ResourceManager.GetString("InstructorScheduleStudent_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student profle.
+        /// </summary>
+        internal static string InstructorStudentProfile_StudentProfile {
+            get {
+                return ResourceManager.GetString("InstructorStudentProfile_StudentProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter correct email address.
+        /// </summary>
+        internal static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PLease, enter a phone number in format: XXX-XXX-XXXX.
+        /// </summary>
+        internal static string InvalidPhoneNumber {
+            get {
+                return ResourceManager.GetString("InvalidPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         internal static string LastName {
@@ -718,6 +880,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My lessons.
+        /// </summary>
+        internal static string MyLessons_Title {
+            get {
+                return ResourceManager.GetString("MyLessons_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel lesson.
         /// </summary>
         internal static string MySchedule_CancelLesson {
@@ -754,11 +925,38 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entered passwords are not equal.
+        /// </summary>
+        internal static string NotEqualPasswords {
+            get {
+                return ResourceManager.GetString("NotEqualPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please, enter a valid email.
+        /// </summary>
+        internal static string nvalidEmail {
+            get {
+                return ResourceManager.GetString("nvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You request haven&apos;t being confirming by our administration. Please wait for some time.
+        /// </summary>
+        internal static string Pending {
+            get {
+                return ResourceManager.GetString("Pending", resourceCulture);
             }
         }
         
@@ -862,6 +1060,24 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration_Title {
+            get {
+                return ResourceManager.GetString("Registration_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your request was rejected. You can send a request to our another instructor..
+        /// </summary>
+        internal static string Rejected {
+            get {
+                return ResourceManager.GetString("Rejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rememeber me?.
         /// </summary>
         internal static string RememberMe {
@@ -871,11 +1087,38 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have not send request to connect to instructor yet..
+        /// </summary>
+        internal static string RequestNotSent {
+            get {
+                return ResourceManager.GetString("RequestNotSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We sent you an email. Please, check your inbox or spam to reset your password.
+        /// </summary>
+        internal static string ResetPasswordSuccessMessage {
+            get {
+                return ResourceManager.GetString("ResetPasswordSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lesson already passed.
         /// </summary>
         internal static string Schedule_LessonPassed {
             get {
                 return ResourceManager.GetString("Schedule_LessonPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My schedule.
+        /// </summary>
+        internal static string Schedule_MySchedule {
+            get {
+                return ResourceManager.GetString("Schedule_MySchedule", resourceCulture);
             }
         }
         
@@ -1002,6 +1245,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string SignUp {
             get {
                 return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You request was successfully sent. Wait while administrators will confirm it.
+        /// </summary>
+        internal static string SignUpToInstructorSuccess {
+            get {
+                return ResourceManager.GetString("SignUpToInstructorSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong.\nTry again later or contact developer team.
+        /// </summary>
+        internal static string SomethingWentWrongErrorMessage {
+            get {
+                return ResourceManager.GetString("SomethingWentWrongErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel Lesson.
+        /// </summary>
+        internal static string StudentMyLessons_CancelLesson {
+            get {
+                return ResourceManager.GetString("StudentMyLessons_CancelLesson", resourceCulture);
             }
         }
         
@@ -1159,6 +1429,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Profile.
+        /// </summary>
+        internal static string StudentProfile_MyProfile {
+            get {
+                return ResourceManager.GetString("StudentProfile_MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number learned driving skills:.
         /// </summary>
         internal static string StudentProfile_NumberLearnedExercises {
@@ -1267,6 +1546,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must be elder than 18 to get access to driving license classes.
+        /// </summary>
+        internal static string TooYoungError {
+            get {
+                return ResourceManager.GetString("TooYoungError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tuesday.
         /// </summary>
         internal static string Tuesday {
@@ -1335,6 +1623,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string UpdatePassword_UpdateButton {
             get {
                 return ResourceManager.GetString("UpdatePassword_UpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter both current and new passwords..
+        /// </summary>
+        internal static string UpdatePasswordNotFilled {
+            get {
+                return ResourceManager.GetString("UpdatePasswordNotFilled", resourceCulture);
             }
         }
         

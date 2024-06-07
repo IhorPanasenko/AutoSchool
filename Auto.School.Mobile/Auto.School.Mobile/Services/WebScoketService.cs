@@ -17,8 +17,14 @@ public class WebSocketService : IWebSocketService
 
     public async Task ConnectAsync(string uri)
     {
-        await _clientWebSocket.ConnectAsync(new Uri(uri), CancellationToken.None);
-        ReceiveMessages();
+        try
+        {
+            await _clientWebSocket.ConnectAsync(new Uri(uri), CancellationToken.None);
+        }
+        finally
+        {
+            ReceiveMessages();
+        }
     }
 
     public async Task SendMessageAsync(SendMessageModel messageModel)
@@ -36,7 +42,7 @@ public class WebSocketService : IWebSocketService
         {
             var result = await _clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             var messageJson = Encoding.UTF8.GetString(buffer, 0, result.Count);
-            if (messageJson != null)
+            if (!string.IsNullOrEmpty(messageJson))
             {
                 try
                 {

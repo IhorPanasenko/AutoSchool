@@ -20,6 +20,7 @@ namespace Auto.School.Mobile
 {
     public static class MauiProgram
     {
+        public static IServiceProvider Services { get; private set; }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -61,6 +62,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<ICarService, CarService>();
             builder.Services.AddTransient<IWebSocketService, WebSocketService>();
             builder.Services.AddTransient<IChatService, ChatService>();
+            
 
             builder.Services.AddTransient<ErrorAlertView>();
 
@@ -87,7 +89,7 @@ namespace Auto.School.Mobile
             builder.Services.AddTransient<InstructorStudentDrivingSkillViewModel>();
             builder.Services.AddTransient<InstructorInstructorDetailsViewModel>();
             builder.Services.AddTransient<InstructorAllInstructorsViewModel>();
-            builder.Services.AddTransient<ChatViewModel>();
+            builder.Services.AddScoped<ChatViewModel>();
             builder.Services.AddTransient<InstructorAllChatsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
@@ -118,8 +120,9 @@ namespace Auto.School.Mobile
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
-            return builder.Build();
+            var app = builder.Build();
+            Services = app.Services;
+            return app;
         }
     }
 }

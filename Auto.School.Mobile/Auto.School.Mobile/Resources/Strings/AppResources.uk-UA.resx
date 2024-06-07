@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarRating" xml:space="preserve">
+    <value>Ваш рейтинг для автомобіля було успішно додано.</value>
+  </data>
   <data name="AddCarRating_CarRatingLabel" xml:space="preserve">
     <value>Оцініть машину інструктора</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Додати фото профілю</value>
+  </data>
+  <data name="AddReviewSuccessResult" xml:space="preserve">
+    <value>Ваш відгук про інструктора було успішно додано.</value>
   </data>
   <data name="AddReview_CancelButton" xml:space="preserve">
     <value>Відмінити</value>
@@ -150,8 +156,14 @@
   <data name="AddReview_Title" xml:space="preserve">
     <value>Додати відгук про інструктора</value>
   </data>
+  <data name="AllChats_MyChats" xml:space="preserve">
+    <value>Мої чати</value>
+  </data>
   <data name="AllChats_NoMessages" xml:space="preserve">
-    <value>Ще ні одного повідомлення не було відправлено. Почніть переписку</value>
+    <value>Почати переписку</value>
+  </data>
+  <data name="AllChats_OpenChat" xml:space="preserve">
+    <value>Відкрити чат</value>
   </data>
   <data name="AllInstructors_DetailsButton" xml:space="preserve">
     <value>Переглянути інформацію</value>
@@ -198,6 +210,30 @@
   <data name="DrivingSkills_Title" xml:space="preserve">
     <value>Навички водіння</value>
   </data>
+  <data name="FailedGetInstructorId" xml:space="preserve">
+    <value>Не вдалося отримати інструктора. Спробуйте пізніше</value>
+  </data>
+  <data name="FailedLoadSchedule" xml:space="preserve">
+    <value>Не вдалося завантажити розклад інструктора</value>
+  </data>
+  <data name="FailedToLoadDrivingSkills" xml:space="preserve">
+    <value>Не вдалося завантажити ваш прогрес у водійських навичках. Будь ласка, спробуйте пізніше</value>
+  </data>
+  <data name="FailedToLoadInstuctor" xml:space="preserve">
+    <value>Не вдалося завантажити інформацію про інструктора</value>
+  </data>
+  <data name="FailedToPickImage" xml:space="preserve">
+    <value>Помилка при виборі зображення з файлів. Спробуйте пізніше</value>
+  </data>
+  <data name="FailedToUpdateSkill" xml:space="preserve">
+    <value>Не вдалося оновити водійську навичку. Спробуйте пізніше</value>
+  </data>
+  <data name="FailedUpdateUserPhoto" xml:space="preserve">
+    <value>Не вдалося оновити фотографію профілю</value>
+  </data>
+  <data name="FiledSignUpToInstructor" xml:space="preserve">
+    <value>Не вдалося записатися до інструктора</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>Ім'я</value>
   </data>
@@ -221,6 +257,9 @@
   </data>
   <data name="ForgotPassword_Label" xml:space="preserve">
     <value>Введіть адресу електронної пошти</value>
+  </data>
+  <data name="ForgotPassword_Title" xml:space="preserve">
+    <value>Забув пароль</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>П'ятниця</value>
@@ -276,6 +315,9 @@
   <data name="InstructorDetails_MaxNumberOfStudents" xml:space="preserve">
     <value>Максимальна кількість студентів</value>
   </data>
+  <data name="InstructorDetails_MyProfile" xml:space="preserve">
+    <value>Мій профіль</value>
+  </data>
   <data name="InstructorDetails_NumberRatings" xml:space="preserve">
     <value>Кількість оцінок</value>
   </data>
@@ -309,8 +351,20 @@
   <data name="InstructorReviews_Title" xml:space="preserve">
     <value>Відгуки про інструктора</value>
   </data>
+  <data name="InstructorScheduleStudent_Title" xml:space="preserve">
+    <value>Розклад занять</value>
+  </data>
   <data name="InstructorSchedule_SingUp" xml:space="preserve">
     <value>Записатися</value>
+  </data>
+  <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
+    <value>Профіль студента</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Будь ласка, введіть дійсну електронну адресу</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>Будь ласка, введіть номер телефону у форматі: XXX-XXX-XXXX</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Прізвище</value>
@@ -336,6 +390,9 @@
   <data name="Monday" xml:space="preserve">
     <value>Понеділок</value>
   </data>
+  <data name="MyLessons_Title" xml:space="preserve">
+    <value>Мої уроки</value>
+  </data>
   <data name="MySchedule_CancelLesson" xml:space="preserve">
     <value>Відмінити заняття</value>
   </data>
@@ -348,8 +405,14 @@
   <data name="NewUser" xml:space="preserve">
     <value>Новий корисутвач?</value>
   </data>
+  <data name="NotEqualPasswords" xml:space="preserve">
+    <value>Введені паролі не співпадають</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Ваш запит ще не підтверджено нашою адміністрацією. Будь ласка, зачекайте деякий час.</value>
   </data>
   <data name="PersonalInfo" xml:space="preserve">
     <value>Персональні дані</value>
@@ -384,11 +447,26 @@
   <data name="Registration_RepeatPassword" xml:space="preserve">
     <value>Повторіть пароль</value>
   </data>
+  <data name="Registration_Title" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Ваш запит було відхилено. Ви можете надіслати запит іншому інструктору.</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запам'ятати мене?</value>
   </data>
+  <data name="RequestNotSent" xml:space="preserve">
+    <value>Ви ще не надіслали запит на підключення до інструктора.</value>
+  </data>
+  <data name="ResetPasswordSuccessMessage" xml:space="preserve">
+    <value>Ми надіслали вам електронного листа. Будь ласка, перевірте свою поштову скриньку або спам, щоб скинути пароль.</value>
+  </data>
   <data name="Schedule_LessonPassed" xml:space="preserve">
     <value>Урок вже пройшов</value>
+  </data>
+  <data name="Schedule_MySchedule" xml:space="preserve">
+    <value>Мій розклад</value>
   </data>
   <data name="Schedule_NextWeek" xml:space="preserve">
     <value>Наступний тиждень</value>
@@ -432,6 +510,15 @@
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="SignUpToInstructorSuccess" xml:space="preserve">
+    <value>Ваш запит було успішно надіслано. Зачекайте, поки адміністратори його підтвердять.</value>
+  </data>
+  <data name="SomethingWentWrongErrorMessage" xml:space="preserve">
+    <value>Щось пішло не так.\nСпробуйте пізніше або зверніться до команди розробників</value>
+  </data>
+  <data name="StudentMyLessons_CancelLesson" xml:space="preserve">
+    <value>Відмінити урок</value>
+  </data>
   <data name="StudentMyLessons_FutureLessons" xml:space="preserve">
     <value>Майбутні заняття</value>
   </data>
@@ -452,6 +539,9 @@
   </data>
   <data name="StudentProfile_City" xml:space="preserve">
     <value>Місто проходження навчання</value>
+  </data>
+  <data name="StudentProfile_DetailedInfo" xml:space="preserve">
+    <value>Детальна інформація</value>
   </data>
   <data name="StudentProfile_DrivingCategory" xml:space="preserve">
     <value>Опановувана категорія водіння</value>
@@ -481,6 +571,9 @@
     <value>Пройдені уроки</value>
   </data>
   <data name="StudentProfile_MainTitle" xml:space="preserve">
+    <value>Мій профіль</value>
+  </data>
+  <data name="StudentProfile_MyProfile" xml:space="preserve">
     <value>Мій профіль</value>
   </data>
   <data name="StudentProfile_NumberLearnedExercises" xml:space="preserve">
@@ -519,8 +612,14 @@
   <data name="Thursday" xml:space="preserve">
     <value>Четвер</value>
   </data>
+  <data name="TooYoungError" xml:space="preserve">
+    <value>Ви повинні бути старше 18 років, щоб отримати доступ до класів з водіння</value>
+  </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Вівторок</value>
+  </data>
+  <data name="UpdatePasswordNotFilled" xml:space="preserve">
+    <value>Будь ласка, введіть обидва паролі: поточний і новий</value>
   </data>
   <data name="UpdatePassword_CancelButton" xml:space="preserve">
     <value>Відмінити</value>

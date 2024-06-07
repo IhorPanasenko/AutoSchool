@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Auto.School.Mobile.ViewModels
 {
@@ -17,8 +18,9 @@ namespace Auto.School.Mobile.ViewModels
         private readonly IInstructorService _instructorService;
         private readonly ISharedService _sharedService;
         private readonly IChatService _chatService;
+        public bool isConnected = false;
 
-        public ChatViewModel(IWebSocketService webSocketService, IInstructorService instructorService, IChatService chatService)
+        public ChatViewModel(IWebSocketService webSocketService, IInstructorService instructorService, IChatService chatService, ISharedService sharedService)
         {
             _webSocketService = webSocketService;
 
@@ -35,12 +37,12 @@ namespace Auto.School.Mobile.ViewModels
 
             _instructorService = instructorService;
             _chatService = chatService;
-            _ = GetUsersData();
+            _sharedService = sharedService;
+            //_ = GetUsersData();
         }
 
-        private async Task GetUsersData()
+        public async Task GetUsersData()
         {
-            //await ConnectAsync();
             var userDataJson = Preferences.Get("UserInfo", string.Empty);
             var userData = JsonConvert.DeserializeObject<LoginResponseData>(userDataJson);
             SenderUserDataModel = userData!.UserData;
@@ -70,11 +72,16 @@ namespace Auto.School.Mobile.ViewModels
                 }
             }
 
-            await SendInitialMessage();
-            await GetChatMessages();
-            IsLoading = false;
-            Thread.Sleep(1000);
-            MessagingCenter.Send(this, "ScrollToBottom");
+            try
+            {
+                await SendInitialMessage();
+                await GetChatMessages();
+                IsLoading = false;
+                Thread.Sleep(1000);
+                MessagingCenter.Send(this, "ScrollToBottom");
+            }
+            catch (Exception ex)
+            { Console.WriteLine(ex.Message); }
         }
 
         private async Task GetChatMessages()
@@ -97,6 +104,11 @@ namespace Auto.School.Mobile.ViewModels
 
         private async Task SendInitialMessage()
         {
+            while (!isConnected)
+            {
+                Thread.Sleep(100);
+            }
+
             var message = new SendMessageModel
             {
                 SenderId = SenderUserDataModel.Id,
@@ -160,12 +172,22 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task ConnectAsync()
         {
-            await _webSocketService.ConnectAsync("ws://10.0.2.2:8080");
+            if (!isConnected)
+            {
+                await _webSocketService.ConnectAsync("ws://10.0.2.2:8080");
+            }
+
+            isConnected = true;
         }
 
         [RelayCommand]
         public async Task SendMessage()
         {
+            if (!isConnected)
+            {
+                await ConnectAsync();
+            }
+
             if (!string.IsNullOrEmpty(MessageText))
             {
                 var message = new SendMessageModel
@@ -187,7 +209,11 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task DisconnectAsync()
         {
-            await _webSocketService.DisconnectAsync();
+            if (isConnected)
+            {
+                await _webSocketService.DisconnectAsync();
+            }
+            isConnected = false;
         }
 
         [RelayCommand]

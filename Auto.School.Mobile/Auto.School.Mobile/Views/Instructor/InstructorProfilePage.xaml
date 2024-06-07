@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.Instructor.InstructorProfilePage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             Title="InstructorProfilePage"
+             Title="{extension:Translate Key=InstructorDetails_MyProfile}"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <ContentPage.Resources>
         <Style TargetType="ScrollView">

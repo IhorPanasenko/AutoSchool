@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Auto.School.Mobile.Views.RegistrationPage"
              xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
-             Title="RegistrationPage"
+             Title="{extension:Translate Key=Registration_Title}"
              Shell.NavBarIsVisible="False"
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension"
              >

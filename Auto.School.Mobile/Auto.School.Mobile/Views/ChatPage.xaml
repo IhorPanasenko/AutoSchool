@@ -21,14 +21,14 @@
                     <DataTemplate>
                         <StackLayout Margin="10" Orientation="Horizontal" Spacing="30">
                             <Frame HorizontalOptions="Start" IsVisible="{Binding IsNotMyMessage}" BackgroundColor="#7FB2FF">
-                                <StackLayout>
-                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap"/>
+                                <StackLayout MaximumWidthRequest="300">
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
                                     <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                             </Frame>
                             <Frame HorizontalOptions="EndAndExpand" IsVisible="{Binding IsMyMessage}" BackgroundColor="#f4e558">
-                                <StackLayout>
-                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap"/>
+                                <StackLayout MaximumWidthRequest="300">
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
                                     <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                             </Frame>

@@ -30,7 +30,12 @@ public partial class ChatPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.ConnectAsync(); 
+        MessagingCenter.Subscribe<ChatViewModel>(this, "ScrollToBottom", (sender) =>
+        {
+            ScrollToBottom();
+        });
+        await _viewModel.ConnectAsync();
+        await _viewModel.GetUsersData();
     }
 
     protected override async void OnDisappearing()

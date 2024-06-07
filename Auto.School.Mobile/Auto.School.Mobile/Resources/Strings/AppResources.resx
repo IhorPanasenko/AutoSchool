@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarRating" xml:space="preserve">
+    <value>Your rating for car was successfully added</value>
+  </data>
   <data name="AddCarRating_CarRatingLabel" xml:space="preserve">
     <value>Set rating for instructor's car</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Add profile photo</value>
+  </data>
+  <data name="AddReviewSuccessResult" xml:space="preserve">
+    <value>You review about instructor was successfully added</value>
   </data>
   <data name="AddReview_CancelButton" xml:space="preserve">
     <value>Cancel</value>
@@ -150,8 +156,14 @@
   <data name="AddReview_Title" xml:space="preserve">
     <value>Add review about instructor</value>
   </data>
+  <data name="AllChats_MyChats" xml:space="preserve">
+    <value>My chats</value>
+  </data>
   <data name="AllChats_NoMessages" xml:space="preserve">
-    <value>No messages was send yet. Start chatting</value>
+    <value>Start chatting</value>
+  </data>
+  <data name="AllChats_OpenChat" xml:space="preserve">
+    <value>Open chat</value>
   </data>
   <data name="AllInstructors_DetailsButton" xml:space="preserve">
     <value>Open details</value>
@@ -198,6 +210,30 @@
   <data name="DrivingSkills_Title" xml:space="preserve">
     <value>Driving skills to learn</value>
   </data>
+  <data name="FailedGetInstructorId" xml:space="preserve">
+    <value>Failed to get instructor instance. Try again later</value>
+  </data>
+  <data name="FailedLoadSchedule" xml:space="preserve">
+    <value>Failed to load instructor's schedule</value>
+  </data>
+  <data name="FailedToLoadDrivingSkills" xml:space="preserve">
+    <value>Failed to load your driving skills progress. Please, try again later</value>
+  </data>
+  <data name="FailedToLoadInstuctor" xml:space="preserve">
+    <value>Failed to load instructor info</value>
+  </data>
+  <data name="FailedToPickImage" xml:space="preserve">
+    <value>Error while picking image from files. Try again later</value>
+  </data>
+  <data name="FailedToUpdateSkill" xml:space="preserve">
+    <value>Failed to update driving skill. Try again later</value>
+  </data>
+  <data name="FailedUpdateUserPhoto" xml:space="preserve">
+    <value>Failed to update profile photo</value>
+  </data>
+  <data name="FiledSignUpToInstructor" xml:space="preserve">
+    <value>Failed Sign up to instructor</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
@@ -221,6 +257,9 @@
   </data>
   <data name="ForgotPassword_Label" xml:space="preserve">
     <value>Enter your email address</value>
+  </data>
+  <data name="ForgotPassword_Title" xml:space="preserve">
+    <value>Forgot Password</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Friday</value>
@@ -276,6 +315,9 @@
   <data name="InstructorDetails_MaxNumberOfStudents" xml:space="preserve">
     <value>Max number of students </value>
   </data>
+  <data name="InstructorDetails_MyProfile" xml:space="preserve">
+    <value>My profile</value>
+  </data>
   <data name="InstructorDetails_NumberRatings" xml:space="preserve">
     <value>Number ratings</value>
   </data>
@@ -309,8 +351,20 @@
   <data name="InstructorReviews_Title" xml:space="preserve">
     <value>Reviews about instructor</value>
   </data>
+  <data name="InstructorScheduleStudent_Title" xml:space="preserve">
+    <value>Lessons schedule</value>
+  </data>
   <data name="InstructorSchedule_SingUp" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
+    <value>Student profle</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Please enter correct email address</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>PLease, enter a phone number in format: XXX-XXX-XXXX</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
@@ -336,6 +390,9 @@
   <data name="Monday" xml:space="preserve">
     <value>Monday</value>
   </data>
+  <data name="MyLessons_Title" xml:space="preserve">
+    <value>My lessons</value>
+  </data>
   <data name="MySchedule_CancelLesson" xml:space="preserve">
     <value>Cancel lesson</value>
   </data>
@@ -348,8 +405,17 @@
   <data name="NewUser" xml:space="preserve">
     <value>New User?</value>
   </data>
+  <data name="NotEqualPasswords" xml:space="preserve">
+    <value>Entered passwords are not equal</value>
+  </data>
+  <data name="nvalidEmail" xml:space="preserve">
+    <value>Please, enter a valid email</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>You request haven't being confirming by our administration. Please wait for some time</value>
   </data>
   <data name="PersonalInfo" xml:space="preserve">
     <value>Personal info</value>
@@ -384,11 +450,26 @@
   <data name="Registration_RepeatPassword" xml:space="preserve">
     <value>Repeat password</value>
   </data>
+  <data name="Registration_Title" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Your request was rejected. You can send a request to our another instructor.</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Rememeber me?</value>
   </data>
+  <data name="RequestNotSent" xml:space="preserve">
+    <value>You have not send request to connect to instructor yet.</value>
+  </data>
+  <data name="ResetPasswordSuccessMessage" xml:space="preserve">
+    <value>We sent you an email. Please, check your inbox or spam to reset your password</value>
+  </data>
   <data name="Schedule_LessonPassed" xml:space="preserve">
     <value>Lesson already passed</value>
+  </data>
+  <data name="Schedule_MySchedule" xml:space="preserve">
+    <value>My schedule</value>
   </data>
   <data name="Schedule_NextWeek" xml:space="preserve">
     <value>Next Week</value>
@@ -431,6 +512,15 @@
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="SignUpToInstructorSuccess" xml:space="preserve">
+    <value>You request was successfully sent. Wait while administrators will confirm it</value>
+  </data>
+  <data name="SomethingWentWrongErrorMessage" xml:space="preserve">
+    <value>Something went wrong.\nTry again later or contact developer team</value>
+  </data>
+  <data name="StudentMyLessons_CancelLesson" xml:space="preserve">
+    <value>Cancel Lesson</value>
   </data>
   <data name="StudentMyLessons_FutureLessons" xml:space="preserve">
     <value>Future lessons</value>
@@ -483,6 +573,9 @@
   <data name="StudentProfile_MainTitle" xml:space="preserve">
     <value>My profile</value>
   </data>
+  <data name="StudentProfile_MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
   <data name="StudentProfile_NumberLearnedExercises" xml:space="preserve">
     <value>Number learned driving skills:</value>
   </data>
@@ -519,8 +612,14 @@
   <data name="Thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
+  <data name="TooYoungError" xml:space="preserve">
+    <value>You must be elder than 18 to get access to driving license classes</value>
+  </data>
   <data name="Tuesday" xml:space="preserve">
     <value>Tuesday</value>
+  </data>
+  <data name="UpdatePasswordNotFilled" xml:space="preserve">
+    <value>Please enter both current and new passwords.</value>
   </data>
   <data name="UpdatePassword_CancelButton" xml:space="preserve">
     <value>Cancel</value>
