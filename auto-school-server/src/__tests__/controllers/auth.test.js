@@ -21,9 +21,10 @@ describe('login', () => {
   describe('given no email and no password', () => {
     it('should return status 400', async () => {
       await authController.login(req, res, next);
-      expect(next).toHaveBeenCalledWith(
-        new AppError('Provide email and password', 400)
-      );
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      const errorInstance = next.mock.calls[0][0];
+      expect(errorInstance.message).toBe('Provide email and password');
+      expect(errorInstance.statusCode).toBe(400);
     });
   });
 
@@ -31,9 +32,10 @@ describe('login', () => {
     it('should return status 400', async () => {
       req.body = { email: 'email@gmail.com' };
       await authController.login(req, res, next);
-      expect(next).toHaveBeenCalledWith(
-        new AppError('Provide email and password', 400)
-      );
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      const errorInstance = next.mock.calls[0][0];
+      expect(errorInstance.message).toBe('Provide email and password');
+      expect(errorInstance.statusCode).toBe(400);
     });
   });
 
@@ -41,9 +43,11 @@ describe('login', () => {
     it('should return status 400', async () => {
       req.body = { password: 'password' };
       await authController.login(req, res, next);
-      expect(next).toHaveBeenCalledWith(
-        new AppError('Provide email and password', 400)
-      );
+
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      const errorInstance = next.mock.calls[0][0];
+      expect(errorInstance.message).toBe('Provide email and password');
+      expect(errorInstance.statusCode).toBe(400);
     });
   });
 
