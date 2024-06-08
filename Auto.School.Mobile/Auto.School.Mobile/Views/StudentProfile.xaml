@@ -22,7 +22,7 @@
         <ScrollView>
             <StackLayout Margin="0, 0, 0, 10">
                 <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
-                <Border IsVisible="{Binding IsNotLoading}">
+                <Border IsVisible="{Binding IsNotLoading}" BackgroundColor="Transparent">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="40,0,0,40" />
                     </Border.StrokeShape>
@@ -83,7 +83,7 @@
                             <StackLayout>
                                 <Label Text="{extension:Translate Key=StudentProfile_InstructorRequestStatusTitle}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding InstructorMessage}" HorizontalOptions="CenterAndExpand"/>
-                                <Button IsVisible="{Binding IsViewInstructorsVisible}" Command="{Binding GoToInstructorsCommand}" Text="{extension:Translate Key=StudentProfile_ViewInstructors}" Margin="10" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#f4e558" TextColor="#3D6DFF" LineBreakMode="WordWrap" TextTransform="None"/>
+                                <Button IsVisible="{Binding IsViewInstructorsVisible}" Command="{Binding GoToInstructorsCommand}" Text="{extension:Translate Key=StudentProfile_ViewInstructors}" Margin="10" HorizontalOptions="CenterAndExpand" MaximumWidthRequest="150" Background="#3D6DFF" TextColor="White" FontAttributes="Bold" FontSize="Medium" LineBreakMode="WordWrap" TextTransform="None"/>
                             </StackLayout>
                         </Border>
                         <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2" Padding="10" IsVisible="{Binding IsInstructorRequestAccepted}">

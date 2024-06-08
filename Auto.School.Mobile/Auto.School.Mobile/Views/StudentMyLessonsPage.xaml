@@ -8,7 +8,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
@@ -16,11 +16,11 @@
         <Style TargetType="Border">
             <Setter Property="Margin" Value="10,10,10,10" />
             <Setter Property="Padding" Value="5,5,5,15" />
-            <Setter Property="BackgroundColor" Value="#7FB2FF" />
+            <Setter Property="BackgroundColor" Value="White" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#f4e558" />
-            <Setter Property="TextColor" Value="#3D6DFF" />
+            <Setter Property="BackgroundColor" Value="#3D6DFF" />
+            <Setter Property="TextColor" Value="White" />
             <Setter Property="HorizontalOptions" Value="End" />
             <Setter Property="Margin" Value="0,10" />
             <Setter Property="MaximumWidthRequest" Value="400" />
@@ -30,7 +30,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="#F5F5F5">
+        <ScrollView BackgroundColor="White">
             <StackLayout>
                 <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
                 <Border IsVisible="{Binding IsNotLoading}">
@@ -40,10 +40,13 @@
                     <ScrollView>
                         <StackLayout Margin="0, 0, 0, 10">
                             <Label Text="{extension:Translate Key=StudentMyLessons_FutureLessons}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-                            <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding NotHasFutureLessons}">
+                            <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2" IsVisible="{Binding NotHasFutureLessons}">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
+                                <Border.Shadow>
+                                    <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
+                                </Border.Shadow>
                                 <StackLayout Spacing="3" Margin="10,5">
                                     <Label Text="{extension:Translate Key=StudentMyLessons_NoFutureLabel}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center"/>
                                     <Label Text="{extension:Translate Key=StudentMyLessons_SignUp}" LineBreakMode="WordWrap"/>
@@ -53,10 +56,11 @@
                             <CollectionView ItemsSource="{Binding FutureLessons}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                                        <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
+                                           
                                             <StackLayout Padding="5" Orientation="Vertical">
                                                 <StackLayout Padding="5" Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal" Spacing="20" >
@@ -76,11 +80,10 @@
                                                     <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="StartAndExpand">
                                                         <Label Text="{extension:Translate Key=LessonSignUp_Price}" VerticalOptions="Center"/>
                                                         <Label Text="{Binding Price, StringFormat='{0}'}" VerticalOptions="Center"/>
-                                                        
+
                                                         <Button Text="{extension:Translate Key=StudentMyLessons_CancelLesson}"
                                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}"
-                                                                CommandParameter="{Binding .}" VerticalOptions="Center"/>
-                                                        
+                                                                CommandParameter="{Binding .}" VerticalOptions="Center" BackgroundColor="Red" FontAttributes="Bold" FontSize="Small"/>
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <!--<StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="20">-->
@@ -98,7 +101,7 @@
                             <CollectionView ItemsSource="{Binding PassedLessons}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                                        <Border BackgroundColor="#F5F5F5" Stroke="Black" StrokeThickness="1">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>

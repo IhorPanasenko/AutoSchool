@@ -1555,6 +1555,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password update successsfully.
+        /// </summary>
+        internal static string SuccessPasswordUpdate {
+            get {
+                return ResourceManager.GetString("SuccessPasswordUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thursday.
         /// </summary>
         internal static string Thursday {

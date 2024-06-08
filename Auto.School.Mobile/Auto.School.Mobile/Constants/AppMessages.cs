@@ -25,5 +25,10 @@ namespace Auto.School.Mobile.Core.Constants
         #region Car
         public static string AddCarRating => AppResources.AddCarRating;
         #endregion
+
+        #region UpdatePassword
+
+        #endregion
+
     }
 }

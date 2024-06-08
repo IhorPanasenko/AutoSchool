@@ -615,6 +615,9 @@
   <data name="StudentProfile_ViewInstructors" xml:space="preserve">
     <value>Перелянути інструкторів</value>
   </data>
+  <data name="SuccessPasswordUpdate" xml:space="preserve">
+    <value>Пароль успішно оновлено</value>
+  </data>
   <data name="Thursday" xml:space="preserve">
     <value>Четвер</value>
   </data>
