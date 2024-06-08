@@ -7,10 +7,9 @@
     xmlns:instructorViews="clr-namespace:Auto.School.Mobile.Views.Instructor"
     xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
     Shell.TabBarIsVisible="False"
-    Shell.TitleColor="#f4e558"
+    Shell.TitleColor="White"
     Shell.BackgroundColor="#3D6DFF"
     xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
-
 
     <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"
                       FlyoutItemIsVisible="False"
@@ -35,7 +34,11 @@
 
     <Shell.FlyoutFooter>
         <StackLayout>
-            <Button Margin="10,20" Text="{extension:Translate Key=SignOut}" Command="{Binding SignOutCommand}" BackgroundColor="#333333" TextColor="#f4e558"/>
+            <Button Margin="10,20" Text="{extension:Translate Key=SignOut}" Command="{Binding SignOutCommand}" BackgroundColor="#F5F5F5" TextColor="Black" FontAttributes="Bold" FontSize="Medium">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.5" Offset="10,10" />
+                </Button.Shadow>
+            </Button>
         </StackLayout>
     </Shell.FlyoutFooter>
 </Shell>
