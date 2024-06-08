@@ -14,6 +14,12 @@ namespace Auto.School.Mobile.Core.Responses.Auth.Login
         [JsonProperty("instructor")]
         public string? InstructorId { get; set; }
 
+        [JsonProperty("requestStatus")]
+        public string? RequestStatus { get; set; }
+
+        [JsonProperty("emailVerificationStatus")]
+        public string? EmailVerificationStatus { get; set; }
+
         [JsonProperty("tokenExpire")]
         public required DateTime? TokenExpirationTime { get; set; }
     }

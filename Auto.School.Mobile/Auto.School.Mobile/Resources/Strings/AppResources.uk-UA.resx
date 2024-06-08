@@ -267,6 +267,9 @@
   <data name="GoToSchedule" xml:space="preserve">
     <value>Відкрити розклад</value>
   </data>
+  <data name="InstructirStudentProfile_MainTitle" xml:space="preserve">
+    <value>Профіль студента</value>
+  </data>
   <data name="InstructorCard_DrivingCategory" xml:space="preserve">
     <value>Категорія водіння</value>
   </data>
@@ -330,6 +333,15 @@
   <data name="InstructorDetails_Transmission" xml:space="preserve">
     <value>Коробка передач</value>
   </data>
+  <data name="InstructorInstructorDetails_CarSectionTitle" xml:space="preserve">
+    <value>Моя машина</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorCommentsButton" xml:space="preserve">
+    <value>Відгуки про мене</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorSectionTitle" xml:space="preserve">
+    <value>Інформація про мене</value>
+  </data>
   <data name="InstructorReviews_DateCreatedlabel" xml:space="preserve">
     <value>Дата створення:</value>
   </data>
@@ -356,6 +368,9 @@
   </data>
   <data name="InstructorSchedule_SingUp" xml:space="preserve">
     <value>Записатися</value>
+  </data>
+  <data name="InstructorStudentProfile_LessonsStatisticTitle" xml:space="preserve">
+    <value>Уроки студента</value>
   </data>
   <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
     <value>Профіль студента</value>

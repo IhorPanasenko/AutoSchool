@@ -16,6 +16,11 @@
                       xmlns:resx="clr-namespace:Auto.School.Mobile.Resources.Strings"
                       />
 
+    <FlyoutItem x:Name="NewStudentMenu" Route="StudentProfile" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="{extension:Translate Key=Shell_Profile}" ContentTemplate="{DataTemplate views:StudentProfile}" />
+        <ShellContent Title="{extension:Translate Key=Shell_AllInstructors}" ContentTemplate="{DataTemplate views:AllInstructorsPage}" />
+    </FlyoutItem>
+    
     <FlyoutItem x:Name="StudentMenu" Route="StudentProfile" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="{extension:Translate Key=Shell_Profile}" ContentTemplate="{DataTemplate views:StudentProfile}" />
         <ShellContent Title="{extension:Translate Key=Shell_AllInstructors}" ContentTemplate="{DataTemplate views:AllInstructorsPage}" />

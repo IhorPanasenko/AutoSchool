@@ -511,6 +511,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Student profile.
+        /// </summary>
+        internal static string InstructirStudentProfile_MainTitle {
+            get {
+                return ResourceManager.GetString("InstructirStudentProfile_MainTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DrivingCategory.
         /// </summary>
         internal static string InstructorCard_DrivingCategory {
@@ -700,6 +709,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My car.
+        /// </summary>
+        internal static string InstructorInstructorDetails_CarSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_CarSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about me.
+        /// </summary>
+        internal static string InstructorInstructorDetails_InstructorCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_InstructorCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My info.
+        /// </summary>
+        internal static string InstructorInstructorDetails_InstructorSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_InstructorSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation date:.
         /// </summary>
         internal static string InstructorReviews_DateCreatedlabel {
@@ -777,6 +813,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string InstructorScheduleStudent_Title {
             get {
                 return ResourceManager.GetString("InstructorScheduleStudent_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student lessons.
+        /// </summary>
+        internal static string InstructorStudentProfile_LessonsStatisticTitle {
+            get {
+                return ResourceManager.GetString("InstructorStudentProfile_LessonsStatisticTitle", resourceCulture);
             }
         }
         

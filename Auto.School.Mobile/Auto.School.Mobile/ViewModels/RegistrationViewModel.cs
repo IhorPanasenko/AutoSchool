@@ -20,7 +20,7 @@ namespace Auto.School.Mobile.ViewModels
             _cityService = cityService;
             _authenticationService = authenticationService; 
             _cultureService = cultureService;
-            SetCities();
+            _ = SetCities();
         }
 
         [ObservableProperty]

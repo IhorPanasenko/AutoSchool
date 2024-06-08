@@ -46,21 +46,21 @@
                             <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
                         </Border.Shadow>
                         <StackLayout Padding="5" HorizontalOptions="StartAndExpand">
-                            <Label Text="{extension:Translate Key=InstructorDetails_InstructorSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
+                            <Label Text="{extension:Translate Key=InstructorInstructorDetails_InstructorSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_Experience}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_Experience}" HorizontalOptions="Start"/>
                                 <Label Text="{Binding Instructor.WorkExperience, StringFormat='{0}'}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_AverageRating}" HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding Instructor.AverageRaiting, StringFormat='{0:F1}'}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_AverageRating}" HorizontalOptions="Start"/>
+                                <Label Text="{Binding Instructor.AverageRaiting, StringFormat='{0:F1}'}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_DrivingCategory}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_DrivingCategory}" HorizontalOptions="Start"/>
                                 <Label Text="{Binding Instructor.VehicleCategory, StringFormat='{0}'}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_MaxNumberOfStudents}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_MaxNumberOfStudents}" HorizontalOptions="Start"/>
                                 <Label Text="{Binding Instructor.MaxNumberOfStudents, StringFormat='{0}'}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
                         </StackLayout>
@@ -73,22 +73,22 @@
                             <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
                         </Border.Shadow>
                         <StackLayout>
-                            <Label Text="{extension:Translate Key=InstructorDetails_CarSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
+                            <Label Text="{extension:Translate Key=InstructorInstructorDetails_CarSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
                             <Label Text="{Binding Instructor.Car.Model}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
                             <Frame CornerRadius="20" Margin="5" Padding="0">
                                 <Image Source="{Binding Instructor.Car.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                             </Frame>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_CarManufactureYear}"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_CarManufactureYear}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <Label Text="{Binding Instructor.Car.Year, StringFormat='{0}'}" Padding="10,5,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_Transmission}"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_Transmission}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <Label Text="{Binding Instructor.Car.Transmission, StringFormat='{0}'}" Padding="10,5,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{extension:Translate Key=InstructorDetails_AverageRating}"/>
-                                <Label Text="{Binding Instructor.Car.AverageRating, StringFormat='{0:F1}'}" Padding="10,5,0,0"/>
+                                <Label Text="{extension:Translate Key=InstructorDetails_AverageRating}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Label Text="{Binding Instructor.Car.AverageRating, StringFormat='{0:F1}'}"  Padding="10,5,0,0"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Label Text="{extension:Translate Key=InstructorDetails_NumberRatings}"/>
@@ -99,7 +99,7 @@
                     <Button
                         Margin="20,5"
                         FontSize="Medium"
-                        Text="{extension:Translate Key=InstructorDetails_InstructorCommentsButton}"
+                        Text="{extension:Translate Key=InstructorInstructorDetails_InstructorCommentsButton}"
                         TextColor="White"
                         Command="{Binding ShowInstructorReviewsCommand}"/>
                     <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsError}" TextColor ="Red" FontSize="Medium"/>

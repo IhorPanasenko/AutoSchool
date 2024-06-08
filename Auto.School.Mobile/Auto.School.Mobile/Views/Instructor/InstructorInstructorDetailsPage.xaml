@@ -40,7 +40,7 @@
                     <Frame CornerRadius="20" Margin="10" Padding="0">
                         <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                     </Frame>
-                    <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2" StrokeThickness="2">
+                    <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
@@ -67,7 +67,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Border>
-                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                    <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
