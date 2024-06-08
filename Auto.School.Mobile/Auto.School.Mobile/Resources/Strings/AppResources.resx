@@ -267,6 +267,9 @@
   <data name="GoToSchedule" xml:space="preserve">
     <value>Go to schedule</value>
   </data>
+  <data name="InstructirStudentProfile_MainTitle" xml:space="preserve">
+    <value>Student profile</value>
+  </data>
   <data name="InstructorCard_DrivingCategory" xml:space="preserve">
     <value>DrivingCategory</value>
   </data>
@@ -330,6 +333,15 @@
   <data name="InstructorDetails_Transmission" xml:space="preserve">
     <value>Transmission</value>
   </data>
+  <data name="InstructorInstructorDetails_CarSectionTitle" xml:space="preserve">
+    <value>My car</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorCommentsButton" xml:space="preserve">
+    <value>Reviews about me</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorSectionTitle" xml:space="preserve">
+    <value>My info</value>
+  </data>
   <data name="InstructorReviews.MyReview" xml:space="preserve">
     <value>My Review</value>
   </data>
@@ -357,8 +369,14 @@
   <data name="InstructorSchedule_SingUp" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="InstructorStudentProfile_LessonsStatisticTitle" xml:space="preserve">
+    <value>Student lessons</value>
+  </data>
   <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
     <value>Student profle</value>
+  </data>
+  <data name="InvalidCreds" xml:space="preserve">
+    <value>Incorrect email or password</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Please enter correct email address</value>
@@ -377,6 +395,9 @@
   </data>
   <data name="LessonSignUp_LessonTime" xml:space="preserve">
     <value>Lesson Time</value>
+  </data>
+  <data name="LessonSignUp_NeedOpenBrowser" xml:space="preserve">
+    <value>To finish registration for lesson you need to pay for it. Please click on button bellow and pay through our web-site.</value>
   </data>
   <data name="LessonSignUp_Price" xml:space="preserve">
     <value>Price</value>
@@ -609,6 +630,9 @@
   <data name="StudentProfile_ViewInstructors" xml:space="preserve">
     <value>View instructors</value>
   </data>
+  <data name="SuccessPasswordUpdate" xml:space="preserve">
+    <value>Password update successsfully</value>
+  </data>
   <data name="Thursday" xml:space="preserve">
     <value>Thursday</value>
   </data>
@@ -622,7 +646,7 @@
     <value>Please enter both current and new passwords.</value>
   </data>
   <data name="UpdatePassword_CancelButton" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Close</value>
   </data>
   <data name="UpdatePassword_NewPassword" xml:space="preserve">
     <value>Enter new password</value>

@@ -33,6 +33,7 @@ namespace Auto.School.Mobile.ViewModels
             if (!string.IsNullOrEmpty(instructorIdJson))
             {
                 myInstructorId = JsonConvert.DeserializeObject<string>(instructorIdJson)!;
+                IsNotSigendUpToAnyInstructor = false;
             }
         }
 
@@ -70,6 +71,9 @@ namespace Auto.School.Mobile.ViewModels
         private bool isSignedUpToThisInstructor = false;
 
         public bool IsNotSignedUpToThisInstructor { get => !IsSignedUpToThisInstructor; private set { } }
+
+        [ObservableProperty]
+        private bool isNotSigendUpToAnyInstructor = true;
 
         partial void OnIsSignedUpToThisInstructorChanged(bool value)
         {

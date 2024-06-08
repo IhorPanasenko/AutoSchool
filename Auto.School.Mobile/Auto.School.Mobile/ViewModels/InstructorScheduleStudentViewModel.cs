@@ -197,19 +197,19 @@ namespace Auto.School.Mobile.ViewModels
 
             _sharedService.Add("SignUpLesson", lesson);
             await _popupService.ShowPopupAsync<SignUpToLessonPopUp>();
-            UpdateLessonsAfterSignUp();
+            await LoadLessons();
         }
 
-        private void UpdateLessonsAfterSignUp()
-        {
-            var updatedLesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
+        //private void UpdateLessonsAfterSignUp()
+        //{
+        //    var updatedLesson = _sharedService.GetValue<LessonModel>("SignUpLesson");
 
-            if (updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
-            {
-                return;
-            }
+        //    if (updatedLesson is null || string.IsNullOrEmpty(updatedLesson.Id))
+        //    {
+        //        return;
+        //    }
 
-            Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
-        }
+        //    Lessons.FirstOrDefault(l => l.Id == updatedLesson.Id)!.IsAvailable = false;
+        //}
     }
 }

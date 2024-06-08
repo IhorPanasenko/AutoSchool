@@ -267,6 +267,9 @@
   <data name="GoToSchedule" xml:space="preserve">
     <value>Відкрити розклад</value>
   </data>
+  <data name="InstructirStudentProfile_MainTitle" xml:space="preserve">
+    <value>Профіль студента</value>
+  </data>
   <data name="InstructorCard_DrivingCategory" xml:space="preserve">
     <value>Категорія водіння</value>
   </data>
@@ -330,6 +333,15 @@
   <data name="InstructorDetails_Transmission" xml:space="preserve">
     <value>Коробка передач</value>
   </data>
+  <data name="InstructorInstructorDetails_CarSectionTitle" xml:space="preserve">
+    <value>Моя машина</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorCommentsButton" xml:space="preserve">
+    <value>Відгуки про мене</value>
+  </data>
+  <data name="InstructorInstructorDetails_InstructorSectionTitle" xml:space="preserve">
+    <value>Інформація про мене</value>
+  </data>
   <data name="InstructorReviews_DateCreatedlabel" xml:space="preserve">
     <value>Дата створення:</value>
   </data>
@@ -357,8 +369,14 @@
   <data name="InstructorSchedule_SingUp" xml:space="preserve">
     <value>Записатися</value>
   </data>
+  <data name="InstructorStudentProfile_LessonsStatisticTitle" xml:space="preserve">
+    <value>Уроки студента</value>
+  </data>
   <data name="InstructorStudentProfile_StudentProfile" xml:space="preserve">
     <value>Профіль студента</value>
+  </data>
+  <data name="InvalidCreds" xml:space="preserve">
+    <value>Невірна пошта або пароль</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Будь ласка, введіть дійсну електронну адресу</value>
@@ -377,6 +395,9 @@
   </data>
   <data name="LessonSignUp_LessonTime" xml:space="preserve">
     <value>Час уроку</value>
+  </data>
+  <data name="LessonSignUp_NeedOpenBrowser" xml:space="preserve">
+    <value>Щоб завершити запис на урок, вам необхідно оплатити його. Будь-ласка, натисніть на кнопку нижче та проведіть оплату на нашому веб-сайті</value>
   </data>
   <data name="LessonSignUp_Price" xml:space="preserve">
     <value>Ціна</value>
@@ -609,6 +630,9 @@
   <data name="StudentProfile_ViewInstructors" xml:space="preserve">
     <value>Перелянути інструкторів</value>
   </data>
+  <data name="SuccessPasswordUpdate" xml:space="preserve">
+    <value>Пароль успішно оновлено</value>
+  </data>
   <data name="Thursday" xml:space="preserve">
     <value>Четвер</value>
   </data>
@@ -622,7 +646,7 @@
     <value>Будь ласка, введіть обидва паролі: поточний і новий</value>
   </data>
   <data name="UpdatePassword_CancelButton" xml:space="preserve">
-    <value>Відмінити</value>
+    <value>Закрити</value>
   </data>
   <data name="UpdatePassword_NewPassword" xml:space="preserve">
     <value>Введіть новий пароль</value>

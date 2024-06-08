@@ -79,6 +79,12 @@ namespace Auto.School.Mobile.ViewModels
         [ObservableProperty]
         private string newPasswordErrorMessage = string.Empty;
 
+        [ObservableProperty]
+        private bool isSuccessMessage = false;
+
+        [ObservableProperty]
+        private string successMessage = string.Empty;
+
         [RelayCommand]
         public async Task UpdatePasswordAsync()
         {
@@ -94,6 +100,9 @@ namespace Auto.School.Mobile.ViewModels
 
             if (string.Compare(response.Status, ResponseStatuses.Sucess, true) == 0)
             {
+                IsSuccessMessage = true;
+                SuccessMessage = AppMessages.SuccessPasswordUpdate;
+                Thread.Sleep(3000);
                 _popupService.ClosePopup(PopupInstance);
             }
             else

@@ -511,6 +511,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Student profile.
+        /// </summary>
+        internal static string InstructirStudentProfile_MainTitle {
+            get {
+                return ResourceManager.GetString("InstructirStudentProfile_MainTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DrivingCategory.
         /// </summary>
         internal static string InstructorCard_DrivingCategory {
@@ -700,6 +709,33 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My car.
+        /// </summary>
+        internal static string InstructorInstructorDetails_CarSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_CarSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews about me.
+        /// </summary>
+        internal static string InstructorInstructorDetails_InstructorCommentsButton {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_InstructorCommentsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My info.
+        /// </summary>
+        internal static string InstructorInstructorDetails_InstructorSectionTitle {
+            get {
+                return ResourceManager.GetString("InstructorInstructorDetails_InstructorSectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation date:.
         /// </summary>
         internal static string InstructorReviews_DateCreatedlabel {
@@ -781,11 +817,29 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Student lessons.
+        /// </summary>
+        internal static string InstructorStudentProfile_LessonsStatisticTitle {
+            get {
+                return ResourceManager.GetString("InstructorStudentProfile_LessonsStatisticTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Student profle.
         /// </summary>
         internal static string InstructorStudentProfile_StudentProfile {
             get {
                 return ResourceManager.GetString("InstructorStudentProfile_StudentProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect email or password.
+        /// </summary>
+        internal static string InvalidCreds {
+            get {
+                return ResourceManager.GetString("InvalidCreds", resourceCulture);
             }
         }
         
@@ -840,6 +894,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         internal static string LessonSignUp_LessonTime {
             get {
                 return ResourceManager.GetString("LessonSignUp_LessonTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To finish registration for lesson you need to pay for it. Please click on button bellow and pay through our web-site..
+        /// </summary>
+        internal static string LessonSignUp_NeedOpenBrowser {
+            get {
+                return ResourceManager.GetString("LessonSignUp_NeedOpenBrowser", resourceCulture);
             }
         }
         
@@ -1537,6 +1600,15 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password update successsfully.
+        /// </summary>
+        internal static string SuccessPasswordUpdate {
+            get {
+                return ResourceManager.GetString("SuccessPasswordUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thursday.
         /// </summary>
         internal static string Thursday {
@@ -1564,7 +1636,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string UpdatePassword_CancelButton {
             get {

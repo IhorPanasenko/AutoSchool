@@ -1,4 +1,5 @@
 ﻿using Auto.School.Mobile.Abstract;
+using Auto.School.Mobile.ApiIntegration.Constants;
 using Auto.School.Mobile.Core.Constants;
 using Auto.School.Mobile.Core.Models;
 using Auto.School.Mobile.Service.Interfaces;
@@ -46,20 +47,17 @@ namespace Auto.School.Mobile.ViewModels
         [RelayCommand]
         public async Task SignUp()
         {
-            var res = await _lessonService.SignUpToLessonAsync(Lesson.Id);
 
-            if (string.Compare(res.Status, ResponseStatuses.Sucess, true) == 0)
+            var paymentUrl = RoutesConstants.PaymentLink + Lesson.Id;
+
+            try
             {
-                IsError = false;
-                Lesson.IsAvailable = false;
-                _sharedService.Add("SignUpLesson", Lesson);
-                _popupService.ClosePopup(PopupInstance);
+                await Launcher.OpenAsync(new Uri(paymentUrl));
             }
-            else
+            catch (Exception ex)
             {
-                _sharedService.Add<LessonModel>("SignUpLesson", new LessonModel());
-                IsError = true;
-                ErrorMessage = res.Message ?? AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                Console.WriteLine(ex);
+                //await DisplayAlert("Error", $"Unable to open URL: {ex.Message}", "OK");
             }
         }
     }

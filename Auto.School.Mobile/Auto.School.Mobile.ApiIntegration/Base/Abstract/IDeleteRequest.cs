@@ -1,7 +1,9 @@
-﻿namespace Auto.School.Mobile.ApiIntegration.Base.Abstract
+﻿using Auto.School.Mobile.Core.Responses.Base;
+
+namespace Auto.School.Mobile.ApiIntegration.Base.Abstract
 {
     public interface IDeleteRequest
     {
-        public Task<TResponse> ExecuteAsync<TResponse>(string url);
+        Task<TResponse> ExecuteAsync<TResponse>(string url) where TResponse : BaseResponse, new();
     }
 }

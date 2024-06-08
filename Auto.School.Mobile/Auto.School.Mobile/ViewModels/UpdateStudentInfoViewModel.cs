@@ -31,13 +31,17 @@ namespace Auto.School.Mobile.ViewModels
             _cityService = cityService;
             _popupService = popupService;
             _cultureService = cultureService;
-            SetCities();
-            SetInfo();
-           
+            _ = LoadData();
         }
 
         [ObservableProperty]
         private Popup popupInstance;
+
+        private async Task LoadData()
+        {
+            await SetCities();
+            SetInfo();
+        }
 
         private async Task SetCities()
         {
@@ -181,7 +185,7 @@ namespace Auto.School.Mobile.ViewModels
                 Name = FirstName,
                 Surname = LastName,
                 Phone = PhoneNumber,
-                DateOfBirth = BirthdayDate.ToString(),
+                DateOfBirth = BirthdayDate,
                 CityId = SelectedCity?.Id,
                 VehicleCategory = SelectedDrivingCategory
             });
@@ -194,6 +198,11 @@ namespace Auto.School.Mobile.ViewModels
                     _popupService.ClosePopup(PopupInstance);
                 }
 
+                ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
+                IsError = true;
+            }
+            else
+            {
                 ErrorMessage = AppErrorMessagesConstants.SomethingWentWrongErrorMessage;
                 IsError = true;
             }

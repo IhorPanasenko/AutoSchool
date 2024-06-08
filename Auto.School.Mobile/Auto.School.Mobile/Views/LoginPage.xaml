@@ -16,7 +16,7 @@
         </Style>
     </ContentPage.Resources>
     <ScrollView Orientation="Vertical">
-        <Grid BackgroundColor="#F5F5F5">
+        <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>

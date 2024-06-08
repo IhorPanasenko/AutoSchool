@@ -10,13 +10,13 @@
         <Style TargetType="Button">
             <Setter Property="MaximumWidthRequest" Value="150"/>
             <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-            <Setter Property="BackgroundColor" Value="#f4e558"/>
-            <Setter Property="TextColor" Value="#3D6DFF"/>
+            <Setter Property="BackgroundColor" Value="#3D6DFF"/>
+            <Setter Property="TextColor" Value="White"/>
             <Setter Property="LineBreakMode" Value="WordWrap"/>
             <Setter Property="TextTransform" Value="None"/>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
@@ -24,7 +24,7 @@
         <Style TargetType="Border">
             <Setter Property="Margin" Value="5,10,5,30" />
             <Setter Property="Padding" Value="5,5,5,15" />
-            <Setter Property="BackgroundColor" Value="#7FB2FF" />
+            <Setter Property="BackgroundColor" Value="White" />
         </Style>
 
         <Style TargetType="Grid">
@@ -39,7 +39,7 @@
                             </VisualState>
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#3D6DFF" />
+                                    <Setter Property="BackgroundColor" Value="#f4e558" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -48,21 +48,24 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <ScrollView BackgroundColor="#F5F5F5">
+    <ScrollView BackgroundColor="White">
         <StackLayout>
             <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand"/>
             <Alert:ErrorAlertView IsError="{Binding IsError}" ErrorMessage="{Binding ErrorMessage}" CloseAction="{Binding CloseAction}"/>
-            <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2" IsVisible="{Binding IsInstructorRequestSent}">
+            <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2" IsVisible="{Binding IsInstructorRequestSent}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
                 </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
+                </Border.Shadow>
                 <StackLayout Margin="5">
                     <StackLayout Orientation="Horizontal">
                         <Grid HorizontalOptions="CenterAndExpand" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*" ColumnSpacing="5" RowSpacing="5">
                             <Frame Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Padding="0" HasShadow="False" BackgroundColor="Transparent">
                                 <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                             </Frame>
-                            <Label Grid.Column="1"  Grid.Row="0" Text="{Binding Instructor.FullName, StringFormat='{0}'}"  FontAttributes="Bold" />
+                            <Label Grid.Column="1"  Grid.Row="0" Text="{Binding Instructor.FullName, StringFormat='{0}'}" FontAttributes="Bold" />
                             <HorizontalStackLayout Grid.Column="1" Grid.Row="1">
                                 <Label Text="{extension:Translate Key=InstructorCard_Experience}" Margin="5,0,0,0"/>
                                 <Label Text="{Binding Instructor.WorkExperience}" Margin="5,0"/>
@@ -96,10 +99,13 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="5, 10" Padding="0">
-                                    <Border Margin="2,5" Padding="5" BackgroundColor="#333333">
+                                    <Border Margin="2,5" Padding="5" BackgroundColor="White">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="10,10,10,10"/>
                                         </Border.StrokeShape>
+                                        <Border.Shadow>
+                                            <Shadow Brush="Black" Opacity="0.5" Offset="0,0" Radius="15" />
+                                        </Border.Shadow>
                                         <Label Text="{Binding ., StringFormat='{0:dd-MM-yyyy}'}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     </Border>
                                 </Grid>
@@ -112,7 +118,7 @@
                                 <Frame Margin="5" CornerRadius="5">
                                     <Frame.Triggers>
                                         <DataTrigger TargetType="Frame" Binding="{Binding IsAvailable}" Value="False">
-                                            <Setter Property="BackgroundColor" Value="#333333" />
+                                            <Setter Property="BackgroundColor" Value="Gray" />
                                         </DataTrigger>
                                         <DataTrigger TargetType="Frame" Binding="{Binding IsAvailable}" Value="True">
                                             <Setter Property="BackgroundColor" Value="#3D6DFF" />
@@ -131,10 +137,10 @@
                                             </StackLayout>
                                         </StackLayout>
                                         <StackLayout IsVisible="{Binding IsNotAvailable}">
-                                            <Button MinimumWidthRequest="150" Text="{extension:Translate Key=MySchedule_ViewStudentProfile}" TextColor="#f4e558" BackgroundColor="#7FB2FF" FontSize="Small" IsVisible="{Binding IsStudentSigned}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenStudentProfileCommand}" CommandParameter="{Binding .}"/>
+                                            <Button Text="{extension:Translate Key=MySchedule_ViewStudentProfile}" TextColor="#003580" BackgroundColor="#f4e558" FontAttributes="Bold" FontSize="Medium" IsVisible="{Binding IsStudentSigned}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenStudentProfileCommand}" CommandParameter="{Binding .}"/>
                                         </StackLayout>
-                                        <Button MinimumWidthRequest="150" Text="{extension:Translate Key=MySchedule_CancelLesson}" TextColor="#f4e558" BackgroundColor="#333333" FontSize="Small" IsVisible="{Binding IsAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}" CommandParameter="{Binding .}"/>
-                                        <Label Text="{extension:Translate Key=Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="Red" HorizontalOptions="CenterAndExpand"/>
+                                        <Button MinimumWidthRequest="250" Text="{extension:Translate Key=MySchedule_CancelLesson}" TextColor="White" BackgroundColor="Red" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding IsAvailable}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelLessonCommand}" CommandParameter="{Binding .}"/>
+                                        <Label Text="{extension:Translate Key=Schedule_LessonPassed}" IsVisible="{Binding IsLessonPassed}" TextColor="#f4e558"  FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
