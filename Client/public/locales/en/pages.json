@@ -12,12 +12,15 @@
     "linktimetable": "Timetable"
   },
   "profile": {
+    "header": "Your profile",
     "vehicleCategory": "Vehicle Category",
     "city": "City",
     "dateOfBirth": "Date Of Birth",
     "phone": "Phone",
     "edit": "Edit",
-    "countStudents": "Count of students"
+    "countStudents": "Count of students",
+    "btn_edit": "Edit Profile",
+    "btn_sendButton": "Send email"
   },
   "home": {
     "title": "Driving courses",
@@ -34,8 +37,31 @@
     "city": "Select your city",
     "phoneNumber": "Enter your phone",
     "vehicleCategory": "Select vehicle category",
-    "link_registration": " Get Started"
+    "link_registration": "Get Started",
+    "link_logIn": "Log in",
+    "txtAcoouunt_noLink": "Have an account?",
+    "errorMessageName": "This field should contain only letters",
+    "errorMessageemail": "Invalid email address",
+    "errorMessagephoneNumber": "Invalid phone number",
+    "errorMessagepassword": "Must be min 6 characters one uppercase letter one digit",
+    "errorMessagedateOfBirth": "You must be at least 18 years old"
   },
+  "instructor": {
+    "btn": "Choose to be my instructor"
+  },
+  "lessons": {
+    "err": "No lessons available",
+    "h2": "Choose lesson to book",
+    "btn": "Confirm"
+  },
+  "lessonInPayment": {
+    "h2": "Selected Lesson for Payment",
+    "instructor": "Your Instructor:",
+    "price": "Price:",
+    "err": "The selected lesson is already booked, please return to the calendar and choose another lesson",
+    "btn": "Pay"
+  },
+
   "emailConfirmation": {
     "verifyEmailButton": "Verify email",
     "title": "Email confirmation",

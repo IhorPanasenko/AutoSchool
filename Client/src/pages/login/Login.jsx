@@ -15,17 +15,15 @@ const Login = () => {
   })
   const { t } = useTranslation()
   const { user, loading, error, dispatch } = useContext(AuthContext)
-
+  const [loginError, setLoginError] = useState(null)
   const navigate = useNavigate()
 
   const location = useLocation()
 
-  // Function to parse query parameters
   const getQueryParams = query => {
     return new URLSearchParams(query)
   }
 
-  // Extract the redirectUrl from the query parameters
   const queryParams = getQueryParams(location.search)
   const redirectUrl = queryParams.get("redirectUrl")
   console.log(redirectUrl)
@@ -53,32 +51,27 @@ const Login = () => {
 
       if (redirectUrl) {
         console.log("dadada")
-        
+
         //right redirectUrl: "http://localhost:5173/login?redirectUrl=timetable/payment/665afcd8f5f8eb22f8c3a039"
 
-        window.location.href = `${window.location.origin}/${redirectUrl}`;
+        window.location.href = `${window.location.origin}/${redirectUrl}`
       } else {
         navigate("/")
       }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
+      setLoginError(
+        err.response.data.message || "Login failed. Please try again."
+      )
       console.log(err)
     }
   }
   console.log(user)
   return (
     <div className={styles.login_container}>
-      {/* <Navbar /> */}
       <div className={styles.login_wrapper}>
-        <img
-          src={CarImg}
-          alt="Car"
-          className={styles.menu__icon}
-          //   isDropdownOpen ? styles.show : styles.hide
-          // }`}
-        />
-
-        {/* <h1>Login</h1> */}
+        <img src={CarImg} alt="Car" className={styles.menu__icon} />
+        {loginError && <p className={styles.error_message}>{loginError}</p>}
         <input
           type="text"
           placeholder="Enter your email"
@@ -99,9 +92,6 @@ const Login = () => {
           style={{ textDecoration: "none" }}
           className={styles.link_btn_logIn}
         >
-          {/* <p className={styles.menu_text}>
-            {t("navbar.linkreviews", { ns: "pages" })}
-          </p> */}
           <button className={styles.btn_logIn} onClick={handleClick}>
             Log in
           </button>

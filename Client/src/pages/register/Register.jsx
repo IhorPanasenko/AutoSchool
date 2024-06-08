@@ -51,17 +51,19 @@ const Register = () => {
       case "firstName":
       case "lastName":
         if (!/^[a-zA-Zа-яА-ЯёЁ]+$/.test(value)) {
-          errorMessage = "This field should contain only letters"
+          errorMessage = `${t("register.errorMessageName", { ns: "pages" })}`
         }
         break
       case "email":
         if (!/\S+@\S+\.\S+/.test(value)) {
-          errorMessage = "Invalid email address"
+          errorMessage = `${t("register.errorMessageemail", { ns: "pages" })}`
         }
         break
       case "phoneNumber":
         if (!/^\+?3?8?(0[5-9][0-9]\d{7})$/.test(value)) {
-          errorMessage = "Invalid phone number"
+          errorMessage = `${t("register.errorMessagephoneNumber", {
+            ns: "pages"
+          })}`
         }
         break
       case "password":
@@ -72,8 +74,9 @@ const Register = () => {
         })
         const { error } = passwordSchema.validate({ password: value })
         if (error) {
-          errorMessage =
-            "Password must contain at least one uppercase letter, one digit, and be at least 6 characters long"
+          errorMessage = `${t("register.errorMessagepassword", {
+            ns: "pages"
+          })}`
         }
         break
       case "dateOfBirth":
@@ -88,7 +91,9 @@ const Register = () => {
           age--
         }
         if (age < 18) {
-          errorMessage = "You must be at least 18 years old"
+          errorMessage = `${t("register.errorMessagedateOfBirth", {
+            ns: "pages"
+          })}`
         }
         break
       default:
@@ -125,20 +130,23 @@ const Register = () => {
         dateOfBirth: user.dateOfBirth,
         email: user.email,
         password: user.password,
-        cityId: user.city.id
+        cityId: user.city
       }
       console.log("formData:", formData)
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/auth/signup",
+          formData,
+          { withCredentials: true }
+        )
 
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
-        formData,
-        { withCredentials: true }
-      )
+        console.log("Server response:", response.data.data)
+        dispatch({ type: "LOGIN_SUCCESS", payload: response.data.data })
 
-      console.log("Server response:", response.data.data)
-      dispatch({ type: "LOGIN_SUCCESS", payload: response.data.data })
-
-      navigate("/")
+        navigate("/")
+      } catch (error) {
+        console.log(error)
+      }
     } catch (error) {
       console.log("Error submitting form:", error)
       alert(
@@ -236,7 +244,7 @@ const Register = () => {
               >
                 <option value="">{t("register.city", { ns: "pages" })}</option>
                 {cities.map(city => (
-                  <option key={city.id} value={city.id}>
+                  <option key={city._id} value={city._id}>
                     {city.nameEN}
                   </option>
                 ))}
@@ -274,17 +282,19 @@ const Register = () => {
           </div>
 
           <button type="submit" className={styles.btnLogIn}>
-            Get Started
+            {t("register.link_registration", { ns: "pages" })}
           </button>
         </form>
         <div className={styles.txtAcoouunt}>
-          <p className={styles.txtAcoouunt_noLink}>Have an account?</p>
+          <p className={styles.txtAcoouunt_noLink}>
+            {t("register.txtAcoouunt_noLink", { ns: "pages" })}
+          </p>
           <Link
             to="/login"
             style={{ textDecoration: "none" }}
             className={styles.link_registration}
           >
-            {t("register.link_registration", { ns: "pages" })}
+            {t("register.link_logIn", { ns: "pages" })}
           </Link>
         </div>
       </div>

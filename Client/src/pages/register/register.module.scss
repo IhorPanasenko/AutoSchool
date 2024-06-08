@@ -15,7 +15,7 @@
   position: relative;
   border-radius: 15px;
   // border: 1px solid rgba(0, 0, 0, 0.07);
-  width: 40%;
+  // width: 40%;
   background: #fff;
   text-align: center;
 
@@ -29,8 +29,8 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 30px;
-  width: 90%;
-  height: 230px;
+  width: 50vh;
+  height: 32vh;
   margin-bottom: 30px;
   padding-right: 5%;
   padding-left: 5%;
@@ -79,6 +79,7 @@
 }
 .inputs_container {
   @include flex(space-between, center);
+  gap: 10px;
 }
 .input_witherr_container {
   display: flex;
@@ -118,6 +119,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 15px;
+  margin-bottom: 15px;
 }
 .txtAcoouunt {
   @include flex(center, center);

@@ -2,8 +2,10 @@ import React, { useState } from "react"
 import dayjs from "dayjs"
 import styles from "./lessons.module.scss"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const LessonsList = ({ filteredLessons }) => {
+  const { t, i18n } = useTranslation()
   const [selectedLessonId, setSelectedLessonId] = useState(null)
   const [chosenLessonId, setChosenLessonId] = useState(null)
 
@@ -43,18 +45,8 @@ const LessonsList = ({ filteredLessons }) => {
               key={lesson._id}
               className={className}
               onClick={() => !isUnavailable && selectLesson(lesson._id)}
-              //   style={{
-              //     border:
-              //       lesson._id === selectedLessonId && !isUnavailable
-              //         ? "3px solid #003580"
-              //         : "none"
-              //   }}
             >
-              <li
-              //
-              >
-                {dayjs(lesson.date).format("MMMM D, YYYY")}
-              </li>
+              <li>{dayjs(lesson.date).format("MMMM D, YYYY")}</li>
               <p>
                 {lesson.fromHour}- {lesson.toHour}
               </p>
@@ -75,7 +67,7 @@ const LessonsList = ({ filteredLessons }) => {
               ?.student
           }
         >
-          Confirm
+          {t("lessons.btn", { ns: "pages" })}
         </button>
       </Link>
     </div>

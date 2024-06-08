@@ -23,6 +23,9 @@
   align-items: center;
   justify-content: space-around;
 }
+.userName {
+  @include fontSize("Roboto", 500, $dark-blue, 20px, 29px);
+}
 
 .logo_container {
   text-align: center;

@@ -12,21 +12,7 @@ const InstructorsList = () => {
   const [nav, setNav] = useState(false)
   const { user } = useContext(AuthContext)
   const { data, deleteData, patchData, error } = useFetch()
-  //   const location = useLocation()
 
-  // const changeLanguage = (lang, e) => {
-  //   setSelectedLanguage(lang)
-  //   e.preventDefault()
-  //   i18next.changeLanguage(lang)
-  //   setNav(false)
-  // }
-  // const language = i18n.language
-  // var cookies = document.cookie.split(";")
-  // for (var i = 0; i < cookies.length; i++) {
-  //   var parts = cookies[i].split("="),
-  //     name = parts[0],
-  //     value = parts[1]
-  // }
   const requestToInstructor = async id => {
     try {
       let result = await patchData(
@@ -113,11 +99,12 @@ const InstructorsList = () => {
                 >{`${instructor.averageRating}/5`}</h3>
               </div>
               <div className={styles.price_section}>
-                <h3 className={styles.price_text}>ціна</h3>
-                <h3 className={styles.price_number}>700 ₴</h3>
+                <h3 className={styles.price_text}></h3>
+                <h3 className={styles.price_number}>500₴</h3>
               </div>
             </div>
             {user &&
+              user.emailVerificationStatus === "verified" &&
               (user.requestStatus === "unsubmitted" ||
                 user.requestStatus === "failed") && (
                 <div className={styles.btn_section}>
@@ -125,7 +112,9 @@ const InstructorsList = () => {
                     className={styles.btn_choose}
                     onClick={() => requestToInstructor(instructor._id)}
                   >
-                    Choose to be my instructor
+                    {t("instructor.btn", {
+                      ns: "pages"
+                    })}
                   </button>
                 </div>
               )}

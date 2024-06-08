@@ -113,7 +113,7 @@ const Navbar = () => {
                     className={styles.btn_profile_container}
                     style={{ textDecoration: "none" }}
                   >
-                    <p>{user.userData.name}</p>
+                    <p className={styles.userName}>{user.userData.name}</p>
                     <div className={styles.btn_page_container}>
                       <img
                         src={Profile}

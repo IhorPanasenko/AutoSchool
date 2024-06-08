@@ -2,14 +2,18 @@ import React from "react"
 import styles from "./lessonInPayment.module.scss"
 import EventIcon from "@mui/icons-material/Event"
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
+import { useTranslation } from "react-i18next"
 
 const LessonInPayment = ({ lesson }) => {
   const { date, fromHour, toHour, instructorId, price, isAvailable } = lesson
   const { _id, name, surname, photoURL, available, id } = instructorId
+  const { t } = useTranslation()
 
   return (
     <div>
-      <h2 className={styles.title}>Обране заняття до сплати</h2>
+      <h2 className={styles.title}>
+        {t("lessonInPayment.h2", { ns: "pages" })}
+      </h2>
       <div className={styles.card}>
         <img
           className={styles.media}
@@ -18,8 +22,8 @@ const LessonInPayment = ({ lesson }) => {
         />
         <div>
           <div className={styles.title}>
-            Ваш інструктор: {lesson.instructorId.name}{" "}
-            {lesson.instructorId.surname}
+            {t("lessonInPayment.instructor", { ns: "pages" })}{" "}
+            {lesson.instructorId.name} {lesson.instructorId.surname}
           </div>
 
           <div className={styles.details}>
@@ -41,7 +45,9 @@ const LessonInPayment = ({ lesson }) => {
             </span>
           </div>
 
-          <div className={styles.price}>Price: {price} ₴</div>
+          <div className={styles.price}>
+            {t("lessonInPayment.price", { ns: "pages" })} {price} ₴
+          </div>
         </div>
       </div>
     </div>

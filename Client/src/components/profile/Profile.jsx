@@ -131,16 +131,6 @@ const User = () => {
     fetchData()
   }, [])
 
-  // useEffect(() => {
-  //   // Пример использования данных после загрузки
-  //   if (data.status == "success") {
-  //     setLoading(false)
-  //     console.log("User data: ", data)
-  //   }
-  //   console.log("userDATA", data)
-  //   // console.log("userName", data.data.student.name)
-  // }, [data])
-
   const formatDate = dateString => {
     const date = new Date(dateString)
     const day = String(date.getDate()).padStart(2, "0")
@@ -158,7 +148,7 @@ const User = () => {
   }
 
   if (!data || !data.data || !data.data.student) {
-    return <p>No data available</p>
+    return <p> loading ....</p>
   }
   if (loading) {
     return <p>Loading...</p>
@@ -238,7 +228,7 @@ const User = () => {
 
             <button className={styles.editButton} onClick={handleEditClick}>
               <EditIcon />
-              Edit Profile
+              {t("profile.btn_edit", { ns: "pages" })}
             </button>
           </div>
         ) : (

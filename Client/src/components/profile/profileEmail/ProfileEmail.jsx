@@ -8,7 +8,7 @@ import useFetch from "../../../hooks/useFetch"
 
 const ProfileEmail = () => {
   const { user } = useContext(AuthContext)
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { data, patchData, getData } = useFetch()
 
   const handleEditClick = async () => {
@@ -21,12 +21,12 @@ const ProfileEmail = () => {
   }
   return (
     <div className={styles.profileEmailContainer}>
-      <h1>Your profile</h1>
+      <h1> {t("profile.header", { ns: "pages" })}</h1>
       {user.emailVerificationStatus == "pending" && (
         <div>
           <p>{t("emailConfirmation.error", { ns: "pages" })}</p>
           <button className={styles.sendButton} onClick={handleEditClick}>
-            Send email
+            {t("profile.btn_sendButton", { ns: "pages" })}
           </button>
         </div>
       )}

@@ -12,12 +12,15 @@
     "linktimetable": "Розклад"
   },
   "profile": {
+    "header": "Ваш профіль",
     "vehicleCategory": "Категорія",
     "city": "Місто",
     "dateOfBirth": "Дата Народження",
     "phone": "Телефон",
     "edit": "Редагувати",
-    "countStudents": "Кількість студентів"
+    "countStudents": "Кількість студентів",
+    "btn_edit": "Редагувати профіль",
+    "btn_sendButton": "Відправити email"
   },
   "home": {
     "title": "Курси водіння",
@@ -34,7 +37,29 @@
     "city": "Введіть місто",
     "phoneNumber": "Введіть телефон",
     "vehicleCategory": "Оберіть категорію",
-    "link_registration": "Зареєстуватися"
+    "link_registration": "Зареєстуватися",
+    "link_logIn": "Увійти",
+    "txtAcoouunt_noLink": "Вже зареєсровані?",
+    "errorMessageName": "Це поле повинно містити тільки літери",
+    "errorMessageemail": "Недійсна адреса електронної пошти",
+    "errorMessagephoneNumber": "Недійсний номер телефону",
+    "errorMessagepassword": "Мінімум 6 символів, одна велика літера та одна цифра",
+    "errorMessagedateOfBirth": "Вам повинно бути щонайменше 18 років"
+  },
+  "instructor": {
+    "btn": "Обрати моїм інструктором"
+  },
+  "lessons": {
+    "err": "Нема доступних уроків",
+    "h2": "Оберіть урок для запису",
+    "btn": "Обрати"
+  },
+  "lessonInPayment": {
+    "h2": "Обране заняття до сплати",
+    "instructor": "Ваш інструктор:",
+    "price": "Ціна :",
+    "err": "Обране заняття вже заброньовано, поверніться на календар та оберіть інше заняття",
+    "btn": "Оплатити"
   },
   "emailConfirmation": {
     "verifyEmailButton": "Верифікувати пошту",

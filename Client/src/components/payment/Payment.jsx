@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch.js"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import LessonInPayment from "./lessonInPayment/LessonInPayment"
+import { useTranslation } from "react-i18next"
 
 const PaymentButton = () => {
   const { chosenLessonId } = useParams()
@@ -14,6 +15,7 @@ const PaymentButton = () => {
   const [lesson, setLesson] = useState(null)
   const [amount, setAmount] = useState(null)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const {
     data: lessonData,
@@ -22,19 +24,6 @@ const PaymentButton = () => {
     postData,
     getData
   } = useFetch()
-  // const { data: lessonData, error: lessonError } = useFetch()
-  // `http://localhost:3000/api/lessons/${chosenLessonId}`
-
-  // useEffect(() => {
-  //   if (lessonData) {
-  //     const lessonExist = lessonData.data?.lesson
-  //     if (lessonExist) {
-  //       setLesson(lessonData.data.lesson)
-  //       setAmount(lessonExist.price)
-  //       console.log("Lesson :", lessonData)
-  //     }
-  //   }
-  // }, [lessonData])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -140,14 +129,13 @@ const PaymentButton = () => {
           <div className={styles.btn}>
             <div id="#liqpay_checkout"></div>
             <button className={styles.payment_button} onClick={handleClick}>
-              Pay
+              {t("lessonInPayment.btn", { ns: "pages" })}
             </button>
           </div>
         </>
       ) : (
         <h2 className={styles.title}>
-          Обране заняття вже заброньовано, поверніться на календар та оберіть
-          інше заняття
+          {t("lessonInPayment.err", { ns: "pages" })}
         </h2>
       )}
     </div>
