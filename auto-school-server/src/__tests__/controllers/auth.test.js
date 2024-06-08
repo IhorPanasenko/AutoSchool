@@ -55,6 +55,32 @@ describe('login', () => {
     it('should return status 401 if user is not found', async () => {
       UserLogin.findOne.mockResolvedValue(undefined);
       await authController.login(req, res, next);
+
+      expect(UserLogin.findOne).toHaveBeenCalledWith({
+        email: req.body.email,
+      });
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      const errorInstance = next.mock.calls[0][0];
+      expect(errorInstance.message).toBe('Incorrect email or password');
+      expect(errorInstance.statusCode).toBe(401);
+    });
+
+    it('should return status 401 if password verification fails', async () => {
+      const mockUserLoginData = {
+        email: 'email@gmail.com',
+        passwordHash: 'hashed_password',
+        verifyPassword: jest.fn().mockResolvedValue(false),
+      };
+      UserLogin.findOne.mockResolvedValue(mockUserLoginData);
+
+      await authController.login(req, res, next);
+
+      expect(UserLogin.findOne).toHaveBeenCalledWith({ email: req.body.email });
+      expect(mockUserLoginData.verifyPassword).toHaveBeenCalledWith(
+        req.body.password,
+        mockUserLoginData.passwordHash
+      );
+      await expect(mockUserLoginData.verifyPassword()).resolves.toBe(false);
       expect(next).toHaveBeenCalledWith(expect.any(AppError));
       const errorInstance = next.mock.calls[0][0];
       expect(errorInstance.message).toBe('Incorrect email or password');
