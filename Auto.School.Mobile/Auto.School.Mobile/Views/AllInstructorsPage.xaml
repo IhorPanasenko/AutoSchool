@@ -23,7 +23,7 @@
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#3D6DFF" />
-            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="TextColor" Value="White" />
             <Setter Property="Margin" Value="0,10,0,0"/>
             <Setter Property="FontSize" Value="Medium"/>
         </Style>

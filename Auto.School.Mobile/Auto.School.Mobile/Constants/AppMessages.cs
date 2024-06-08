@@ -27,7 +27,7 @@ namespace Auto.School.Mobile.Core.Constants
         #endregion
 
         #region UpdatePassword
-
+        public static string SuccessPasswordUpdate => AppResources.SuccessPasswordUpdate;
         #endregion
 
     }

@@ -7,10 +7,10 @@
              xmlns:extension="clr-namespace:Auto.School.Mobile.Extension">
     <ContentPage.Resources>
         <Style TargetType="ScrollView">
-            <Setter Property="BackgroundColor" Value="#F5F5F5" />
+            <Setter Property="BackgroundColor" Value="White" />
         </Style>
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="#f4e558" />
+            <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontSize" Value="Medium"/>
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
@@ -18,7 +18,7 @@
         <Style TargetType="Border">
             <Setter Property="Margin" Value="10,10,10,30" />
             <Setter Property="Padding" Value="5,5,5,15" />
-            <Setter Property="BackgroundColor" Value="#7FB2FF" />
+            <Setter Property="BackgroundColor" Value="White" />
         </Style>
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="#3D6DFF" />
@@ -38,10 +38,13 @@
                     <Frame CornerRadius="20" Margin="10" Padding="0">
                         <Image Source="{Binding Instructor.PhotoUrl}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
                     </Frame>
-                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                    <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
+                        </Border.Shadow>
                         <StackLayout Padding="5" HorizontalOptions="StartAndExpand">
                             <Label Text="{extension:Translate Key=InstructorDetails_InstructorSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
                             <StackLayout Orientation="Horizontal" Spacing="10">
@@ -62,10 +65,13 @@
                             </StackLayout>
                         </StackLayout>
                     </Border>
-                    <Border BackgroundColor="#3D6DFF" Stroke="#f4e558" StrokeThickness="2">
+                    <Border BackgroundColor="White" Stroke="#3D6DFF" StrokeThickness="2">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#3D6DFF" Opacity="0.5" Offset="13,13" />
+                        </Border.Shadow>
                         <StackLayout>
                             <Label Text="{extension:Translate Key=InstructorDetails_CarSectionTitle}" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Medium" Margin="0,5,0,5"/>
                             <Label Text="{Binding Instructor.Car.Model}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
@@ -94,10 +100,9 @@
                         Margin="20,5"
                         FontSize="Medium"
                         Text="{extension:Translate Key=InstructorDetails_InstructorCommentsButton}"
-                        TextColor="#f4e558"
+                        TextColor="White"
                         Command="{Binding ShowInstructorReviewsCommand}"/>
                     <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsError}" TextColor ="Red" FontSize="Medium"/>
-                    <Label Text="{Binding SuccessMessage}" IsVisible="{Binding IsSuccess}" TextColor ="#7eb893" FontSize="Medium"/>
                 </StackLayout>
             </Border>
         </StackLayout>

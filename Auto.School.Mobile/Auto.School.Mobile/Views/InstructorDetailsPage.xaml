@@ -99,38 +99,40 @@
                         </StackLayout>
                     </Border>
                     <Button
-                            Margin="20,5"
-                            FontSize="Medium"
-                            Text="{extension:Translate Key=InstructorDetails_InstructorCommentsButton}"
-                            TextColor="White"
+                        Margin="20,5"
+                        FontSize="Medium"
+                        Text="{extension:Translate Key=InstructorDetails_InstructorCommentsButton}"
+                        TextColor="White"
                         FontAttributes="Bold"
-                            Command="{Binding ShowInstructorReviewsCommand}"/>
+                        Command="{Binding ShowInstructorReviewsCommand}"/>
                     <Button IsVisible="{Binding IsSignedUpToThisInstructor}"
-                             Margin="20,5"
-                            FontSize="Medium"
-                                TextColor="White"
-FontAttributes="Bold"
-                            Text="{extension:Translate Key=InstructorDetails_AddCommentButton}" 
-                            Command="{Binding AddReviewCommand}"/>
+                        Margin="20,5"
+                        FontSize="Medium"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Text="{extension:Translate Key=InstructorDetails_AddCommentButton}" 
+                        Command="{Binding AddReviewCommand}"/>
                     <Button 
                         IsVisible="{Binding IsSignedUpToThisInstructor}"
                         Margin="20,5"
                         FontSize="Medium"
-                           TextColor="White"
-FontAttributes="Bold"
+                        TextColor="White"
+                        FontAttributes="Bold"
                         Text="{extension:Translate Key=InstructorDetails_AddCarReview}" 
                         Command="{Binding AddCarRatingCommand}"/>
                     <Button 
-                            IsVisible="{Binding IsNotSigendUpToAnyInstructor}"
-                             Margin="20,5"
-                            FontSize="Medium"
-                            BackgroundColor="#f4e558"
-                               TextColor="#003580"
-FontAttributes="Bold"
-                            Text="{extension:Translate Key=InstructorDetails_SignUpToInstructorButton}" 
-                            Command="{Binding  SignUpToInstructorCommand}"/>
+                        IsVisible="{Binding IsNotSigendUpToAnyInstructor}"
+                        Margin="20,5"
+                        FontSize="Medium"
+                        BackgroundColor="#f4e558"
+                        TextColor="#003580"
+                        FontAttributes="Bold"
+                        Text="{extension:Translate Key=InstructorDetails_SignUpToInstructorButton}" 
+                        Command="{Binding  SignUpToInstructorCommand}"/>
                     <Label Text="{Binding ErrorMessage}" IsVisible="{Binding IsError}" TextColor ="Red" FontSize="Medium"/>
-                    <Label Text="{Binding SuccessMessage}" IsVisible="{Binding IsSuccess}" TextColor ="#7eb893" FontSize="Medium"/>
+                    <Frame BackgroundColor="#50C878" IsVisible="{Binding IsSuccess}" MaximumWidthRequest="150" Padding="5" CornerRadius="5" Margin="0,5" BorderColor="Transparent">
+                        <Label Text="{Binding SuccessMessage}" TextColor="White"/>
+                    </Frame>
                 </StackLayout>
             </Border>
         </StackLayout>

@@ -22,13 +22,13 @@
                         <StackLayout Margin="10" Orientation="Horizontal" Spacing="30">
                             <Frame HorizontalOptions="Start" IsVisible="{Binding IsNotMyMessage}" BackgroundColor="#7FB2FF">
                                 <StackLayout MaximumWidthRequest="300">
-                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10" FontAttributes="Bold"/>
                                     <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                             </Frame>
                             <Frame HorizontalOptions="EndAndExpand" IsVisible="{Binding IsMyMessage}" BackgroundColor="#f4e558">
                                 <StackLayout MaximumWidthRequest="300">
-                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10"/>
+                                    <Label Text="{Binding Text}" LineBreakMode="WordWrap" MaxLines="10" FontAttributes="Bold"/>
                                     <Label Text="{Binding SendingTime, StringFormat='{0:HH:MM dd-MM}'}" FontSize="Micro" HorizontalOptions="End" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                             </Frame>
@@ -38,9 +38,17 @@
             </CollectionView>
         </Grid>
         <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" Padding="10" Spacing="5">
-            <Button Text="{extension:Translate Key=Chat_ToBottom}" Command="{Binding GoToBottomCommand}" MaximumWidthRequest="100" LineBreakMode="WordWrap" />
+            <Button Text="{extension:Translate Key=Chat_ToBottom}" Command="{Binding GoToBottomCommand}" MaximumWidthRequest="100" LineBreakMode="WordWrap" BackgroundColor="#F5F5F5" TextColor="Black" FontAttributes="Bold">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.5" Offset="5,5" />
+                </Button.Shadow>
+            </Button>
             <Entry x:Name="MessageEntry" Placeholder="{extension:Translate Key=Chat_Placeholder}" Text="{Binding MessageText}" HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
-            <Button Text="{extension:Translate Key=Chat_Send}" Command="{Binding SendMessageCommand}" />
+            <Button Text="{extension:Translate Key=Chat_Send}" Command="{Binding SendMessageCommand}" BackgroundColor="#3D6DFF" TextColor="White" FontAttributes="Bold">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.5" Offset="5,5" />
+                </Button.Shadow>
+            </Button>
         </StackLayout>
     </Grid>
 </ContentPage>
