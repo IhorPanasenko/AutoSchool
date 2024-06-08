@@ -1,5 +1,8 @@
 const authController = require('../../controllers/authController.js');
 const AppError = require('../../helpers/appError.js');
+const UserLogin = require('../../models/userLogin.js');
+
+jest.mock('../../models/userLogin.js');
 
 describe('login', () => {
   let req, res, next;
@@ -41,6 +44,21 @@ describe('login', () => {
       expect(next).toHaveBeenCalledWith(
         new AppError('Provide email and password', 400)
       );
+    });
+  });
+
+  describe('given valid email but incorrect password', () => {
+    beforeEach(() => {
+      req.body = { email: 'email@gmail.com', password: 'password' };
+    });
+
+    it('should return status 401 if user is not found', async () => {
+      UserLogin.findOne.mockResolvedValue(undefined);
+      await authController.login(req, res, next);
+      expect(next).toHaveBeenCalledWith(expect.any(AppError));
+      const errorInstance = next.mock.calls[0][0];
+      expect(errorInstance.message).toBe('Incorrect email or password');
+      expect(errorInstance.statusCode).toBe(401);
     });
   });
 });
