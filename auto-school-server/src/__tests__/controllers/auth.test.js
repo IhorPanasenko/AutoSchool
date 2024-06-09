@@ -1,8 +1,12 @@
 const authController = require('../../controllers/authController.js');
 const AppError = require('../../helpers/appError.js');
-const UserLogin = require('../../models/userLogin.js');
+const UserLoginModel = require('../../models/userLogin.js');
+const UserAccountModel = require('../../models/userAccount.js');
+const { signSaveTokens } = require('../../authUtils/signSaveTokens.js');
 
 jest.mock('../../models/userLogin.js');
+jest.mock('../../models/userAccount.js');
+jest.mock('../../authUtils/signSaveTokens.js');
 
 describe('login', () => {
   let req, res, next;
@@ -57,10 +61,10 @@ describe('login', () => {
     });
 
     it('should return status 401 if user is not found', async () => {
-      UserLogin.findOne.mockResolvedValue(undefined);
+      UserLoginModel.findOne.mockResolvedValue(undefined);
       await authController.login(req, res, next);
 
-      expect(UserLogin.findOne).toHaveBeenCalledWith({
+      expect(UserLoginModel.findOne).toHaveBeenCalledWith({
         email: req.body.email,
       });
       expect(next).toHaveBeenCalledWith(expect.any(AppError));
@@ -75,11 +79,13 @@ describe('login', () => {
         passwordHash: 'hashed_password',
         verifyPassword: jest.fn().mockResolvedValue(false),
       };
-      UserLogin.findOne.mockResolvedValue(mockUserLoginData);
+      UserLoginModel.findOne.mockResolvedValue(mockUserLoginData);
 
       await authController.login(req, res, next);
 
-      expect(UserLogin.findOne).toHaveBeenCalledWith({ email: req.body.email });
+      expect(UserLoginModel.findOne).toHaveBeenCalledWith({
+        email: req.body.email,
+      });
       expect(mockUserLoginData.verifyPassword).toHaveBeenCalledWith(
         req.body.password,
         mockUserLoginData.passwordHash
@@ -89,6 +95,54 @@ describe('login', () => {
       const errorInstance = next.mock.calls[0][0];
       expect(errorInstance.message).toBe('Incorrect email or password');
       expect(errorInstance.statusCode).toBe(401);
+    });
+  });
+
+  describe('given correct email and password', () => {
+    beforeEach(() => {
+      req.body = { email: 'email@gmail.com', password: 'password' };
+    });
+
+    it('should generate tokens', async () => {
+      const mockUserAccountData = {
+        _id: '1',
+        role: 'user',
+      };
+      const mockTokens = {
+        accessToken: 'mock_access_token',
+        refreshToken: 'mock_refresh_token',
+        expire: 'mock_expire',
+      };
+      const mockUserLoginData = {
+        userId: '1',
+        email: 'email@gmail.com',
+        passwordHash: 'hashed_password',
+        verifyPassword: jest.fn().mockResolvedValue(true),
+        save: jest.fn(),
+      };
+
+      UserLoginModel.findOne.mockResolvedValue(mockUserLoginData);
+      UserAccountModel.findById.mockResolvedValue(mockUserAccountData);
+      signSaveTokens.mockImplementation(() => mockTokens);
+
+      await authController.login(req, res, next);
+
+      expect(UserLoginModel.findOne).toHaveBeenCalledWith({
+        email: req.body.email,
+      });
+      expect(UserLoginModel.findOne).toBeTruthy();
+      await expect(mockUserLoginData.verifyPassword()).resolves.toBe(true);
+      expect(next).not.toHaveBeenCalled();
+      expect(UserAccountModel.findById).toHaveBeenCalledWith(
+        mockUserLoginData.userId
+      );
+      expect(signSaveTokens).toHaveBeenCalledWith(
+        res,
+        mockUserAccountData._id,
+        mockUserAccountData.role
+      );
+      expect(signSaveTokens).toHaveReturnedWith(mockTokens);
+      expect(mockUserLoginData.save).toHaveBeenCalled();
     });
   });
 });
