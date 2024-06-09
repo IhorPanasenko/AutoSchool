@@ -1,9 +1,6 @@
 const { restrictTo } = require('../../middlewares/restrictTo.js');
 const AppError = require('../../helpers/appError.js');
 
-// const res = {};
-// const next = jest.fn();
-
 describe('restrictTo', () => {
   beforeEach(() => {
     res = {
