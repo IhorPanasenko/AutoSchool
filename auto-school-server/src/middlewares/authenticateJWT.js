@@ -22,15 +22,20 @@ exports.authenticateJWT = (req, res, next) => {
       const currentUser = await UserAccount.findById(data.userId);
 
       if (!currentUser) {
-        return res.status(400).json({ error: 'User doesn\'t exist' });
+        return res.status(400).json({ error: "User doesn't exist" });
       }
 
-      // TODO: Test
-      const currentUserLoginData = await UserLogin.findOne({userId: data.userId});
-      const passwordChanged = currentUserLoginData.passwordChangedAfter(data.iat);
+      const currentUserLoginData = await UserLogin.findOne({
+        userId: data.userId,
+      });
+      const passwordChanged = currentUserLoginData.passwordChangedAfter(
+        data.iat
+      );
 
       if (passwordChanged) {
-        return res.status(401).json({ error: 'Password was changed. Please, log in again' });
+        return res
+          .status(401)
+          .json({ error: 'Password was changed. Please, log in again' });
       }
 
       req.user = currentUser;
