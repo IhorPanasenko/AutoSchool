@@ -196,7 +196,7 @@
     <value>Recivier:</value>
   </data>
   <data name="Chat_ToBottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>To bottom</value>
   </data>
   <data name="DrivingSkills_CloseButton" xml:space="preserve">
     <value>Return</value>

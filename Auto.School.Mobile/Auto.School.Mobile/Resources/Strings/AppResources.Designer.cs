@@ -295,7 +295,7 @@ namespace Auto.School.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bottom.
+        ///   Looks up a localized string similar to To bottom.
         /// </summary>
         internal static string Chat_ToBottom {
             get {
