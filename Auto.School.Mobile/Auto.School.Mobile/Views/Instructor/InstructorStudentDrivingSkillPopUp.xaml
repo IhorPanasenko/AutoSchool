@@ -19,7 +19,7 @@
         <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="White">
             <Label Text="{extension:Translate Key=DrivingSkills_Title}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding IsError}" HorizontalOptions="Center"/>
-            <Button Text="{extension:Translate Key=DrivingSkills_CloseButton}" BackgroundColor="#F5F5F5" TextColor="#333333" FontSize="Medium" LineBreakMode="WordWrap" FontAttributes="Bold" FontSize="Medium" Command="{Binding CloseCommand}">
+            <Button Text="{extension:Translate Key=DrivingSkills_CloseButton}" BackgroundColor="#F5F5F5" TextColor="#333333" FontSize="Medium" LineBreakMode="WordWrap" FontAttributes="Bold" Command="{Binding CloseCommand}">
                 <Button.Shadow>
                     <Shadow Brush="Black" Opacity="0.5" Offset="5,5" />
                 </Button.Shadow>
