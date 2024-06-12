@@ -7,58 +7,10 @@ const useFetch = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         setLoading(true);
-    //         try {
-    //             await checkAndRefreshTokenIfNeeded();
-    //             const res = await axios.get(url, {
-    //                 withCredentials: true
-    //             });
-    //             setData(res.data);
-    //         } catch (err) {
-    //             const tokenExpired = isTokenExpired();
-    //             if (tokenExpired) {
-    //                 try {
-    //                     await refreshAuthToken();
-    //                     const res = await axios.get(url, {
-    //                         withCredentials: true
-    //                     });
-    //                     setData(res.data);
-    //                 } catch (refreshError) {
-    //                     setError(refreshError);
-    //                 }
-    //             } else {
-    //                 setError(err);
-    //             }
-    //         }
-    //         setLoading(false);
-    //     };
-    //     fetchData();
-    // }, [url]);
-
-    // const reFetch = async () => {
-    //     setLoading(true);
-    //     try {
-    //         await checkAndRefreshTokenIfNeeded();
-    //         const token = Cookies.get("access_token");
-    //         const res = await axios.get(url, {
-    //             headers: {
-    //                 Authorization: Bearer ${token}
-    //             }
-    //         });
-    //         setData(res.data);
-    //     } catch (err) {
-    //         setError(err);
-    //     }
-    //     setLoading(false);
-    // };
-
     const handleRequest = async (method, endpoint, payload = null) => {
         setLoading(true);
         try {
             await checkAndRefreshTokenIfNeeded();
-            // const token = Cookies.get("access_token");
             const config = {
                 method,
                 url: endpoint,
@@ -77,9 +29,6 @@ const useFetch = () => {
                 setError(err.response);
                 return err;
             }
-            console.log("data.message from UseFetch: ", res.data.message);
-
-            setData(res.data);
         } catch (err) {
             setError(err);
         }
@@ -115,21 +64,11 @@ const useFetch = () => {
     const isTokenExpired = () => {
         const storedData = JSON.parse(localStorage.getItem("user"));
         const tokenExpire = storedData.tokenExpire;
-        // console.log(tokenExpire);
-        // console.log('storedData', storedData);
-        // console.log('storedData.tokenExpire', storedData.tokenExpire);
-
-        // console.log(
-        //   'tokenExpire',
-        //   tokenExpire && new Date(tokenExpire) <= new Date(),
-        // );
-
         return tokenExpire && new Date(tokenExpire) <= new Date();
     };
 
     const refreshAuthToken = async () => {
         try {
-            //console.log('try');
             const response = await axios.post(
                 "http://localhost:3000/api/auth/token",
                 {},

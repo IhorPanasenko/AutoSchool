@@ -5,12 +5,10 @@ const user = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
-  // user: null,
   loading: false,
   error: null
 }
 console.log(JSON.parse(localStorage.getItem("user")))
-// console.log("JSON.parse(localStorage.getItem" + JSON.parse(localStorage.getItem("user")) || null);
 
 export const AuthContext = createContext(INITIAL_STATE)
 
