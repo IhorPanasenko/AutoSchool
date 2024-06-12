@@ -4,7 +4,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { warehouseInputs, userInputs } from "./formSource";
+import { userInputs, instructorInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -19,7 +19,7 @@ import {
     studentsWithInstructorRequestColumns,
     instructorsColumns
 } from "./datatablesource";
-import NewWarehouse from "./pages/newWarehouse/NewWarehouse";
+import NewInstructor from "./pages/newIntructor/NewInstructor";
 
 function App() {
     const { darkMode } = useContext(DarkModeContext);
@@ -47,17 +47,17 @@ function App() {
                             }
                         />
                         <Route path="login" element={<Login />} />
-                        <Route path="users">
-                            <Route
+                        {/* <Route path="users"> */}
+                        {/* <Route
                                 index
                                 element={
                                     <ProtectedRoute>
                                         <List columns={userColumns} />
                                     </ProtectedRoute>
                                 }
-                            />
+                            /> */}
 
-                            <Route
+                        {/* <Route
                                 path="new"
                                 element={
                                     <ProtectedRoute>
@@ -65,7 +65,7 @@ function App() {
                                     </ProtectedRoute>
                                 }
                             />
-                        </Route>
+                        </Route> */}
                         <Route path="students">
                             <Route
                                 index
@@ -86,6 +86,14 @@ function App() {
                                 }
                             />
                         </Route>
+                        <Route
+                            path="instructors/new"
+                            element={
+                                <ProtectedRoute>
+                                    <NewInstructor inputs={instructorInputs} title="Add New Instructor" />
+                                </ProtectedRoute>
+                            }
+                        />
                         <Route path="cities">
                             <Route
                                 index
@@ -107,7 +115,7 @@ function App() {
                                 }
                             />
                         </Route>
-                        <Route path="warehouses">
+                        {/* <Route path="warehouses">
                             <Route
                                 index
                                 element={
@@ -124,14 +132,6 @@ function App() {
                                     </ProtectedRoute>
                                 }
                             />
-                            <Route
-                                path="new"
-                                element={
-                                    <ProtectedRoute>
-                                        <NewWarehouse inputs={warehouseInputs} title="Add New Warehouse" />
-                                    </ProtectedRoute>
-                                }
-                            />
                         </Route>
                         <Route path="reservations">
                             <Route
@@ -142,7 +142,7 @@ function App() {
                                     </ProtectedRoute>
                                 }
                             />
-                        </Route>
+                        </Route> */}
                     </Route>
                 </Routes>
             </BrowserRouter>

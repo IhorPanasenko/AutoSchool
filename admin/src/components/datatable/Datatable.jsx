@@ -13,7 +13,7 @@ const Datatable = ({ columns }) => {
   console.log("path", path)
   const [list, setList] = useState([])
   const { data, deleteData, patchData } = useFetch(
-    `http://localhost:3000/api${path}`
+    `http://localhost:3000/api${path}?all=true`
   )
   console.log("data", data)
 
@@ -207,7 +207,7 @@ const Datatable = ({ columns }) => {
           <>
             <div className="datatableTitle">
               {path}
-              <Link to={`/${path}/new`} className="link">
+              <Link to={`http://localhost:3001${path}/new`} className="link">
                 Add New
               </Link>
             </div>

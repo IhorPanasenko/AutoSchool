@@ -17,7 +17,7 @@ const Sidebar = () => {
   const { deleteData } = useFetch()
   const navigate = useNavigate()
 
-  const handleLogout = async (e) => {
+  const handleLogout = async e => {
     e.preventDefault()
 
     try {
@@ -46,12 +46,12 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          {/* <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
-          </Link>
+          </Link> */}
           <Link to="/students" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
