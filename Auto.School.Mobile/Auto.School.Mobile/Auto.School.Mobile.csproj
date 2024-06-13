@@ -57,6 +57,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Helpers\**" />
+	  <AndroidResource Remove="Pages\**" />
+	  <Compile Remove="Helpers\**" />
+	  <Compile Remove="Pages\**" />
+	  <EmbeddedResource Remove="Helpers\**" />
+	  <EmbeddedResource Remove="Pages\**" />
+	  <MauiCss Remove="Helpers\**" />
+	  <MauiCss Remove="Pages\**" />
+	  <MauiXaml Remove="Helpers\**" />
+	  <MauiXaml Remove="Pages\**" />
+	  <None Remove="Helpers\**" />
+	  <None Remove="Pages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Appium.WebDriver" Version="4.4.5" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
@@ -150,11 +166,6 @@
 	  <MauiXaml Update="Views\UpdateStudentInfoPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Helpers\" />
-	  <Folder Include="Pages\" />
 	</ItemGroup>
 
 	<ItemGroup>
