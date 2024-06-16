@@ -9,9 +9,6 @@ import axios from "axios"
 import { Card, Row, Col, Button } from "react-bootstrap"
 
 const MyLessons = ({ columns }) => {
-  //   const location = useLocation()
-  //   const path = location.pathname
-  //   console.log("path", path)
   console.log("columns", columns)
 
   const [list, setList] = useState([])
@@ -19,8 +16,8 @@ const MyLessons = ({ columns }) => {
   const [alertMessage, setAlertMessage] = useState("")
   const [alertSeverity, setAlertSeverity] = useState("success")
 
-  const { data, deleteData, patchData, getData } = useFetch()
-  // `http://localhost:3000/api/lessons/my`
+  const { data, patchData, getData } = useFetch()
+
   console.log("data", data)
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -29,10 +26,6 @@ const MyLessons = ({ columns }) => {
     setOpen(false)
   }
 
-  // useEffect(() => {
-  //   setList(data.data)
-  // }, [data])
-  // console.log("list", list)
   function formatDate(dateString) {
     const date = new Date(dateString)
     const day = String(date.getDate()).padStart(2, "0")
@@ -124,48 +117,6 @@ const MyLessons = ({ columns }) => {
         </Snackbar>
       </div>
     )
-    // Add more cases for other paths if needed
-    //   case "/instructors":
-    //     return (
-    //       <>
-    //         <div className="datatableTitle">
-    //           {path}
-    //           <Link to={`/${path}/new`} className="link">
-    //             Add New
-    //           </Link>
-    //         </div>
-    //         <DataGrid
-    //           className="datagrid"
-    //           rows={list}
-    //           columns={columns.concat(actionColumn)}
-    //           pageSize={9}
-    //           rowsPerPageOptions={[9]}
-    //           checkboxSelection
-    //           getRowId={row => row._id}
-    //         />
-    //       </>
-    //     )
-    //   default:
-    //     return (
-    //       <>
-    //         {/* <div className="datatableTitle">
-    //           {path}
-    //           <Link to={`/${path}/new`} className="link">
-    //             Add New
-    //           </Link>
-    //         </div> */}
-    //         <DataGrid
-    //           className="datagrid"
-    //           rows={list}
-    //           columns={columns}
-    //           pageSize={9}
-    //           rowsPerPageOptions={[9]}
-    //           checkboxSelection
-    //           getRowId={row => row._id}
-    //         />
-    //       </>
-    //     )
-    // }
   }
 
   return (

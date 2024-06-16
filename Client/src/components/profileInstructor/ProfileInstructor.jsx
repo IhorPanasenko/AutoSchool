@@ -29,24 +29,11 @@ const UserInstructor = () => {
         console.log("res", res)
         console.log("res.data.name", res.data.name)
 
-        // console.log("res.data.student", res.data.student)
-
-        // console.log(studentData)
         if (res.data.student) {
-          //   setFormData({
-          //     name: res.data.student.name,
-          //     surname: res.data.student.surname,
-          //     vehicleCategory: res.data.student.vehicleCategory,
-          //     cityId: res.data.student.cityId,
-          //     dateOfBirth: res.data.student.userId.dateOfBirth,
-          //     phone: res.data.student.userId.phone,
-          //     photo: res.data.student.photoURL
-          //   })
           console.log("formData", formData)
         }
 
         setLoading(false)
-        console.log("------------")
 
         setUserData(res)
       } catch (err) {
@@ -55,22 +42,6 @@ const UserInstructor = () => {
     }
     fetchData()
   }, [])
-
-  const formatDate = dateString => {
-    const date = new Date(dateString)
-    const day = String(date.getDate()).padStart(2, "0")
-    const month = String(date.getMonth() + 1).padStart(2, "0")
-    const year = date.getFullYear()
-    return `${day}/${month}/${year}`
-  }
-  //   const formatPhoneNumber = value => {
-  //     const cleaned = ("" + value).replace(/\D/g, "")
-  //     const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/)
-  //     if (match) {
-  //       return [match[1], match[2], match[3]].filter(Boolean).join("-")
-  //     }
-  //     return value
-  //   }
 
   if (!data || !data.data) {
     return <p>No data available</p>
@@ -142,17 +113,6 @@ const UserInstructor = () => {
                 </span>
               </div>
             )}
-            {/* {data.data.student.userId.phone && (
-              <div className={styles.profileItem}>
-                <PhoneIcon style={{ color: "#003580" }} />
-                <span className={styles.profileItemText}>
-                  {t("profile.phone", { ns: "pages" })}:
-                </span>
-                <span className={styles.profileItemTextBd}>
-                  {data.data.student.userId.phone}
-                </span>
-              </div>
-            )} */}
           </div>
         </div>
       </div>

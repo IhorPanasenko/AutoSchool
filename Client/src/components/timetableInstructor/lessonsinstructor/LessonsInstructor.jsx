@@ -16,7 +16,6 @@ const LessonsList = ({ filteredLessons }) => {
   }
 
   const chooseLesson = async () => {
-    // setChosenLessonId(selectedLessonId)
     console.log(chosenLessonId)
     try {
       let result = await patchData(
@@ -25,7 +24,6 @@ const LessonsList = ({ filteredLessons }) => {
       console.log("result delete", result)
 
       if (result.status == "success") {
-        // sortedLessons.filter(item => item._id !== id)
         setChosenLessonId(null)
         setCanceledLessons([...canceledLessons, chosenLessonId])
       } else {
@@ -39,7 +37,6 @@ const LessonsList = ({ filteredLessons }) => {
     }
   }
 
-  // Sort lessons by fromHour
   const sortedLessons = filteredLessons.sort((a, b) => {
     const fromHourA = dayjs(a.fromHour, "HH:mm")
     const fromHourB = dayjs(b.fromHour, "HH:mm")
@@ -67,11 +64,7 @@ const LessonsList = ({ filteredLessons }) => {
               className={className}
               onClick={() => !isUnavailable && selectLesson(lesson._id)}
             >
-              <li
-              //
-              >
-                {dayjs(lesson.date).format("MMMM D, YYYY")}
-              </li>
+              <li>{dayjs(lesson.date).format("MMMM D, YYYY")}</li>
               <p>
                 {lesson.fromHour}- {lesson.toHour}
               </p>
@@ -84,10 +77,7 @@ const LessonsList = ({ filteredLessons }) => {
           )
         })}
       </ul>
-      {/* <Link
-        to={`/timetable/payment/${chosenLessonId}`}
-        style={{ textDecoration: "none" }}
-      > */}
+
       <button
         className={styles.chooseButton}
         onClick={chooseLesson}
@@ -99,7 +89,6 @@ const LessonsList = ({ filteredLessons }) => {
       >
         Cansel lesson
       </button>
-      {/* </Link> */}
     </div>
   )
 }

@@ -5,7 +5,6 @@ const Payment = () => {
   return (
     <div>
       <Navbar />
-
       <PaymentButton />
     </div>
   )

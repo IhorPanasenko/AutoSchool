@@ -2,7 +2,6 @@ import { useState } from "react"
 import styles from "./navbarDropdown.module.scss"
 
 import Path from "../../../assets/Path.svg"
-// import NavBarItem from "../NavBarItem/NavBarItem"
 
 const NavBarDropdown = ({ title, items, defaultClick }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)

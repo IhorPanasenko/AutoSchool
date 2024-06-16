@@ -14,18 +14,15 @@ const TimetableForInstructor = () => {
   const [instructorId, setInstructorId] = useState(null)
   const [lessons, setLessons] = useState([])
   const [studentData, setStudentData] = useState([])
-  const { user } = useContext(AuthContext)
-  // const instructorId = user._id
+
   const { data, error: studentError, getData } = useFetch()
-  // "http://localhost:3000/api/students/me"
-  // setInstructorId(user.userData._id)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await getData("http://localhost:3000/api/instructors/me")
         console.log(res)
-        // console.log(studentData)
+
         setStudentData(res)
         console.log("instructorId", res.data._id)
         setInstructorId(res.data._id)
@@ -36,12 +33,6 @@ const TimetableForInstructor = () => {
     fetchData()
   }, [])
 
-  // const { data: lessonsData, error: lessonsError } = useFetch()
-  // instructorId
-  //   ? `http://localhost:3000/api/instructors/${instructorId}/lessons`
-  //   : null
-  // console.log("instructorId", instructorId)
-
   useEffect(() => {
     if (instructorId) {
       const fetchData = async () => {
@@ -51,7 +42,6 @@ const TimetableForInstructor = () => {
           )
           console.log("result lessonsData", result)
           setLessons(result.data)
-          // console.log("lessonsData", studentData)
         } catch (err) {
           console.error("Failed to fetch lessons my", err)
         }
@@ -60,30 +50,7 @@ const TimetableForInstructor = () => {
     }
   }, [instructorId])
 
-  // useEffect(() => {
-  //   if (studentData && studentData.data && studentData.data.student) {
-  //     setInstructorId(studentData.data.student.instructorId)
-  //     console.log("studentDataaa", studentData.data.student.instructorId)
-  //   }
-  // }, [studentData])
-
-  // useEffect(() => {
-  //   if (lessonsData) {
-  //     setLessons(lessonsData.data)
-  //     console.log("Lessons :", lessonsData)
-
-  //     console.log("Lessons data:", lessonsData.data)
-  //   }
-  // }, [lessonsData])
-
   const handleDateChange = newDate => {
-    // Check if the new date is today or after
-    // if (newDate.isSame(today, "day") || newDate.isAfter(today, "day")) {
-    //   setSelectedDate(newDate)
-    // } else {
-    //   console.log("Please select today's date or a date after today")
-    // }
-
     setSelectedDate(newDate)
   }
 
@@ -95,10 +62,6 @@ const TimetableForInstructor = () => {
     return <div>Error loading student data: {studentError.message}</div>
   }
 
-  // if (lessonsError) {
-  //   return <div>Error loading lessons: {lessonsError.message}</div>
-  // }
-
   return (
     <div className={styles.calendarContainer}>
       <div className={styles.calendarLocalizationProvider}>
@@ -106,20 +69,8 @@ const TimetableForInstructor = () => {
           <DateCalendar
             value={selectedDate}
             onChange={handleDateChange}
-            //   minDate={dayjs()}
             renderDay={(day, _, DayProps) => (
-              <div
-                {...DayProps}
-                // style={{
-                //   backgroundColor: "lightblue",
-                //   borderRadius: "50%",
-                //   padding: "10px",
-                //   margin: "2px",
-                //   textAlign: "center"
-                // }}
-              >
-                {day.format("DD")}
-              </div>
+              <div {...DayProps}>{day.format("DD")}</div>
             )}
           />
         </LocalizationProvider>
@@ -130,17 +81,6 @@ const TimetableForInstructor = () => {
           <p>No lessons available</p>
         ) : (
           <LessonsList filteredLessons={filteredLessons} />
-          // <ul>
-          //   {filteredLessons.map(lesson => (
-          //     <li
-          //       key={lesson._id}
-          //       style={{ color: lesson.student ? "red" : "black" }}
-          //     >
-          //       {lesson.name} - {dayjs(lesson.date).format("MMMM D, YYYY")} -{" "}
-          //       {lesson.fromHour} - {lesson.toHour}
-          //     </li>
-          //   ))}
-          // </ul>
         )}
       </div>
     </div>

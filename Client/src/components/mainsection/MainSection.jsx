@@ -24,7 +24,6 @@ const MainSection = () => {
       value = parts[1]
   }
   console.log("my lang" + document.cookie)
-  //   const { user } = useContext(AuthContext)
 
   return (
     <div className={styles.navbar}>
@@ -55,9 +54,7 @@ const MainSection = () => {
             </p>
           </Link>
         </div>
-        {/* {user ? (
-          user.username
-        ) : ( */}
+
         <div className={styles.btn_container}>
           <div className={styles.navItems}>
             <Link to="/registration" style={{ textDecoration: "none" }}>
@@ -71,7 +68,7 @@ const MainSection = () => {
               </button>
             </Link>
           </div>
-          {/* )} */}
+
           <div className={styles.language}>
             <NavBarDropdown
               defaultClick={() => {

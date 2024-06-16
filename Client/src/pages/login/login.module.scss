@@ -16,7 +16,6 @@
   border-radius: 15px;
   background: #fff;
 
-  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
   border: 3px solid #eaeaff;
   display: flex;
   flex-direction: column;
@@ -27,17 +26,11 @@
   width: 60vh;
   height: 40vh;
   margin-bottom: 30px;
-
-  // font-size: 20px;
 }
 
 .password {
-  // display: inline-block;
   margin-bottom: 30px;
-  // border: 1px solid rgba(0, 0, 0, 0.07);
-  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
   border: 3px solid #eaeaff;
-
   padding: 15px 20px;
   border-radius: 15px;
 
@@ -45,12 +38,8 @@
 }
 
 .email {
-  // display: inline-block;
   margin-bottom: 30px;
-  // border: 1px solid rgba(0, 0, 0, 0.07);
-  // box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.08);
   border: 3px solid #eaeaff;
-
   padding: 15px 20px;
   border-radius: 15px;
   @include fontSize("Roboto", 400, $dark-blue, 15px, 18px);
@@ -84,7 +73,6 @@
 }
 
 .btn_logIn {
-  // width: 80%;
   background-color: $dark-blue;
   @include fontSize("Roboto", 400, $white, 20px, 23px);
   padding-right: 45px;

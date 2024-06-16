@@ -296,13 +296,6 @@ const User = () => {
                           </option>
                         ))}
                       </select>
-                      {/* <input
-                  type="text"
-                  name="cityId"
-                  value={formData.cityId}
-                  onChange={handleChange}
-                  className={styles.inputBase}
-                /> */}
                       <select
                         name="cityId"
                         value={formData.cityId}

@@ -7,7 +7,7 @@
   border: 1px solid #f4e558;
   border-radius: 10px;
   padding: 20px;
-  width: 50%; /* Увеличиваем ширину контейнера */
+  width: 50%;
   margin: 20px auto;
   margin-top: 200px;
   box-shadow: 0 0px 30px #f4e558;
@@ -16,11 +16,11 @@
 .edit {
 }
 .userPhoto {
-  width: 250px; /* Устанавливаем желаемый размер фотографии */
+  width: 250px;
   height: 250px;
   border-radius: 50%;
-  object-fit: cover; /* Изображение обрезается и масштабируется, чтобы заполнить контейнер, сохраняя пропорции */
-  object-position: center; /* Обрезаем по центру кружочком */
+  object-fit: cover;
+  object-position: center;
 }
 .profileContent {
   display: flex;
@@ -47,12 +47,10 @@
 }
 
 .profilePhoto {
-  // margin-right: 15%; /* Отступ справа для фото */
   width: 30%;
 }
 
 .profileInfo {
-  // width: 100%;
   width: 30%;
 }
 
@@ -76,13 +74,13 @@
   @include fontSize("Roboto", 600, #f4e558, 30px, 39px);
 }
 .editButton {
-  margin-top: 20px; /* Отступ сверху для кнопки редактирования */
+  margin-top: 20px;
   background-color: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #007bff; /* Цвет кнопки редактирования */
+  color: #007bff;
 }
 .editButton,
 .btnLogIn {
@@ -110,5 +108,5 @@
 }
 
 .editButton:hover {
-  text-decoration: underline; /* Подчеркивание при наведении на кнопку */
+  text-decoration: underline;
 }

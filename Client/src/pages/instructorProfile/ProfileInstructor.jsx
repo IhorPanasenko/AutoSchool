@@ -6,7 +6,6 @@ const ProfileInstructor = () => {
   return (
     <div>
       <Navbar />
-      {/* <User /> */}
       <UserInstructor />
     </div>
   )

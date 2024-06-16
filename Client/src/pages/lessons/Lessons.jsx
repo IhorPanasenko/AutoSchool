@@ -7,8 +7,6 @@ const Lessons = () => {
   return (
     <div>
       <Navbar />
-
-      {/* <PaymentButton /> */}
       <MyLessons columns={myLessonsColumns} />
     </div>
   )

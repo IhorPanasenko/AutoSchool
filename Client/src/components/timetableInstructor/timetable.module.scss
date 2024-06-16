@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   gap: 5%;
-  //   background-color: green;
 }
 .calendarLocalizationProvider {
   width: 30%;
@@ -19,9 +18,7 @@
 .css-1aqny2q-MuiPickersCalendarHeader-root-MuiDatePickerToolbar-root {
   background-color: green;
 }
-// .calendarLocalizationProvider {
-//   width: 100%;
-// }
+
 h2 {
   @include fontSize("Roboto", 500, $dark-blue, 24px, 26px);
 }

@@ -50,10 +50,6 @@ const Login = () => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data })
 
       if (redirectUrl) {
-        console.log("dadada")
-
-        //right redirectUrl: "http://localhost:5173/login?redirectUrl=timetable/payment/665afcd8f5f8eb22f8c3a039"
-
         window.location.href = `${window.location.origin}/${redirectUrl}`
       } else {
         navigate("/")

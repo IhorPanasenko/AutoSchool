@@ -1,3 +1,4 @@
+import React from "react"
 import CarImg from "../../assets/registerBackgr.png"
 import { useState, useEffect, useContext } from "react"
 import axios from "axios"
@@ -160,6 +161,7 @@ const Register = () => {
     <div className={styles.login_container}>
       <div className={styles.login_wrapper}>
         <form onSubmit={handleSubmit}>
+          <label htmlFor="city">City</label>
           <img src={CarImg} alt="Car" className={styles.menu__icon} />
           <div className={styles.inputs_container}>
             <div className={styles.input_witherr_container}>
@@ -224,6 +226,7 @@ const Register = () => {
                 <input
                   type="date"
                   name="dateOfBirth"
+                  placeholder="dateOfBirth"
                   value={user.dateOfBirth}
                   onChange={handleChange}
                   className={styles.input_base}
@@ -266,7 +269,6 @@ const Register = () => {
             <select
               name="vehicleCategory"
               value={user.vehicleCategory}
-              // onChange={handleCategoryChange}
               className={styles.input_base}
               onChange={handleChange}
             >

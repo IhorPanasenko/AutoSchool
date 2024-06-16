@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next"
 import LessonsList from "./lessons/Lessons"
 
 const TimetableUser = () => {
-  const today = dayjs() // Get current date
+  const today = dayjs()
   const [selectedDate, setSelectedDate] = useState(null)
   const [instructorId, setInstructorId] = useState(null)
   const [lessons, setLessons] = useState([])
@@ -22,7 +22,7 @@ const TimetableUser = () => {
       try {
         const res = await getData("http://localhost:3000/api/students/me")
         console.log(res)
-        // console.log(studentData)
+
         setStudentData(res)
         console.log("instructorId", res.data.student.instructorId)
         setInstructorId(res.data.student.instructorId)
@@ -42,7 +42,6 @@ const TimetableUser = () => {
           )
           console.log("result lessonsData", result)
           setLessons(result.data)
-          // console.log("lessonsData", studentData)
         } catch (err) {
           console.error("Failed to fetch lessons my", err)
         }
@@ -56,7 +55,6 @@ const TimetableUser = () => {
   }
 
   const handleDateChange = newDate => {
-    // Check if the new date is today or after
     if (newDate.isSame(today, "day") || newDate.isAfter(today, "day")) {
       setSelectedDate(newDate)
     } else {

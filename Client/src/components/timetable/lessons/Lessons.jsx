@@ -15,11 +15,9 @@ const LessonsList = ({ filteredLessons }) => {
   }
 
   const chooseLesson = () => {
-    // setChosenLessonId(selectedLessonId)
     console.log(chosenLessonId)
   }
 
-  // Sort lessons by fromHour
   const sortedLessons = filteredLessons.sort((a, b) => {
     const fromHourA = dayjs(a.fromHour, "HH:mm")
     const fromHourB = dayjs(b.fromHour, "HH:mm")

@@ -19,8 +19,6 @@ import TimetableInstructor from "./pages/timetableInstructors/TimetableInstructo
 function App() {
   return (
     <Routes>
-      {/* <h1>Vite + React</h1> */}
-
       <Route path="/timetable" element={<Timetable />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />

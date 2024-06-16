@@ -25,14 +25,11 @@ const InstructorsList = () => {
         storedData.requestStatus = "pending"
         localStorage.setItem("user", JSON.stringify(storedData))
         window.location.reload()
-        // setList(list.filter(item => item._id !== id))
       } else {
         alert("Не вдалося записатися до інструктора оскільки він вже зайнятий")
       }
       console.log("data from front ", { data })
       console.log("error from front ", { error })
-
-      // setList(list.filter(item => item._id !== id))
     } catch (err) {
       console.log(err)
     }

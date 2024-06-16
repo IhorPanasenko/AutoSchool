@@ -1,5 +1,3 @@
-// import Navbar from "../../components/navbar/Navbar"
-// import User from "../../components/profile/Profile"\
 import styles from "./profileEmail.module.scss"
 import { AuthContext } from "../../../context/authContext"
 import { useContext } from "react"
@@ -17,7 +15,7 @@ const ProfileEmail = () => {
       console.log(res)
     } catch (err) {
       console.log(err)
-    } // Дополнительные действия при нажатии на кнопку редактирования
+    }
   }
   return (
     <div className={styles.profileEmailContainer}>
