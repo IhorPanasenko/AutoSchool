@@ -1,19 +1,13 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import Single from "./pages/single/Single";
-import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { userInputs, instructorInputs } from "./formSource";
+import { instructorInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import {
-    warehousesColumns,
-    roomColumns,
-    userColumns,
-    reservationsColumns,
     studentsColumns,
     citiesColumns,
     studentsWithInstructorRequestColumns,
@@ -47,25 +41,7 @@ function App() {
                             }
                         />
                         <Route path="login" element={<Login />} />
-                        {/* <Route path="users"> */}
-                        {/* <Route
-                                index
-                                element={
-                                    <ProtectedRoute>
-                                        <List columns={userColumns} />
-                                    </ProtectedRoute>
-                                }
-                            /> */}
 
-                        {/* <Route
-                                path="new"
-                                element={
-                                    <ProtectedRoute>
-                                        <New inputs={userInputs} title="Add New User" />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Route> */}
                         <Route path="students">
                             <Route
                                 index
@@ -115,34 +91,6 @@ function App() {
                                 }
                             />
                         </Route>
-                        {/* <Route path="warehouses">
-                            <Route
-                                index
-                                element={
-                                    <ProtectedRoute>
-                                        <List columns={warehousesColumns} />
-                                    </ProtectedRoute>
-                                }
-                            />
-                            <Route
-                                path=":warehouseId"
-                                element={
-                                    <ProtectedRoute>
-                                        <Single />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Route>
-                        <Route path="reservations">
-                            <Route
-                                index
-                                element={
-                                    <ProtectedRoute>
-                                        <List columns={reservationsColumns} />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Route> */}
                     </Route>
                 </Routes>
             </BrowserRouter>

@@ -1,9 +1,7 @@
 // import "./newWarehouse.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined"
-import { useState, useEffect } from "react"
-import { instructorInputs, warehouseInputs } from "../../formSource"
-import axios from "axios"
+import { useState } from "react"
+import { instructorInputs } from "../../formSource"
 import useFetch from "../../hooks/useFetch"
 import Joi from "joi"
 
@@ -11,9 +9,7 @@ const NewInstructor = ({ inputs, title }) => {
   const [files, setFiles] = useState({})
   const [info, setInfo] = useState({})
   const [errors, setErrors] = useState({})
-  const { data, deleteData, postData } = useFetch(
-    `http://localhost:3000/api/instructors`
-  )
+  const { data, postData } = useFetch(`http://localhost:3000/api/instructors`)
   console.log("data", data)
 
   const validateField = (name, value) => {
@@ -105,6 +101,7 @@ const NewInstructor = ({ inputs, title }) => {
         }
       )
       console.log(res)
+      alert("Intructor add successfully")
     } catch (error) {
       console.log(error)
     }
