@@ -1,4 +1,4 @@
-// import "./newWarehouse.scss"
+import "./newInstructor.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import { useState } from "react"
 import { instructorInputs } from "../../formSource"
