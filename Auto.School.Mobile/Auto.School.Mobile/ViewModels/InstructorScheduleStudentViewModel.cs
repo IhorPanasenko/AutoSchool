@@ -49,11 +49,10 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
                 if (!string.IsNullOrEmpty(instructorIdJson))
                 {
                     instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);
-                    
                 }
             }
 
@@ -89,7 +88,7 @@ namespace Auto.School.Mobile.ViewModels
 
             if (instructorId is null)
             {
-                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
                 if (!string.IsNullOrEmpty(instructorIdJson))
                 {
                     instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);

@@ -42,7 +42,7 @@ namespace Auto.School.Mobile.ViewModels
             var sharedInstructor = _sharedService.GetValue<InstructorModel>("instructor");
             if (sharedInstructor is null)
             {
-                string instructorIdJson = Preferences.Get("InstructorId", string.Empty);
+                string instructorIdJson = Preferences.Get("MyInstructorId", string.Empty);
                 if (!string.IsNullOrEmpty(instructorIdJson))
                 {
                     var instructorId = JsonConvert.DeserializeObject<string>(instructorIdJson);

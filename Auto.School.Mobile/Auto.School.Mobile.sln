@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto.School.Mobile.Service"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto.School.Mobile.ApiIntegration", "Auto.School.Mobile.ApiIntegration\Auto.School.Mobile.ApiIntegration.csproj", "{92FA74BC-913C-49E1-8D20-E3376AAC7C7D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auto.Schol.Mobile.Tests", "Auto.Schol.Mobile.Tests\Auto.Schol.Mobile.Tests.csproj", "{F68D2158-8AA1-4499-B0C2-0792A10E2E34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITests", "UITests\UITests.csproj", "{01926F8C-5566-41D1-ABBA-B1062A169934}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{92FA74BC-913C-49E1-8D20-E3376AAC7C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92FA74BC-913C-49E1-8D20-E3376AAC7C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92FA74BC-913C-49E1-8D20-E3376AAC7C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F68D2158-8AA1-4499-B0C2-0792A10E2E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F68D2158-8AA1-4499-B0C2-0792A10E2E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F68D2158-8AA1-4499-B0C2-0792A10E2E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F68D2158-8AA1-4499-B0C2-0792A10E2E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01926F8C-5566-41D1-ABBA-B1062A169934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01926F8C-5566-41D1-ABBA-B1062A169934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01926F8C-5566-41D1-ABBA-B1062A169934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01926F8C-5566-41D1-ABBA-B1062A169934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

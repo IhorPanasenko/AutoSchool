@@ -37,9 +37,9 @@ namespace Auto.School.Mobile.ApiIntegration.Base.Implementation
                     throw new HttpRequestException($"Cannot send get request to: {path},Status code: {response.StatusCode}");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception($"An error occurred while processing the GET request: {ex.Message}");
+                throw;
             }
         }
     }
