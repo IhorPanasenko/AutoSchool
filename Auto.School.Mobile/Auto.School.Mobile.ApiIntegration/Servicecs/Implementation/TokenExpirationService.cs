@@ -13,7 +13,7 @@ namespace Auto.School.Mobile.ApiIntegration.Servicecs.Implementation
 
         public async void TryRefreshToken()
         {
-            if ((!_tokenExpiration.HasValue) || (_tokenExpiration.HasValue && _tokenExpiration.Value <= DateTime.Now))
+            if ((!_tokenExpiration.HasValue) || (_tokenExpiration.HasValue && _tokenExpiration.Value <= DateTime.UtcNow))
             {
                 var res = await _postRequest.ExecuteAsync<object, RefreshTokenResponse>(RoutesConstants.TokenRefresh, null);
                 if (string.Compare(res.Status, ResponseStatuses.Sucess, true) == 0)

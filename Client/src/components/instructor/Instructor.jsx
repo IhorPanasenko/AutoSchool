@@ -21,6 +21,7 @@ const InstructorsList = () => {
       console.log("result from front ", result)
       if (result.status == "success") {
         const storedData = JSON.parse(localStorage.getItem("user"))
+        alert('Запит надіслано успішно');
         storedData.instructor = id
         storedData.requestStatus = "pending"
         localStorage.setItem("user", JSON.stringify(storedData))
