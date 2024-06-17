@@ -87,7 +87,7 @@ const LessonsList = ({ filteredLessons }) => {
             ?.student
         }
       >
-        Cansel lesson
+        Cancel lesson
       </button>
     </div>
   )

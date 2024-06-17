@@ -86,7 +86,7 @@ const MyLessons = ({ columns }) => {
               className={styles.deleteButton}
               onClick={() => handleDelete(params.row._id)}
             >
-              Cansel lesson
+              Cancel lesson
             </div>
           </div>
         )

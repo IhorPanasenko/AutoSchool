@@ -3,7 +3,7 @@
     public static class RoutesConstants
     {
         //public const string BaseUrl = "http://10.0.2.2:3000/api/";
-        public static string BaseUrl => Environment.GetEnvironmentVariable("BASE_URL") ?? "http://10.0.2.2:3000/api";
+        public static string BaseUrl => Environment.GetEnvironmentVariable("BASE_URL") ?? "http://10.0.2.2:3000/api/";
         public const string TestBaseUrl = "http://localhost:3000/api";
         public const string GetAllUsers = "users";
 

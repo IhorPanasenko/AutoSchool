@@ -9,4 +9,10 @@ public partial class InstructorDetailsPage : ContentPage
 		InitializeComponent();
 		BindingContext = instructorDetailsViewModel;
 	}
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        Preferences.Remove("instructor");
+    }
 }
