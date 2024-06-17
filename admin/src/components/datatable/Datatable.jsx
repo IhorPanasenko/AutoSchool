@@ -24,6 +24,7 @@ const Datatable = ({ columns }) => {
     try {
       await deleteData(`http://localhost:3000/api${path}/${id}`)
       setList(list.filter(item => item._id !== id))
+      window.location.reload();
     } catch (err) {
       console.log(err)
     }
